@@ -1,0 +1,31 @@
+<div class="flex flex-col justify-between min-h-screen">
+    <app-navbar authType="auth"></app-navbar>
+
+    <div class="min-h-screen bg-gradient-to-b from-slate-50 to-white flex items-center justify-center py-8 px-4">
+        <div class="text-center max-w-3xl">
+            <h1 class="text-8xl lg:text-9xl font-extrabold text-emerald-600 tracking-tight mb-4 drop-shadow-lg">
+                404
+            </h1>
+            <h2 class="text-3xl lg:text-5xl font-bold text-slate-900 mb-6">
+                Page Not Found
+            </h2>
+            <p class="text-lg lg:text-xl text-slate-600 mb-10 leading-relaxed">
+                Sorry, the page you're looking for doesn't exist or has been moved.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-6">
+                <a routerLink="/"
+                    class="px-10 py-5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-lg rounded-2xl shadow-xl transition-all hover:scale-105">
+                    Back to Home
+                </a>
+                <a routerLink="/users/dashboard"
+                    class="px-10 py-5 border-2 border-emerald-600 text-emerald-700 hover:bg-emerald-50 font-bold text-lg rounded-2xl transition-all">
+                    Go to Dashboard
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="-mt-20">
+        <app-footer></app-footer>
+    </div>
+</div>

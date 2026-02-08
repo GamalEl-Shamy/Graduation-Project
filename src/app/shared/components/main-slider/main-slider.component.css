@@ -1,0 +1,14 @@
+:host ::ng-deep .custom-carousel,
+:host ::ng-deep .custom-carousel .owl-stage-outer,
+:host ::ng-deep .custom-carousel .owl-stage,
+:host ::ng-deep .custom-carousel .owl-item {
+    height: 500px !important;
+    
+}
+
+:host ::ng-deep .custom-carousel img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+}

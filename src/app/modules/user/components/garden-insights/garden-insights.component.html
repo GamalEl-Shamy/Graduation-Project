@@ -1,0 +1,112 @@
+<div class="space-y-12 animate-in fade-in slide-in-from-bottom-4 duration-1000">
+
+
+    <div class="flex flex-row items-center justify-between gap-4">
+        <div>
+            <h2 class="text-3xl font-black text-slate-800 tracking-tight">Garden Insights</h2>
+            <p class="text-slate-500 font-medium">Live environmental monitoring for your location.</p>
+        </div>
+        <div class="flex items-center gap-3 bg-white px-4 py-2 rounded-2xl border border-slate-200 shadow-sm">
+            <span class="w-2 h-2 bg-emerald-500 rounded-full animate-ping"></span>
+            <span class="text-[10px] text-sm font-bold text-slate-600">AI Engine: <span
+                    class="text-emerald-600 font-black tracking-widest uppercase text-[7px] md:text-[10px] ml-1">Optimized</span></span>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 mt-4">
+
+        <div routerLink="/users/diagnosis"
+            class="group bg-white rounded-[2rem] p-8 border border-slate-100 shadow-sm hover:shadow-2xl hover:shadow-emerald-500/10 transition-all duration-500 hover:-translate-y-2 hover:cursor-pointer">
+            <div
+                class="w-14 h-14 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-emerald-600 group-hover:text-white transition-all duration-500">
+                <i class="fa-solid fa-camera-retro text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-black text-slate-800 mb-2 tracking-tight">New Scan</h3>
+            <p class="text-slate-500 text-xs font-medium leading-relaxed mb-6">Capture your plant's symptoms and let AI
+                diagnose issues instantly.</p>
+            <button
+                class="text-emerald-600 text-xs font-black uppercase tracking-widest flex items-center gap-2 group-hover:gap-4 transition-all">
+                Start Scan <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        </div>
+
+        <div routerLink="/users/my-garden"
+            class="group bg-white rounded-[2rem] p-8 border border-slate-100 shadow-sm hover:shadow-2xl hover:shadow-teal-500/10 transition-all duration-500 hover:-translate-y-2 hover:cursor-pointer">
+            <div
+                class="w-14 h-14 rounded-2xl bg-teal-50 text-teal-800 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-teal-600 group-hover:text-white transition-all duration-500">
+                <i class="fa-solid fa-seedling text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-black text-slate-800 mb-2 tracking-tight">My Garden</h3>
+            <p class="text-slate-500 text-xs font-medium leading-relaxed mb-6">Monitor your registered plants and plan
+                their daily care routines.</p>
+            <button
+                class="text-teal-800 text-xs font-black uppercase tracking-widest flex items-center gap-2 group-hover:gap-4 transition-all">
+                View Garden <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        </div>
+
+        <div routerLink="/users/shop"
+            class="group bg-white rounded-[2rem] p-8 border border-slate-100 shadow-sm hover:shadow-2xl hover:shadow-amber-500/10 transition-all duration-500 hover:-translate-y-2 hover:cursor-pointer">
+            <div
+                class="w-14 h-14 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-amber-600 group-hover:text-white transition-all duration-500">
+                <i class="fa-solid fa-cart-shopping text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-black text-slate-800 mb-2 tracking-tight">Shop</h3>
+            <p class="text-slate-500 text-xs font-medium leading-relaxed mb-6">Purchase suggested remedies and organic
+                tools with fast delivery.</p>
+            <button
+                class="text-amber-600 text-xs font-black uppercase tracking-widest flex items-center gap-2 group-hover:gap-4 transition-all">
+                Explore Shop <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        </div>
+
+        <div routerLink="/users/diagnosis-history"
+            class="group bg-white rounded-[2rem] p-8 border border-slate-100 shadow-sm hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-500 hover:-translate-y-2 hover:cursor-pointer">
+            <div
+                class="w-14 h-14 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white transition-all duration-500">
+                <i class="fa-solid fa-history text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-black text-slate-800 mb-2 tracking-tight">History</h3>
+            <p class="text-slate-500 text-xs font-medium leading-relaxed mb-6">Review all your past diagnoses, results,
+                and treatment logs.</p>
+            <button
+                class="text-blue-600 text-xs font-black uppercase tracking-widest flex items-center gap-2 group-hover:gap-4 transition-all">
+                View History <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="bg-white rounded-3xl p-6 border border-slate-100 shadow-sm flex flex-col justify-between">
+            <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4">Monthly Scans</p>
+            <div class="flex items-end justify-between">
+                <p class="text-4xl font-black text-emerald-600 tracking-tighter">28</p>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-3xl p-6 border border-slate-100 shadow-sm flex flex-col justify-between">
+            <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4">Total Crops</p>
+            <div class="flex items-end justify-between">
+                <p class="text-4xl font-black text-teal-800 tracking-tighter">94</p>
+                <span class="text-slate-400 font-bold text-[10px] mb-1">REGISTERED</span>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-3xl p-6 border border-slate-100 shadow-sm flex flex-col justify-between">
+            <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4">Issues Solved</p>
+            <div class="flex items-end justify-between">
+                <p class="text-4xl font-black text-amber-600 tracking-tighter">09</p>
+                <span class="text-slate-400 font-bold text-[10px] mb-1">OF <span class="text-amber-600">20</span> DETECTED</span>
+            </div>
+        </div>
+
+        <div
+            class="bg-white rounded-3xl p-6 border border-slate-100 shadow-sm flex flex-col justify-between bg-gradient-to-br from-white to-blue-50/30">
+            <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4">Total product costs</p>
+            <div class="flex items-end justify-between">
+                <p class="text-3xl font-black text-blue-600 tracking-tighter">EGP 2,850</p>
+                <i class="fa-solid fa-wallet text-blue-200 text-xl mb-1"></i>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,41 @@
+<section class="bg-[#5b8c51] py-20 px-6 relative overflow-hidden">
+  <div class="absolute inset-0 opacity-20 bg-[url('/images/harvest-process.png')]"></div>
+<!-- 5B8C51 -->
+  <div class="container mx-auto relative z-10">
+    
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+      <div class="max-w-xl">
+        <span class="inline-flex items-center px-4 py-1 rounded-full bg-white/20 text-white text-xs font-medium backdrop-blur-sm mb-4">
+            <i class="fa-solid fa-star mr-1.5"></i>
+            Our Services
+        </span>
+        <h2 class="text-4xl md:text-5xl font-bold text-white tracking-tight">
+          AI-Powered Plant Care
+        </h2>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      @for (service of services; track service.title) {
+        <div class="group bg-white rounded-[2.5rem] p-4 transition-all duration-500 hover:-translate-y-2 shadow-2xl shadow-black/10">
+          
+          <div class="relative h-64 w-full overflow-hidden rounded-[2rem] mb-6">
+            <img [src]="service.image" [alt]="service.title" 
+                 class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+          </div>
+
+          <div class="px-4 mt-5">
+            <span class="text-[10px] font-bold uppercase tracking-widest text-[#5B8C51] mb-2 block">
+              <i class="fa-solid fa-circle"></i>
+              {{ service.tag }}
+            </span>
+            <h3 class="text-2xl font-bold text-slate-800 mb-3">{{ service.title }}</h3>
+            <p class="text-slate-500 text-sm leading-relaxed mb-6">
+              {{ service.description }}
+            </p>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

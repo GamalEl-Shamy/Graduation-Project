@@ -1,0 +1,73 @@
+<footer class="bg-white border-t border-slate-100 pt-20 pb-10 mt-20">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+
+        <div class="grid lg:grid-cols-12 gap-12 pb-16 border-b border-slate-50 ">
+
+            <div class="lg:col-span-4 space-y-6">
+                <div class="flex items-center gap-3">
+                    <div
+                        class="w-10 h-10 bg-emerald-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-emerald-200">
+                        <i class="fa-solid fa-leaf"></i>
+                    </div>
+                    <span class="text-2xl font-black text-slate-900 tracking-tighter"><span
+                            class="text-emerald-600">Z</span> a r a a</span>
+                </div>
+                <p class="text-slate-500 text-sm leading-relaxed max-w-xs font-medium">
+                    Empowering farmers with AI-driven insights to protect crops and ensure a healthier harvest for the
+                    future.
+                </p>
+                <div class="flex gap-4">
+                    @for (social of ['facebook', 'twitter', 'instagram', 'github']; track social) {
+                    <a href="#"
+                        class="w-10 h-10 rounded-xl bg-slate-50 text-slate-400 flex items-center justify-center hover:bg-emerald-600 hover:text-white transition-all duration-300">
+                        <i class="fa-brands fa-{{social}}"></i>
+                    </a>
+                    }
+                </div>
+            </div>
+
+            <div class="lg:col-span-4">
+                <div class="lg:w-30 ">
+                    <h4 class="text-xs font-black text-slate-900 uppercase tracking-widest mb-6">Explore</h4>
+                    <ul class="space-y-4">
+                        @for (link of quickLinks; track link.name) {
+                        <li>
+                            <a [routerLink]="link.path"
+                                class="text-slate-500 text-sm font-bold hover:text-emerald-600 transition-colors">{{link.name}}</a>
+                        </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+
+            <div class="lg:col-span-4 bg-slate-50 rounded-[2.5rem] p-8 ml-auto">
+                <h4 class="text-lg font-black text-slate-900 mb-2">Subscribe</h4>
+                <p class="text-slate-500 text-xs font-medium mb-6">subscribe now.</p>
+                <div class="relative">
+                    <input type="email" placeholder="Enter your email"
+                        class="w-full pl-5 pr-14 py-4 bg-white border-none rounded-2xl focus:ring-2 focus:ring-emerald-500/20 font-medium text-slate-700 shadow-sm" />
+                    <button
+                        class="absolute right-2 top-2 w-10 h-10 bg-slate-900 text-white rounded-xl flex items-center justify-center hover:bg-emerald-600 transition-all">
+                        <i class="fa-solid fa-paper-plane text-xs"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+            <p class="text-slate-400 text-xs font-bold uppercase tracking-widest">
+                © {{currentYear}} Zaraa AI. All rights reserved.
+            </p>
+            <div class="flex items-center gap-2">
+                <div class="flex h-2 w-2 relative">
+                    <span
+                        class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                </div>
+                <span class="text-[10px] font-black text-slate-400 uppercase tracking-tighter">System Status: All
+                    Systems Operational</span>
+            </div>
+        </div>
+
+    </div>
+</footer>
