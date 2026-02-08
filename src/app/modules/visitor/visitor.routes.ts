@@ -13,7 +13,7 @@ export const VISITOR_ROUTES: Routes = [
             {
                 path: 'visitor',
                 loadComponent: () => import('./pages/home-visitor/home-visitor.component').then((c) => c.HomeVisitorComponent),
-                title: 'Planet'
+                title: 'Zaraa'
             }
         ]
     }
