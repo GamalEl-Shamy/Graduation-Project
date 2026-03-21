@@ -50,13 +50,13 @@
                 @if (authType == 'auth') {
                 <div class="flex gap-4">
                     <li>
-                        <a routerLink="/users" (click)="mobileToggle()"
+                        <a routerLink="/auth/login" (click)="mobileToggle()"
                             class="text-slate-600 font-bold hover:text-emerald-600 transition-colors">
                             Login
                         </a>
                     </li>
                     <li>
-                        <a routerLink="/users" (click)="mobileToggle()"
+                        <a routerLink="/auth/register" (click)="mobileToggle()"
                             class="px-5 py-2.5 bg-emerald-600 text-white font-bold rounded-lg shadow-lg shadow-emerald-200 hover:bg-emerald-700 transition-all">
                             Join for Free
                         </a>
