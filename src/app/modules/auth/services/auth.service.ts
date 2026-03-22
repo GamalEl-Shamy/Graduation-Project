@@ -9,6 +9,18 @@ import { environment } from '../../../../environments/environment.development';
 export class AuthService {
   constructor(private http:HttpClient){}
 
+  saveAccessToken(accessToken: string): void {
+    if (typeof window != 'undefined') {
+      localStorage.setItem('accessToken', accessToken)
+    }
+  }
+
+  saveRefreshToken(refreshToken: string): void {
+    if (typeof window != 'undefined') {
+      localStorage.setItem('refreshToken', refreshToken)
+    }
+  }
+
   register(data:any): Observable<any>{
      return this.http.post(environment.apiUrl + '/api/Identity/Account/Register', data, { responseType: 'text' })
   }

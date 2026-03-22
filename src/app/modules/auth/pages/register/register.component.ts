@@ -169,10 +169,6 @@ export class RegisterComponent {
         this.isLoading = false;
         this.successMessage = 'Account created! Please check your email to confirm your account.';
         this.cdr.detectChanges();
-        console.log('1')
-        console.log(this.isLoading);
-        console.log(this.successMessage)
-        console.log('2')
         setTimeout(() => {
           this.router.navigate(['/auth/login']);
         }, 10000);
@@ -185,10 +181,8 @@ export class RegisterComponent {
 
         if (errors) {
           if (Array.isArray(errors)) {
-            // Identity errors: [{description: '...'}]
             errorMessages = errors.map((e: any) => e.description).join(' ');
           } else if (typeof errors === 'object') {
-            // Validation errors: { LastName: ['...'], Email: ['...'] }
             errorMessages = Object.values(errors).flat().join(' ');
           }
         }
