@@ -58,11 +58,12 @@ export class LoginComponent {
         if (res) {
           this.authService.saveAccessToken(res.accessToken)
           this.authService.saveRefreshToken(res.refreshToken)
+          if (typeof window != 'undefined') {
+            localStorage.setItem('welcomeState', 'true')
+          }
+          this.router.navigate(['/users']);
         }
         this.cdr.detectChanges();
-        setTimeout(() => {
-          this.router.navigate(['/auth/register']);
-        }, 10000);
       },
       error: (err) => {
         this.isLoading = false;
