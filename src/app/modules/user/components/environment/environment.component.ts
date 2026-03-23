@@ -36,7 +36,7 @@ export class EnvironmentComponent {
       },
       error: (err) => {
         console.error('API Error:', err);
-        this.errorMessage.set('لم نتمكن من العثور على المدينة. يرجى التأكد من الاسم.');
+        this.errorMessage.set('The city was not found.');
         this.weatherData.set(null);
         this.isLoading.set(false);
       },

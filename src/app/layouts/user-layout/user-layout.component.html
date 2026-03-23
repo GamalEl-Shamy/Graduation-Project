@@ -1,16 +1,16 @@
 <div class="min-h-screen bg-slate-50 flex flex-col md:flex-row overflow-hidden font-sans">
     @if (isSidebarOpen()) {
     <div (click)="closeSidebar()"
-        class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[60] md:hidden transition-all duration-300"></div>
+        class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-60 md:hidden transition-all duration-300"></div>
     }
 
     <aside
-        class="fixed inset-y-0 left-0 z-[70] w-72 sm:w-80 bg-white border-r border-slate-200 transform transition-transform duration-300 ease-out xl:relative xl:translate-x-0 shadow-2xl xl:shadow-none flex flex-col shrink-0"
+        class="fixed inset-y-0 left-0 z-70 w-72 sm:w-80 bg-white border-r border-slate-200 transform transition-transform duration-300 ease-out xl:relative xl:translate-x-0 shadow-2xl xl:shadow-none flex flex-col shrink-0"
         [class]="{ 'translate-x-0': isSidebarOpen(), '-translate-x-full': !isSidebarOpen() }">
         <div class="p-8 flex items-center justify-between">
             <div class="flex items-center gap-3">
                 <div
-                    class="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center text-white shadow-lg shadow-emerald-200">
+                    class="w-10 h-10 rounded-xl bg-linear-to-br from-emerald-400 to-emerald-600 flex items-center justify-center text-white shadow-lg shadow-emerald-200">
                     <i class="fa-solid fa-leaf text-xl"></i>
                 </div>
                 <span class="text-2xl font-black text-slate-800 tracking-tight"><span class="text-emerald-600">Z</span> a r a a</span>
