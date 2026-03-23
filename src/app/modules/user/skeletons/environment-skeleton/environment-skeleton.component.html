@@ -1,0 +1,126 @@
+<div class="animate-fade-in">
+    <div class="mb-4 text-center">
+        <h2 class="text-3xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-emerald-900 to-teal-700 md:text-4xl">
+            Weather Dashboard
+        </h2>
+        <p class="mt-2 text-sm text-slate-500 md:text-base">
+            Search for any city to view temperature, humidity, and wind speed
+        </p>
+    </div>
+
+    <div class="mx-auto mb-8 flex w-full max-w-2xl items-center gap-3 rounded-2xl border border-slate-200 bg-white p-3 shadow-sm">
+        <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-sky-100 text-sky-500 text-xl">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+
+        <input type="text" placeholder="Enter city name..." class="h-11 flex-1 bg-transparent px-2 text-slate-700 outline-none placeholder:text-slate-400 focus:border focus:rounded-lg focus:border-sky-500" />
+
+        <button class="rounded-xl bg-sky-500 px-5 py-3 text-sm font-semibold text-white shadow-md transition cursor-pointer hover:bg-sky-600 active:scale-[0.98]">
+            Search
+        </button>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-6 relative z-10">
+
+        <div class="col-span-1 md:col-span-12 lg:col-span-6 relative overflow-hidden bg-slate-100 p-8 rounded-[2.5rem] border border-white shadow-sm">
+            <div class="relative z-10 h-full flex flex-col justify-between">
+                
+                <div class="flex justify-between items-start mb-12">
+                    <div class="w-16 h-16 bg-slate-200 rounded-3xl animate-pulse shadow-inner"></div>
+                    <div class="w-24 h-8 bg-slate-200 rounded-full animate-pulse border border-slate-300/50"></div>
+                </div>
+
+                <div class="mb-4 flex items-center justify-center mx-auto w-fit gap-3 px-6 py-3 bg-slate-200/50 rounded-full border border-white">
+                    <div class="w-6 h-6 bg-slate-300 rounded-full animate-pulse"></div>
+                    <div class="w-32 h-8 bg-slate-300 rounded-xl animate-pulse"></div>
+                </div>
+
+                <div class="mt-4">
+                    <div class="w-28 h-4 bg-slate-200 rounded-full mb-4 animate-pulse"></div>
+                    <div class="flex items-end gap-2">
+                        <div class="w-48 h-24 bg-slate-300 rounded-3xl animate-pulse"></div>
+                        <div class="w-12 h-10 bg-slate-200 rounded-xl animate-pulse mb-2"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-span-1 md:col-span-12 lg:col-span-6 grid grid-cols-2 sm:grid-cols-3 gap-6">
+            
+            <div class="relative overflow-hidden bg-white/80 p-8 rounded-[2.5rem] border border-slate-100 flex flex-col justify-between shadow-sm">
+                <div class="w-14 h-14 bg-slate-200 rounded-[1.25rem] animate-pulse mb-6"></div>
+                <div>
+                    <div class="w-20 h-3 bg-slate-200 rounded-full mb-3 animate-pulse"></div>
+                    <div class="flex items-end gap-2">
+                        <div class="w-16 h-10 bg-slate-300 rounded-xl animate-pulse"></div>
+                        <div class="w-6 h-6 bg-slate-200 rounded-md animate-pulse mb-1"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="relative overflow-hidden bg-white/80 p-8 rounded-[2.5rem] border border-slate-100 flex flex-col justify-between shadow-sm">
+                <div class="w-14 h-14 bg-slate-200 rounded-[1.25rem] animate-pulse mb-6"></div>
+                <div>
+                    <div class="w-20 h-3 bg-slate-200 rounded-full mb-3 animate-pulse"></div>
+                    <div class="flex items-end gap-2">
+                        <div class="w-16 h-10 bg-slate-300 rounded-xl animate-pulse"></div>
+                        <div class="w-8 h-5 bg-slate-200 rounded-md animate-pulse mb-1"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="relative overflow-hidden bg-white/80 p-8 rounded-[2.5rem] border border-slate-100 flex flex-col justify-between shadow-sm">
+                <div class="w-14 h-14 bg-slate-200 rounded-[1.25rem] animate-pulse mb-6"></div>
+                <div>
+                    <div class="w-20 h-3 bg-slate-200 rounded-full mb-3 animate-pulse"></div>
+                    <div class="flex items-end gap-2">
+                        <div class="w-16 h-10 bg-slate-300 rounded-xl animate-pulse"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-span-1 sm:col-span-3 relative overflow-hidden bg-slate-50 p-8 rounded-[2.5rem] border border-slate-200 shadow-sm">
+                <div class="relative z-10 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6">
+                    <div>
+                        <div class="w-12 h-12 bg-slate-200 rounded-2xl animate-pulse mb-4"></div>
+                        <div class="w-20 h-4 bg-slate-200 rounded-full mb-3 animate-pulse"></div>
+                        <div class="w-24 h-10 bg-slate-300 rounded-xl animate-pulse"></div>
+                    </div>
+
+                    <div class="w-full sm:w-1/2">
+                        <div class="flex justify-between mb-3">
+                            <div class="w-12 h-3 bg-slate-200 rounded-full animate-pulse"></div>
+                            <div class="w-20 h-4 bg-slate-200 rounded-full animate-pulse"></div>
+                        </div>
+                        <div class="w-full h-3 bg-slate-200 rounded-full overflow-hidden animate-pulse"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-8 relative z-10">
+        <div class="mb-5 flex items-center gap-2 px-2">
+            <i class="fa-solid fa-calendar-days text-slate-300"></i>
+            <h3 class="text-lg font-bold text-slate-400 tracking-tight">Forecast Loading...</h3>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+            @for (i of [1,2,3,4,5,6]; track i) {
+                <div class="relative overflow-hidden bg-white/80 p-5 rounded-4xl border border-slate-100 flex flex-col items-center justify-between text-center gap-4 shadow-sm">
+                    <div class="w-12 h-3 bg-slate-200 rounded-full animate-pulse mt-1"></div>
+                    
+                    <div class="w-12 h-12 bg-slate-200 rounded-[1.2rem] animate-pulse"></div>
+                    
+                    <div class="flex flex-col items-center gap-2 w-full">
+                        <div class="w-16 h-8 bg-slate-300 rounded-lg animate-pulse"></div>
+                        <div class="flex gap-2 justify-center w-full mt-1">
+                            <div class="w-10 h-3 bg-slate-200 rounded-full animate-pulse"></div>
+                            <div class="w-10 h-3 bg-slate-200 rounded-full animate-pulse"></div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

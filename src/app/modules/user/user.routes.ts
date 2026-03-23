@@ -21,6 +21,11 @@ export const USER_ROUTES: Routes = [
                 title: 'Diagnosis'
             },
             {
+                path: 'weather',
+                loadComponent: () => import('./pages/weather/weather.component').then((c) => c.WeatherComponent),
+                title: 'Diagnosis'
+            },
+            {
                 path: 'shop',
                 loadComponent: () => import('./pages/shop/shop.component').then((c) => c.ShopComponent),
                 title: 'Shop'
