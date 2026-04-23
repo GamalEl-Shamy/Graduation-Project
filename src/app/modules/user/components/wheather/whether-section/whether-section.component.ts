@@ -1,17 +1,18 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, inject, input, signal } from '@angular/core';
-import { WeatherService } from '../../services/weather.service';
-import { Weather } from '../../models/weather.interface';
+import { Weather } from '../../../models/weather.interface';
+import { WeatherService } from '../../../services/weather.service';
 import { DatePipe } from '@angular/common';
-import { EnvironmentSkeletonComponent } from "../../skeletons/environment-skeleton/environment-skeleton.component";
+import { EnvironmentSkeletonComponent } from "../../../skeletons/environment-skeleton/environment-skeleton.component";
+import { WhetherHeaderComponent } from "../whether-header/whether-header.component";
 
 @Component({
-  selector: 'app-environment',
-  imports: [DatePipe, EnvironmentSkeletonComponent],
-  templateUrl: './environment.component.html',
-  styleUrl: './environment.component.css',
+  selector: 'app-whether-section',
+  imports: [DatePipe, EnvironmentSkeletonComponent, WhetherHeaderComponent],
+  templateUrl: './whether-section.component.html',
+  styleUrl: './whether-section.component.css',
 })
-export class EnvironmentComponent {
+export class WhetherSectionComponent {
+  
   isDashboard = input<boolean>(false);
   private weatherService = inject(WeatherService);
 

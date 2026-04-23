@@ -40,6 +40,11 @@ export const USER_ROUTES: Routes = [
                 loadComponent: () => import('./pages/my-garden/my-garden.component').then((c) => c.MyGardenComponent),
                 title: 'My Garden'
             },
+            {
+                path: 'profile',
+                loadComponent: () => import('./pages/profile/profile.component').then((c) => c.ProfileComponent),
+                title: 'My Profile'
+            },
         ]
     }
 ] 

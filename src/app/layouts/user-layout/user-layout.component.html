@@ -1,93 +1,114 @@
-<div class="min-h-screen bg-slate-50 flex flex-col md:flex-row overflow-hidden font-sans">
+<div class="min-h-screen bg-slate-50 xl:grid xl:grid-cols-[320px_1fr] font-sans">
+
+    <div class="fixed inset-y-0 left-0 z-500 w-72 sm:w-80 xl:w-72 xl:sticky h-screen xl:top-0 bg-white border-r border-slate-100 transform transition-transform duration-300 ease-in-out xl:translate-x-0 shadow-2xl xl:shadow-none flex flex-col shrink-0 font-body"
+        [class]="{ 'translate-x-0': isSidebarOpen(), '-translate-x-full': !isSidebarOpen() }">
+
+        <div class="flex flex-col h-full p-6 gap-y-2">
+            <div class="mb-8 px-2 flex items-center justify-between shrink-0">
+                <div routerLink="/users/dashboard"
+                    class="flex items-center gap-3 w-full h-20 px-5 py-2 cursor-pointer rounded-lg hover:scale-105 hover:bg-slate-100 transition-all duration-300">
+                    <img src="./logos/zaraa.png" alt="Zaraa Logo" class="h-full w-full drop-shadow-sm">
+                </div>
+                <button (click)="closeSidebar()"
+                    class="xl:hidden text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded-lg cursor-pointer p-2 -mr-2 transition-all">
+                    <i class="fa-solid fa-xmark text-xl w-5 flex justify-center"></i>
+                </button>
+            </div>
+
+            <nav class="flex-1 flex flex-col gap-y-1.5 overflow-y-auto px-2 -mx-2 custom-scrollbar">
+                <a (click)="closeSidebar()" routerLink="dashboard"
+                    routerLinkActive="!bg-emerald-50 !text-emerald-700 !font-semibold translate-x-1 ring-1 ring-emerald-100/50"
+                    class="group flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-50 hover:text-emerald-600 font-body text-sm font-medium transition-all duration-200 hover:translate-x-1 rounded-xl">
+                    <i
+                        class="fa-solid fa-gauge-high w-5 flex justify-center text-lg text-slate-400 group-hover:text-emerald-500 transition-colors"></i>
+                    <span>Dashboard</span>
+                </a>
+
+                <a (click)="closeSidebar()" routerLink="diagnosis"
+                    routerLinkActive="!bg-emerald-50 !text-emerald-700 !font-semibold translate-x-1 ring-1 ring-emerald-100/50"
+                    class="group flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-50 hover:text-emerald-600 font-body text-sm font-medium transition-all duration-200 hover:translate-x-1 rounded-xl">
+                    <i
+                        class="fa-solid fa-camera-retro w-5 flex justify-center text-lg text-slate-400 group-hover:text-emerald-500 transition-colors"></i>
+                    <span>New Diagnosis</span>
+                </a>
+
+                <a (click)="closeSidebar()" routerLink="weather"
+                    routerLinkActive="!bg-emerald-50 !text-emerald-700 !font-semibold translate-x-1 ring-1 ring-emerald-100/50"
+                    class="group flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-50 hover:text-emerald-600 font-body text-sm font-medium transition-all duration-200 hover:translate-x-1 rounded-xl">
+                    <i
+                        class="fa-solid fa-cloud-moon w-5 flex justify-center text-lg text-slate-400 group-hover:text-emerald-500 transition-colors"></i>
+                    <span>Weather</span>
+                </a>
+
+                <a (click)="closeSidebar()" routerLink="my-garden"
+                    routerLinkActive="!bg-emerald-50 !text-emerald-700 !font-semibold translate-x-1 ring-1 ring-emerald-100/50"
+                    class="group flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-50 hover:text-emerald-600 font-body text-sm font-medium transition-all duration-200 hover:translate-x-1 rounded-xl">
+                    <i
+                        class="fa-solid fa-seedling w-5 flex justify-center text-lg text-slate-400 group-hover:text-emerald-500 transition-colors"></i>
+                    <span>My Garden</span>
+                </a>
+
+                <a (click)="closeSidebar()" routerLink="shop"
+                    routerLinkActive="!bg-emerald-50 !text-emerald-700 !font-semibold translate-x-1 ring-1 ring-emerald-100/50"
+                    class="group flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-50 hover:text-emerald-600 font-body text-sm font-medium transition-all duration-200 hover:translate-x-1 rounded-xl">
+                    <i
+                        class="fa-solid fa-cart-shopping w-5 flex justify-center text-lg text-slate-400 group-hover:text-emerald-500 transition-colors"></i>
+                    <span>Shop</span>
+                </a>
+
+                <a (click)="closeSidebar()" routerLink="diagnosis-history"
+                    routerLinkActive="!bg-emerald-50 !text-emerald-700 !font-semibold translate-x-1 ring-1 ring-emerald-100/50"
+                    class="group flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-50 hover:text-emerald-600 font-body text-sm font-medium transition-all duration-200 hover:translate-x-1 rounded-xl">
+                    <i
+                        class="fa-solid fa-history w-5 flex justify-center text-lg text-slate-400 group-hover:text-emerald-500 transition-colors"></i>
+                    <span>Diagnosis History</span>
+                </a>
+            </nav>
+
+            <div class="mt-auto mb-10 pt-6 border-t border-slate-100 shrink-0">
+                <div routerLink="/users/profile" (click)="closeSidebar()"
+                    class="group flex items-center gap-3 p-3 bg-slate-50 rounded-2xl hover:bg-white hover:shadow-md hover:shadow-slate-200/50 transition-all duration-300 cursor-pointer border border-transparent hover:border-slate-200 hover:-translate-y-1">
+                    <div
+                        class="w-10 h-10 rounded-xl bg-emerald-100 flex items-center justify-center text-emerald-700 font-bold text-lg shrink-0 leading-none shadow-inner">
+                        <span>GE</span>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <p
+                            class="text-sm font-bold text-slate-800 truncate font-headline leading-tight group-hover:text-emerald-700 transition-colors">
+                            Gamal Elshamy</p>
+                        <p class="text-[10px] uppercase tracking-widest text-emerald-600 font-bold truncate mt-0.5">Pro
+                            Planter</p>
+                    </div>
+                    <button class="p-2 text-slate-400 group-hover:text-emerald-600 rounded-lg transition-colors">
+                        <i class="fa-solid fa-gear group-hover:rotate-90 transition-transform duration-500"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     @if (isSidebarOpen()) {
     <div (click)="closeSidebar()"
-        class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-60 md:hidden transition-all duration-300"></div>
+        class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-400 xl:hidden transition-all duration-300"></div>
     }
 
-    <aside
-        class="fixed inset-y-0 left-0 z-70 w-72 sm:w-80 bg-white border-r border-slate-200 transform transition-transform duration-300 ease-out xl:relative xl:translate-x-0 shadow-2xl xl:shadow-none flex flex-col shrink-0"
-        [class]="{ 'translate-x-0': isSidebarOpen(), '-translate-x-full': !isSidebarOpen() }">
-        <div class="p-8 flex items-center justify-between">
-            <div class="flex items-center gap-3">
-                <div
-                    class="w-10 h-10 rounded-xl bg-linear-to-br from-emerald-400 to-emerald-600 flex items-center justify-center text-white shadow-lg shadow-emerald-200">
-                    <i class="fa-solid fa-leaf text-xl"></i>
-                </div>
-                <span class="text-2xl font-black text-slate-800 tracking-tight"><span class="text-emerald-600">Z</span> a r a a</span>
-            </div>
-            <button (click)="closeSidebar()" class="xl:hidden text-slate-400 hover:text-slate-600 cursor-pointer">
-                <i class="fa-solid fa-xmark text-2xl"></i>
-            </button>
-        </div>
-
-        <nav class="px-4 py-6 space-y-1.5 overflow-y-auto custom-scrollbar">
-            <a routerLink="dashboard" routerLinkActive="bg-emerald-50 text-emerald-700 font-semibold shadow-sm"
-                class="flex items-center gap-4 px-5 py-4 text-slate-600 hover:bg-slate-100 rounded-2xl font-medium transition-all duration-200 hover:shadow-sm shadow-sm">
-                <i class="fa-solid fa-gauge-high w-6 text-center text-xl"></i>
-                <span>Dashboard</span>
-            </a>
-            <a routerLink="diagnosis" routerLinkActive="bg-emerald-50 text-emerald-700 font-semibold shadow-sm"
-                class="flex items-center gap-4 px-5 py-4 text-slate-600 hover:bg-slate-100 rounded-2xl font-medium transition-all duration-200 hover:shadow-sm">
-                <i class="fa-solid fa-camera-retro w-6 text-center text-xl"></i>
-                <span>New Diagnosis</span>
-            </a>
-            <a routerLink="weather" routerLinkActive="bg-emerald-50 text-emerald-700 font-semibold shadow-sm"
-                class="flex items-center gap-4 px-5 py-4 text-slate-600 hover:bg-slate-100 rounded-2xl font-medium transition-all duration-200 hover:shadow-sm">
-                <i class="fa-solid fa-cloud-moon w-6 text-center text-xl"></i>
-                <span>Weather</span>
-            </a>
-            <a routerLink="my-garden" routerLinkActive="bg-emerald-50 text-emerald-700 font-semibold shadow-sm"
-                class="flex items-center gap-4 px-5 py-4 text-slate-600 hover:bg-slate-100 rounded-2xl font-medium transition-all duration-200 hover:shadow-sm">
-                <i class="fa-solid fa-seedling w-6 text-center text-xl"></i>
-                <span>My Garden</span>
-            </a>
-            <a routerLink="shop" routerLinkActive="bg-emerald-50 text-emerald-700 font-semibold shadow-sm"
-                class="flex items-center gap-4 px-5 py-4 text-slate-600 hover:bg-slate-100 rounded-2xl font-medium transition-all duration-200 hover:shadow-sm">
-                <i class="fa-solid fa-cart-shopping w-6 text-center text-xl"></i>
-                <span>Shop</span>
-            </a>
-            <a routerLink="diagnosis-history" routerLinkActive="bg-emerald-50 text-emerald-700 font-semibold shadow-sm"
-                class="flex items-center gap-4 px-5 py-4 text-slate-600 hover:bg-slate-100 rounded-2xl font-medium transition-all duration-200 hover:shadow-sm">
-                <i class="fa-solid fa-history w-6 text-center text-xl"></i>
-                <span>Diagnosis History</span>
-            </a>
-        </nav>
-
-        <div class="p-5 border-t border-slate-100 bg-slate-50">
-            <div class="flex items-center gap-4 p-4 bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow">
-                <div
-                    class="w-12 h-12 rounded-2xl bg-emerald-100 flex items-center justify-center text-emerald-700 font-bold text-xl shadow-inner">
-                    <span>GE</span>
-                </div>
-                <div class="flex-1 min-w-0">
-                    <p class="text-base font-bold text-slate-900 truncate">Gamal Elshamy</p>
-                    <p class="text-xs text-emerald-600 font-medium">Pro Planter</p>
-                </div>
-                <button class="p-2 text-slate-400 hover:text-slate-600 rounded-lg">
-                    <i class="fa-solid fa-gear hover:cursor-pointer"></i>
-                </button>
-            </div>
-        </div>
-    </aside>
-
-    <div class="flex-1 flex flex-col min-w-0 h-screen overflow-hidden">
+    <div class="flex flex-col min-w-0 min-h-screen bg-slate-50">
         <header
-            class="h-20 bg-white/80 backdrop-blur-md border-b border-slate-200 flex items-center justify-between px-8 shrink-0 relative z-40">
-            <div class="flex items-center gap-4">
-                <button (click)="toggleSidebar()" class="xl:hidden p-2.5 bg-slate-100 text-slate-600 rounded-xl cursor-pointer">
+            class=" w-full max-w-7xl mx-auto h-16 md:h-20 md:rounded-4xl bg-white border-b xl:border border-b-slate-200 xl:border-slate-200 flex items-center justify-between xl:justify-end px-3 md:px-8 shrink-0 fixed top-0 left-0 right-0 md:relative z-40">
+
+            <div class="flex items-center justify-between gap-4 w-full xl:hidden">
+                <div routerLink="/users/dashboard"
+                    class="flex items-center gap-3 w-30 h-15 py-2 cursor-pointer rounded-lg hover:scale-105 hover:bg-slate-100 transition-all duration-300">
+                    <img src="./logos/zaraa.png" alt="Zaraa Logo" class="h-full w-full drop-shadow-sm">
+                </div>
+
+                <button (click)="toggleSidebar()"
+                    class="xl:hidden p-2.5 bg-slate-100 text-slate-600 rounded-xl cursor-pointer">
                     <i class="fa-solid fa-bars-staggered"></i>
                 </button>
-                <h2 class="text-xl font-black text-slate-800 tracking-tight">Zaraa Ai</h2>
             </div>
 
-            <div class="flex items-center gap-4">
-                <div
-                    class="hidden md:flex items-center bg-slate-100 px-4 py-2 rounded-xl border border-transparent focus-within:border-emerald-400 transition-all">
-                    <i class="fa-solid fa-magnifying-glass text-slate-400 text-sm"></i>
-                    <input type="text" placeholder="Search..."
-                        class="bg-transparent border-none focus:ring-0 text-sm w-48" />
-                </div>
-
+            <div class="hidden md:flex md:items-center md;gap-4 ">
                 <button
                     class="w-10 h-10 flex items-center justify-center bg-white border border-slate-200 rounded-xl text-slate-500 hover:bg-emerald-50 hover:text-emerald-600 hover:border-emerald-200 transition-all relative cursor-pointer">
                     <i class="fa-solid fa-bell"></i>
@@ -95,31 +116,26 @@
                         class="absolute top-2.5 right-2.5 w-2 h-2 bg-red-500 rounded-full border-2 border-white"></span>
                 </button>
 
+                <button
+                    class="w-10 h-10 flex items-center justify-center bg-white border border-slate-200 rounded-xl text-slate-500 hover:bg-emerald-50 hover:text-emerald-600 hover:border-emerald-200 transition-all relative cursor-pointer">
+                    <i class="fa-solid fa-cart-arrow-down"></i>
+                    <span
+                        class="absolute top-2.5 right-2.5 w-2 h-2 bg-red-500 rounded-full border-2 border-white"></span>
+                </button>
+
                 <button routerLink="/users/diagnosis"
-                    class="hidden sm:flex items-center gap-3 px-6 py-3 bg-emerald-500 hover:bg-emerald-600 text-white font-semibold rounded-2xl shadow-lg shadow-emerald-200/30 transform hover:scale-105 transition-all duration-200 cursor-pointer">
+                    class="hidden xl:flex items-center gap-3 px-6 py-3 bg-emerald-900 hover:bg-emerald-600 text-white font-semibold rounded-2xl shadow-lg shadow-emerald-200/30 transform hover:scale-105 transition-all duration-200 cursor-pointer">
                     <i class="fa-solid fa-camera text-lg"></i>
                     <span>New Scan</span>
                 </button>
             </div>
         </header>
-
-        <main class="flex-1 overflow-y-auto flex flex-col custom-scrollbar bg-[#FBFDFF]">
-            <div class="">
-                <div class="flex-1  p-4 sm:p-6 lg:p-10 pt-0 lg:pt-0 max-w-7xl w-full mx-auto">
+        
+        <main class="flex-1 flex flex-col">
+            <div class="flex-1 p-4 sm:p-6 lg:p-10 lg:pt-6 max-w-7xl w-full mx-auto">
                 <router-outlet></router-outlet>
-            </div>
-
             </div>
             <app-footer class="mt-auto shrink-0"></app-footer>
         </main>
     </div>
 </div>
-
-<!-- <div class="flex flex-col justify-between min-h-screen">
-    <app-navbar authType="user"></app-navbar>
-
-    <router-outlet></router-outlet>
-
-
-    <app-footer></app-footer>
-</div> -->

@@ -11,7 +11,7 @@ export class DiagnosisSectionComponent {
 currentStep = signal(1);
 
   plants = signal<Plant[]>([
-    { id: 1, name: 'Apple', img: 'https://images.unsplash.com/photo-1607305387299-a3d9611cd469?w=300' },
+    { id: 1, name: 'Apple', img: 'https://tse2.mm.bing.net/th/id/OIP.Lzfc80LO77_pIMwXRnjuYwHaF7?pid=Api&P=0&h=220' },
     { id: 2, name: 'Cherry', img: 'https://paradisenursery.com/cdn/shop/files/royal-crimson-cherry-tree-scaled.jpg?v=1698885070w=300' },
     { id: 4, name: 'Corn', img: 'https://hgtvhome.sndimg.com/content/dam/images/hgtv/stock/2018/4/3/0/shutterstock_Chutharat-Kamkhuntee_683363251_corn-growing.jpg.rend.hgtvcom.1280.960.85.suffix/1522768591804.webp?w=300' },
     { id: 3, name: 'Tomato', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZHfQzuxPK5-l96opNVwmfmHvSmFVoQTtM5w&s?w=300' },
@@ -64,20 +64,20 @@ currentStep = signal(1);
   nextStep() {
     const step = this.currentStep();
 
-    if (step === 1 && !this.selectedPlant()) {
-      alert('Please select a plant type first');
-      return;
-    }
+    // if (step === 1 && !this.selectedPlant()) {
+    //   alert('Please select a plant type first');
+    //   return;
+    // }
 
-    if (step === 2 && !this.previewUrl()) {
-      alert('Please upload a photo first');
-      return;
-    }
+    // if (step === 2 && !this.previewUrl()) {
+    //   alert('Please upload a photo first');
+    //   return;
+    // }
 
     if (step < 3) {
       this.currentStep.update(s => s + 1);
+      console.log("aaaaaaaaaaaaaaaaa"+ this.currentStep())
     }
-
     // send to backend
     if (this.currentStep() === 3) {
       this.analyzeImage();
@@ -98,7 +98,7 @@ currentStep = signal(1);
 
     // here i will send to pai
     // this.http.post('/api/diagnose', { plant: this.selectedPlant()?.name, imageBase64: this.previewUrl() })
-    //   .subscribe(result => { ... عرض النتائج ... });
+    //   .subscribe(result => { results });
     
     alert('Analysis started! Results will appear soon...');
   }
