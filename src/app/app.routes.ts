@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { userAuthGuard } from './core/guards/user-auth-guard';
 
 export const routes: Routes = [
     {
@@ -11,7 +12,8 @@ export const routes: Routes = [
     },
     {
         path:"users",
-        loadChildren:()=>import('./modules/user/user.routes').then((m)=>m.USER_ROUTES)
+        loadChildren:()=>import('./modules/user/user.routes').then((m)=>m.USER_ROUTES),
+        canActivate:[userAuthGuard]
     },
     {
         path:"vendors",

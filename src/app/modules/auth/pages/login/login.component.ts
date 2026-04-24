@@ -55,15 +55,21 @@ export class LoginComponent {
     this.authService.login(formData).subscribe({
       next: (res) => {
         this.isLoading = false;
+          // console.log("Gamyyy111111");
+
         if (res) {
           this.authService.saveAccessToken(res.accessToken)
           this.authService.saveRefreshToken(res.refreshToken)
           if (typeof window != 'undefined') {
             localStorage.setItem('welcomeState', 'true')
           }
+          // console.log("Gamyyy2222222");
+          // console.log(this.authService.decodeToken());       ماتنساش تستدعي decodeToken
           this.router.navigate(['/users']);
         }
         this.cdr.detectChanges();
+          // console.log("Gamyyy3333333");
+
       },
       error: (err) => {
         this.isLoading = false;

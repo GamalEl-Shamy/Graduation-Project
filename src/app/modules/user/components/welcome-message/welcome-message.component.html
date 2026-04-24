@@ -6,13 +6,13 @@
             <div class="avatar animate-avatarPop">{{ initials() }}</div>
 
             <p class="welcome-label">Welcome back</p>
-            <h2 class="name">{{ user.firstName }} {{user.lastName}}</h2>
+            <h2 class="name font-bold text-xl">{{ user.firstName }} {{user.lastName}}</h2>
             <p class="role">{{ user.role }}</p>
 
             <hr class="divider" />
 
             <div class="flex gap-10 justify-center mb-6 w-full">
-                    <span class="text-[15px] text-[#5ddcff]">Start Free Diagnosis</span>
+                    <span class="text-[15px] text-[#50ffad]">Start Free Diagnosis</span>
             </div>
             <button class="cta" (click)="close()">Go to dashboard</button>
         </div>
