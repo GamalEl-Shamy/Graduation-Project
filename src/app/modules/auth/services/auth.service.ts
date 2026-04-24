@@ -53,12 +53,43 @@ export class AuthService {
    decodeToken(): null {
       try {
          const AccessToken = this.getAccessToken();
-         if (!AccessToken) return null;   
+         if (!AccessToken) return null;
+         // this.getUserData();
          return jwtDecode(AccessToken);
       } catch (error) {
          this.logout();
          return null;
       }
+   }
+
+   getUserData() {
+      const decoded = this.decodeToken();
+      
+      return {
+         name: decoded!["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"],
+         email: decoded!["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"],
+         role: decoded!["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"],
+         id: decoded!["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier"]
+      };
+   }
+
+   saveUserData() {
+      const user = this.getUserData();
+
+      if (typeof window != 'undefined') {
+         localStorage.setItem('userFirstNameZaraa', user.name);
+         localStorage.setItem('userEmailZaraa', user.email);
+         localStorage.setItem('userRoleZaraa', user.role);
+         // localStorage.setItem('userIdZaraa', user.id);
+      }
+   }
+
+   refreshToken(accessToken:string, refreshTokenInput:string): Observable<any> {
+      return this.http.post(environment.apiUrl + '/api/Identity/Account/refresh', 
+         {
+            accessToken: accessToken,
+            refreshToken: refreshTokenInput
+         });
    }
 
 
@@ -95,4 +126,6 @@ export class AuthService {
   changePassword(data: any): Observable<any> {
     return this.http.post(environment.apiUrl + '/api/Identity/Account/ChangePassword', data);
   }
+
+   
 }

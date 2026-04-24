@@ -69,15 +69,18 @@
                 <div routerLink="/users/profile" (click)="closeSidebar()"
                     class="group flex items-center gap-3 p-3 bg-slate-50 rounded-2xl hover:bg-white hover:shadow-md hover:shadow-slate-200/50 transition-all duration-300 cursor-pointer border border-transparent hover:border-slate-200 hover:-translate-y-1">
                     <div
-                        class="w-10 h-10 rounded-xl bg-emerald-100 flex items-center justify-center text-emerald-700 font-bold text-lg shrink-0 leading-none shadow-inner">
-                        <span>GE</span>
+                        class="w-10 h-10 rounded-xl bg-emerald-100 flex items-center justify-center text-emerald-700 font-bold text-xl shrink-0 leading-none shadow-inner font-['Namdhinggo'!important] capitalize">
+                        <span> {{char}} </span>
                     </div>
                     <div class="flex-1 min-w-0">
                         <p
-                            class="text-sm font-bold text-slate-800 truncate font-headline leading-tight group-hover:text-emerald-700 transition-colors">
-                            Gamal Elshamy</p>
-                        <p class="text-[10px] uppercase tracking-widest text-emerald-600 font-bold truncate mt-0.5">Pro
-                            Planter</p>
+                            class="text-xl capitalize font-bold text-slate-800 truncate font-headline leading-tight group-hover:text-emerald-700 transition-colors font-['Namdhinggo'!important]">
+                        {{ userFirstName }}
+                        </p> 
+                        
+                        <p class="text-[10px] capitalize tracking-widest text-emerald-600 font-bold truncate mt-0.5">
+                        {{ userRole }}
+                        </p>
                     </div>
                     <button class="p-2 text-slate-400 group-hover:text-emerald-600 rounded-lg transition-colors">
                         <i class="fa-solid fa-gear group-hover:rotate-90 transition-transform duration-500"></i>

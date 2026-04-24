@@ -1,4 +1,4 @@
-import { Component, output } from '@angular/core';
+import { Component, OnInit, output } from '@angular/core';
 
 @Component({
   selector: 'app-welcome-message',
@@ -6,28 +6,22 @@ import { Component, output } from '@angular/core';
   templateUrl: './welcome-message.component.html',
   styleUrl: './welcome-message.component.css',
 })
-export class WelcomeMessageComponent {
+export class WelcomeMessageComponent implements OnInit {
   onDismiss = output<boolean>();
-  user = {
-    firstName: 'Gamal',
-    lastName: 'Elshamy',
-    role: 'Admin',
-    projects: 12,
-    commits: 340,
-    active: 5,
-  };
 
-  initials() {
-    return this.user.firstName[0] + this.user.lastName[0];
-  }
+  userFirstName:string = "";
+  userEmail:string = "";
+  userRole:string  = "";
+  char:string  = "";
+  
 
-  // Computed or static array for the template loop
-  get stats() {
-    return [
-      { num: this.user.projects, lbl: 'Projects' },
-      { num: this.user.commits, lbl: 'Commits' },
-      { num: this.user.active, lbl: 'Active' },
-    ];
+  ngOnInit(): void {
+    if (typeof window != 'undefined') {
+      this.userFirstName = localStorage.getItem('userFirstNameZaraa')!;
+      this.userEmail = localStorage.getItem('userEmailZaraa')!;
+      this.userRole = localStorage.getItem('userRoleZaraa')!;
+      this.char = this.userFirstName[0]!.toUpperCase();
+    }
   }
 
   close() {
