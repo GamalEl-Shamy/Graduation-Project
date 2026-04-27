@@ -1,0 +1,27 @@
+<div
+    class="fixed top-5 right-5 z-100 min-w-75 bg-white rounded-lg shadow-2xl border border-slate-100 overflow-hidden animate-slide-in">
+
+    <div class="px-5 py-7 flex items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+            @if (successMessage()) {
+            <i class="fa-solid fa-circle-check text-green-500 text-xl"></i>
+            <p class="text-slate-700 font-medium">{{ successMessage() }}</p>
+
+            } @else {
+            <i class="fa-solid fa-circle-xmark text-red-500 text-xl"></i>
+            <p class="text-slate-700 font-medium">{{errorMessage()}}</p>
+
+            }
+
+        </div>
+
+        <button (click)="close()" class="text-slate-400 hover:text-slate-600 transition-colors cursor-pointer">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+    </div>
+
+    <div class="h-1 w-full bg-slate-100">
+        <div [class.bg-green-500]="successMessage()" [class.bg-red-500]="errorMessage()" class="h-full animate-shrink">
+        </div>
+    </div>
+</div>

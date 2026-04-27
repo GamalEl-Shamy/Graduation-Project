@@ -31,6 +31,11 @@ export const USER_ROUTES: Routes = [
                 title: 'Shop'
             },
             {
+                path: 'shop/product-details/:name/:id',
+                loadComponent: () => import('./pages/product-details/product-details.component').then((c) => c.ProductDetailsComponent),
+                title: 'Product Details'
+            },
+            {
                 path: 'diagnosis-history',
                 loadComponent: () => import('./pages/diagnosis-history/diagnosis-history.component').then((c) => c.DiagnosisHistoryComponent),
                 title: 'Diagnosis History'
