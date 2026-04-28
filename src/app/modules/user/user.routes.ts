@@ -36,6 +36,16 @@ export const USER_ROUTES: Routes = [
                 title: 'Product Details'
             },
             {
+                path: 'cart',
+                loadComponent: () => import('./pages/cart/cart.component').then((c) => c.CartComponent),
+                title: 'Cart'
+            },
+            {
+                path: 'cart/shopping-details',
+                loadComponent: () => import('./pages/shopping-details/shopping-details.component').then((c) => c.ShoppingDetailsComponent),
+                title: 'Shopping Details'
+            },
+            {
                 path: 'diagnosis-history',
                 loadComponent: () => import('./pages/diagnosis-history/diagnosis-history.component').then((c) => c.DiagnosisHistoryComponent),
                 title: 'Diagnosis History'

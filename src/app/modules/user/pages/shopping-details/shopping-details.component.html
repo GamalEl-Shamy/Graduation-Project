@@ -1,0 +1,231 @@
+
+<div class="mb-8 text-center">
+    <p class="text-xs font-medium tracking-widest uppercase text-emerald-600 mb-2">Step 2 of 3</p>
+    <h1 class="text-2xl font-bold text-gray-900">Shipping Information</h1>
+    <p class="text-sm text-gray-500 mt-1">Enter your delivery details to continue to payment.</p>
+</div>
+
+<div class="flex items-center justify-center gap-2 mb-10">
+    <div class="flex items-center gap-2">
+        <div
+            class="w-7 h-7 rounded-full bg-emerald-600 flex items-center justify-center text-white text-xs font-semibold">
+            ✓</div>
+        <span class="text-xs font-medium text-emerald-600 hidden sm:block">Cart</span>
+    </div>
+    <div class="h-px w-10 bg-emerald-300"></div>
+    <div class="flex items-center gap-2">
+        <div
+            class="w-7 h-7 rounded-full bg-emerald-600 flex items-center justify-center text-white text-xs font-semibold">
+            2</div>
+        <span class="text-xs font-medium text-emerald-600 hidden sm:block">Shipping</span>
+    </div>
+    <div class="h-px w-10 bg-gray-200"></div>
+    <div class="flex items-center gap-2">
+        <div
+            class="w-7 h-7 rounded-full bg-gray-200 flex items-center justify-center text-gray-400 text-xs font-semibold">
+            3</div>
+        <span class="text-xs font-medium text-gray-400 hidden sm:block">Payment</span>
+    </div>
+</div>
+<div class="max-w-6xl mx-auto flex flex-col lg:flex-row gap-8">
+
+    <div class="flex-1">
+        <div class="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
+
+            <div class="px-6 py-8 sm:p-10 border-b border-gray-100 bg-white">
+                <h1 class="text-2xl sm:text-3xl font-bold text-gray-900 tracking-tight">Shipping Information</h1>
+                <p class="mt-2 text-sm text-gray-500 font-medium">Please enter your delivery details to complete your
+                    order.</p>
+            </div>
+
+            <div class="p-6 sm:p-10 bg-white">
+                <form [formGroup]="checkoutForm" (ngSubmit)="onContinueToPayment()" class="space-y-6">
+
+                    <div class="input-group group relative w-full">
+                        <i class="fa-regular fa-user absolute left-4 top-4.5 text-[18px] pointer-events-none  " [class]="{
+                                'text-[#a3aed1]':!(f['name'].dirty),
+                                'text-red-400': f['name'].invalid && f['name'].touched,
+                                'text-[#05cd99]': f['name'].valid
+                                }"></i>
+                        <input formControlName="name" type="text" id="name" name="name" placeholder=" "
+                            class="peer w-full py-3.5 pl-11 pr-4 rounded-xl text-[#2b3674] text-sm outline-none transition-all shadow-sm"
+                            [class]="{
+                                'border': !(f['name'].touched),
+                                'border-slate-100': !(f['name'].touched),
+                                'focus:border-2': !(f['name'].touched),
+                                'focus:border-[#05cd99]': !(f['name'].touched),
+                                'border-2': (f['name'].invalid && f['name'].touched) || f['name'].valid ,
+                                'border-red-400': f['name'].invalid && f['name'].touched,
+                                'bg-red-50': f['name'].invalid && f['name'].touched,
+                                'focus:ring-red-100': f['name'].invalid && f['name'].touched,
+                                'border-[#05cd99]': f['name'].valid,
+                                'bg-emerald-50': f['name'].valid
+                                }">
+                        <label for="name"
+                            class="absolute left-11 top-4.25  text-[#a3aed1] text-[14px] transition-all duration-300 pointer-events-none 
+                            peer-focus:-top-2.5 peer-focus:left-3.5 peer-focus:text-[11px] peer-focus:bg-white peer-focus:py-0.5 peer-focus:px-2 
+                            peer-focus:rounded-md peer-focus:text-[#05cd99] peer-focus:font-semibold peer-focus:shadow-sm peer-focus:tracking-[0.5px] peer-focus:shadow-label 
+                            peer-[:not(:placeholder-shown)]:-top-2.5 peer-[:not(:placeholder-shown)]:left-3.5 peer-[:not(:placeholder-shown)]:text-[11px] peer-[:not(:placeholder-shown)]:bg-white 
+                            peer-[:not(:placeholder-shown)]:py-0.5 peer-[:not(:placeholder-shown)]:px-2 peer-[:not(:placeholder-shown)]:rounded-md peer-[:not(:placeholder-shown)]:text-[#05cd99] peer-[:not(:placeholder-shown)]:font-semibold peer-[:not(:placeholder-shown)]:tracking-[0.5px] ">
+                            Full Name
+                        </label>
+                        @if (f['name'].touched && f['name'].errors?.['required']) {
+                        <span class="text-red-500 text-xs ml-3 shake inline-block">Full name is required</span>
+                        }
+                        @if (f['name'].touched && f['name'].errors?.['minlength']) {
+                        <span class="text-red-500 text-xs ml-3 shake inline-block">At least 3 characters</span>
+                        }
+                    </div>
+
+                    <div class="input-group group relative w-full mt-1">
+                        <i class="fa-solid fa-envelope absolute left-4 top-4.5 text-[18px] pointer-events-none  "
+                            [class]="{
+                                'text-[#a3aed1]':!(f['email'].dirty),
+                                'text-red-400': f['email'].invalid && f['email'].touched,
+                                'text-[#05cd99]': f['email'].valid
+                                }"></i>
+                        <input formControlName="email" type="text" id="email" name="email" placeholder="Zaraa@gmail.com"
+                            class="peer w-full py-3.5 pl-11 pr-24 rounded-xl text-[#2b3674] text-sm outline-none transition-all shadow-sm"
+                            [class]="{
+                                'border': !(f['email'].touched),
+                                'border-slate-100': !(f['email'].touched),
+                                'focus:border-2': !(f['email'].touched),
+                                'focus:border-[#05cd99]': !(f['email'].touched),
+                                'border-2': (f['email'].invalid && f['email'].touched) || f['email'].valid ,
+                                'border-red-400': f['email'].invalid && f['email'].touched,
+                                'bg-red-50': f['email'].invalid && f['email'].touched,
+                                'focus:ring-red-100': f['email'].invalid && f['email'].touched,
+                                'border-[#05cd99]': f['email'].valid,
+                                'bg-emerald-50': f['email'].valid
+                                }">
+                        <label for="email"
+                            class="absolute left-11 top-4.25  text-[#a3aed1] text-[14px] transition-all duration-300 pointer-events-none 
+                            peer-focus:-top-2.5 peer-focus:left-3.5 peer-focus:text-[11px] peer-focus:bg-white peer-focus:py-0.5 peer-focus:px-2 
+                            peer-focus:rounded-md peer-focus:text-[#05cd99] peer-focus:font-semibold peer-focus:shadow-sm peer-focus:tracking-[0.5px] peer-focus:shadow-label 
+                            peer-[:not(:placeholder-shown)]:-top-2.5 peer-[:not(:placeholder-shown)]:left-3.5 peer-[:not(:placeholder-shown)]:text-[11px] peer-[:not(:placeholder-shown)]:bg-white 
+                            peer-[:not(:placeholder-shown)]:py-0.5 peer-[:not(:placeholder-shown)]:px-2 peer-[:not(:placeholder-shown)]:rounded-md peer-[:not(:placeholder-shown)]:text-[#05cd99] peer-[:not(:placeholder-shown)]:font-semibold peer-[:not(:placeholder-shown)]:tracking-[0.5px] ">
+                            Email Address</label>
+                        @if (f['email'].touched && f['email'].errors?.['required']) {
+                        <span class="text-red-500 text-xs ml-3 shake inline-block">Email is required</span>
+                        }
+                        @if (f['email'].touched && f['email'].errors?.['email']) {
+                        <span class="text-red-500 text-xs ml-3 shake inline-block">Enter a valid email address</span>
+                        }
+                    </div>
+
+                    <div class="input-group group relative w-full">
+                        <i class="fa-solid fa-phone-volume absolute left-4 top-4.5 text-[18px] pointer-events-none  "
+                            [class]="{
+                                'text-[#a3aed1]':!(f['phoneNumber'].dirty),
+                                'text-red-400': f['phoneNumber'].invalid && f['phoneNumber'].touched,
+                                'text-[#05cd99]': f['phoneNumber'].valid
+                                }"></i>
+                        <input formControlName="phoneNumber" type="text" id="phoneNumber" name="phoneNumber"
+                            placeholder=" "
+                            class="peer w-full py-3.5 pl-11 pr-4 rounded-xl text-[#2b3674] text-sm outline-none transition-all shadow-sm"
+                            [class]="{
+                                'border': !(f['phoneNumber'].touched),
+                                'border-slate-100': !(f['phoneNumber'].touched),
+                                'focus:border-2': !(f['phoneNumber'].touched),
+                                'focus:border-[#05cd99]': !(f['phoneNumber'].touched),
+                                'border-2': (f['phoneNumber'].invalid && f['phoneNumber'].touched) || f['phoneNumber'].valid ,
+                                'border-red-400': f['phoneNumber'].invalid && f['phoneNumber'].touched,
+                                'bg-red-50': f['phoneNumber'].invalid && f['phoneNumber'].touched,
+                                'focus:ring-red-100': f['phoneNumber'].invalid && f['phoneNumber'].touched,
+                                'border-[#05cd99]': f['phoneNumber'].valid,
+                                'bg-emerald-50': f['phoneNumber'].valid
+                                }">
+                        <label for="phoneNumber"
+                            class="absolute left-11 top-4.25  text-[#a3aed1] text-[14px] transition-all duration-300 pointer-events-none 
+                            peer-focus:-top-2.5 peer-focus:left-3.5 peer-focus:text-[11px] peer-focus:bg-white peer-focus:py-0.5 peer-focus:px-2 
+                            peer-focus:rounded-md peer-focus:text-[#05cd99] peer-focus:font-semibold peer-focus:shadow-sm peer-focus:tracking-[0.5px] peer-focus:shadow-label 
+                            peer-[:not(:placeholder-shown)]:-top-2.5 peer-[:not(:placeholder-shown)]:left-3.5 peer-[:not(:placeholder-shown)]:text-[11px] peer-[:not(:placeholder-shown)]:bg-white 
+                            peer-[:not(:placeholder-shown)]:py-0.5 peer-[:not(:placeholder-shown)]:px-2 peer-[:not(:placeholder-shown)]:rounded-md peer-[:not(:placeholder-shown)]:text-[#05cd99] peer-[:not(:placeholder-shown)]:font-semibold peer-[:not(:placeholder-shown)]:tracking-[0.5px] ">
+                            Phone Number
+                        </label>
+                        @if (f['phoneNumber'].touched && f['phoneNumber'].errors?.['required']) {
+                        <span class="text-red-500 text-xs ml-3 shake inline-block">Phone Number is required</span>
+                        }
+                        @if (f['phoneNumber'].touched && f['phoneNumber'].errors?.['minlength']) {
+                        <span class="text-red-500 text-xs ml-3 shake inline-block">At least 5 characters</span>
+                        }
+                    </div>
+
+                    <div class="input-group group relative w-full">
+                        <i class="fa-solid fa-location-dot absolute left-4 top-4.5 text-[18px] pointer-events-none  "
+                            [class]="{
+                                'text-[#a3aed1]':!(f['address'].dirty),
+                                'text-red-400': f['address'].invalid && f['address'].touched,
+                                'text-[#05cd99]': f['address'].valid
+                                }"></i>
+                        <textarea formControlName="address" type="text" id="address" name="address" placeholder=" "
+                            class="peer w-full py-3.5 pl-11 pr-4 rounded-xl text-[#2b3674] text-sm outline-none transition-all shadow-sm"
+                            [class]="{
+                                'border': !(f['address'].touched),
+                                'border-slate-100': !(f['address'].touched),
+                                'focus:border-2': !(f['address'].touched),
+                                'focus:border-[#05cd99]': !(f['address'].touched),
+                                'border-2': (f['address'].invalid && f['address'].touched) || f['address'].valid ,
+                                'border-red-400': f['address'].invalid && f['address'].touched,
+                                'bg-red-50': f['address'].invalid && f['address'].touched,
+                                'focus:ring-red-100': f['address'].invalid && f['address'].touched,
+                                'border-[#05cd99]': f['address'].valid,
+                                'bg-emerald-50': f['address'].valid
+                                }"></textarea>
+                        <label for="address"
+                            class="absolute left-11 top-4.25  text-[#a3aed1] text-[14px] transition-all duration-300 pointer-events-none 
+                            peer-focus:-top-2.5 peer-focus:left-3.5 peer-focus:text-[11px] peer-focus:bg-white peer-focus:py-0.5 peer-focus:px-2 
+                            peer-focus:rounded-md peer-focus:text-[#05cd99] peer-focus:font-semibold peer-focus:shadow-sm peer-focus:tracking-[0.5px] peer-focus:shadow-label 
+                            peer-[:not(:placeholder-shown)]:-top-2.5 peer-[:not(:placeholder-shown)]:left-3.5 peer-[:not(:placeholder-shown)]:text-[11px] peer-[:not(:placeholder-shown)]:bg-white 
+                            peer-[:not(:placeholder-shown)]:py-0.5 peer-[:not(:placeholder-shown)]:px-2 peer-[:not(:placeholder-shown)]:rounded-md peer-[:not(:placeholder-shown)]:text-[#05cd99] peer-[:not(:placeholder-shown)]:font-semibold peer-[:not(:placeholder-shown)]:tracking-[0.5px] ">
+                            Address
+                        </label>
+                        @if (f['address'].touched && f['address'].errors?.['required']) {
+                        <span class="text-red-500 text-xs ml-3 shake inline-block">Address is required</span>
+                        }
+                        @if (f['address'].touched && f['address'].errors?.['minlength']) {
+                        <span class="text-red-500 text-xs ml-3 shake inline-block">At least 5 characters</span>
+                        }
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row-reverse gap-4 pt-2">
+                        @if (!isLoading()) {
+                        <button 
+                            class="w-full sm:flex-1 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-base py-4 px-6 rounded-xl cursor-pointer transition-colors duration-200 shadow-md shadow-blue-500/20 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 flex justify-center items-center gap-2">
+                            Continue to Payment
+                            <i class="fa-solid fa-angles-right"></i>
+                        </button>
+                        }
+                        @else {
+                        <button type="submit" disabled
+                            class="w-full sm:flex-1 h-14 rounded-xl bg-gray-300 text-gray-600 cursor-not-allowed opacity-80 flex items-center justify-center gap-3">
+                            <svg class="animate-spin h-6 w-6 text-gray-600" xmlns="http://www.w3.org/2000/svg"
+                                fill="none" viewBox="0 0 24 24">
+                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
+                                    stroke-width="4" />
+                                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z" />
+                            </svg>
+                            <span
+                                class="font-['Bebas_Neue'] tracking-[0.25em] text-lg font-medium mt-1">PROCESSING...</span>
+                        </button>
+                        }
+                        <button type="button" routerLink="/users/cart"
+                            class="w-full sm:flex-1 bg-white border-2 border-gray-200 text-gray-600 hover:border-gray-300 hover:text-gray-800 hover:bg-gray-50 font-bold text-base cursor-pointer py-4 px-6 rounded-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gray-200 focus:ring-offset-2 flex justify-center items-center gap-2">
+                            <i class="fa-solid fa-chevron-left"></i>
+                            Back to Cart
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="w-full lg:w-96">
+        <app-order-summary [isActive]="false"></app-order-summary>
+    </div>
+
+</div>
+
+@if(errorMessage() || updateMessage()) {
+    <app-toast [errorMessage]="errorMessage()!" [successMessage]="updateMessage()!"></app-toast>
+}

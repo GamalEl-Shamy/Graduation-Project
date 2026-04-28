@@ -22,6 +22,7 @@ export class WhetherSectionComponent {
 
   ngOnInit() {
     this.searchCity('Cairo');
+    console.log( "First ");
   }
 
   searchCity(cityName: string) {
@@ -34,6 +35,8 @@ export class WhetherSectionComponent {
       next: (response) => {
         this.weatherData.set(response);
         this.isLoading.set(false);
+        console.log( "gggggggggggg");
+        console.log( response);
       },
       error: (err) => {
         console.error('API Error:', err);

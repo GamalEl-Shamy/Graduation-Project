@@ -1,0 +1,95 @@
+<app-cart-user-information [userInformation]="userInformation()"></app-cart-user-information>
+
+@if (userInformation()) {
+<div
+    class="relative w-full bg-white/80 backdrop-blur-xl rounded-3xl mb-5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white/50 transition-all duration-300 hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)]">
+    <div class="py-3 w-full bg-linear-to-r from-emerald-600 via-emerald-500 to-emerald-700 relative overflow-hidden">
+        <div class="absolute -top-10 -right-10 w-40 h-40 bg-white/10 rounded-full blur-2xl"></div>
+        <div class="absolute top-10 -left-10 w-32 h-32 bg-white/10 rounded-full blur-xl"></div>
+        <div class="text-center">
+            <h2 class="text-2xl md:text-4xl font-['Namdhinggo'!important] font-bold text-white">
+                Personal Cart
+            </h2>
+        </div>
+    </div>
+
+    <div class="p-6 sm:p-8">
+        <div class="flex flex-col lg:flex-row gap-8 ">
+            <div class="flex-1 space-y-5">
+                @for (item of cartItems(); track item.productId) {
+                <div [routerLink]="['/users/shop/product-details/', item.product.name , item.productId]"
+                    class="bg-white cursor-pointer rounded-2xl shadow-sm border border-slate-200 p-5 flex flex-col sm:flex-row items-start sm:items-center gap-6 transition-all hover:shadow-md hover:border-slate-300 group">
+                    <img [src]="imgBaseUrl + item?.product?.mainImg" [alt]="item?.product?.name"
+                        class="w-24 h-24 sm:w-28 sm:h-28 rounded-xl object-cover shrink-0 border border-slate-100" />
+                    <div class="flex-1 w-full">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h2
+                                    class="text-lg font-bold text-slate-900 group-hover:text-emerald-600 transition-colors">
+                                    {{item?.product?.name}}
+                                </h2>
+                            </div>
+                            <div class="flex gap-3">
+                                @if (item?.product?.discount) {
+                                <p class="text-lg font-bold line-through mr-2 text-slate-400">
+                                    ${{item?.product?.price}}</p>
+
+                                }
+                                <p class="text-lg font-bold text-slate-900">${{item?.product?.priceAfterDiscount}}</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between mt-4">
+                            <div (click)="$event.stopPropagation()"
+                                class="flex items-center space-x-3 bg-slate-50 p-1 rounded-full border border-slate-200 ">
+                                <button (click)="decrement(item?.productId!)"
+                                    class="w-8 h-8 flex items-center justify-center rounded-full cursor-pointer bg-slate-600 text-white hover:bg-slate-900 transition-colors shadow-sm"
+                                    aria-label="Decrease quantity">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                            d="M20 12H4"></path>
+                                    </svg>
+                                </button>
+                                <span class="text-slate-900 font-bold w-6 text-center">
+                                    {{item?.count}}
+                                </span>
+                                <button (click)="increment(item?.productId!)"
+                                    class="w-8 h-8 flex items-center justify-center rounded-full cursor-pointer bg-emerald-500 text-white hover:bg-emerald-600 transition-colors shadow-sm"
+                                    aria-label="Increase quantity">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                            d="M12 4v16m8-8H4"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                            <button (click)="removeProduct(item?.productId!); $event.stopPropagation()"
+                                class="flex items-center gap-1.5 text-rose-500 hover:text-rose-600 hover:bg-rose-50 cursor-pointer px-3 py-1.5 rounded-lg transition-colors text-sm font-semibold">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16">
+                                    </path>
+                                </svg>
+                                Remove
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                }
+            </div>
+
+            <app-order-summary [isActive]="true"></app-order-summary>
+
+        </div>
+        <button routerLink="shopping-details"
+            class="mt-8 w-full bg-emerald-600 hover:bg-emerald-700 text-white cursor-pointer font-bold text-lg py-4 rounded-xl transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2 group">
+            <i class="fa-solid fa-sack-dollar mr-3"></i>
+            Proceed to Checkout
+        </button>
+    </div>
+</div>
+}@else {
+<app-cart-skeleton></app-cart-skeleton>
+}
+
+@if (deletedProductMessage()) {
+<app-toast [successMessage]="deletedProductMessage()!"></app-toast>
+}

@@ -5,6 +5,7 @@ import { CartService } from '../../../services/cart.service';
 import { ProductsService } from '../../../services/products.service';
 import { ProductDetailsSkeletonComponent } from '../../../skeletons/product-details-skeleton/product-details-skeleton.component';
 import { ToastComponent } from '../../shared/toast/toast.component';
+import { environment } from '../../../../../../environments/environment.development';
 
 @Component({
   selector: 'app-product-details-section',
@@ -29,7 +30,7 @@ export class ProductDetailsSectionComponent implements OnInit {
 
   product = signal<ProductDetails | null>(null);
   isLoading = signal(true);
-  imgBaseUrl = 'https://zaraaapi.runasp.net/Images/';
+  imgBaseUrl = environment.apiUrl + '/Images/';
 
   ngOnInit(): void {
     this.getId();

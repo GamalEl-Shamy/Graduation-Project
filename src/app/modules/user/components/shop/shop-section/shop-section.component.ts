@@ -28,7 +28,7 @@ export class ShopSectionComponent implements OnInit {
   products = signal<Product[]>([]);
   categoriesList = signal<CategoriesList[]>([]);
   pagination = signal<Pagination | null>(null);
-  isLoading = signal<boolean>(false);
+  isLoading = signal<boolean>(true);
   errorMessage = signal<string | null>(null);
   addProductLoading = signal<boolean>(false);
   addProductSuccessMessage = signal<string>('');
@@ -43,6 +43,7 @@ export class ShopSectionComponent implements OnInit {
   });
 
   ngOnInit(): void {
+    this.isLoading.set(true);
     this.loadProducts();
   }
 
@@ -59,13 +60,13 @@ export class ShopSectionComponent implements OnInit {
       },
       error: (err) => {
         this.errorMessage.set('Failed to load products. Please try again later.');
-        this.isLoading.set(false);
+        // this.isLoading.set(false);
       },
     });
   }
 
   goToPage(newPage: number) {
-    const maxPages = 10;
+    const maxPages = this.pagination()?.totalNumberOfPage || 1;
 
     if (newPage >= 1 && newPage <= maxPages) {
       this.currentFilters.update((filters) => ({ ...filters, page: newPage }));
@@ -76,6 +77,7 @@ export class ShopSectionComponent implements OnInit {
   }
 
   searchByProductName(name: string) {
+    this.isLoading.set(true);
     this.currentFilters.update((filters) => ({
       ...filters,
       productName: name,
@@ -84,13 +86,16 @@ export class ShopSectionComponent implements OnInit {
     this.loadProducts();
   }
 
-  updateMinPrice(min: string) {
+  searchByMinPrice(min: string) {
+    this.isLoading.set(true);
+    console.log("MinPrice")
     const value = min === '' ? undefined : Number(min);
     this.currentFilters.update((f) => ({ ...f, minPrice: value, page: 1 }));
     this.loadProducts();
   }
 
-  updateMaxPrice(max: string) {
+  searchByMaxPrice(max: string) {
+    this.isLoading.set(true);
     const value = max === '' ? undefined : Number(max);
     this.currentFilters.update((f) => ({ ...f, maxPrice: value, page: 1 }));
     this.loadProducts();
@@ -102,9 +107,11 @@ export class ShopSectionComponent implements OnInit {
     const categoryId = value === '' ? null : Number(value);
 
     this.filterByCategory(categoryId);
+    this.isLoading.set(true);
   }
 
   filterByCategory(categoryId: number | null) {
+    this.isLoading.set(true);
     this.currentFilters.update((filters) => {
       const newFilters = { ...filters, page: 1 };
 
@@ -114,6 +121,7 @@ export class ShopSectionComponent implements OnInit {
         newFilters.categoryId = categoryId;
       }
 
+    this.isLoading.set(false);
       return newFilters;
     });
 
