@@ -1,185 +1,169 @@
-<div class="min-h-screen bg-gradient-to-b from-slate-50 to-white font-sans">
-  <div class="mb-10 animate-in fade-in slide-in-from-left-5 duration-700">
-    <h2 class="text-2xl md:text-4xl font-black text-slate-900 tracking-tighter">
-      Smart <span class="text-emerald-600">Diagnosis</span>
-    </h2>
-    <div class="flex items-center gap-2 mt-2">
-      <span class="w-8 h-1 bg-emerald-500 rounded-full"></span>
-      <p class="text-[10px] md:text-sm font-bold text-slate-400 uppercase tracking-widest">
-        Try now
-      </p>
-    </div>
-  </div>
+<div class="relative overflow-visible flex flex-col items-center w-full font-sans">
 
-  <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-10">
+    <div class="w-full relative z-10 bg-white/95 backdrop-blur-3xl rounded-[2.5rem] shadow-[0_8px_40px_-12px_rgba(0,0,0,0.1)] border border-slate-100 border-t-3 border-t-[#012d1d]  border-b-3 border-b-[#012d1d] overflow-hidden flex flex-col min-h-[75vh]">
 
-    <div class="mb-10 lg:mb-14">
-      <div class="flex items-center justify-between max-w-md mx-auto lg:max-w-2xl">
-        <div class="flex flex-col items-center">
-          <div
-            class="w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold text-lg lg:text-xl shadow-lg shadow-emerald-200/40 transition-all duration-300"
-            [class]="currentStep() >= 1 ? 'scale-110' : 'bg-slate-200 text-slate-500'">
-            1
-          </div>
-          <span class="mt-3 text-xs lg:text-sm font-medium"
-            [class]="currentStep() >= 1 ? 'text-emerald-700' : 'text-slate-400'">Select Plant</span>
+        <div class="px-6 py-8 border-b border-slate-100 bg-slate-50/50">
+            <div class="flex items-center justify-between max-w-2xl mx-auto relative px-4">
+              
+                <div class="absolute left-[15%] right-[50%] top-6 h-1 rounded-full -z-10 transition-colors duration-500"
+                    [class]="currentStep() >= 2 ? 'bg-[#012d1d]' : 'bg-slate-200'"></div>
+                <div class="absolute left-[50%] right-[15%] top-6 h-1 rounded-full -z-10 transition-colors duration-500"
+                    [class]="currentStep() >= 3 ? 'bg-[#012d1d]' : 'bg-slate-200'"></div>
+
+                <div class="flex flex-col items-center gap-3 relative z-10 w-24">
+                    <div class="w-12 h-12 rounded-2xl flex items-center justify-center font-bold text-lg transition-all duration-500 shadow-sm"
+                        [class]="currentStep() >= 1 ? 'bg-linear-to-br from-[#012d1d] to-[#1b4332] text-white shadow-md scale-110' : 'bg-white text-slate-400 border-2 border-slate-100'">
+                        1
+                    </div>
+                    <span class="text-[11px] font-bold tracking-widest uppercase"
+                        [class]="currentStep() >= 1 ? 'text-[#012d1d]' : 'text-slate-400'">Select</span>
+                </div>
+
+                <div class="flex flex-col items-center gap-3 relative z-10 w-24">
+                    <div class="w-12 h-12 rounded-2xl flex items-center justify-center font-bold text-lg transition-all duration-500 shadow-sm delay-100"
+                        [class]="currentStep() >= 2 ? 'bg-linear-to-br from-[#012d1d] to-[#1b4332] text-white shadow-md scale-110' : 'bg-white text-slate-400 border-2 border-slate-100'">
+                        2
+                    </div>
+                    <span class="text-[11px] font-bold tracking-widest uppercase"
+                        [class]="currentStep() >= 2 ? 'text-[#012d1d]' : 'text-slate-400'">Upload</span>
+                </div>
+
+                <div class="flex flex-col items-center gap-3 relative z-10 w-24">
+                    <div class="w-12 h-12 rounded-2xl flex items-center justify-center font-bold text-lg transition-all duration-500 shadow-sm delay-200"
+                        [class]="currentStep() >= 3 ? 'bg-linear-to-br from-[#012d1d] to-[#1b4332] text-white shadow-md scale-110' : 'bg-white text-slate-400 border-2 border-slate-100'">
+                        3
+                    </div>
+                    <span class="text-[11px] font-bold tracking-widest uppercase"
+                        [class]="currentStep() >= 3 ? 'text-[#012d1d]' : 'text-slate-400'">Results</span>
+                </div>
+            </div>
         </div>
 
-        <div class="flex-1 h-1 bg-slate-200 mx-4 lg:mx-8 rounded-full relative">
-          <div class="absolute inset-0 bg-emerald-500 rounded-full transition-all duration-500"
-            [style.width.%]="currentStep() === 1 ? 0 : currentStep() === 2 ? 50 : 100"></div>
-        </div>
+        @if (currentStep() === 1) {
+        <div class="flex-1 p-8 md:p-10 flex flex-col transition-all duration-500">
 
-        <div class="flex flex-col items-center">
-          <div
-            class="w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold text-lg lg:text-xl shadow-lg shadow-emerald-200/40 transition-all duration-300"
-            [class]="currentStep() >= 2 ? 'scale-110' : 'bg-slate-200 text-slate-500'">
-            2
-          </div>
-          <span class="mt-3 text-xs lg:text-sm font-medium"
-            [class]="currentStep() >= 2 ? 'text-emerald-700' : 'text-slate-400'">Upload Photo</span>
-        </div>
-
-        <div class="flex-1 h-1 bg-slate-200 mx-4 lg:mx-8 rounded-full relative">
-          <div class="absolute inset-0 bg-emerald-500 rounded-full transition-all duration-500"
-            [style.width.%]="currentStep() === 3 ? 100 : 0"></div>
-        </div>
-
-        <div class="flex flex-col items-center">
-          <div
-            class="w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold text-lg lg:text-xl shadow-lg shadow-emerald-200/40 transition-all duration-300"
-            [class]="currentStep() >= 3 ? 'scale-110' : 'bg-slate-200 text-slate-500'">
-            3
-          </div>
-          <span class="mt-3 text-xs lg:text-sm font-medium"
-            [class]="currentStep() >= 3 ? 'text-emerald-700' : 'text-slate-400'">Results</span>
-        </div>
-      </div>
-    </div>
-
-    <div
-      class="bg-white rounded-3xl lg:rounded-[3.5rem] shadow-2xl shadow-slate-200/30 border border-slate-100 overflow-hidden min-h-[70vh] lg:min-h-[80vh] flex flex-col">
-
-      @if (currentStep() === 1) {
-      <div class="flex-1 p-6 lg:p-10 xl:p-12 animate-in fade-in slide-in-from-bottom-8 duration-700">
-        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 mb-10">
-          <div>
-            <h2 class="text-2xl lg:text-3xl font-extrabold text-slate-900 tracking-tight">Select Plant Species</h2>
-            <p class="mt-2 text-slate-500 lg:text-lg">Choose the plant type for more accurate diagnosis</p>
-          </div>
-
-          <!-- Search -->
-          <div class="relative w-full lg:w-80">
-            <input type="text" placeholder="Search plant (Apple, Orange, Tomato...)"
-              class="w-full pl-12 pr-5 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:border-emerald-400 focus:ring-0 outline-none transition text-slate-700 placeholder-slate-400"
-              [value]="searchQuery()" (input)="searchQuery.set($any($event.target).value)" />
-            <i class="fa-solid fa-search absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-lg"></i>
-          </div>
-        </div>
-
-        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 lg:gap-6">
-          @for (plant of filteredPlants(); track plant.id) {
-          <button (click)="selectPlant(plant)" [class]="selectedPlant()?.id === plant.id 
-              ? 'bg-emerald-50 border-emerald-400 shadow-emerald-100/50 scale-105' 
-              : 'bg-white border-slate-200 hover:border-emerald-300 hover:shadow-md'"
-            class="group relative aspect-square rounded-2xl lg:rounded-3xl border-2 overflow-hidden transition-all duration-300 hover:-translate-y-3 hover:cursor-pointer">
-
-            <img [src]="plant.img" [alt]="plant.name"
-              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
-
-            <div
-              class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent flex items-end p-4">
-              <span class="text-white text-sm lg:text-base font-semibold drop-shadow-md">
-                {{ plant.name }}
-              </span>
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-10 bg-white p-6 rounded-4xl shadow-sm border border-slate-100/60">
+                <div class="px-2">
+                    <h3 class="text-2xl font-extrabold text-[#012d1d] font-sans">Choose Species</h3>
+                    <p class="text-sm text-slate-500 mt-1 font-medium">Select the plant type to calibrate the AI model</p>
+                </div>
+                <div class="relative w-full md:w-96 group">
+                    <div class="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none">
+                        <i class="fa-solid fa-magnifying-glass text-slate-400 group-focus-within:text-[#012d1d] transition-colors"></i>
+                    </div>
+                    <input type="text" placeholder="Search Apple, Tomato..."
+                        class="w-full pl-12 pr-6 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-[#c1ecd4]/50 focus:border-[#012d1d] outline-none transition-all text-slate-800 placeholder-slate-400 font-medium"
+                        [value]="searchQuery()" (input)="searchQuery.set($any($event.target).value)" />
+                </div>
             </div>
 
-            @if (selectedPlant()?.id === plant.id) {
-            <div
-              class="absolute top-3 right-3 bg-emerald-600 text-white w-8 h-8 rounded-full flex items-center justify-center shadow-lg border-4 border-white animate-in zoom-in">
-              <i class="fa-solid fa-check text-sm"></i>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+                @for (plant of filteredPlants(); track plant.id) {
+                <button (click)="selectPlant(plant)"
+                    class="group relative aspect-4/5 rounded-4xl overflow-hidden cursor-pointer focus:outline-none transition-all duration-300 transform-gpu bg-slate-50"
+                    [class]="selectedPlant()?.id === plant.id 
+                  ? 'ring-4 ring-[#012d1d] ring-offset-4 ring-offset-white scale-[1.02] shadow-xl z-20' 
+                  : 'hover:-translate-y-2 hover:shadow-xl shadow-sm border border-slate-200/60 z-10'">
+
+                    <img [src]="plant.img" [alt]="plant.name"
+                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+
+                    <div class="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-5">
+                        <span class="text-white text-lg font-bold tracking-wide font-sans">{{ plant.name }}</span>
+                    </div>
+
+                    @if (selectedPlant()?.id === plant.id) {
+                    <div class="absolute top-4 right-4 bg-[#c1ecd4] text-[#012d1d] w-10 h-10 rounded-full flex items-center justify-center shadow-lg animate-in zoom-in-50 duration-300">
+                        <i class="fa-solid fa-check text-lg font-black"></i>
+                    </div>
+                    }
+                </button>
+                }
+            </div>
+
+            @if (filteredPlants().length === 0) {
+            <div class="flex-1 flex flex-col items-center justify-center text-center py-16">
+                <div class="w-24 h-24 bg-slate-50 rounded-full flex items-center justify-center mb-6 border border-slate-100 shadow-inner">
+                    <i class="fa-solid fa-leaf text-4xl text-slate-300"></i>
+                </div>
+                <h4 class="text-xl font-extrabold text-slate-800 font-sans">No plants found</h4>
+                <p class="text-slate-500 mt-2 font-medium">Try adjusting your search terms</p>
             </div>
             }
-          </button>
-          }
-        </div>
-
-        <!-- Empty state if no results -->
-        @if (filteredPlants().length === 0) {
-        <div class="mt-12 text-center py-16 bg-slate-50 rounded-2xl">
-          <i class="fa-solid fa-seedling text-6xl text-slate-300 mb-4"></i>
-          <p class="text-lg font-medium text-slate-600">No plants found. Try different keywords.</p>
         </div>
         }
-      </div>
-      }
 
-      @if (currentStep() === 2) {
-      <div
-        class="flex-1 flex flex-col items-center justify-center p-6 lg:p-12 animate-in fade-in slide-in-from-right duration-700">
-        <div class="text-center max-w-lg">
-          <div
-            class="w-24 h-24 lg:w-32 lg:h-32 mx-auto mb-8 rounded-full bg-emerald-50 flex items-center justify-center shadow-inner">
-            <i class="fa-solid fa-cloud-arrow-up text-emerald-600 text-5xl lg:text-6xl"></i>
-          </div>
+        @if (currentStep() === 2) {
+        <div class="flex-1 p-8 md:p-12 flex flex-col items-center justify-center animate-in fade-in slide-in-from-right-8 duration-500">
+            <div class="text-center max-w-2xl w-full">
 
-          <h2 class="text-2xl lg:text-3xl font-extrabold text-slate-900 mb-4">
-            Upload {{ selectedPlant()?.name }} Photo
-          </h2>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-[#012d1d] mb-4 tracking-tight font-sans">Upload {{ selectedPlant()?.name }} Photo</h2>
+                <p class="text-slate-500 mb-10 font-medium">For best results, ensure the affected area is clearly visible and well-lit.</p>
 
-          <p class="text-slate-600 lg:text-lg mb-10">
-            Take or upload a clear, well-lit photo of the affected area (leaf, fruit, stem).
-          </p>
+                @if (!previewUrl()) {
+                <label for="imageUpload"
+                    class="group relative flex flex-col items-center justify-center w-full h-80 md:h-96 rounded-[2.5rem] border-2 border-dashed border-slate-300 bg-slate-50 hover:bg-slate-100 hover:border-[#012d1d] transition-all duration-300 cursor-pointer overflow-hidden">
 
-          <label for="imageUpload" class="cursor-pointer">
-            <div
-              class="inline-flex items-center gap-4 px-10 py-6 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-lg rounded-2xl shadow-xl shadow-emerald-200/30 transition-all hover:scale-105">
-              <i class="fa-solid fa-images text-2xl"></i>
-              <span>Select or Drag Photo</span>
+                    <div class="w-24 h-24 mb-6 rounded-4xl bg-white shadow-sm border border-slate-100 flex items-center justify-center text-slate-400 group-hover:scale-110 group-hover:text-[#012d1d] group-hover:shadow-md transition-all duration-500 transform-gpu">
+                        <i class="fa-solid fa-cloud-arrow-up text-4xl"></i>
+                    </div>
+
+                    <span class="text-xl font-bold text-slate-800 mb-2">Click or drag image here</span>
+                    <span class="text-sm font-medium text-slate-500">Supports JPG, PNG (Max 10MB)</span>
+
+                    <input type="file" id="imageUpload" accept="image/*" class="hidden"
+                        (change)="onFileSelected($event)" />
+                </label>
+                } @else {
+                <div class="relative w-full max-w-lg mx-auto rounded-[2.5rem] overflow-hidden shadow-2xl group animate-in zoom-in-95 duration-500 border-[6px] border-white">
+                    <img [src]="previewUrl()" alt="Plant to analyze" class="w-full h-80 md:h-96 object-cover" />
+
+                    <div class="absolute inset-0 bg-slate-900/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
+                        <button (click)="clearPreview()"
+                            class="px-6 py-3 bg-red-500 hover:bg-red-600 text-white font-bold rounded-xl shadow-lg cursor-pointer transition-transform hover:scale-105 flex items-center gap-2">
+                            <i class="fa-solid fa-trash-can"></i> Remove Image
+                        </button>
+                    </div>
+                </div>
+                }
             </div>
-            <input type="file" id="imageUpload" accept="image/*" class="hidden" (change)="onFileSelected($event)" />
-          </label>
-
-          <p class="mt-6 text-sm text-slate-500">
-            Supported formats: JPG, PNG • Max size: 10MB • Best results with close-up shots
-          </p>
-        </div>
-
-        <!-- Image Preview (after upload) -->
-        @if (previewUrl()) {
-        <div class="mt-12 w-full max-w-2xl animate-in zoom-in duration-500">
-          <div class="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
-            <img [src]="previewUrl()" alt="Uploaded plant" class="w-full h-auto object-contain" />
-            <button (click)="clearPreview()"
-              class="absolute top-4 right-4 bg-white/90 backdrop-blur p-3 rounded-full shadow-lg hover:bg-white transition">
-              <i class="fa-solid fa-xmark text-slate-700"></i>
-            </button>
-          </div>
         </div>
         }
-      </div>
-      }
 
-      @if (currentStep() === 3) {
-      <div class="flex flex-col items-center justify-center h-64">
-        <div class="w-16 h-16 border-4 border-emerald-200 border-t-emerald-600 rounded-full animate-spin"></div>
-        <p class="mt-6 text-slate-600 font-medium">Analyzing your image...</p>
-      </div>
-      }
+        @if (currentStep() === 3) {
+        <div class="flex-1 flex flex-col items-center justify-center p-12">
+            <div class="relative w-40 h-40 bg-white rounded-full shadow-2xl flex items-center justify-center border border-slate-50 mb-8 mx-auto">
+                <i class="fa-solid fa-microscope text-6xl text-[#012d1d] animate-bounce"></i>
 
-      <div class="p-6 lg:p-10 border-t border-slate-100 bg-slate-50/70 flex items-center justify-between">
-        <button (click)="prevStep()" [disabled]="currentStep() === 1"
-          class="px-8 py-4 bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold rounded-2xl transition disabled:opacity-50 disabled:cursor-not-allowed">
-          Back
-        </button>
+                <svg class="absolute inset-0 w-full h-full animate-[spin_4s_linear_infinite]" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="48" fill="none" stroke="#c1ecd4" stroke-width="3"
+                        stroke-dasharray="60 40 20 40" stroke-linecap="round"></circle>
+                </svg>
+                <svg class="absolute inset-0 w-full h-full animate-[spin_3s_linear_infinite_reverse]" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="42" fill="none" stroke="#012d1d" stroke-width="2"
+                        stroke-dasharray="40 20 60 20" stroke-linecap="round" opacity="0.4"></circle>
+                </svg>
+            </div>
+            <h3 class="text-3xl font-extrabold text-[#012d1d] tracking-tight font-sans">Analyzing your plant...</h3>
+            <p class="text-slate-500 mt-3 font-medium text-lg">Our A.I. is scanning for patterns and diseases.</p>
+        </div>
+        }
 
-        <button (click)="nextStep()"
-          [disabled]="(currentStep() === 1 && !selectedPlant()) || (currentStep() === 2 && !previewUrl())"
-          class="px-10 lg:px-14 py-4 lg:py-5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-lg rounded-2xl shadow-xl shadow-emerald-200/30 transition-all hover:scale-105 cursor-pointer  disabled:cursor-not-allowed disabled:bg-slate-300 disabled:shadow-none disabled:scale-100">
-          {{ currentStep() === 1 ? 'Continue to Upload' : 'Analyze Now' }}
-        </button>
-      </div>
+        <div class="p-6 md:p-8 bg-slate-50/80 border-t border-slate-100 flex items-center justify-between">
+            <button (click)="prevStep()" [disabled]="currentStep() === 1 || currentStep() === 3"
+                class="px-6 py-4 text-slate-500 font-bold rounded-2xl cursor-pointer transition hover:bg-white hover:text-slate-800 hover:shadow-sm disabled:opacity-0 disabled:pointer-events-none flex items-center gap-3">
+                <i class="fa-solid fa-arrow-left"></i> Back
+            </button>
+
+            <button (click)="nextStep()"
+                [disabled]="(currentStep() === 1 && !selectedPlant()) || (currentStep() === 2 && !previewUrl()) || currentStep() === 3"
+                class="px-8 py-4 bg-linear-to-br from-[#012d1d] to-[#1b4332] text-white font-bold rounded-2xl shadow-lg cursor-pointer transition-all hover:shadow-xl hover:-translate-y-1 hover:scale-[1.02] disabled:cursor-not-allowed disabled:from-slate-200 disabled:to-slate-200 disabled:text-slate-400 disabled:shadow-none disabled:transform-none flex items-center gap-3 active:scale-95">
+                {{ currentStep() === 1 ? 'Continue to Upload' : 'Start Analysis' }}
+                @if(currentStep() !== 3){
+                <i class="fa-solid fa-arrow-right"></i>
+                }
+            </button>
+        </div>
 
     </div>
-  </div>
 </div>

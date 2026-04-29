@@ -21,9 +21,29 @@ export const USER_ROUTES: Routes = [
                 title: 'Diagnosis'
             },
             {
+                path: 'weather',
+                loadComponent: () => import('./pages/weather/weather.component').then((c) => c.WeatherComponent),
+                title: 'Diagnosis'
+            },
+            {
                 path: 'shop',
                 loadComponent: () => import('./pages/shop/shop.component').then((c) => c.ShopComponent),
                 title: 'Shop'
+            },
+            {
+                path: 'shop/product-details/:name/:id',
+                loadComponent: () => import('./pages/product-details/product-details.component').then((c) => c.ProductDetailsComponent),
+                title: 'Product Details'
+            },
+            {
+                path: 'cart',
+                loadComponent: () => import('./pages/cart/cart.component').then((c) => c.CartComponent),
+                title: 'Cart'
+            },
+            {
+                path: 'cart/shopping-details',
+                loadComponent: () => import('./pages/shopping-details/shopping-details.component').then((c) => c.ShoppingDetailsComponent),
+                title: 'Shopping Details'
             },
             {
                 path: 'diagnosis-history',
@@ -34,6 +54,21 @@ export const USER_ROUTES: Routes = [
                 path: 'my-garden',
                 loadComponent: () => import('./pages/my-garden/my-garden.component').then((c) => c.MyGardenComponent),
                 title: 'My Garden'
+            },
+            {
+                path: 'profile',
+                loadComponent: () => import('./pages/profile/profile.component').then((c) => c.ProfileComponent),
+                title: 'My Profile'
+            },
+            {
+                path: 'profile/edit-profile',
+                loadComponent: () => import('./pages/edit-profile/edit-profile.component').then((c) => c.EditProfileComponent),
+                title: 'Edit Profile'
+            },
+            {
+                path: 'profile/change-password',
+                loadComponent: () => import('./pages/change-password/change-password.component').then((c) => c.ChangePasswordComponent),
+                title: 'Change Password'
             },
         ]
     }

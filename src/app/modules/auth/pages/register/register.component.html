@@ -1,1 +1,373 @@
-<p>register works!</p>
+<div
+    class="bg-bg  min-h-screen flex items-center justify-center relative overflow-hidden transition-colors duration-400 font-sans  p-4 sm:p-8">
+
+    <div class="lg:hidden absolute inset-0 z-[-1] overflow-hidden blur-[100px] pointer-events-none">
+        <div
+            class="absolute rounded-full opacity-60 w-112.5 h-112.5 bg-linear-to-br from-primary to-emerald-700/80 -top-[10%] -left-[5%] animate-float-1">
+        </div>
+        <div
+            class="absolute rounded-full opacity-60 w-100 h-100 bg-linear-to-tl from-emerald-400/20 to-[rgb(5,205,153,0.4)] -bottom-[10%] -right-[5%] animate-float-2">
+        </div>
+        <div class="absolute rounded-full opacity-40 w-75 h-75 bg-emerald-700/80 top-[40%] left-[45%] animate-float-3">
+        </div>
+    </div>
+
+    <div class="hidden lg:block lg:max-w-sm xl:max-w-md xl:mr-40 2xl:mr-56 anim-fade-in">
+        <img class=" opacity-80" src="./logos/Big Zaraa.png" alt="Serene greenhouse interior">
+    </div>
+
+    <div class="w-full max-w-137.5 z-10 anim-fade-in">
+        <div
+            class="glassmorphism relative bg-white/80 backdrop-blur-xl border border-white/40 rounded-4xl p-5 sm:p-10 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)]">
+
+            <div
+                class="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-1 bg-linear-to-r from-transparent via-emerald-400 to-transparent opacity-50 rounded-t-full">
+            </div>
+
+            <div class="text-center mb-2 sm:mb-8">
+                <h2
+                    class="text-4xl tracking-[0.11em] font-['Namdhinggo'!important] sm:text-3xl font-extrabold sm:mb-2 text-transparent bg-clip-text bg-linear-to-r from-emerald-700 to-emerald-400 drop-shadow-sm">
+                    Create an Account
+                </h2>
+                <p class="text-gray-400 text-[10px] sm:text-sm font-['Namdhinggo'] font-medium">Join us today! Please enter your details.
+                </p>
+            </div>
+
+            @if (errorMessage) {
+            <div
+                class="mb-6 flex items-center gap-3 bg-red-50/90 py-3 px-4 rounded-xl border-l-4 border-red-500 text-red-600 shake shadow-sm transition-all">
+                <i class="fa-solid fa-circle-exclamation text-lg"></i>
+                <span class="text-sm font-semibold">{{errorMessage}}</span>
+            </div>
+            }
+
+            <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" novalidate class="flex flex-col gap-2.5 sm:gap-5">
+
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div class="input-group group relative w-full">
+                        <i class="fa-regular fa-user absolute left-4 top-4.5 text-[18px] pointer-events-none  " [class]="{
+                                'text-[#a3aed1]':!(f['firstName'].dirty),
+                                'text-red-400': f['firstName'].invalid && f['firstName'].touched,
+                                'text-[#05cd99]': f['firstName'].valid
+                                }"></i>
+                        <input formControlName="firstName" type="text" id="firstName" name="firstName" placeholder=" "
+                            class="peer w-full py-3.5 pl-11 pr-4 rounded-xl text-[#2b3674] text-sm outline-none transition-all shadow-sm"
+                            [class]="{
+                                'border': !(f['firstName'].touched),
+                                'border-slate-100': !(f['firstName'].touched),
+                                'focus:border-2': !(f['firstName'].touched),
+                                'focus:border-[#05cd99]': !(f['firstName'].touched),
+                                'border-2': (f['firstName'].invalid && f['firstName'].touched) || f['firstName'].valid ,
+                                'border-red-400': f['firstName'].invalid && f['firstName'].touched,
+                                'bg-red-50': f['firstName'].invalid && f['firstName'].touched,
+                                'focus:ring-red-100': f['firstName'].invalid && f['firstName'].touched,
+                                'border-[#05cd99]': f['firstName'].valid,
+                                'bg-emerald-50': f['firstName'].valid
+                                }">
+                        <label for="firstName"
+                            class="absolute left-11 top-4.25  text-[#a3aed1] text-[14px] transition-all duration-300 pointer-events-none 
+                            peer-focus:-top-2.5 peer-focus:left-3.5 peer-focus:text-[11px] peer-focus:bg-white peer-focus:py-0.5 peer-focus:px-2 
+                            peer-focus:rounded-md peer-focus:text-[#05cd99] peer-focus:font-semibold peer-focus:shadow-sm peer-focus:tracking-[0.5px] peer-focus:shadow-label 
+                            peer-[:not(:placeholder-shown)]:-top-2.5 peer-[:not(:placeholder-shown)]:left-3.5 peer-[:not(:placeholder-shown)]:text-[11px] peer-[:not(:placeholder-shown)]:bg-white 
+                            peer-[:not(:placeholder-shown)]:py-0.5 peer-[:not(:placeholder-shown)]:px-2 peer-[:not(:placeholder-shown)]:rounded-md peer-[:not(:placeholder-shown)]:text-[#05cd99] peer-[:not(:placeholder-shown)]:font-semibold peer-[:not(:placeholder-shown)]:tracking-[0.5px] ">
+                            First Name
+                        </label>
+                        @if (f['firstName'].touched && f['firstName'].errors?.['required']) {
+                        <span class="text-red-500 text-xs ml-3 shake inline-block">First name is required</span>
+                        }
+                        @if (f['firstName'].touched && f['firstName'].errors?.['minlength']) {
+                        <span class="text-red-500 text-xs ml-3 shake inline-block">At least 2 characters</span>
+                        }
+                    </div>
+
+                    <div class="input-group group relative w-full">
+                        <i class="fa-regular fa-user absolute left-4 top-4.5 text-[18px] pointer-events-none  " [class]="{
+                                'text-[#a3aed1]':!(f['lastName'].dirty),
+                                'text-red-400': f['lastName'].invalid && f['lastName'].touched,
+                                'text-[#05cd99]': f['lastName'].valid
+                                }"></i>
+                        <input formControlName="lastName" type="text" id="lastName" name="lastName" placeholder=" "
+                            class="peer w-full py-3.5 pl-11 pr-4 rounded-xl text-[#2b3674] text-sm outline-none transition-all shadow-sm"
+                            [class]="{
+                                'border': !(f['lastName'].touched),
+                                'border-slate-100': !(f['lastName'].touched),
+                                'focus:border-2': !(f['lastName'].touched),
+                                'focus:border-[#05cd99]': !(f['lastName'].touched),
+                                'border-2': (f['lastName'].invalid && f['lastName'].touched) || f['lastName'].valid ,
+                                'border-red-400': f['lastName'].invalid && f['lastName'].touched,
+                                'bg-red-50': f['lastName'].invalid && f['lastName'].touched,
+                                'focus:ring-red-100': f['lastName'].invalid && f['lastName'].touched,
+                                'border-[#05cd99]': f['lastName'].valid,
+                                'bg-emerald-50': f['lastName'].valid
+                                }">
+                        <label for="firstName"
+                            class="absolute left-11 top-4.25  text-[#a3aed1] text-[14px] transition-all duration-300 pointer-events-none 
+                            peer-focus:-top-2.5 peer-focus:left-3.5 peer-focus:text-[11px] peer-focus:bg-white peer-focus:py-0.5 peer-focus:px-2 
+                            peer-focus:rounded-md peer-focus:text-[#05cd99] peer-focus:font-semibold peer-focus:shadow-sm peer-focus:tracking-[0.5px] peer-focus:shadow-label 
+                            peer-[:not(:placeholder-shown)]:-top-2.5 peer-[:not(:placeholder-shown)]:left-3.5 peer-[:not(:placeholder-shown)]:text-[11px] peer-[:not(:placeholder-shown)]:bg-white 
+                            peer-[:not(:placeholder-shown)]:py-0.5 peer-[:not(:placeholder-shown)]:px-2 peer-[:not(:placeholder-shown)]:rounded-md peer-[:not(:placeholder-shown)]:text-[#05cd99] peer-[:not(:placeholder-shown)]:font-semibold peer-[:not(:placeholder-shown)]:tracking-[0.5px] ">
+                            Last Name
+                        </label>
+                        @if (f['lastName'].touched && f['lastName'].errors?.['required']) {
+                        <span class="text-red-500 text-xs ml-3 shake inline-block">Last name is required</span>
+                        }
+                        @if (f['lastName'].touched && f['lastName'].errors?.['minlength']) {
+                        <span class="text-red-500 text-xs ml-3 shake inline-block">At least 2 characters</span>
+                        }
+                    </div>
+                </div>
+
+                <div class="input-group group relative w-full mt-1">
+                    <i class="fa-solid fa-at absolute left-4 top-4.5 text-[18px] pointer-events-none  " [class]="{
+                                'text-[#a3aed1]':!(f['userName'].dirty),
+                                'text-red-400': (f['userName'].invalid && f['userName'].touched) || errorMessage,
+                                'text-[#05cd99]': f['userName'].valid
+                                }"></i>
+                    <input formControlName="userName" type="text" id="userName" name="userName" placeholder=""
+                        class="peer w-full py-3.5 pl-11 pr-24 rounded-xl text-[#2b3674] text-sm outline-none transition-all shadow-sm"
+                        [class]="{
+                                'border': !(f['userName'].touched),
+                                'border-slate-100': !(f['userName'].touched),
+                                'focus:border-2': !(f['userName'].touched),
+                                'focus:border-[#05cd99]': !(f['userName'].touched),
+                                'border-2': (f['userName'].invalid && f['userName'].touched) || f['userName'].valid ,
+                                'border-red-400': (f['userName'].invalid && f['userName'].touched) || errorMessage,
+                                'bg-red-50': (f['userName'].invalid && f['userName'].touched) || errorMessage,
+                                'focus:ring-red-100': f['userName'].invalid && f['userName'].touched,
+                                'border-[#05cd99]': f['userName'].valid,
+                                'bg-emerald-50': f['userName'].valid
+                                }">
+                    <label for="userName"
+                        class="absolute left-11 top-4.25  text-[#a3aed1] text-[14px] transition-all duration-300 pointer-events-none 
+                            peer-focus:-top-2.5 peer-focus:left-3.5 peer-focus:text-[11px] peer-focus:bg-white peer-focus:py-0.5 peer-focus:px-2 
+                            peer-focus:rounded-md peer-focus:text-[#05cd99] peer-focus:font-semibold peer-focus:shadow-sm peer-focus:tracking-[0.5px] peer-focus:shadow-label 
+                            peer-[:not(:placeholder-shown)]:-top-2.5 peer-[:not(:placeholder-shown)]:left-3.5 peer-[:not(:placeholder-shown)]:text-[11px] peer-[:not(:placeholder-shown)]:bg-white 
+                            peer-[:not(:placeholder-shown)]:py-0.5 peer-[:not(:placeholder-shown)]:px-2 peer-[:not(:placeholder-shown)]:rounded-md peer-[:not(:placeholder-shown)]:text-[#05cd99] peer-[:not(:placeholder-shown)]:font-semibold peer-[:not(:placeholder-shown)]:tracking-[0.5px] ">
+                        Username</label>
+                    @if (f['userName'].touched && f['userName'].errors?.['required']) {
+                    <span class="text-red-500 text-xs ml-3 shake inline-block">Username is required</span>
+                    }
+                    @if (f['userName'].touched && f['userName'].errors?.['minlength']) {
+                    <span class="text-red-500 text-xs ml-3 shake inline-block">At least 3 characters</span>
+                    }
+                    @if (f['userName'].touched && f['userName'].errors?.['pattern']) {
+                    <span class="text-red-500 text-xs ml-3 shake inline-block">Only letters, numbers, and
+                        underscores</span>
+                    }
+
+                    <button (click)="generateUserName()" type="button"
+                        class="absolute right-3 top-3 bg-linear-to-r from-emerald-600 to-emerald-400 text-white text-xs font-semibold px-3 py-1.5 rounded-lg cursor-pointer hover:shadow-[0_0_10px_rgba(106,130,251,0.5)] transition-all duration-300"
+                        [class.hidden]="generateState">
+                        <i class="fa-solid fa-wand-magic-sparkles mr-1"></i> Auto
+                    </button>
+                </div>
+
+                <div class="input-group group relative w-full mt-1">
+                    <i class="fa-regular fa-envelope absolute left-4 top-4.5 text-[18px] pointer-events-none  " [class]="{
+                                'text-[#a3aed1]':!(f['email'].dirty),
+                                'text-red-400': f['email'].invalid && f['email'].touched,
+                                'text-[#05cd99]': f['email'].valid
+                                }"></i>
+                    <input formControlName="email" type="text" id="email" name="email" placeholder=" "
+                        class="peer w-full py-3.5 pl-11 pr-24 rounded-xl text-[#2b3674] text-sm outline-none transition-all shadow-sm"
+                        [class]="{
+                                'border': !(f['email'].touched),
+                                'border-slate-100': !(f['email'].touched),
+                                'focus:border-2': !(f['email'].touched),
+                                'focus:border-[#05cd99]': !(f['email'].touched),
+                                'border-2': (f['email'].invalid && f['email'].touched) || f['email'].valid ,
+                                'border-red-400': f['email'].invalid && f['email'].touched,
+                                'bg-red-50': f['email'].invalid && f['email'].touched,
+                                'focus:ring-red-100': f['email'].invalid && f['email'].touched,
+                                'border-[#05cd99]': f['email'].valid,
+                                'bg-emerald-50': f['email'].valid
+                                }">
+                    <label for="email"
+                        class="absolute left-11 top-4.25  text-[#a3aed1] text-[14px] transition-all duration-300 pointer-events-none 
+                            peer-focus:-top-2.5 peer-focus:left-3.5 peer-focus:text-[11px] peer-focus:bg-white peer-focus:py-0.5 peer-focus:px-2 
+                            peer-focus:rounded-md peer-focus:text-[#05cd99] peer-focus:font-semibold peer-focus:shadow-sm peer-focus:tracking-[0.5px] peer-focus:shadow-label 
+                            peer-[:not(:placeholder-shown)]:-top-2.5 peer-[:not(:placeholder-shown)]:left-3.5 peer-[:not(:placeholder-shown)]:text-[11px] peer-[:not(:placeholder-shown)]:bg-white 
+                            peer-[:not(:placeholder-shown)]:py-0.5 peer-[:not(:placeholder-shown)]:px-2 peer-[:not(:placeholder-shown)]:rounded-md peer-[:not(:placeholder-shown)]:text-[#05cd99] peer-[:not(:placeholder-shown)]:font-semibold peer-[:not(:placeholder-shown)]:tracking-[0.5px] ">
+                        Email Address</label>
+                    @if (f['email'].touched && f['email'].errors?.['required']) {
+                    <span class="text-red-500 text-xs ml-3 shake inline-block">Email is required</span>
+                    }
+                    @if (f['email'].touched && f['email'].errors?.['email']) {
+                    <span class="text-red-500 text-xs ml-3 shake inline-block">Enter a valid email address</span>
+                    }
+                </div>
+
+                <div class="input-group group relative w-full mt-1">
+                    <i class="fa-solid fa-lock absolute left-4 top-4.5 text-[18px] pointer-events-none  " [class]="{
+                                'text-[#a3aed1]':!(f['password'].dirty),
+                                'text-red-400': f['password'].invalid && f['password'].touched,
+                                'text-[#05cd99]': f['password'].valid
+                                }"></i>
+                    <input formControlName="password" [type]="showPassword ? 'text' : 'password'" id="password"
+                        name="password" placeholder=" "
+                        class="peer w-full py-3.5 pl-11 pr-24 rounded-xl  text-[#2b3674] text-sm outline-none transition-all shadow-sm"
+                        [class]="{
+                                'border': !(f['password'].touched),
+                                'border-slate-100': !(f['password'].touched),
+                                'focus:border-2': !(f['password'].touched),
+                                'focus:border-[#05cd99]': !(f['password'].touched),
+                                'border-2': (f['password'].invalid && f['password'].touched) || f['password'].valid ,
+                                'border-red-400': f['password'].invalid && f['password'].touched,
+                                'bg-red-50': f['password'].invalid && f['password'].touched,
+                                'focus:ring-red-100': f['password'].invalid && f['password'].touched,
+                                'border-[#05cd99]': f['password'].valid,
+                                'bg-emerald-50': f['password'].valid
+                                }">
+                    <label for="password"
+                        class="absolute left-11 top-4.25  text-[#a3aed1] text-[14px] transition-all duration-300 pointer-events-none 
+                            peer-focus:-top-2.5 peer-focus:left-3.5 peer-focus:text-[11px] peer-focus:bg-white peer-focus:py-0.5 peer-focus:px-2 
+                            peer-focus:rounded-md peer-focus:text-[#05cd99] peer-focus:font-semibold peer-focus:shadow-sm peer-focus:tracking-[0.5px] peer-focus:shadow-label 
+                            peer-[:not(:placeholder-shown)]:-top-2.5 peer-[:not(:placeholder-shown)]:left-3.5 peer-[:not(:placeholder-shown)]:text-[11px] peer-[:not(:placeholder-shown)]:bg-white 
+                            peer-[:not(:placeholder-shown)]:py-0.5 peer-[:not(:placeholder-shown)]:px-2 peer-[:not(:placeholder-shown)]:rounded-md peer-[:not(:placeholder-shown)]:text-[#05cd99] peer-[:not(:placeholder-shown)]:font-semibold peer-[:not(:placeholder-shown)]:tracking-[0.5px] ">
+                        Password </label>
+                    <i (mousedown)="$event.preventDefault()" (click)="togglePassword(); $event.stopPropagation()"
+                        class=" absolute right-4 top-4.5 text-[18px] text-[#a3aed1] cursor-pointer transition-colors duration-200 hover:text-[#05cd99]"
+                        [class]="{
+                        'fa-regular': !showPassword,
+                        'fa-eye': !showPassword,
+                        'fa-solid': showPassword,
+                        'fa-eye-low-vision': showPassword,
+                    }"></i>
+                    @if (f['password'].touched && f['password'].errors?.['required']) {
+                    <span class="text-red-500 text-xs ml-3 shake inline-block">password is required</span>
+                    }
+                    @if (f['password'].touched && f['password'].errors?.['minlength']) {
+                    <span class="text-red-500 text-xs ml-3 shake inline-block">At least 8 characters</span>
+                    }
+                    @if (f['password'].touched && f['password'].errors?.['pattern']) {
+                    <span class="text-red-500 text-xs ml-3 shake inline-block">Must include uppercase, lowercase, number
+                        &amp; symbol</span>
+                    }
+                </div>
+
+                <div class="password-strength -mt-1 sm:-mt-2.5 flex flex-col gap-0.5 px-1">
+                    <div class="h-1.25 w-full bg-[#a3aed1]/30 rounded-sm overflow-hidden">
+                        @if (hasUpperCase() && hasLowerCase() && hasNumber() && hasSymbol() &&
+                        !(f['password'].errors?.['minlength'])) {
+                        <div class=" h-full rounded-sm animate-strong-expand bg-[#05cd99]"></div>
+                        }
+                        @else if ( ((hasUpperCase() && hasLowerCase()) || (hasUpperCase() && hasNumber())
+                        || (hasUpperCase() && hasSymbol()) || (hasLowerCase() && hasNumber())
+                        || (hasLowerCase() && hasSymbol()) || (hasNumber() && hasSymbol()))
+                        && !(f['password'].errors?.['minlength'])) {
+                        <div class=" h-full rounded-sm animate-medium-expand bg-yellow-500"></div>
+                        }
+                        @else if (hasUpperCase() || hasLowerCase() || hasNumber() || hasSymbol()) {
+                        <div class=" h-full rounded-sm animate-weak-expand bg-red-500"></div>
+                        }
+                    </div>
+                    @if (hasUpperCase() && hasLowerCase() && hasNumber() && hasSymbol() &&
+                    !(f['password'].errors?.['minlength'])) {
+                    <span class=" text-[12px] text-[#05cd99] font-medium ">Strong
+                        Password</span>
+                    }
+                    @else if ( ((hasUpperCase() && hasLowerCase()) || (hasUpperCase() && hasNumber())
+                    || (hasUpperCase() && hasSymbol()) || (hasLowerCase() && hasNumber())
+                    || (hasLowerCase() && hasSymbol()) || (hasNumber() && hasSymbol()))
+                    && !(f['password'].errors?.['minlength'])) {
+                    <span class=" text-[12px] text-yellow-500 font-medium ">Medium</span>
+                    }
+                    @else if (hasUpperCase() || hasLowerCase() || hasNumber() || hasSymbol()) {
+                    <span class=" text-[12px] text-red-500 font-medium ">Weak</span>
+                    }
+                    @else {
+                    <span class="strength-text text-[12px] text-[#a3aed1] font-medium ">
+                        Password Strength
+                    </span>
+                    }
+                </div>
+
+                <div class="input-group group relative w-full mt-1">
+                    <i class="fa-solid fa-lock absolute left-4 top-4.5 text-[18px] pointer-events-none  " [class]="{
+                                'text-[#a3aed1]':!(f['confirmPassword'].dirty),
+                                'text-red-400': f['confirmPassword'].invalid && f['confirmPassword'].touched,
+                                'text-[#05cd99]': f['confirmPassword'].valid
+                                }"></i>
+                    <input formControlName="confirmPassword" [type]="showConfirmPassword ? 'text' : 'password'"
+                        id="confirmPassword" name="confirmPassword" placeholder=" "
+                        class="peer w-full py-3.5 pl-11 pr-24 rounded-xl text-[#2b3674] text-sm outline-none transition-all shadow-sm"
+                        [class]="{
+                                'border': !(f['confirmPassword'].touched),
+                                'border-slate-100': !(f['confirmPassword'].touched),
+                                'focus:border-2': !(f['confirmPassword'].touched),
+                                'focus:border-[#05cd99]': !(f['confirmPassword'].touched),
+                                'border-2': (f['confirmPassword'].invalid && f['confirmPassword'].touched) || f['confirmPassword'].valid ,
+                                'border-red-400': f['confirmPassword'].invalid && f['confirmPassword'].touched,
+                                'bg-red-50': f['confirmPassword'].invalid && f['confirmPassword'].touched,
+                                'focus:ring-red-100': f['confirmPassword'].invalid && f['confirmPassword'].touched,
+                                'border-[#05cd99]': f['confirmPassword'].valid,
+                                'bg-emerald-50': f['confirmPassword'].valid
+                                }">
+                    <label for="confirmPassword"
+                        class="absolute left-11 top-4.25  text-[#a3aed1] text-[14px] transition-all duration-300 pointer-events-none 
+                            peer-focus:-top-2.5 peer-focus:left-3.5 peer-focus:text-[11px] peer-focus:bg-white peer-focus:py-0.5 peer-focus:px-2 
+                            peer-focus:rounded-md peer-focus:text-[#05cd99] peer-focus:font-semibold peer-focus:shadow-sm peer-focus:tracking-[0.5px] peer-focus:shadow-label 
+                            peer-[:not(:placeholder-shown)]:-top-2.5 peer-[:not(:placeholder-shown)]:left-3.5 peer-[:not(:placeholder-shown)]:text-[11px] peer-[:not(:placeholder-shown)]:bg-white 
+                            peer-[:not(:placeholder-shown)]:py-0.5 peer-[:not(:placeholder-shown)]:px-2 peer-[:not(:placeholder-shown)]:rounded-md peer-[:not(:placeholder-shown)]:text-[#05cd99] peer-[:not(:placeholder-shown)]:font-semibold peer-[:not(:placeholder-shown)]:tracking-[0.5px] ">
+                        Confirm Password </label>
+                    <i (mousedown)="$event.preventDefault()" (click)="toggleConfirmPassword(); $event.stopPropagation()"
+                        class="absolute right-4 top-4.5 text-[18px] text-[#a3aed1] cursor-pointer transition-colors duration-200 hover:text-[#05cd99]"
+                        [class]="{
+                        'fa-regular': !showConfirmPassword,
+                        'fa-eye': !showConfirmPassword,
+                        'fa-solid': showConfirmPassword,
+                        'fa-eye-low-vision': showConfirmPassword,
+                    }"></i>
+                    @if (f['confirmPassword'].touched && f['confirmPassword'].errors?.['required']) {
+                    <span class="text-red-500 text-xs ml-3 shake inline-block">Please confirm your password</span>
+                    }
+                    @if (f['confirmPassword'].touched && f['confirmPassword'].errors?.['mismatch']) {
+                    <span class="text-red-500 text-xs ml-3 shake inline-block">Passwords do not match</span>
+                    }
+                </div>
+
+                <div class="flex flex-col mt-0 sm:mt-2 gap-2 sm:gap-4">
+
+                    @if (!isLoading) {
+                    <button type="submit"
+                        class="group relative w-full h-14 rounded-xl overflow-hidden bg-linear-to-r from-emerald-700 to-emerald-400 text-white cursor-pointer shadow-[0_8px_20px_-6px_rgba(16,185,129,0.4)] transition-all duration-300 hover:shadow-[0_12px_25px_-6px_rgba(5,150,105,0.6)] hover:-translate-y-1 active:translate-y-0">
+                        <div
+                            class="absolute inset-0 w-full h-full bg-white/20 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left">
+                        </div>
+                        <span class="relative z-10 font-['Bebas_Neue'] tracking-[0.15em] text-md lg:text-xl font-medium">
+                            CREATE ACCOUNT
+                        </span>
+                    </button>
+                    }
+
+                    @if(isLoading){
+                    <button type="submit" disabled
+                        class="w-full h-14 rounded-xl bg-gray-300 text-gray-600 cursor-not-allowed opacity-80 flex items-center justify-center gap-3">
+                        <svg class="animate-spin h-6 w-6 text-gray-600" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
+                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z" />
+                        </svg>
+                        <span
+                            class="font-['Bebas_Neue'] tracking-[0.25em] text-xl font-medium mt-1">PROCESSING...</span>
+                    </button>
+                    }
+
+                    <div class="text-center text-sm text-gray-400 mt-2">
+                        Already have an account?
+                        <a routerLink="/auth/login"
+                            class="text-emerald-700 font-bold hover:text-emerald-500 transition-colors duration-200 ml-1">
+                            Log in here
+                        </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@if (successMessage) {
+<app-register-success [isVisible]="true" [message]="successMessage" (close)="false">
+    ></app-register-success>
+}

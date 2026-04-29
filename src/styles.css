@@ -2,34 +2,163 @@
 
 @import "tailwindcss";
 
-@theme {
-    /* --color-main: #01A49E; */
-    --color-main: oklch(59.6% 0.145 163.225); /* emerald-600 */
-    --color-secondary: #EB4227;
-    --color-disabled: #7FA5A3;
-    --color-fff: #ffffff ;
-    --color-000: #000000  ;
-
-    --color-gray200: #e5e7eb;
-    --color-gray300: #d1d5dc;
-    --color-gray500: #6a7282;
-    --color-gray600: #4a5565;
-    --color-gray700: #364153;
-    
-    --color-red100: #ffe2e2;
-    --color-red200: #fecaca;
-    --color-red500: #fb2c36;
-    --color-red700: #B91C1C;
-
-
-
-    --color-light: #E2F1F0;
-    --shadow-main: 0 0 15px rgba(0, 0, 0, 0.1);
+/* Start Animation */
+.float-1 {
+  animation: float1 5s ease-in-out infinite alternate;
 }
 
-body{
-    font-family: 'Encode Sans Expanded', sans-serif !important;
-    background-color: #F9FAFB;
+.float-2 {
+  animation: float2 6s ease-in-out infinite alternate;
+}
+
+.float-3 {
+  animation: float3 7s ease-in-out infinite alternate;
+}
+
+.shake {
+  animation: shake 0.4s cubic-bezier(.36, .07, .19, .97) both;
+}
+
+.anim-fade-in {
+  animation: fadeIn 0.8s ease-in-out forwards;
+}
+
+.anim-slide-up {
+  animation: slideUp 0.6s ease-out forwards;
+}
+
+.anim-scale {
+  animation: scaleUp 0.5s ease-in-out forwards;
+}
+
+.anim-rotate {
+  animation: spinElement 2s linear infinite;
+}
+
+.anim-pulse {
+  animation: pulseElement 1.5s infinite ease-in-out;
+}
+
+@keyframes float1 {
+  0% {
+    transform: translateY(0) scale(1) translateX(0);
+  }
+
+  100% {
+    transform: translateY(-40px) scale(1.05) translateX(30px);
+  }
+}
+
+@keyframes float2 {
+  0% {
+    transform: translateY(-40px) scale(1.05) translateX(30px);
+  }
+
+  100% {
+    transform: translateY(0) scale(1) translateX(0);
+  }
+}
+
+@keyframes float3 {
+  0% {
+    transform: translateY(20px) scale(0.95) translateX(-20px);
+  }
+
+  100% {
+    transform: translateY(-40px) scale(1.05) translateX(30px);
+  }
+}
+
+@keyframes shake {
+
+  10%,
+  90% {
+    transform: translateX(-2px);
+  }
+
+  20%,
+  80% {
+    transform: translateX(2px);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: translateX(-4px);
+  }
+
+  40%,
+  60% {
+    transform: translateX(4px);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(40px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes scaleUp {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes spinElement {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.anim-bounce {
+  animation: bounceElement 2s infinite;
+}
+
+@keyframes bounceElement {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-25px); }
+  60% { transform: translateY(-12px); }
+}
+
+@keyframes pulseElement {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.05); opacity: 0.8; }
+  100% { transform: scale(1); opacity: 1; }
+}
+/* End Animation */
+
+@theme {
+  /* --color-main: #01A49E; */
+  --color-main: oklch(59.6% 0.145 163.225);
+  /* emerald-600 */
+  --color-secondary: #EB4227;
+  --color-disabled: #7FA5A3;
+  --color-fff: #ffffff;
+  --color-000: #000000;
+
+  --color-gray200: #e5e7eb;
+  --color-gray300: #d1d5dc;
+  --color-gray500: #6a7282;
+  --color-gray600: #4a5565;
+  --color-gray700: #364153;
+
+  --color-red100: #ffe2e2;
+  --color-red200: #fecaca;
+  --color-red500: #fb2c36;
+  --color-red700: #B91C1C;
+
+
+
+  --color-light: #E2F1F0;
+  --shadow-main: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+body {
+  font-family: 'Encode Sans Expanded', sans-serif !important;
+  background-color: #F9FAFB;
 }
 
 h1 {
@@ -37,13 +166,13 @@ h1 {
 }
 
 h2 {
-    font-family: "Poppins", sans-serif !important; 
+  font-family: "Poppins", sans-serif !important;
 }
 
 ::selection {
-  background-color: #2f7c7a; 
+  background-color: #2f7c7a;
   color: #fff;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 
@@ -61,43 +190,58 @@ input[type="password"]::-webkit-clear-button {
 /* ******************* */
 /* ===== Scrollbar Global Styling ===== */
 html {
-  scrollbar-width: thin;          /* Firefox */
-  scrollbar-color: #10b981 #fff;   /* thumb / track */  /* 0f172a */
-} 
+  scrollbar-width: thin;
+  /* Firefox */
+  scrollbar-color: #10b981 #fff;
+  /* thumb / track */
+  /* 0f172a */
+}
 
 /* Chrome, Edge, Safari */
 ::-webkit-scrollbar {
-  width: 8px;                     /* أرفع شوية من 10px عشان يبقى أنيق */
-  height: 8px;                    /* للـ horizontal scrollbar لو موجود */
+  width: 8px;
+  /* أرفع شوية من 10px عشان يبقى أنيق */
+  height: 8px;
+  /* للـ horizontal scrollbar لو موجود */
 }
 
 ::-webkit-scrollbar-track {
-  background: transparent;        /* شفاف → يندمج مع الخلفية */
-  margin: 4px 0;                  /* مساحة صغيرة فوق وتحت */
-  border-radius: 9999px;          /* دائري تمامًا */
+  background: transparent;
+  /* شفاف → يندمج مع الخلفية */
+  margin: 4px 0;
+  /* مساحة صغيرة فوق وتحت */
+  border-radius: 9999px;
+  /* دائري تمامًا */
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #10b981;            /* emerald-600 الأساسي */
+  background: #10b981;
+  /* emerald-600 الأساسي */
   border-radius: 9999px;
-  border: 2px solid transparent;  /* border شفاف عشان ما يبقاش فيه خطوط بيضاء قاسية */
-  background-clip: padding-box;   /* مهم جدًا عشان الـ border ما يأثرش على اللون */
-  min-height: 40px;               /* ما يبقاش صغير جدًا */
+  border: 2px solid transparent;
+  /* border شفاف عشان ما يبقاش فيه خطوط بيضاء قاسية */
+  background-clip: padding-box;
+  /* مهم جدًا عشان الـ border ما يأثرش على اللون */
+  min-height: 40px;
+  /* ما يبقاش صغير جدًا */
   transition: background 0.3s ease;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #059669;            /* emerald-700 عند الـ hover */
+  background: #059669;
+  /* emerald-700 عند الـ hover */
 }
 
 /* عند الضغط (active state) */
 ::-webkit-scrollbar-thumb:active {
-  background: #047857;            /* emerald-800 */
+  background: #047857;
+  /* emerald-800 */
 }
 
 /* لو الـ track عايز لونه يتغير حسب الـ dark/light mode */
 @media (prefers-color-scheme: dark) {
   ::-webkit-scrollbar-track {
-    background: #0f172a;          /* slate-900 */
+    background: #0f172a;
+    /* slate-900 */
   }
 }

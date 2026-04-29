@@ -1,0 +1,76 @@
+.animate-weak-expand {
+  animation: weakExpand 0.4s ease-out forwards;
+}
+
+.animate-medium-expand {
+  animation: mediumExpand 0.6s ease-out forwards;
+}
+
+.animate-strong-expand {
+  animation: strongExpand 0.6s ease-out forwards;
+}
+
+
+@keyframes weakExpand {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 15%;
+  }
+}
+
+
+@keyframes mediumExpand {
+  from {
+    width: 15%;
+  }
+
+  to {
+    width: 50%;
+  }
+}
+
+@keyframes strongExpand {
+  from {
+    width: 50%;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+
+.btn-liquid {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.btn-liquid::before {
+  content: '';
+  position: absolute;
+  bottom: -100%;
+  left: -10%;
+  width: 120%;
+  height: 120%;
+  background: oklch(77.7% 0.152 181.912);
+  border-radius: 40% 40% 0 0;
+  transition: bottom 0.55s cubic-bezier(0.77, 0, 0.18, 1);
+}
+
+.btn-liquid:hover::before {
+  bottom: -5%;
+}
+
+.btn-liquid .label {
+  position: relative;
+  z-index: 1;
+  transition: color 0.3s 0.15s;
+}
+
+.btn-liquid:hover .label {
+  color: #fff;
+}
