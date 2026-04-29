@@ -7,6 +7,7 @@ import { CartSkeletonComponent } from '../../../skeletons/cart-skeleton/cart-ske
 import { OrderSummaryComponent } from '../../order-summary/order-summary.component';
 import { ToastComponent } from '../../shared/toast/toast.component';
 import { CartUserInformationComponent } from '../cart-user-information/cart-user-information.component';
+import { EmptyCartComponent } from '../empty-cart/empty-cart.component';
 
 @Component({
   selector: 'app-cart-section',
@@ -16,6 +17,7 @@ import { CartUserInformationComponent } from '../cart-user-information/cart-user
     RouterLink,
     ToastComponent,
     OrderSummaryComponent,
+    EmptyCartComponent,
   ],
   templateUrl: './cart-section.component.html',
   styleUrl: './cart-section.component.css',
@@ -47,7 +49,7 @@ export class CartSectionComponent {
         if (res?.carts && res.carts.length > 0) {
           this.userInformation.set(res.carts[0].applicationUser);
         } else {
-          this.userInformation.set(null); 
+          this.userInformation.set(null);
         }
       },
       error: (err) => {
