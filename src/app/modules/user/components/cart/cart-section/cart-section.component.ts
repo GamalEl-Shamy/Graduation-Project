@@ -38,11 +38,17 @@ export class CartSectionComponent {
   }
 
   loadCart() {
+    this.isLoading.set(true);
+
     this.cartService.getCartItems().subscribe({
       next: (res) => {
-        this.cartData.set(res);
-        this.userInformation.set(res.carts[0].applicationUser);
         this.isLoading.set(false);
+        this.cartData.set(res);
+        if (res?.carts && res.carts.length > 0) {
+          this.userInformation.set(res.carts[0].applicationUser);
+        } else {
+          this.userInformation.set(null); 
+        }
       },
       error: (err) => {
         this.errorMessage.set(err || 'Error! try again.');
@@ -90,7 +96,7 @@ export class CartSectionComponent {
         setTimeout(() => {
           this.errorMessage.set(null);
         }, 3000);
-      }
+      },
     });
   }
 
