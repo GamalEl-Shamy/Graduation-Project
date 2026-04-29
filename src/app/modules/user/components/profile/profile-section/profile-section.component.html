@@ -1,36 +1,167 @@
-<section
-    class="max-w-5xl mx-auto p-4 md:p-10 relative z-10 animate-in fade-in slide-in-from-bottom-4 duration-1000 ease-out flex-1">
+@if (!isLoading()) {
+<div class="min-h-screen">
+    <div class="max-w-4xl mx-auto mb-3 flex items-center gap-2 text-xs text-gray-400">
+        <span routerLink="/users/dashboard" class="cursor-pointer hover:text-gray-600">Dashboard</span>
+        <span class="text-gray-300">/</span>
+        <span class="text-gray-500 font-medium">My Profile</span>
+    </div>
 
-    <header class="flex justify-between items-center mb-8 md:hidden px-2 mt-2">
-        <h1 class="font-headline font-black text-3xl text-slate-800 tracking-tight">Profile</h1>
-        <button
-            class="w-12 h-12 rounded-full bg-white/80 backdrop-blur-md border border-white/60 hover:bg-white hover:shadow-md flex items-center justify-center text-slate-600 transition-all shadow-sm">
-            <span class="material-symbols-outlined text-[22px]">edit</span>
-        </button>
-    </header>
+    <div
+        class="hidden max-w-3xl mx-auto bg-white border border-gray-100 border-b-3 border-b-emerald-500 border-t-3 border-t-emerald-500 rounded-2xl px-6 py-5 mb-5 md:flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 shadow-sm">
 
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10">
-        <div class="lg:col-span-4 flex flex-col gap-6">
+        <div class=" flex items-center gap-4">
+            <div class="w-11 h-11 rounded-xl bg-emerald-50 flex items-center justify-center shrink-0">
+                <i class="fa-regular fa-user text-emerald-500"></i>
+            </div>
+            <div>
+                <h1 class="text-2xl text-gray-900 leading-tight font-['Namdhinggo'!important] font-bold">Personal
+                    Information</h1>
+
+                <p class="text-sm text-gray-400 mt-0.5">View your personal information</p>
+                <span
+                    class="inline-flex items-center gap-1.5 mt-1.5 text-xs font-medium text-green-700 bg-green-50 px-2.5 py-0.5 rounded-full">
+                    <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>
+                    Profile complete
+                </span>
+            </div>
+        </div>
+
+        <div class="flex items-center gap-2 sm:shrink-0">
+            <button routerLink="edit-profile"
+                class="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium cursor-pointer text-white bg-emerald-500 hover:bg-emerald-600 transition-all focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 active:scale-95">
+                <i class="fa-regular fa-pen-to-square"></i>
+                Edit Profile
+            </button>
+        </div>
+
+    </div>
+
+    <div
+        class="max-w-3xl mx-auto bg-white rounded-2xl border-b-3 border-b-emerald-500 shadow-sm border border-gray-100 overflow-hidden">
+
+        <div class="relative h-32 bg-linear-to-r from-emerald-500 to-emerald-600">
             <div
-                class="bg-white/60 backdrop-blur-xl rounded-4xl p-6 lg:p-8 border border-white/80 shadow-xl shadow-slate-200/40 flex flex-col items-center text-center relative overflow-hidden group">
-                <div class="absolute top-0 left-0 w-full h-28 bg-linear-to-br from-emerald-100/80 to-slate-50/50">
-                </div>
+                class="absolute inset-0 pointer-events-none bg-[linear-gradient(rgba(193,236,212,0.07)_1px,transparent_1px),linear-gradient(90deg,rgba(193,236,212,0.07)_1px,transparent_1px)] bg-size-[40px_40px]">
+            </div>
+        </div>
 
-                <div class="relative mt-6 mb-5">
-                    <div
-                        class="w-32 h-32 bg-white text-8xl uppercase font-bold font-['Namdhinggo'] flex items-center justify-center rounded-full overflow-hidden border-[6px] border-black/10 shadow-xl shadow-slate-200/50 relative z-10 group-hover:scale-105 transition-transform duration-500">
-                        <span>G</span>
+        <div class="px-6 sm:px-8 pb-6 relative">
+            <div class="sm:flex sm:items-end sm:justify-between">
+                <div class="sm:flex sm:items-end sm:space-x-5">
+                    <div class="relative -mt-12 sm:-mt-16">
+                        <div class="w-24 h-24 sm:w-32 sm:h-32 rounded-full bg-white p-1.5 shadow-sm">
+                            <div
+                                class="w-full h-full rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600 text-3xl sm:text-4xl font-bold select-none">
+                                {{ profile()?.name?.charAt(0) }}
+                                @if(!profile()?.name){
+                                <i class="fa-solid fa-user"></i>
+                                }
+                            </div>
+                        </div>
+                        <span
+                            class="absolute bottom-3 right-3 sm:bottom-4 sm:right-4 w-4 h-4 bg-green-500 border-2 border-white rounded-full"
+                            title="Online"></span>
+                    </div>
+
+                    <div class="mt-4 sm:mt-0 sm:pb-2">
+                        <h2 class="text-2xl font-bold capitalize text-gray-900 leading-tight">{{profile()?.name || 'your
+                            name'}}</h2>
+                        <div class="flex items-center gap-2 mt-1">
+                            <p class="text-sm font-medium text-gray-400">
+                                <span class="text-gray-600 mr-0.5">@</span>
+                                {{profile()?.userName}}
+                            </p>
+                            <i class="fa-solid fa-circle text-gray-500 text-[6px] ml-2 mr-0.5"></i>
+                            <p class="text-sm text-gray-400">Customer</p>
+                        </div>
                     </div>
                 </div>
 
-                <h2 class="font-headline font-black text-2xl text-slate-800 mb-1 tracking-tight">Gamal Elshamy</h2>
-                <p class="text-sm text-slate-500 font-medium mb-4">gamal.elshamy@gmail.com</p>
-
-                <button
-                    class="w-full cursor-pointer py-4 bg-white hover:bg-slate-50 text-slate-700 font-bold rounded-2xl transition-all shadow-sm border border-slate-200 hidden md:block hover:shadow-md hover:border-slate-300 hover:-translate-y-0.5">
-                    Edit Public Profile
-                </button>
+                <div class="mt-5 sm:mt-0 sm:pb-2 flex flex-col sm:flex-row gap-3">
+                    <button routerLink="edit-profile"
+                        class="inline-flex justify-center items-center gap-2 px-4 py-2 cursor-pointer bg-emerald-500 hover:bg-emerald-600 border border-transparent rounded-lg text-sm font-medium text-white  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 active:scale-95 transition-all shadow-sm">
+                        <i class="fa-regular fa-pen-to-square"></i>
+                        Edit Profile
+                    </button>
+                </div>
             </div>
         </div>
+
+        <hr class="border-t border-gray-100">
+
+        <div class="px-8 py-8">
+            <h2 class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-5">Personal Information</h2>
+            <dl class="divide-y divide-gray-100">
+                <div class="flex flex-col sm:flex-row sm:items-center py-4 gap-1 sm:gap-0">
+                    <dt class="text-sm text-gray-400 font-medium w-full sm:w-36 shrink-0">Full Name</dt>
+                    <dd class="text-gray-900 font-medium text-sm sm:text-base">{{profile()?.name}}</dd>
+                    @if (!profile()?.name) {
+                    <dd class="text-red-500 font-medium text-sm ">Name not provided</dd>
+                    }
+                </div>
+
+                <div class="flex flex-col sm:flex-row sm:items-center py-4 gap-1 sm:gap-0">
+                    <dt class="text-sm text-gray-400 font-medium w-full sm:w-36 shrink-0">Username</dt>
+                    <dd class="text-gray-900 font-medium text-sm sm:text-base">
+                        <span
+                            class="inline-flex items-center gap-1 bg-emerald-50 text-emerald-700 px-2.5 py-0.5 rounded-md text-sm font-medium">
+                            {{profile()?.userName}}
+                        </span>
+                    </dd>
+                    @if (!profile()?.userName) {
+                    <dd class="text-red-500 font-medium text-sm ">Username not provided</dd>
+                    }
+                </div>
+
+                <div class="flex flex-col sm:flex-row sm:items-center py-4 gap-1 sm:gap-0">
+                    <dt class="text-sm text-gray-400 font-medium w-full sm:w-36 shrink-0">Email Address</dt>
+                    <dd class="text-gray-900 font-medium text-sm sm:text-base">{{profile()?.email}}</dd>
+                    @if (!profile()?.email) {
+                    <dd class="text-red-500 font-medium text-sm ">Email not provided</dd>
+                    }
+                </div>
+
+                <div class="flex flex-col sm:flex-row sm:items-center py-4 gap-1 sm:gap-0">
+                    <dt class="text-sm text-gray-400 font-medium w-full sm:w-36 shrink-0">Phone Number</dt>
+                    <dd class="text-gray-900 font-medium text-sm sm:text-base">{{profile()?.phoneNumber}}</dd>
+                    @if (!profile()?.phoneNumber) {
+                    <dd class="text-red-500 font-medium text-sm ">Phone Number not provided</dd>
+                    }
+                </div>
+
+                <div class="flex flex-col sm:flex-row sm:items-start py-4 gap-1 sm:gap-0">
+                    <dt class="text-sm text-gray-400 font-medium w-full sm:w-36 shrink-0 sm:pt-0.5">Address</dt>
+                    <dd class="text-gray-900 font-medium text-sm sm:text-base leading-relaxed">
+                        {{profile()?.address}}
+                    </dd>
+                    @if (!profile()?.address) {
+                    <dd class="text-red-500 font-medium text-sm ">Address not provided</dd>
+                    }
+                </div>
+
+            </dl>
+        </div>
+
+        <div class="border-t border-gray-100 mx-8"></div>
+
+        <div class="px-8 py-6 flex flex-col sm:flex-row sm:justify-end gap-3">
+            <button routerLink="change-password"
+                class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-2.5 cursor-pointer rounded-lg text-sm font-medium text-white bg-blue-500 hover:bg-blue-600 focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 active:scale-95 transition-all shadow-sm">
+                <i class="fa-solid fa-unlock"></i>
+                Change Password
+            </button>
+            <button routerLink="edit-profile"
+                class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-2.5 cursor-pointer rounded-lg text-sm font-medium text-white bg-emerald-500 hover:bg-emerald-600 focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 active:scale-95 transition-all shadow-sm">
+                <i class="fa-regular fa-pen-to-square"></i>
+                Edit Profile
+            </button>
+        </div>
+
     </div>
-</section>
+
+    <p class="text-center text-xs text-gray-400 mt-6">All information is private and visible only to you.</p>
+</div>
+}
+@else {
+<app-profile-data-skeleton></app-profile-data-skeleton>
+}

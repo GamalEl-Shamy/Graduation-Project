@@ -18,4 +18,8 @@ export class ProfileService {
   updateProfile(data: UserProfile): Observable<any> {
     return this.http.put(`${this.baseUrl}/UpdateProfile`, data);
   }
+
+  changePassword(data: UserProfile): Observable<any> {
+    return this.http.put(`${this.baseUrl}/ChangePassword`, data);
+  }
 }

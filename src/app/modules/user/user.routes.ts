@@ -60,6 +60,16 @@ export const USER_ROUTES: Routes = [
                 loadComponent: () => import('./pages/profile/profile.component').then((c) => c.ProfileComponent),
                 title: 'My Profile'
             },
+            {
+                path: 'profile/edit-profile',
+                loadComponent: () => import('./pages/edit-profile/edit-profile.component').then((c) => c.EditProfileComponent),
+                title: 'Edit Profile'
+            },
+            {
+                path: 'profile/change-password',
+                loadComponent: () => import('./pages/change-password/change-password.component').then((c) => c.ChangePasswordComponent),
+                title: 'Change Password'
+            },
         ]
     }
 ] 

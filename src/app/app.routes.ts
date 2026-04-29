@@ -13,7 +13,7 @@ export const routes: Routes = [
     {
         path:"users",
         loadChildren:()=>import('./modules/user/user.routes').then((m)=>m.USER_ROUTES),
-        // canActivate:[userAuthGuard]
+        canActivate:[userAuthGuard]
     },
     {
         path:"vendors",
