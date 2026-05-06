@@ -54,18 +54,29 @@ export class LoginComponent {
 
     this.authService.login(formData).subscribe({
       next: (res) => {
-
         if (res) {
           this.authService.refreshToken(res.accessToken, res.refreshToken).subscribe({
             next: (res) => {
               if (res) {
+                const role = this.authService.getUserData()?.role;
+
                 this.isLoading = false;
                 this.authService.saveAccessToken(res.accessToken);
                 this.authService.saveUserData();
+
                 if (typeof window != 'undefined') {
                   localStorage.setItem('welcomeState', 'true');
                 }
-                this.router.navigate(['/users']);
+
+                if (role === 'SuperAdmin' || role === 'Admin') {
+                  this.router.navigate(['/admin']);
+                } else if (role === 'Customer') {
+                  this.router.navigate(['/users']);
+                } else {
+                  this.router.navigate(['/']);
+                }
+
+                this.cdr.detectChanges();
               }
               this.cdr.detectChanges();
             },

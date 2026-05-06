@@ -1,0 +1,231 @@
+<section class="min-h-screen bg-slate-50 xl:grid xl:grid-cols-[288px_1fr] font-sans">
+
+    <aside class="fixed inset-y-0 left-0 z-500 w-72 sm:w-80 xl:w-72 xl:sticky h-screen xl:top-0 bg-white border-r border-slate-100 transform transition-transform duration-300 ease-in-out xl:translate-x-0 shadow-2xl xl:shadow-none flex flex-col shrink-0 font-body"
+        [class]="{ 'translate-x-0': isSidebarOpen(), '-translate-x-full': !isSidebarOpen() }">
+
+        <div class="flex flex-col h-full p-6 gap-y-2">
+            <div class="mb-8 px-2 flex items-center justify-between shrink-0">
+                <div routerLink="/users/dashboard"
+                    class="flex items-center gap-3 w-full h-20 px-5 py-2 cursor-pointer rounded-lg hover:scale-105 hover:bg-slate-100 transition-all duration-300">
+                    <img src="./logos/zaraa.png" alt="Zaraa Logo" class="h-full w-full drop-shadow-sm">
+                </div>
+                <button (click)="closeSidebar()"
+                    class="xl:hidden text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded-lg cursor-pointer p-2 -mr-2 transition-all">
+                    <i class="fa-solid fa-xmark text-xl w-5 flex justify-center"></i>
+                </button>
+            </div>
+
+            <nav class="flex-1 flex flex-col gap-y-1.5 overflow-y-auto px-2 -mx-2 custom-scrollbar">
+                @if (role === "SuperAdmin") {
+                    <details class="group">
+                    <summary
+                        class="flex items-center justify-between px-4 py-3 text-slate-600 cursor-pointer rounded-xl hover:bg-slate-50 hover:text-green-600 transition-colors list-none [&::-webkit-details-marker]:hidden">
+                        <div class="flex items-center gap-3">
+                            <i 
+                        class="fa-solid fa-users w-5 flex justify-center text-lg text-slate-400 group-hover:text-green-500 transition-colors"></i>
+                            <span class="font-semibold">Users</span>
+                        </div>
+                        <span class="transition-transform duration-300 group-open:rotate-180">
+                            <i class="fa-solid fa-angle-down text-sm text-gray-500"></i>
+                        </span>
+                    </summary>
+
+                    <ul class="mt-2 mb-2 space-y-1 px-2 border-l-2 border-slate-100 ml-6">
+                        <li>
+                            <a ((click)="closeSidebar()" routerLink="/admin/all_users" routerLinkActive="text-green-600 bg-green-50 font-bold"
+                                class="block px-4 py-2 text-sm font-medium text-slate-500 rounded-lg hover:text-green-600 hover:bg-green-50 transition-colors">
+                                Show All Users
+                            </a>
+                        </li>
+                    </ul>
+                </details>
+                }
+
+                <details class="group">
+                    <summary
+                        class="flex items-center justify-between px-4 py-3 text-slate-600 cursor-pointer rounded-xl hover:bg-slate-50 hover:text-green-600 transition-colors list-none [&::-webkit-details-marker]:hidden">
+                        <div class="flex items-center gap-3">
+                            <i
+                        class="fa-solid fa-layer-group w-5 flex justify-center text-lg text-slate-400 group-hover:text-green-500 transition-colors"></i>
+                            <span class="font-semibold">Categories</span>
+                        </div>
+                        <span class="transition-transform duration-300 group-open:rotate-180">
+                            <i class="fa-solid fa-angle-down text-sm text-gray-500"></i>
+                        </span>
+                    </summary>
+
+                    <ul class="mt-2 mb-2 space-y-1 px-2 border-l-2 border-slate-100 ml-6">
+                        <li>
+                            <a (click)="closeSidebar()" routerLink="/admin/add_new_category" routerLinkActive="text-green-600 bg-green-50 font-bold"
+                                class="block px-4 py-2 text-sm font-medium text-slate-500 rounded-lg hover:text-green-600 hover:bg-green-50 transition-colors">
+                                Add Category
+                            </a>
+                        </li>
+                        <li>
+                            <a (click)="closeSidebar()" routerLink="/admin/all_categories" routerLinkActive="text-green-600 bg-green-50 font-bold"
+                                class="block px-4 py-2 text-sm font-medium text-slate-500 rounded-lg hover:text-green-600 hover:bg-green-50 transition-colors">
+                                Show All Categories
+                            </a>
+                        </li>
+                    </ul>
+                </details>
+
+                <details class="group">
+                    <summary
+                        class="flex items-center justify-between px-4 py-3 text-slate-600 cursor-pointer rounded-xl hover:bg-slate-50 hover:text-green-600 transition-colors list-none [&::-webkit-details-marker]:hidden">
+                        <div class="flex items-center gap-3">
+                            <i
+                        class="fa-solid fa-tag w-5 flex justify-center text-lg text-slate-400 group-hover:text-green-500 transition-colors"></i>
+                            <span class="font-semibold">Brands</span>
+                        </div>
+                        <span class="transition-transform duration-300 group-open:rotate-180">
+                            <i class="fa-solid fa-angle-down text-sm text-gray-500"></i>
+                        </span>
+                    </summary>
+
+                    <ul class="mt-2 mb-2 space-y-1 px-2 border-l-2 border-slate-100 ml-6">
+                        <li>
+                            <a (click)="closeSidebar()" routerLink="/admin/add_new_brand" routerLinkActive="text-green-600 bg-green-50 font-bold"
+                                class="block px-4 py-2 text-sm font-medium text-slate-500 rounded-lg hover:text-green-600 hover:bg-green-50 transition-colors">
+                                Add New Brand
+                            </a>
+                        </li>
+                        <li>
+                            <a (click)="closeSidebar()" routerLink="/admin/all_brands" routerLinkActive="text-green-600 bg-green-50 font-bold"
+                                class="block px-4 py-2 text-sm font-medium text-slate-500 rounded-lg hover:text-green-600 hover:bg-green-50 transition-colors">
+                                Show All Brands
+                            </a>
+                        </li>
+                    </ul>
+                </details>
+
+                <details class="group">
+                    <summary
+                        class="flex items-center justify-between px-4 py-3 text-slate-600 cursor-pointer rounded-xl hover:bg-slate-50 hover:text-green-600 transition-colors list-none [&::-webkit-details-marker]:hidden">
+                        <div class="flex items-center gap-3">
+                            <i
+                        class="fa-solid fa-basket-shopping w-5 flex justify-center text-lg text-slate-400 group-hover:text-green-500 transition-colors"></i>
+                            <span class="font-semibold">Products</span>
+                        </div>
+                        <span class="transition-transform duration-300 group-open:rotate-180">
+                            <i class="fa-solid fa-angle-down text-sm text-gray-500"></i>
+                        </span>
+                    </summary>
+
+                    <ul class="mt-2 mb-2 space-y-1 px-2 border-l-2 border-slate-100 ml-6">
+                        <li>
+                            <a (click)="closeSidebar()" routerLink="/admin/add_new_product" routerLinkActive="text-green-600 bg-green-50 font-bold"
+                                class="block px-4 py-2 text-sm font-medium text-slate-500 rounded-lg hover:text-green-600 hover:bg-green-50 transition-colors">
+                                Add New Product
+                            </a>
+                        </li>
+                        <li>
+                            <a (click)="closeSidebar()" routerLink="/admin/all_products" routerLinkActive="text-green-600 bg-green-50 font-bold"
+                                class="block px-4 py-2 text-sm font-medium text-slate-500 rounded-lg hover:text-green-600 hover:bg-green-50 transition-colors">
+                                Show All Products
+                            </a>
+                        </li>
+                    </ul>
+                </details>
+
+                <details class="group">
+                    <summary
+                        class="flex items-center justify-between px-4 py-3 text-slate-600 cursor-pointer rounded-xl hover:bg-slate-50 hover:text-green-600 transition-colors list-none [&::-webkit-details-marker]:hidden">
+                        <div class="flex items-center gap-3">
+                            <i
+                        class="fa-solid fa-shopping-cart w-5 flex justify-center text-lg text-slate-400 group-hover:text-green-500 transition-colors"></i>
+                            <span class="font-semibold">Orders</span>
+                        </div>
+                        <span class="transition-transform duration-300 group-open:rotate-180">
+                            <i class="fa-solid fa-angle-down text-sm text-gray-500"></i>
+                        </span>
+                    </summary>
+
+                    <ul class="mt-2 mb-2 space-y-1 px-2 border-l-2 border-slate-100 ml-6">
+                        <li>
+                            <a (click)="closeSidebar()" routerLink="/admin/all_orders" routerLinkActive="text-green-600 bg-green-50 font-bold"
+                                class="block px-4 py-2 text-sm font-medium text-slate-500 rounded-lg hover:text-green-600 hover:bg-green-50 transition-colors">
+                                Show All Orders
+                            </a>
+                        </li>
+                    </ul>
+                </details>
+            </nav>
+
+            <div class="mt-auto mb-10 pt-6 border-t border-slate-100 shrink-0">
+                <div routerLink="/users/profile" (click)="closeSidebar()"
+                    class="group flex items-center gap-3 p-3 bg-slate-50 rounded-2xl hover:bg-white hover:shadow-md hover:shadow-slate-200/50 transition-all duration-300 cursor-pointer border border-transparent hover:border-slate-200 hover:-translate-y-1">
+                    <div
+                        class="w-10 h-10 rounded-xl bg-emerald-100 flex items-center justify-center text-emerald-700 font-bold text-xl shrink-0 leading-none shadow-inner font-['Namdhinggo'!important] capitalize">
+                        <span> {{char}} </span>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <p
+                            class="text-xl capitalize font-bold text-slate-800 truncate font-headline leading-tight group-hover:text-emerald-700 transition-colors font-['Namdhinggo'!important]">
+                            {{ userFirstName }}
+                        </p>
+
+                        <p class="text-[10px] capitalize tracking-widest text-emerald-600 font-bold truncate mt-0.5">
+                            {{ userRole }}
+                        </p>
+                    </div>
+                    <button class="p-2 text-slate-400 group-hover:text-emerald-600 rounded-lg transition-colors">
+                        <i class="fa-solid fa-gear group-hover:rotate-90 transition-transform duration-500"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    @if (isSidebarOpen()) {
+    <div (click)="closeSidebar()"
+        class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-400 xl:hidden transition-all duration-300"></div>
+    }
+
+    <div class="flex flex-col min-w-0 min-h-screen bg-slate-50">
+        <header
+            class=" w-full h-16 md:h-20 bg-white border-b border-b-slate-200 flex items-center justify-between xl:justify-end px-3 md:px-8 shrink-0 fixed top-0 left-0 right-0 md:relative z-40">
+
+            <div class="flex items-center justify-between gap-4 w-full xl:hidden">
+                <div routerLink="/users/dashboard"
+                    class="flex items-center gap-3 w-30 h-15 py-2 cursor-pointer rounded-lg hover:scale-105 hover:bg-slate-100 transition-all duration-300">
+                    <img src="./logos/zaraa.png" alt="Zaraa Logo" class="h-full w-full drop-shadow-sm">
+                </div>
+
+                <button (click)="toggleSidebar()"
+                    class="xl:hidden p-2.5 bg-slate-100 text-slate-600 rounded-xl cursor-pointer">
+                    <i class="fa-solid fa-bars-staggered"></i>
+                </button>
+            </div>
+
+            <div class="hidden md:flex md:items-center md;gap-4 ">
+                <button
+                    class="w-10 h-10 flex items-center justify-center bg-white border border-slate-200 rounded-xl text-slate-500 hover:bg-emerald-50 hover:text-emerald-600 hover:border-emerald-200 transition-all relative cursor-pointer">
+                    <i class="fa-solid fa-bell"></i>
+                    <span
+                        class="absolute top-2.5 right-2.5 w-2 h-2 bg-red-500 rounded-full border-2 border-white"></span>
+                </button>
+
+                <button
+                    class="w-10 h-10 flex items-center justify-center bg-white border border-slate-200 rounded-xl text-slate-500 hover:bg-emerald-50 hover:text-emerald-600 hover:border-emerald-200 transition-all relative cursor-pointer">
+                    <i class="fa-solid fa-cart-arrow-down"></i>
+                    <span
+                        class="absolute top-2.5 right-2.5 w-2 h-2 bg-red-500 rounded-full border-2 border-white"></span>
+                </button>
+
+                <button routerLink="/users/diagnosis"
+                    class="hidden xl:flex items-center gap-3 px-6 py-3 bg-emerald-900 hover:bg-emerald-600 text-white font-semibold rounded-2xl shadow-lg shadow-emerald-200/30 transform hover:scale-105 transition-all duration-200 cursor-pointer">
+                    <i class="fa-solid fa-camera text-lg"></i>
+                    <span>New Scan</span>
+                </button>
+            </div>
+        </header>
+
+        <main class="flex-1 flex flex-col">
+            <div class="flex-1 mt-15 md:mt-0 p-4 sm:p-6 lg:p-10 lg:pt-6 w-full mx-auto">
+                <router-outlet></router-outlet>
+            </div>
+            <!-- <app-footer class="mt-auto shrink-0"></app-footer> -->
+        </main>
+    </div>
+</section>
