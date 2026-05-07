@@ -7,16 +7,22 @@ import { provideRouter, withComponentInputBinding, withInMemoryScrolling } from 
 import { routes } from './app.routes';
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
 import { authHeaderInterceptor } from './core/interceptors/auth-header-interceptor';
-import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideRouter(routes, withComponentInputBinding()),
-    provideHttpClient(withInterceptors([authHeaderInterceptor])),
-    provideBrowserGlobalErrorListeners(),
-    provideRouter(routes,
+    provideRouter(
+      routes, 
+      withComponentInputBinding(),
       withInMemoryScrolling({scrollPositionRestoration: 'enabled'})
-    ), provideClientHydration(withEventReplay()),
+    ),
+    
+    provideHttpClient(
+      withInterceptors([authHeaderInterceptor]) // ترتيبهم هنا مش هيفرق كتير
+    ),
+    
+    provideBrowserGlobalErrorListeners(),
+    provideClientHydration(withEventReplay()),
     // provideNoopAnimations()
   ]
 };
