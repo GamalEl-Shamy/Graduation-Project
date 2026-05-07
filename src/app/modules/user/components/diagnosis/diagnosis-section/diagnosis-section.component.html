@@ -1,10 +1,11 @@
 <div class="relative overflow-visible flex flex-col items-center w-full font-sans">
 
-    <div class="w-full relative z-10 bg-white/95 backdrop-blur-3xl rounded-[2.5rem] shadow-[0_8px_40px_-12px_rgba(0,0,0,0.1)] border border-slate-100 border-t-3 border-t-[#012d1d]  border-b-3 border-b-[#012d1d] overflow-hidden flex flex-col min-h-[75vh]">
+    <div
+        class="w-full relative z-10 bg-white/95 backdrop-blur-3xl rounded-[2.5rem] shadow-[0_8px_40px_-12px_rgba(0,0,0,0.1)] border border-slate-100 border-t-3 border-t-[#012d1d]  border-b-3 border-b-[#012d1d] overflow-hidden flex flex-col min-h-[75vh]">
 
         <div class="px-6 py-8 border-b border-slate-100 bg-slate-50/50">
             <div class="flex items-center justify-between max-w-2xl mx-auto relative px-4">
-              
+
                 <div class="absolute left-[15%] right-[50%] top-6 h-1 rounded-full -z-10 transition-colors duration-500"
                     [class]="currentStep() >= 2 ? 'bg-[#012d1d]' : 'bg-slate-200'"></div>
                 <div class="absolute left-[50%] right-[15%] top-6 h-1 rounded-full -z-10 transition-colors duration-500"
@@ -42,14 +43,17 @@
         @if (currentStep() === 1) {
         <div class="flex-1 p-8 md:p-10 flex flex-col transition-all duration-500">
 
-            <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-10 bg-white p-6 rounded-4xl shadow-sm border border-slate-100/60">
+            <div
+                class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-10 bg-white p-6 rounded-4xl shadow-sm border border-slate-100/60">
                 <div class="px-2">
                     <h3 class="text-2xl font-extrabold text-[#012d1d] font-sans">Choose Species</h3>
-                    <p class="text-sm text-slate-500 mt-1 font-medium">Select the plant type to calibrate the AI model</p>
+                    <p class="text-sm text-slate-500 mt-1 font-medium">Select the plant type to calibrate the AI model
+                    </p>
                 </div>
                 <div class="relative w-full md:w-96 group">
                     <div class="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none">
-                        <i class="fa-solid fa-magnifying-glass text-slate-400 group-focus-within:text-[#012d1d] transition-colors"></i>
+                        <i
+                            class="fa-solid fa-magnifying-glass text-slate-400 group-focus-within:text-[#012d1d] transition-colors"></i>
                     </div>
                     <input type="text" placeholder="Search Apple, Tomato..."
                         class="w-full pl-12 pr-6 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-[#c1ecd4]/50 focus:border-[#012d1d] outline-none transition-all text-slate-800 placeholder-slate-400 font-medium"
@@ -68,12 +72,14 @@
                     <img [src]="plant.img" [alt]="plant.name"
                         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
 
-                    <div class="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-5">
+                    <div
+                        class="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-5">
                         <span class="text-white text-lg font-bold tracking-wide font-sans">{{ plant.name }}</span>
                     </div>
 
                     @if (selectedPlant()?.id === plant.id) {
-                    <div class="absolute top-4 right-4 bg-[#c1ecd4] text-[#012d1d] w-10 h-10 rounded-full flex items-center justify-center shadow-lg animate-in zoom-in-50 duration-300">
+                    <div
+                        class="absolute top-4 right-4 bg-[#c1ecd4] text-[#012d1d] w-10 h-10 rounded-full flex items-center justify-center shadow-lg animate-in zoom-in-50 duration-300">
                         <i class="fa-solid fa-check text-lg font-black"></i>
                     </div>
                     }
@@ -83,7 +89,8 @@
 
             @if (filteredPlants().length === 0) {
             <div class="flex-1 flex flex-col items-center justify-center text-center py-16">
-                <div class="w-24 h-24 bg-slate-50 rounded-full flex items-center justify-center mb-6 border border-slate-100 shadow-inner">
+                <div
+                    class="w-24 h-24 bg-slate-50 rounded-full flex items-center justify-center mb-6 border border-slate-100 shadow-inner">
                     <i class="fa-solid fa-leaf text-4xl text-slate-300"></i>
                 </div>
                 <h4 class="text-xl font-extrabold text-slate-800 font-sans">No plants found</h4>
@@ -94,17 +101,21 @@
         }
 
         @if (currentStep() === 2) {
-        <div class="flex-1 p-8 md:p-12 flex flex-col items-center justify-center animate-in fade-in slide-in-from-right-8 duration-500">
+        <div
+            class="flex-1 p-8 md:p-12 flex flex-col items-center justify-center animate-in fade-in slide-in-from-right-8 duration-500">
             <div class="text-center max-w-2xl w-full">
 
-                <h2 class="text-3xl md:text-4xl font-extrabold text-[#012d1d] mb-4 tracking-tight font-sans">Upload {{ selectedPlant()?.name }} Photo</h2>
-                <p class="text-slate-500 mb-10 font-medium">For best results, ensure the affected area is clearly visible and well-lit.</p>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-[#012d1d] mb-4 tracking-tight font-sans">Upload {{
+                    selectedPlant()?.name }} Photo</h2>
+                <p class="text-slate-500 mb-10 font-medium">For best results, ensure the affected area is clearly
+                    visible and well-lit.</p>
 
                 @if (!previewUrl()) {
                 <label for="imageUpload"
                     class="group relative flex flex-col items-center justify-center w-full h-80 md:h-96 rounded-[2.5rem] border-2 border-dashed border-slate-300 bg-slate-50 hover:bg-slate-100 hover:border-[#012d1d] transition-all duration-300 cursor-pointer overflow-hidden">
 
-                    <div class="w-24 h-24 mb-6 rounded-4xl bg-white shadow-sm border border-slate-100 flex items-center justify-center text-slate-400 group-hover:scale-110 group-hover:text-[#012d1d] group-hover:shadow-md transition-all duration-500 transform-gpu">
+                    <div
+                        class="w-24 h-24 mb-6 rounded-4xl bg-white shadow-sm border border-slate-100 flex items-center justify-center text-slate-400 group-hover:scale-110 group-hover:text-[#012d1d] group-hover:shadow-md transition-all duration-500 transform-gpu">
                         <i class="fa-solid fa-cloud-arrow-up text-4xl"></i>
                     </div>
 
@@ -115,10 +126,12 @@
                         (change)="onFileSelected($event)" />
                 </label>
                 } @else {
-                <div class="relative w-full max-w-lg mx-auto rounded-[2.5rem] overflow-hidden shadow-2xl group animate-in zoom-in-95 duration-500 border-[6px] border-white">
+                <div
+                    class="relative w-full max-w-lg mx-auto rounded-[2.5rem] overflow-hidden shadow-2xl group animate-in zoom-in-95 duration-500 border-[6px] border-white">
                     <img [src]="previewUrl()" alt="Plant to analyze" class="w-full h-80 md:h-96 object-cover" />
 
-                    <div class="absolute inset-0 bg-slate-900/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
+                    <div
+                        class="absolute inset-0 bg-slate-900/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
                         <button (click)="clearPreview()"
                             class="px-6 py-3 bg-red-500 hover:bg-red-600 text-white font-bold rounded-xl shadow-lg cursor-pointer transition-transform hover:scale-105 flex items-center gap-2">
                             <i class="fa-solid fa-trash-can"></i> Remove Image
@@ -131,15 +144,172 @@
         }
 
         @if (currentStep() === 3) {
+        @if (errorMessage()) {
+        <div class="mb-6 mx-4 lg:mx-8 bg-red-50 border-l-4 border-red-500 p-4 rounded-xl shadow-sm flex items-start">
+            <div class="shrink-0 mt-0.5">
+                <i class="fa-solid fa-circle-exclamation text-red-500 text-lg"></i>
+            </div>
+
+            <div class="ml-3 flex-1">
+                <h3 class="text-sm font-bold text-red-800">Oops! Something went wrong</h3>
+                <p class="mt-1 text-sm text-red-700 font-medium">
+                    {{ errorMessage() }}
+                </p>
+            </div>
+
+            <div class="ml-auto pl-3">
+                <button (click)="errorMessage.set(null)"
+                    class="text-red-400 hover:text-red-600 transition-colors p-1 rounded-md hover:bg-red-100 cursor-pointer">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+        </div>
+        }
+
+        @if (analysisResult()) {
+        <div
+            class="mt-8 mx-4 lg:mx-8 bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden animate-fade-in-up">
+
+            <div class="p-6 text-white text-center relative"
+                [class]="analysisResult()!.prediction.toLowerCase().includes('healthy') ? 'bg-linear-to-r from-green-500 to-emerald-400' : 'bg-linear-to-r from-red-500 to-orange-400'">
+
+                <div
+                    class="absolute top-4 right-4 bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-bold flex items-center gap-2">
+                    <i class="fa-solid fa-bullseye"></i>
+                    {{ analysisResult()!.confidence }} Accuracy
+                </div>
+
+                <div
+                    class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm mb-3 mt-4">
+                    @if (analysisResult()!.prediction.toLowerCase().includes('healthy')) {
+                    <i class="fa-solid fa-leaf text-3xl text-white"></i>
+                    } @else {
+                    <i class="fa-solid fa-triangle-exclamation text-3xl text-white"></i>
+                    }
+                </div>
+
+                <h2 class="text-sm uppercase tracking-[0.2em] font-bold opacity-80 mb-1">
+                    <span class="text-lg">{{ analysisResult()!.plant }}</span> Analysis
+                </h2>
+                <h1 class="text-3xl md:text-4xl font-extrabold drop-shadow-md">
+                    {{ analysisResult()!.prediction }}
+                </h1>
+            </div>
+
+            <div class="p-6 md:p-8 space-y-6">
+
+                <div class="flex items-center justify-around">
+                    <div class="flex gap-4 items-start">
+                        <div class="mt-1 w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center shrink-0">
+                            <i class="fa-solid fa-seedling text-orange-500 text-lg"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-gray-900 font-bold text-lg mb-1">Plant</h3>
+                            <p class="text-gray-600 text-sm leading-relaxed">
+                                {{ analysisResult()!.plant }}
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4 items-start">
+                        <div class="mt-1 w-10 h-10 rounded-full flex items-center justify-center shrink-0"
+                            [class]="analysisResult()!.prediction.toLowerCase().includes('healthy')? 'bg-green-50' : 'bg-red-50' ">
+                            @if (analysisResult()!.prediction.toLowerCase().includes('healthy')) {
+                            <i class="fa-solid fa-leaf text-green-500 text-lg"></i>
+                            } @else {
+                            <i class="fa-solid fa-triangle-exclamation text-red-500 text-lg"></i>
+                            }
+                        </div>
+                        <div>
+                            <h3 class="text-gray-900 font-bold text-lg mb-1">Prediction</h3>
+                            <p class="text-gray-600 text-sm leading-relaxed">
+                                {{ analysisResult()!.prediction }}
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4 items-start">
+                        <div class="mt-1 w-10 h-10 rounded-full bg-yellow-50 flex items-center justify-center shrink-0">
+                            <i class="fa-solid fa-circle-info text-yellow-500 text-lg"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-gray-900 font-bold text-lg mb-1">Confidence</h3>
+                            <p class="text-gray-600 text-sm leading-relaxed">
+                                {{ analysisResult()!.confidence }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex gap-4 items-start">
+                    <div class="mt-1 w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center shrink-0">
+                        <i class="fa-solid fa-circle-info text-blue-500 text-lg"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-gray-900 font-bold text-lg mb-1">Description</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            {{ analysisResult()!.details.Description }}
+                        </p>
+                    </div>
+                </div>
+
+                <hr class="border-gray-100">
+
+                <div class="flex gap-4 items-start">
+                    <div class="mt-1 w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center shrink-0">
+                        <i class="fa-solid fa-magnifying-glass-chart text-orange-500 text-lg"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-gray-900 font-bold text-lg mb-1">Symptoms</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            {{ analysisResult()!.details.Symptoms }}
+                        </p>
+                    </div>
+                </div>
+
+                <hr class="border-gray-100">
+
+                <div class="flex gap-4 items-start">
+                    <div class="mt-1 w-10 h-10 rounded-full bg-green-50 flex items-center justify-center shrink-0">
+                        <i class="fa-solid fa-kit-medical text-green-500 text-lg"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-gray-900 font-bold text-lg mb-1">Treatment & Recommendation</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            {{ analysisResult()!.details.Treatment }}
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div
+                class="bg-gray-50 p-6 border-t border-gray-100 flex flex-col md:flex-row gap-4 justify-between items-center">
+                <button (click)="clearPreview()" (click)="currentStep.set(1)"
+                    class="text-gray-500 hover:text-gray-800 font-semibold text-sm transition-colors cursor-pointer flex items-center gap-2">
+                    <i class="fa-solid fa-rotate-right"></i> Scan Another Plant
+                </button>
+
+                @if (!analysisResult()!.prediction.toLowerCase().includes('healthy')) {
+                <button routerLink="/users/shop"
+                    class="bg-green-600 hover:bg-green-700 text-white px-6 py-2.5 rounded-xl cursor-pointer font-bold text-sm transition-all shadow-sm flex items-center gap-2">
+                    <i class="fa-solid fa-cart-shopping"></i> Find Treatments in Store
+                </button>
+                }
+            </div>
+        </div>
+        }@else {
         <div class="flex-1 flex flex-col items-center justify-center p-12">
-            <div class="relative w-40 h-40 bg-white rounded-full shadow-2xl flex items-center justify-center border border-slate-50 mb-8 mx-auto">
+            <div
+                class="relative w-40 h-40 bg-white rounded-full shadow-2xl flex items-center justify-center border border-slate-50 mb-8 mx-auto">
                 <i class="fa-solid fa-microscope text-6xl text-[#012d1d] animate-bounce"></i>
 
                 <svg class="absolute inset-0 w-full h-full animate-[spin_4s_linear_infinite]" viewBox="0 0 100 100">
                     <circle cx="50" cy="50" r="48" fill="none" stroke="#c1ecd4" stroke-width="3"
                         stroke-dasharray="60 40 20 40" stroke-linecap="round"></circle>
                 </svg>
-                <svg class="absolute inset-0 w-full h-full animate-[spin_3s_linear_infinite_reverse]" viewBox="0 0 100 100">
+                <svg class="absolute inset-0 w-full h-full animate-[spin_3s_linear_infinite_reverse]"
+                    viewBox="0 0 100 100">
                     <circle cx="50" cy="50" r="42" fill="none" stroke="#012d1d" stroke-width="2"
                         stroke-dasharray="40 20 60 20" stroke-linecap="round" opacity="0.4"></circle>
                 </svg>
@@ -147,6 +317,7 @@
             <h3 class="text-3xl font-extrabold text-[#012d1d] tracking-tight font-sans">Analyzing your plant...</h3>
             <p class="text-slate-500 mt-3 font-medium text-lg">Our A.I. is scanning for patterns and diseases.</p>
         </div>
+        }
         }
 
         <div class="p-6 md:p-8 bg-slate-50/80 border-t border-slate-100 flex items-center justify-between">
@@ -159,6 +330,7 @@
                 [disabled]="(currentStep() === 1 && !selectedPlant()) || (currentStep() === 2 && !previewUrl()) || currentStep() === 3"
                 class="px-8 py-4 bg-linear-to-br from-[#012d1d] to-[#1b4332] text-white font-bold rounded-2xl shadow-lg cursor-pointer transition-all hover:shadow-xl hover:-translate-y-1 hover:scale-[1.02] disabled:cursor-not-allowed disabled:from-slate-200 disabled:to-slate-200 disabled:text-slate-400 disabled:shadow-none disabled:transform-none flex items-center gap-3 active:scale-95">
                 {{ currentStep() === 1 ? 'Continue to Upload' : 'Start Analysis' }}
+                {{ currentStep() === 3 ? 'analyzeImage()' : null }}
                 @if(currentStep() !== 3){
                 <i class="fa-solid fa-arrow-right"></i>
                 }
