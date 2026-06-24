@@ -1,165 +1,218 @@
+<app-ambient-background></app-ambient-background>
+
 <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 opacity-0 animate-fade-in-up delay-100">
     <div class="space-y-3">
-        <div class="flex items-center gap-2 text-sm font-bold text-gray-400 mb-2">
-            <span class="hover:text-gray-900 cursor-pointer transition-colors">Dashboard</span>
-            <i class="fa-solid fa-angle-right"></i>
-            <span class="text-green-600">Add New Product</span>
+        <div class="flex items-center gap-2 text-sm font-bold text-gray-400 dark:text-gray-500 mb-2">
+            <span
+                class="hover:text-gray-900 dark:hover:text-gray-300 cursor-pointer transition-colors duration-200">Dashboard</span>
+            <i class="fa-solid fa-angle-right text-[10px] mt-0.5"></i>
+            <span class="text-green-600 dark:text-green-400">Add New Product</span>
         </div>
-        <div class="flex items-center gap-4">
-            <h1 class="text-4xl md:text-[2.75rem]  font-extrabold tracking-tight text-gray-900 leading-none">
-                Add New<span class="text-transparent bg-clip-text bg-linear-to-r from-green-600 to-green-400">
-                    Product</span>
-            </h1>
 
+        <div class="flex items-center gap-4">
+            <div
+                class="hidden sm:flex items-center justify-center w-12 h-12 rounded-2xl bg-white dark:bg-[#111c14] border border-gray-200 dark:border-green-900/30 shadow-xs dark:shadow-green-900/10">
+                <i class="fa-solid fa-basket-shopping text-xl text-green-600 dark:text-green-400"></i>
+            </div>
+
+            <h1
+                class="text-4xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-linear-to-r from-emerald-800 to-teal-600 dark:from-emerald-300 dark:to-lime-200 mb-2 drop-shadow-sm">
+                Add New Product
+            </h1>
         </div>
+        <p class="text-gray-500 dark:text-gray-400 text-sm md:text-base font-medium max-w-xl mt-1">
+            Create and configure a new product to include in your catalog.
+        </p>
     </div>
 </div>
 
 <form [formGroup]="productForm" (ngSubmit)="onSubmit()" class="space-y-4">
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 opacity-0 animate-fade-in-up delay-200 mt-6">
         <div class="lg:col-span-2 space-y-5">
-            <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
-                <h3 class="font-syne font-bold text-gray-800 mb-4 flex items-center gap-2">
-                    <div class="w-6 h-6 bg-green-100 rounded-lg flex items-center justify-center">
-                        <i class="fa-solid fa-info text-green-600 text-xs"></i>
+            <div
+                class="bg-white dark:bg-slate-900 rounded-2xl border border-gray-100 dark:border-slate-800 shadow-sm p-6 transition-all duration-300">
+                <h3 class="font-syne font-bold text-gray-800 dark:text-white mb-4 flex items-center gap-2">
+                    <div
+                        class="w-6 h-6 bg-green-100 dark:bg-green-500/20 rounded-lg flex items-center justify-center transition-colors">
+                        <i class="fa-solid fa-info text-green-600 dark:text-green-400 text-xs"></i>
                     </div>
                     <span class="font-['Manrope'] text-xl">Product Information</span>
                 </h3>
                 @if (errorMessage()) {
                 <div
-                    class="mb-6 flex items-center gap-3 bg-red-50/90 py-3 px-4 rounded-xl border-l-4 border-red-500 text-red-600 shake shadow-sm transition-all">
+                    class="mb-6 flex items-center gap-3 bg-red-50/90 dark:bg-red-500/10 py-3 px-4 rounded-xl border-l-4 border-red-500 text-red-600 dark:text-red-400 shake shadow-sm transition-all">
                     <i class="fa-solid fa-circle-exclamation text-lg"></i>
                     <span class="text-sm font-semibold">{{errorMessage()}}</span>
                 </div>
                 }
                 @if (successMessage()) {
                 <div
-                    class="mb-6 flex items-center gap-3 bg-green-50/90 py-3 px-4 rounded-xl border-l-4 border-green-500 text-green-600 shake shadow-sm transition-all">
+                    class="mb-6 flex items-center gap-3 bg-green-50/90 dark:bg-green-500/10 py-3 px-4 rounded-xl border-l-4 border-green-500 text-green-600 dark:text-green-400 shake shadow-sm transition-all">
                     <i class="fa-solid fa-circle-check text-lg"></i>
                     <span class="text-sm font-semibold">{{successMessage()}}</span>
                 </div>
                 }
                 <div class="space-y-4">
                     <div>
-                        <label class="block text-md font-semibold text-gray-700 mb-1.5">Product Name <span
-                                class="text-red-500">*</span></label>
+                        <label class="block text-md font-semibold text-gray-700 dark:text-slate-300 mb-1.5">Product Name
+                            <span class="text-red-500 dark:text-red-400">*</span></label>
                         <input formControlName="name" type="text" placeholder="e.g. Product"
-                            class="peer w-full py-3.5 pl-11 pr-4 rounded-xl px-4 text-sm outline-none transition-all shadow-sm"
+                            class="peer w-full py-3.5 pl-11 pr-4 rounded-xl px-4 text-sm outline-none transition-all shadow-sm bg-white dark:bg-slate-800/50 text-gray-800 dark:text-slate-200 placeholder-gray-400 dark:placeholder-slate-500"
                             [class]="{
                                 'border': !(f['name'].touched),
                                 'border-gray-300': !(f['name'].touched),
+                                'dark:border-slate-700': !(f['name'].touched),
                                 'focus:border-2': !(f['name'].touched),
                                 'focus:border-green-500': !(f['name'].touched),
                                 'border-2': (f['name'].invalid && f['name'].touched) || f['name'].valid ,
                                 'border-red-400': f['name'].invalid && f['name'].touched,
+                                'dark:border-red-500/50': f['name'].invalid && f['name'].touched,
                                 'bg-red-50': f['name'].invalid && f['name'].touched,
+                                'dark:bg-red-500/5': f['name'].invalid && f['name'].touched,
                                 'focus:ring-red-100': f['name'].invalid && f['name'].touched,
+                                'dark:focus:ring-red-500/20': f['name'].invalid && f['name'].touched,
                                 'border-green-500': f['name'].valid,
-                                'bg-emerald-50': f['name'].valid
+                                'dark:border-green-500/50': f['name'].valid,
+                                'bg-emerald-50': f['name'].valid,
+                                'dark:bg-green-500/5': f['name'].valid
                                 }">
                         @if (f['name'].touched && f['name'].errors?.['required']) {
-                        <span class="text-red-500 text-xs ml-3 shake inline-block">Category is required</span>
+                        <span class="text-red-500 dark:text-red-400 text-xs ml-3 shake inline-block mt-1">Product Name
+                            is required</span>
                         }
                         @if (f['name'].touched && f['name'].errors?.['minlength']) {
-                        <span class="text-red-500 text-xs ml-3 shake inline-block">At least 2 characters</span>
+                        <span class="text-red-500 dark:text-red-400 text-xs ml-3 shake inline-block mt-1">At least 2
+                            characters</span>
                         }
                     </div>
                     <div>
-                        <label class="block text-md font-semibold text-gray-700 mb-1.5">Description</label>
+                        <label
+                            class="block text-md font-semibold text-gray-700 dark:text-slate-300 mb-1.5">Description</label>
                         <textarea formControlName="description" rows="4" placeholder="Describe the product..."
-                            [class]="productForm.get('description')?.invalid && productForm.get('description')?.touched ? 'border-red-500' : 'border-gray-300'"
-                            class="w-full border border-gray-300 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-green-500/30 focus:border-green-500 transition-all placeholder-gray-300 resize-none"></textarea>
+                            [class]="productForm.get('description')?.invalid && productForm.get('description')?.touched ? 'border-red-500 dark:border-red-500/50' : 'border-gray-300 dark:border-slate-700'"
+                            class="w-full border rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-green-500/30 focus:border-green-500 transition-all placeholder-gray-300 dark:placeholder-slate-500 resize-none bg-white dark:bg-slate-800/50 text-gray-800 dark:text-slate-200"></textarea>
                     </div>
-                    <div class="grid grid-cols-2 gap-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                            <label class="block text-md font-semibold text-gray-700 mb-1.5">Price (EGP) <span
-                                    class="text-red-500">*</span></label>
+                            <label class="block text-md font-semibold text-gray-700 dark:text-slate-300 mb-1.5">Price
+                                (EGP) <span class="text-red-500 dark:text-red-400">*</span></label>
                             <div class="relative">
                                 <span
-                                    class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm font-bold">£</span>
+                                    class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 dark:text-slate-500 text-sm font-bold">£</span>
                                 <input formControlName="price" type="number" placeholder="e.g. 150" min="0"
-                                    class="peer w-full py-3.5 pl-11 pr-4 rounded-xl px-4 text-sm outline-none transition-all shadow-sm"
+                                    class="peer w-full py-3.5 pl-11 pr-4 rounded-xl px-4 text-sm outline-none transition-all shadow-sm bg-white dark:bg-slate-800/50 text-gray-800 dark:text-slate-200 placeholder-gray-400 dark:placeholder-slate-500"
                                     [class]="{
                                         'border': !(f['price'].touched),
                                         'border-gray-300': !(f['price'].touched),
+                                        'dark:border-slate-700': !(f['price'].touched),
                                         'focus:border-2': !(f['price'].touched),
                                         'focus:border-green-500': !(f['price'].touched),
                                         'border-2': (f['price'].invalid && f['price'].touched) || f['price'].valid ,
                                         'border-red-400': f['price'].invalid && f['price'].touched,
+                                        'dark:border-red-500/50': f['price'].invalid && f['price'].touched,
                                         'bg-red-50': f['price'].invalid && f['price'].touched,
+                                        'dark:bg-red-500/5': f['price'].invalid && f['price'].touched,
                                         'focus:ring-red-100': f['price'].invalid && f['price'].touched,
+                                        'dark:focus:ring-red-500/20': f['price'].invalid && f['price'].touched,
                                         'border-green-500': f['price'].valid,
-                                        'bg-emerald-50': f['price'].valid
+                                        'dark:border-green-500/50': f['price'].valid,
+                                        'bg-emerald-50': f['price'].valid,
+                                        'dark:bg-green-500/5': f['price'].valid
                                     }">
 
                                 @if (f['price'].touched && f['price'].errors?.['required']) {
-                                <span class="text-red-500 text-xs ml-3 shake inline-block">Price is required</span>
+                                <span class="text-red-500 dark:text-red-400 text-xs ml-3 shake inline-block mt-1">Price
+                                    is required</span>
                                 }
                                 @if (f['price'].touched && f['price'].errors?.['min']) {
-                                <span class="text-red-500 text-xs ml-3 shake inline-block">Price cannot be less than
+                                <span class="text-red-500 dark:text-red-400 text-xs ml-3 shake inline-block mt-1">Price
+                                    cannot be less than
                                     0</span>
                                 }
                             </div>
                         </div>
                         <div>
-                            <label class="block text-md font-semibold text-gray-700 mb-1.5">Stock Quantity <span
-                                    class="text-red-500">*</span></label>
+                            <label class="block text-md font-semibold text-gray-700 dark:text-slate-300 mb-1.5">Stock
+                                Quantity <span class="text-red-500 dark:text-red-400">*</span></label>
                             <input formControlName="quantity" type="number" placeholder="e.g. 50" min="0"
-                                class="peer w-full py-3.5 pl-11 pr-4 rounded-xl px-4 text-sm outline-none transition-all shadow-sm"
+                                class="peer w-full py-3.5 pl-11 pr-4 rounded-xl px-4 text-sm outline-none transition-all shadow-sm bg-white dark:bg-slate-800/50 text-gray-800 dark:text-slate-200 placeholder-gray-400 dark:placeholder-slate-500"
                                 [class]="{
                                     'border': !(f['quantity'].touched),
                                     'border-gray-300': !(f['quantity'].touched),
+                                    'dark:border-slate-700': !(f['quantity'].touched),
                                     'focus:border-2': !(f['quantity'].touched),
                                     'focus:border-green-500': !(f['quantity'].touched),
                                     'border-2': (f['quantity'].invalid && f['quantity'].touched) || f['quantity'].valid ,
                                     'border-red-400': f['quantity'].invalid && f['quantity'].touched,
+                                    'dark:border-red-500/50': f['quantity'].invalid && f['quantity'].touched,
                                     'bg-red-50': f['quantity'].invalid && f['quantity'].touched,
+                                    'dark:bg-red-500/5': f['quantity'].invalid && f['quantity'].touched,
                                     'focus:ring-red-100': f['quantity'].invalid && f['quantity'].touched,
+                                    'dark:focus:ring-red-500/20': f['quantity'].invalid && f['quantity'].touched,
                                     'border-green-500': f['quantity'].valid,
-                                    'bg-emerald-50': f['quantity'].valid
+                                    'dark:border-green-500/50': f['quantity'].valid,
+                                    'bg-emerald-50': f['quantity'].valid,
+                                    'dark:bg-green-500/5': f['quantity'].valid
                                 }">
                             @if (f['quantity'].touched && f['quantity'].errors?.['required']) {
-                            <span class="text-red-500 text-xs ml-3 shake inline-block">Quantity is required</span>
+                            <span class="text-red-500 dark:text-red-400 text-xs ml-3 shake inline-block mt-1">Quantity
+                                is required</span>
                             }
                             @if (f['quantity'].touched && f['quantity'].errors?.['min']) {
-                            <span class="text-red-500 text-xs ml-3 shake inline-block">Quantity cannot be less than
+                            <span class="text-red-500 dark:text-red-400 text-xs ml-3 shake inline-block mt-1">Quantity
+                                cannot be less than
                                 0</span>
                             }
                         </div>
                     </div>
-                    <div class="grid grid-cols-2 gap-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                            <label class="block text-md font-semibold text-gray-700 mb-1.5">Status <span
-                                    class="text-red-500">*</span></label>
-                            <select formControlName="status"
-                                class="w-full border border-gray-300 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-green-500/30 focus:border-green-500 transition-all text-gray-600 bg-white cursor-pointer">
-                                <option [ngValue]="true">Active</option>
-                                <option [ngValue]="false">Inactive</option>
-                            </select>
+                            <label class="block text-md font-semibold text-gray-700 dark:text-slate-300 mb-1.5">Status
+                                <span class="text-red-500 dark:text-red-400">*</span></label>
+                            <div class="relative">
+                                <select #statusSelect (change)="statusSelect.blur()" formControlName="status"
+                                    class="peer w-full border border-gray-300 dark:border-gray-600 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-green-500/30 focus:border-green-500 dark:focus:border-green-400 transition-all text-gray-600 dark:text-gray-200 bg-white dark:bg-slate-800 cursor-pointer shadow-sm">
+                                    <option [ngValue]="true">Active</option>
+                                    <option [ngValue]="false">Inactive</option>
+                                </select>
+                                <div
+                                    class="absolute top-1/2 right-4 -translate-y-1/2 text-gray-600 dark:text-gray-200 pointer-events-none transition-all duration-300 peer-focus:rotate-180 ">
+                                    <i class="fa-solid fa-angle-down"></i>
+                                </div>
+                            </div>
                         </div>
                         <div>
-                            <label class="block text-md font-semibold text-gray-700 mb-1.5">Discount %</label>
+                            <label class="block text-md font-semibold text-gray-700 dark:text-slate-300 mb-1.5">Discount
+                                %</label>
 
                             <div class="relative">
                                 <span
-                                    class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm font-bold">%</span>
+                                    class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 dark:text-slate-500 text-sm font-bold">%</span>
                                 <input formControlName="discount" type="number" placeholder="e.g. 10" min="0"
-                                    class="peer w-full py-3.5 pl-11 pr-4 rounded-xl px-4 text-sm outline-none transition-all shadow-sm"
+                                    class="peer w-full py-3.5 pl-11 pr-4 rounded-xl px-4 text-sm outline-none transition-all shadow-sm bg-white dark:bg-slate-800/50 text-gray-800 dark:text-slate-200 placeholder-gray-400 dark:placeholder-slate-500"
                                     [class]="{
                                         'border': !(f['discount'].touched),
                                         'border-gray-300': !(f['discount'].touched),
+                                        'dark:border-slate-700': !(f['discount'].touched),
                                         'focus:border-2': !(f['discount'].touched),
                                         'focus:border-green-500': !(f['discount'].touched),
                                         'border-2': (f['discount'].invalid && f['discount'].touched) || f['discount'].valid ,
                                         'border-red-400': f['discount'].invalid && f['discount'].touched,
+                                        'dark:border-red-500/50': f['discount'].invalid && f['discount'].touched,
                                         'bg-red-50': f['discount'].invalid && f['discount'].touched,
+                                        'dark:bg-red-500/5': f['discount'].invalid && f['discount'].touched,
                                         'focus:ring-red-100': f['discount'].invalid && f['discount'].touched,
+                                        'dark:focus:ring-red-500/20': f['discount'].invalid && f['discount'].touched,
                                         'border-green-500': f['discount'].valid,
-                                        'bg-emerald-50': f['discount'].valid
+                                        'dark:border-green-500/50': f['discount'].valid,
+                                        'bg-emerald-50': f['discount'].valid,
+                                        'dark:bg-green-500/5': f['discount'].valid
                                     }">
 
                                 @if (f['discount'].touched && f['discount'].errors?.['min']) {
-                                <span class="text-red-500 text-xs ml-3 shake inline-block">Discount cannot be less than
+                                <span
+                                    class="text-red-500 dark:text-red-400 text-xs ml-3 shake inline-block mt-1">Discount
+                                    cannot be less than
                                     0</span>
                                 }
                             </div>
@@ -168,68 +221,112 @@
                 </div>
             </div>
 
-            <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
-                <h3 class="font-syne font-bold text-gray-800 mb-4 flex items-center gap-2">
-                    <div class="w-6 h-6 bg-green-100 rounded-lg flex items-center justify-center"><i
-                            class="fa-solid fa-layer-group text-green-600 text-xs"></i></div>
+            <div
+                class="bg-white dark:bg-slate-900 rounded-2xl border border-gray-100 dark:border-slate-800 shadow-sm p-6 transition-all duration-300">
+                <h3 class="font-syne font-bold text-gray-800 dark:text-white mb-4 flex items-center gap-2">
+                    <div
+                        class="w-6 h-6 bg-green-100 dark:bg-green-500/20 rounded-lg flex items-center justify-center transition-colors">
+                        <i class="fa-solid fa-layer-group text-green-600 dark:text-green-400 text-xs"></i>
+                    </div>
                     <span class="font-['Manrope'] text-xl">Classification</span>
                 </h3>
-                <div class="grid grid-cols-2 gap-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                        <label class="block text-md font-semibold text-gray-700 mb-1.5">Category <span
-                                class="text-red-500">*</span></label>
-                        <select formControlName="categoryId"
-                            class="peer w-full py-3.5 pl-11 pr-10 rounded-xl text-sm outline-none transition-all shadow-sm appearance-none bg-white cursor-pointer"
-                            [class]="{
-                                'border border-gray-300 focus:border-green-500 focus:border-2': !(f['categoryId'].touched && f['categoryId'].invalid) && !(f['categoryId'].valid && f['categoryId'].touched),
-                                'border-2 border-red-400 bg-red-50 focus:ring-red-100': f['categoryId'].invalid && f['categoryId'].touched,
-                                'border-2 border-green-500 bg-emerald-50': f['categoryId'].valid && f['categoryId'].touched
+                        <label class="block text-md font-semibold text-gray-700 dark:text-slate-300 mb-1.5">Category
+                            <span class="text-red-500 dark:text-red-400">*</span></label>
+                        <div class="relative">
+                            <select #statusSelect (change)="statusSelect.blur()" formControlName="categoryId"
+                                class="peer w-full rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-green-500/30 focus:border-green-500 dark:focus:border-green-400 transition-all text-gray-600 dark:text-gray-200 bg-white dark:bg-slate-800 cursor-pointer shadow-sm"
+                                [class]="{
+                                'border': !(f['categoryId'].touched && f['categoryId'].invalid) && !(f['categoryId'].valid && f['categoryId'].touched),
+                                'border-gray-300': !(f['categoryId'].touched && f['categoryId'].invalid) && !(f['categoryId'].valid && f['categoryId'].touched),
+                                'dark:border-slate-700': !(f['categoryId'].touched && f['categoryId'].invalid) && !(f['categoryId'].valid && f['categoryId'].touched),
+                                'focus:border-green-500': !(f['categoryId'].touched && f['categoryId'].invalid) && !(f['categoryId'].valid && f['categoryId'].touched),
+                                'focus:border-2': !(f['categoryId'].touched && f['categoryId'].invalid) && !(f['categoryId'].valid && f['categoryId'].touched),
+                                'border-2': (f['categoryId'].invalid || f['categoryId'].valid ) && f['categoryId'].touched,
+                                'border-red-400': f['categoryId'].invalid && f['categoryId'].touched,
+                                'dark:border-red-500/50': f['categoryId'].invalid && f['categoryId'].touched,
+                                'bg-red-50': f['categoryId'].invalid && f['categoryId'].touched,
+                                'dark:bg-red-500/5': f['categoryId'].invalid && f['categoryId'].touched,
+                                'focus:ring-red-100': f['categoryId'].invalid && f['categoryId'].touched,
+                                'dark:focus:ring-red-500/20': f['categoryId'].invalid && f['categoryId'].touched,
+                                'border-green-500': f['categoryId'].valid && f['categoryId'].touched,
+                                'dark:border-green-500/50': f['categoryId'].valid && f['categoryId'].touched,
+                                'bg-emerald-50': f['categoryId'].valid && f['categoryId'].touched,
+                                'dark:bg-green-500/5': f['categoryId'].valid && f['categoryId'].touched,
                             }">
 
-                            <option [ngValue]="null" disabled selected>Select Category</option>
-                            @for (category of categoriesList(); track category.id) {
-                            @if (category.status) {
-                            <option [value]="category.id">{{ category.name }}</option>
-                            }
-                            }
-                        </select>
+                                <option [ngValue]="null" disabled selected>Select Category</option>
+                                @for (category of categoriesList(); track category.id) {
+                                @if (category.status) {
+                                <option [value]="category.id">{{ category.name }}</option>
+                                }
+                                }
+                            </select>
+                            <div
+                                class="absolute top-1/2 right-4 -translate-y-1/2 text-gray-600 dark:text-gray-200 pointer-events-none transition-all duration-300 peer-focus:rotate-180 ">
+                                <i class="fa-solid fa-angle-down"></i>
+                            </div>
+                        </div>
 
                         <div
-                            class="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none text-gray-400">
+                            class="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none text-gray-400 dark:text-slate-500">
                             <i class="fa-solid fa-chevron-down text-xs"></i>
                         </div>
 
                         @if (f['categoryId'].touched && f['categoryId'].errors?.['required']) {
-                        <span class="text-red-500 text-xs ml-3 shake inline-block mt-1">Category is required</span>
+                        <span class="text-red-500 dark:text-red-400 text-xs ml-3 shake inline-block mt-1">Category is
+                            required</span>
                         }
                     </div>
                     <div>
-                        <label class="block text-md font-semibold text-gray-700 mb-1.5">Brand <span
-                                class="text-red-500">*</span></label>
-                        <select formControlName="brandId"
-                            class="peer w-full py-3.5 pl-11 pr-10 rounded-xl text-sm outline-none transition-all shadow-sm appearance-none bg-white cursor-pointer"
-                            [class]="{
-                                'border border-gray-300 focus:border-green-500 focus:border-2': !(f['brandId'].touched && f['brandId'].invalid) && !(f['brandId'].valid && f['brandId'].touched),
-                                'border-2 border-red-400 bg-red-50 focus:ring-red-100': f['brandId'].invalid && f['brandId'].touched,
-                                'border-2 border-green-500 bg-emerald-50': f['brandId'].valid && f['brandId'].touched
-                            }">
+                        <label class="block text-md font-semibold text-gray-700 dark:text-slate-300 mb-1.5">Brand <span
+                                class="text-red-500 dark:text-red-400">*</span></label>
+                        <div class="relative">
+                            <select #statusSelect (change)="statusSelect.blur()" formControlName="brandId"
+                                class="peer w-full rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-green-500/30 focus:border-green-500 dark:focus:border-green-400 transition-all text-gray-600 dark:text-gray-200 bg-white dark:bg-slate-800 cursor-pointer shadow-sm"
+                                [class]="{
+                                    'border': !(f['brandId'].touched && f['brandId'].invalid) && !(f['brandId'].valid && f['brandId'].touched),
+                                    'border-gray-300': !(f['brandId'].touched && f['brandId'].invalid) && !(f['brandId'].valid && f['brandId'].touched),
+                                    'dark:border-slate-700': !(f['brandId'].touched && f['brandId'].invalid) && !(f['brandId'].valid && f['brandId'].touched),
+                                    'focus:border-green-500': !(f['brandId'].touched && f['brandId'].invalid) && !(f['brandId'].valid && f['brandId'].touched),
+                                    'focus:border-2': !(f['brandId'].touched && f['brandId'].invalid) && !(f['brandId'].valid && f['brandId'].touched),
+                                    'border-2': (f['brandId'].invalid || f['brandId'].valid) && f['brandId'].touched,
+                                    'border-red-400': f['brandId'].invalid && f['brandId'].touched,
+                                    'dark:border-red-500/50': f['brandId'].invalid && f['brandId'].touched,
+                                    'bg-red-50': f['brandId'].invalid && f['brandId'].touched,
+                                    'dark:bg-red-500/5': f['brandId'].invalid && f['brandId'].touched,
+                                    'focus:ring-red-100': f['brandId'].invalid && f['brandId'].touched,
+                                    'dark:focus:ring-red-500/20': f['brandId'].invalid && f['brandId'].touched,
+                                    'border-green-500': f['brandId'].valid && f['brandId'].touched,
+                                    'dark:border-green-500/50': f['brandId'].valid && f['brandId'].touched,
+                                    'bg-emerald-50': f['brandId'].valid && f['brandId'].touched,
+                                    'dark:bg-green-500/5': f['brandId'].valid && f['brandId'].touched
+                                }">
 
-                            <option [ngValue]="null" disabled selected>Select Brand</option>
+                                <option [ngValue]="null" disabled selected>Select Brand</option>
 
-                            @for (brand of brandsList(); track brand.id) {
-                            @if (brand.status) {
-                            <option [value]="brand.id">{{ brand.name }}</option>
-                            }
-                            }
-                        </select>
+                                @for (brand of brandsList(); track brand.id) {
+                                @if (brand.status) {
+                                <option [value]="brand.id">{{ brand.name }}</option>
+                                }
+                                }
+                            </select>
+
+                            <div
+                                class="absolute top-1/2 right-4 -translate-y-1/2 text-gray-600 dark:text-gray-200 pointer-events-none transition-all duration-300 peer-focus:rotate-180 ">
+                                <i class="fa-solid fa-angle-down"></i>
+                            </div>
+                        </div>
 
                         <div
-                            class="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none text-gray-400">
+                            class="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none text-gray-400 dark:text-slate-500">
                             <i class="fa-solid fa-chevron-down text-xs"></i>
                         </div>
 
                         @if (f['brandId'].touched && f['brandId'].errors?.['required']) {
-                        <span class="text-red-500 text-xs ml-3 shake inline-block mt-1">Brand is required</span>
+                        <span class="text-red-500 dark:text-red-400 text-xs ml-3 shake inline-block mt-1">Brand is
+                            required</span>
                         }
                     </div>
                 </div>
@@ -237,36 +334,40 @@
         </div>
 
         <div class="space-y-5">
-            <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
-                <h3 class="font-syne font-bold text-gray-800 mb-4 flex items-center gap-2">
-                    <div class="w-6 h-6 bg-green-100 rounded-lg flex items-center justify-center"><i
-                            class="fa-solid fa-image text-green-600 text-xs"></i></div>
+            <div
+                class="bg-white dark:bg-slate-900 rounded-2xl border border-gray-100 dark:border-slate-800 shadow-sm p-6 transition-all duration-300">
+                <h3 class="font-syne font-bold text-gray-800 dark:text-white mb-4 flex items-center gap-2">
+                    <div
+                        class="w-6 h-6 bg-green-100 dark:bg-green-500/20 rounded-lg flex items-center justify-center transition-colors">
+                        <i class="fa-solid fa-image text-green-600 dark:text-green-400 text-xs"></i>
+                    </div>
                     Product Image
                 </h3>
 
                 <label for="img-upload" class="block cursor-pointer">
                     <div class="border-2 border-dashed rounded-2xl p-8 text-center transition-all duration-200 group"
                         [class]="{
-                            'border-gray-200 hover:border-green-400 hover:bg-green-50/50': !(f['mainImg'].invalid && f['mainImg'].touched),
-                            'border-red-400 bg-red-50': f['mainImg'].invalid && f['mainImg'].touched
+                            'border-gray-200 dark:border-slate-700 hover:border-green-400 dark:hover:border-green-500 hover:bg-green-50/50 dark:hover:bg-green-500/10': !(f['mainImg'].invalid && f['mainImg'].touched),
+                            'border-red-400 dark:border-red-500/50 bg-red-50 dark:bg-red-500/5': f['mainImg'].invalid && f['mainImg'].touched
                         }">
 
                         @if (imagePreview()) {
                         <img [src]="imagePreview()" alt="Preview"
                             class="mx-auto max-h-32 object-contain rounded-lg mb-3 shadow-sm">
-                        <p class="text-sm font-semibold text-green-600 transition-colors">
+                        <p class="text-sm font-semibold text-green-600 dark:text-green-400 transition-colors">
                             <i class="fa-solid fa-pen mr-1"></i> Click to change image
                         </p>
                         }
                         @else {
                         <div
-                            class="w-14 h-14 bg-gray-50 rounded-2xl flex items-center justify-center mx-auto mb-3 group-hover:bg-green-100 transition-colors">
+                            class="w-14 h-14 bg-gray-50 dark:bg-slate-800/50 rounded-2xl flex items-center justify-center mx-auto mb-3 group-hover:bg-green-100 dark:group-hover:bg-green-500/20 transition-colors">
                             <i
-                                class="fa-solid fa-cloud-arrow-up text-gray-300 text-2xl group-hover:text-green-500 transition-colors"></i>
+                                class="fa-solid fa-cloud-arrow-up text-gray-300 dark:text-slate-600 text-2xl group-hover:text-green-500 dark:group-hover:text-green-400 transition-colors"></i>
                         </div>
-                        <p class="text-sm font-semibold text-gray-500 group-hover:text-green-700 transition-colors">
+                        <p
+                            class="text-sm font-semibold text-gray-500 dark:text-slate-400 group-hover:text-green-700 dark:group-hover:text-green-400 transition-colors">
                             Click to upload image</p>
-                        <p class="text-xs text-gray-300 mt-1">PNG, JPG up to 5MB</p>
+                        <p class="text-xs text-gray-300 dark:text-slate-500 mt-1">PNG, JPG up to 5MB</p>
                         }
                     </div>
 
@@ -275,44 +376,46 @@
                 </label>
 
                 @if (f['mainImg'].touched && f['mainImg'].errors?.['required']) {
-                <span class="text-red-500 text-xs ml-3 shake inline-block mt-1">Image is required</span>
+                <span class="text-red-500 dark:text-red-400 text-xs ml-3 shake inline-block mt-1">Image is
+                    required</span>
                 }
 
                 <div class="hidden mt-4">
-                    <div class="relative rounded-2xl overflow-hidden border border-gray-100">
+                    <div class="relative rounded-2xl overflow-hidden border border-gray-100 dark:border-slate-800">
                         <img src="" alt="preview" class="w-full h-48 object-cover" />
                         <button onclick="clearImage()"
-                            class="absolute top-2 right-2 w-7 h-7 bg-black/50 hover:bg-red-500 rounded-lg flex items-center justify-center text-white transition-colors">
+                            class="absolute top-2 right-2 w-7 h-7 bg-black/50 hover:bg-red-500 dark:hover:bg-red-500/80 rounded-lg flex items-center justify-center text-white transition-colors">
                             <i class="fa-solid fa-xmark text-xs"></i>
                         </button>
                     </div>
                 </div>
             </div>
 
-            <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
+            <div
+                class="bg-white dark:bg-slate-900 rounded-2xl border border-gray-100 dark:border-slate-800 shadow-sm p-6 transition-all duration-300">
                 @if (!isSubmitting()) {
                 <button
-                    class="w-full py-3 cursor-pointer tracking-[0.12em] bg-green-600 hover:bg-green-700 text-white font-bold text-lg rounded-xl transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5 flex items-center justify-center gap-2">
+                    class="w-full py-3 cursor-pointer  text-md md:tracking-[0.12em] bg-linear-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 hover:shadow-lg hover:shadow-emerald-500/30 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2 focus:ring-offset-slate-900 text-white font-bold md:text-lg rounded-xl transition-all shadow-sm flex items-center justify-center gap-2">
                     @if (productData()) {
-                        Update Product
+                    Update Product
                     }@else {
-                        Add Product
+                    Add Product
                     }
                 </button>
                 }
                 @else {
                 <button type="submit" disabled
-                    class="w-full py-3 rounded-xl bg-gray-300 text-gray-600 cursor-not-allowed opacity-80 flex items-center justify-center gap-3">
-                    <svg class="animate-spin h-6 w-6 text-gray-600" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 24 24">
+                    class="w-full py-3 rounded-xl bg-gray-300 dark:bg-slate-700 text-gray-600 dark:text-slate-400 cursor-not-allowed opacity-80 flex items-center justify-center gap-3 transition-colors">
+                    <svg class="animate-spin h-6 w-6 text-gray-600 dark:text-slate-400"
+                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                         <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
                         <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z" />
                     </svg>
-                    <span class="font-['Bebas_Neue'] tracking-[0.25em] text-lg font-medium mt-1">PROCESSING...</span>
+                    <span class="font-['Bebas_Neue']  text-md md:tracking-[0.25em] md:text-lg font-medium mt-1">PROCESSING...</span>
                 </button>
                 }
                 <button type="button" (click)="cancel()"
-                    class="w-full py-3 mt-3 cursor-pointer bg-gray-200 hover:bg-gray-300 text-gray-600 font-semibold text-md rounded-xl transition-all">
+                    class="w-full py-3 mt-3 cursor-pointer text-md bg-gray-200 dark:bg-slate-800 hover:bg-gray-300 dark:hover:bg-slate-700 text-gray-600 dark:text-slate-300 font-semibold md:text-lg rounded-xl transition-all">
                     Cancel
                 </button>
             </div>

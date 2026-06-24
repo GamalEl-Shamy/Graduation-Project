@@ -80,6 +80,7 @@ private categoriesService = inject(CategoriesService);
     } else {
       this.categoriesService.createCategory(requestData).subscribe({
         next: (res) => {
+          this.onSuccess.emit();
           this.isSubmitting.set(false);
           this.errorMessage.set(null);
           this.successMessage.set('Category created successfully.');

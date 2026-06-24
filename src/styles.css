@@ -1,6 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import "tailwindcss";
+@variant dark (&:where(.dark, .dark *));
+
+.theme-transition,
+.theme-transition *,
+.theme-transition *::before,
+.theme-transition *::after {
+  transition-property: background-color, border-color, text-decoration-color, fill, stroke, color !important;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
+  transition-duration: 400ms !important;
+}
 
 /* Start Animation */
 .float-1 {
@@ -236,57 +246,48 @@ input[type="password"]::-webkit-clear-button {
 /* ===== Scrollbar Global Styling ===== */
 html {
   scrollbar-width: thin;
-  /* Firefox */
   scrollbar-color: #10b981 #fff;
-  /* thumb / track */
-  /* 0f172a */
 }
 
 /* Chrome, Edge, Safari */
 ::-webkit-scrollbar {
   width: 8px;
-  /* أرفع شوية من 10px عشان يبقى أنيق */
   height: 8px;
-  /* للـ horizontal scrollbar لو موجود */
 }
 
 ::-webkit-scrollbar-track {
   background: transparent;
-  /* شفاف → يندمج مع الخلفية */
   margin: 4px 0;
-  /* مساحة صغيرة فوق وتحت */
   border-radius: 9999px;
-  /* دائري تمامًا */
 }
 
 ::-webkit-scrollbar-thumb {
   background: #10b981;
-  /* emerald-600 الأساسي */
   border-radius: 9999px;
   border: 2px solid transparent;
-  /* border شفاف عشان ما يبقاش فيه خطوط بيضاء قاسية */
   background-clip: padding-box;
-  /* مهم جدًا عشان الـ border ما يأثرش على اللون */
   min-height: 40px;
-  /* ما يبقاش صغير جدًا */
   transition: background 0.3s ease;
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: #059669;
-  /* emerald-700 عند الـ hover */
 }
 
-/* عند الضغط (active state) */
 ::-webkit-scrollbar-thumb:active {
   background: #047857;
-  /* emerald-800 */
 }
 
-/* لو الـ track عايز لونه يتغير حسب الـ dark/light mode */
 @media (prefers-color-scheme: dark) {
   ::-webkit-scrollbar-track {
     background: #0f172a;
     /* slate-900 */
   }
+}
+
+/* Global Styles */
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
 }

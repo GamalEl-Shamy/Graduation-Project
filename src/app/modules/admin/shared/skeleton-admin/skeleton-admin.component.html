@@ -2,100 +2,100 @@
     <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
         <div class="space-y-3">
             <div class="flex items-center gap-2 mb-2">
-                <div class="h-4 w-20 bg-gray-200 rounded-sm"></div>
-                <div class="h-4 w-4 bg-gray-200 rounded-full"></div>
-                <div class="h-4 w-12 bg-gray-200 rounded-sm"></div>
+                <div class="h-4 w-20 bg-slate-200 dark:bg-slate-800 rounded-sm transition-colors duration-300"></div>
+                <div class="h-4 w-4 bg-slate-200 dark:bg-slate-800 rounded-full transition-colors duration-300"></div>
+                <div class="h-4 w-12 bg-slate-200 dark:bg-slate-800 rounded-sm transition-colors duration-300"></div>
             </div>
             <div class="flex items-center gap-4">
-                <div class="h-12 w-80 bg-gray-200 rounded-xl"></div>
+                <div class="h-12 w-80 bg-slate-200 dark:bg-slate-800 rounded-xl transition-colors duration-300"></div>
             </div>
-            <div class="h-5 w-72 md:w-96 bg-gray-200 rounded-md"></div>
+            <div class="h-5 w-72 md:w-96 bg-slate-200 dark:bg-slate-800 rounded-md transition-colors duration-300"></div>
         </div>
         <div class="flex flex-wrap gap-3 items-center">
-            <div class="h-12 w-36 bg-gray-200 rounded-2xl"></div>
-            <div class="h-12 w-40 bg-gray-200 rounded-2xl"></div>
+            <div class="h-12 w-36 bg-slate-200 dark:bg-slate-800 rounded-2xl transition-colors duration-300"></div>
+            <div class="h-12 w-40 bg-slate-200 dark:bg-slate-800 rounded-2xl transition-colors duration-300"></div>
         </div>
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         @for (item of [1,2,3,4]; track $index) {
-            <div class="bg-white p-8 rounded-4xl shadow-sm border-2 border-gray-100 flex flex-col justify-between min-h-55">
+        <div class="bg-white dark:bg-slate-900 p-8 rounded-4xl shadow-sm dark:shadow-none border-2 border-slate-100 dark:border-slate-800 flex flex-col justify-between min-h-55 transition-colors duration-300">
             <div class="flex items-start justify-between mb-4">
-                <div class="w-16 h-16 rounded-[1.25rem] bg-gray-200"></div>
+                <div class="w-16 h-16 rounded-[1.25rem] bg-slate-200 dark:bg-slate-800 transition-colors duration-300"></div>
             </div>
             <div class="mt-auto space-y-3">
-                <div class="h-10 w-20 bg-gray-200 rounded-lg"></div>
-                <div class="h-4 w-28 bg-gray-200 rounded-md"></div>
+                <div class="h-10 w-20 bg-slate-200 dark:bg-slate-800 rounded-lg transition-colors duration-300"></div>
+                <div class="h-4 w-28 bg-slate-200 dark:bg-slate-800 rounded-md transition-colors duration-300"></div>
             </div>
         </div>
         }
     </div>
 </section>
 
-<section class="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden mt-8 animate-pulse">
-    <div class="p-6 border-b border-gray-100 flex items-center justify-between bg-gray-50/50">
+<section class="bg-white dark:bg-slate-900 rounded-3xl shadow-sm dark:shadow-none border border-slate-100 dark:border-slate-800 overflow-hidden mt-8 animate-pulse transition-colors duration-300">
+    <div class="p-6 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between bg-slate-50/50 dark:bg-slate-800/30 transition-colors duration-300">
         <div class="flex gap-4">
-            <div class="h-10 w-32 bg-gray-200 rounded-xl"></div>
-            <div class="h-10 w-32 bg-gray-200 rounded-xl"></div>
+            <div class="h-10 w-32 bg-slate-200 dark:bg-slate-800 rounded-xl transition-colors duration-300"></div>
+            <div class="h-10 w-32 bg-slate-200 dark:bg-slate-800 rounded-xl transition-colors duration-300"></div>
         </div>
     </div>
 
     <div class="overflow-x-auto">
         <table class="w-full text-left border-collapse">
-            <thead class="bg-gray-50/50">
+            <thead class="bg-slate-50/50 dark:bg-slate-800/30 transition-colors duration-300">
                 <tr>
-                    <th class="px-8 py-5 border-b border-gray-100">
-                        <div class="h-4 w-24 bg-gray-200 rounded-md"></div>
+                    <th class="px-8 py-5 border-b border-slate-100 dark:border-slate-800 transition-colors duration-300">
+                        <div class="h-4 w-24 bg-slate-200 dark:bg-slate-700/50 rounded-md transition-colors duration-300"></div>
                     </th>
-                    <th class="px-6 py-5 border-b border-gray-100">
-                        <div class="h-4 w-16 bg-gray-200 rounded-md"></div>
+                    <th class="px-6 py-5 border-b border-slate-100 dark:border-slate-800 transition-colors duration-300">
+                        <div class="h-4 w-16 bg-slate-200 dark:bg-slate-700/50 rounded-md transition-colors duration-300"></div>
                     </th>
-                    <th class="px-6 py-5 border-b border-gray-100">
-                        <div class="h-4 w-28 bg-gray-200 rounded-md"></div>
+                    <th class="px-6 py-5 border-b border-slate-100 dark:border-slate-800 transition-colors duration-300">
+                        <div class="h-4 w-28 bg-slate-200 dark:bg-slate-700/50 rounded-md transition-colors duration-300"></div>
                     </th>
-                    <th class="px-6 py-5 border-b border-gray-100">
-                        <div class="h-4 w-20 bg-gray-200 rounded-md"></div>
+                    <th class="px-6 py-5 border-b border-slate-100 dark:border-slate-800 transition-colors duration-300">
+                        <div class="h-4 w-20 bg-slate-200 dark:bg-slate-700/50 rounded-md transition-colors duration-300"></div>
                     </th>
-                    <th class="px-6 py-5 border-b border-gray-100">
-                        <div class="h-4 w-28 bg-gray-200 rounded-md"></div>
+                    <th class="px-6 py-5 border-b border-slate-100 dark:border-slate-800 transition-colors duration-300">
+                        <div class="h-4 w-28 bg-slate-200 dark:bg-slate-700/50 rounded-md transition-colors duration-300"></div>
                     </th>
-                    <th class="px-6 py-5 border-b border-gray-100">
-                        <div class="h-4 w-20 bg-gray-200 rounded-md"></div>
+                    <th class="px-6 py-5 border-b border-slate-100 dark:border-slate-800 transition-colors duration-300">
+                        <div class="h-4 w-20 bg-slate-200 dark:bg-slate-700/50 rounded-md transition-colors duration-300"></div>
                     </th>
-                    <th class="px-8 py-5 border-b border-gray-100">
-                        <div class="h-8 w-24 bg-gray-200 rounded-lg"></div>
+                    <th class="px-8 py-5 border-b border-slate-100 dark:border-slate-800 transition-colors duration-300">
+                        <div class="h-8 w-24 bg-slate-200 dark:bg-slate-700/50 rounded-lg transition-colors duration-300"></div>
                     </th>
                 </tr>
             </thead>
-            <tbody class="divide-y divide-gray-100">
+            <tbody class="divide-y divide-slate-100 dark:divide-slate-800 transition-colors duration-300">
                 @for (item of [1,2,3,4]; track $index) {
-                    <tr>
+                <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/20 transition-colors duration-300">
                     <td class="px-8 py-5">
                         <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 rounded-2xl bg-gray-200"></div>
+                            <div class="w-12 h-12 rounded-2xl bg-slate-200 dark:bg-slate-800 transition-colors duration-300"></div>
                             <div class="space-y-2">
-                                <div class="h-4 w-32 bg-gray-200 rounded-md"></div>
-                                <div class="h-3 w-16 bg-gray-200 rounded-md"></div>
+                                <div class="h-4 w-32 bg-slate-200 dark:bg-slate-800 rounded-md transition-colors duration-300"></div>
+                                <div class="h-3 w-16 bg-slate-200 dark:bg-slate-800 rounded-md transition-colors duration-300"></div>
                             </div>
                         </div>
                     </td>
                     <td class="px-6 py-5">
-                        <div class="h-4 w-40 bg-gray-200 rounded-md"></div>
+                        <div class="h-4 w-40 bg-slate-200 dark:bg-slate-800 rounded-md transition-colors duration-300"></div>
                     </td>
                     <td class="px-6 py-5">
-                        <div class="h-4 w-32 bg-gray-200 rounded-md"></div>
+                        <div class="h-4 w-32 bg-slate-200 dark:bg-slate-800 rounded-md transition-colors duration-300"></div>
                     </td>
                     <td class="px-6 py-5">
-                        <div class="h-4 w-48 bg-gray-200 rounded-md"></div>
+                        <div class="h-4 w-48 bg-slate-200 dark:bg-slate-800 rounded-md transition-colors duration-300"></div>
                     </td>
                     <td class="px-6 py-5">
-                        <div class="h-6 w-24 bg-gray-200 rounded-xl"></div>
+                        <div class="h-6 w-24 bg-slate-200 dark:bg-slate-800 rounded-xl transition-colors duration-300"></div>
                     </td>
                     <td class="px-6 py-5">
-                        <div class="h-6 w-16 bg-gray-200 rounded-xl"></div>
+                        <div class="h-6 w-16 bg-slate-200 dark:bg-slate-800 rounded-xl transition-colors duration-300"></div>
                     </td>
                     <td class="px-6 py-5">
-                        <div class="h-10 w-32 bg-gray-200 rounded-xl"></div>
+                        <div class="h-10 w-32 bg-slate-200 dark:bg-slate-800 rounded-xl transition-colors duration-300"></div>
                     </td>
                 </tr>
                 }

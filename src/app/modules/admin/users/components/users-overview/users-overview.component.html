@@ -1,0 +1,288 @@
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 lg:gap-4 mb-12">
+
+    <!-- Total Users -->
+    <div
+        class="group relative rounded-3xl p-px bg-linear-to-b from-slate-200 to-slate-100 dark:from-white/10 dark:to-white/5 hover:from-blue-500 hover:to-cyan-400 dark:hover:from-blue-500 dark:hover:to-cyan-400 transition-all duration-500 shadow-sm hover:shadow-[0_10px_40px_-10px_rgba(59,130,246,0.4)] dark:hover:shadow-[0_0_40px_-10px_rgba(59,130,246,0.5)] hover:-translate-y-2">
+        <div
+            class="absolute inset-0 bg-linear-to-br from-blue-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl blur-xl z-0">
+        </div>
+
+        <div
+            class="relative z-10 h-full bg-white/90 dark:bg-[#0F1423]/90 backdrop-blur-2xl rounded-3xl p-6 flex flex-col justify-between overflow-hidden">
+            <div
+                class="absolute -right-10 -top-10 w-40 h-40 bg-blue-500/10 dark:bg-blue-500/20 rounded-full blur-3xl group-hover:bg-blue-500/20 dark:group-hover:bg-blue-500/30 transition-colors duration-700 pointer-events-none">
+            </div>
+
+            <div class="relative z-20">
+                <div class="flex justify-between items-start mb-5">
+                    <div
+                        class="w-14 h-14 rounded-2xl bg-linear-to-br from-blue-50 to-blue-100 dark:from-blue-500/10 dark:to-blue-600/10 flex items-center justify-center text-blue-600 dark:text-blue-400 group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(59,130,246,0.4)] transition-all duration-500 border border-blue-200/50 dark:border-blue-500/20">
+                        <i class="fa-solid fa-users text-3xl group-hover:animate-pulse"></i>
+                    </div>
+                    <span
+                        class="flex items-center gap-1 text-sm font-bold text-blue-600 dark:text-blue-400 bg-blue-100/80 dark:bg-blue-500/10 px-3 py-1.5 rounded-full border border-blue-200/50 dark:border-blue-500/20 shadow-sm">
+                        <i class="ph-bold ph-trend-up"></i>
+                        100%
+                    </span>
+                </div>
+
+                <h3
+                    class="text-slate-500 dark:text-slate-400 font-semibold text-sm mb-1 uppercase tracking-wider group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                    Total Users</h3>
+                <div class="flex items-end justify-between">
+                    <p class="text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+                        {{usersInformation().totalCount}}
+                    </p>
+
+                    <svg class="w-16 h-8 text-blue-500/30 group-hover:text-blue-500 transition-colors duration-500"
+                        fill="none" viewBox="0 0 100 30" preserveAspectRatio="none">
+                        <path class="group-hover:stroke-[3px] transition-all" d="M0,30 C20,25 40,28 60,15 S80,10 100,5"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M0,30 C20,25 40,28 60,15 S80,10 100,5 L100,30 L0,30 Z" fill="currentColor"
+                            opacity="0.1" />
+                    </svg>
+                </div>
+            </div>
+            
+            <div class="mt-6 flex items-center gap-5 relative z-20">
+                <div class="relative w-14 h-14 shrink-0 group-hover:scale-110 transition-transform duration-500">
+                    <div class="relative flex items-center justify-center w-14 h-14 group">
+
+                        <div class="h-full bg-linear-to-r from-blue-500 to-cyan-400 w-full rounded-full relative group-hover:shadow-[0_0_10px_rgba(34,211,238,0.8)] transition-all duration-500">
+                            <div
+                                class="absolute inset-[12%] bg-white dark:bg-[#0b0f1a] rounded-full flex items-center justify-center shadow-inner border border-slate-200/50 dark:border-white/5">
+                                <span class="text-[10px] font-bold text-slate-700 dark:text-white">
+                                    100%
+                                </span>
+                            </div>
+                        </div>
+                        <div
+                            class="absolute inset-0 rounded-full group-hover:shadow-[0_0_20px_rgba(168,85,247,0.4)] transition-all duration-500 pointer-events-none">
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="h-2.5 w-full bg-slate-200/50 dark:bg-slate-800/50 rounded-full overflow-hidden border border-slate-300/30 dark:border-white/5 backdrop-blur-sm shadow-inner">
+                    <div [style.width.%]="100"
+                        class="h-full bg-linear-to-r from-blue-500 to-blue-400  rounded-full relative group-hover:shadow-[0_0_10px_rgba(232,121,249,0.8)] transition-all duration-500">
+                        <div
+                            class="absolute top-0 left-0 bottom-0 w-full bg-linear-to-r from-transparent via-white/50 to-transparent animate-[shimmer_2s_infinite]">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Users -->
+    <div
+        class="group relative rounded-3xl p-px bg-linear-to-b from-slate-200 to-slate-100 dark:from-white/10 dark:to-white/5 hover:from-purple-500 hover:to-fuchsia-400 dark:hover:from-purple-500 dark:hover:to-fuchsia-400 transition-all duration-500 shadow-sm hover:shadow-[0_10px_40px_-10px_rgba(168,85,247,0.4)] dark:hover:shadow-[0_0_40px_-10px_rgba(168,85,247,0.5)] hover:-translate-y-2">
+        <div
+            class="absolute inset-0 bg-linear-to-br from-purple-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl blur-xl z-0">
+        </div>
+
+        <div
+            class="relative z-10 h-full bg-white/90 dark:bg-[#0F1423]/90 backdrop-blur-2xl rounded-3xl p-6 flex flex-col justify-between overflow-hidden">
+            <div
+                class="absolute -right-10 -top-10 w-40 h-40 bg-purple-500/10 dark:bg-purple-500/20 rounded-full blur-3xl group-hover:bg-purple-500/20 dark:group-hover:bg-purple-500/30 transition-colors duration-700 pointer-events-none">
+            </div>
+
+            <div class="relative z-20">
+                <div class="flex justify-between items-start mb-5">
+                    <div
+                        class="w-14 h-14 rounded-2xl bg-linear-to-br from-purple-50 to-purple-100 dark:from-purple-500/10 dark:to-purple-600/10 flex items-center justify-center text-purple-600 dark:text-purple-400 group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(168,85,247,0.4)] transition-all duration-500 border border-purple-200/50 dark:border-purple-500/20">
+                        <i class="fa-solid fa-crown text-3xl group-hover:animate-pulse"></i>
+                    </div>
+                    <span
+                        class="flex items-center gap-1 text-sm font-bold text-purple-600 dark:text-purple-400 bg-purple-100/80 dark:bg-purple-500/10 px-3 py-1.5 rounded-full border border-purple-200/50 dark:border-purple-500/20 shadow-sm">
+                        {{adminPercentage().toFixed(2)}}%
+                    </span>
+                </div>
+
+                <h3
+                    class="text-slate-500 dark:text-slate-400 font-semibold text-sm mb-1 uppercase tracking-wider group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
+                    Admin Users</h3>
+                <div class="flex items-end justify-between">
+                    <p class="text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+                        {{usersInformation().adminCount}}
+                    </p>
+
+                    <svg class="w-16 h-8 text-purple-500/30 group-hover:text-purple-500 transition-colors duration-500"
+                        fill="none" viewBox="0 0 100 30" preserveAspectRatio="none">
+                        <path class="group-hover:stroke-[3px] transition-all" d="M0,25 C20,20 40,25 60,15 S80,10 100,2"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M0,25 C20,20 40,25 60,15 S80,10 100,2 L100,30 L0,30 Z" fill="currentColor"
+                            opacity="0.1" />
+                    </svg>
+                </div>
+            </div>
+
+            <div class="mt-6 flex items-center gap-5 relative z-20">
+                <div class="relative w-14 h-14 shrink-0 group-hover:scale-110 transition-transform duration-500">
+                    <div class="relative flex items-center justify-center w-14 h-14 group">
+
+                        <div class="circle-progress shadow-sm"
+                            [style.background]="'conic-gradient(#a855f7, #e879f9 ' + adminPercentage() + '%, var(--track-color) 0)'">
+                            <div
+                                class="absolute inset-[12%] bg-white dark:bg-[#0b0f1a] rounded-full flex items-center justify-center shadow-inner border border-slate-200/50 dark:border-white/5">
+                                <span class="text-[10px] font-bold text-slate-700 dark:text-white">
+                                    {{adminPercentage().toFixed(2)}}%
+                                </span>
+                            </div>
+                        </div>
+                        <div
+                            class="absolute inset-0 rounded-full group-hover:shadow-[0_0_20px_rgba(168,85,247,0.4)] transition-all duration-500 pointer-events-none">
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="h-2.5 w-full bg-slate-200/50 dark:bg-slate-800/50 rounded-full overflow-hidden border border-slate-300/30 dark:border-white/5 backdrop-blur-sm shadow-inner">
+                    <div [style.width.%]="adminPercentage()"
+                        class="h-full bg-linear-to-r from-purple-500 to-fuchsia-400  rounded-full relative group-hover:shadow-[0_0_10px_rgba(232,121,249,0.8)] transition-all duration-500">
+                        <div
+                            class="absolute top-0 left-0 bottom-0 w-full bg-linear-to-r from-transparent via-white/50 to-transparent animate-[shimmer_2s_infinite]">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Active Users -->
+    <div
+        class="group relative rounded-3xl p-px bg-linear-to-b from-slate-200 to-slate-100 dark:from-white/10 dark:to-white/5 hover:from-emerald-500 hover:to-teal-400 dark:hover:from-emerald-500 dark:hover:to-teal-400 transition-all duration-500 shadow-sm hover:shadow-[0_10px_40px_-10px_rgba(16,185,129,0.4)] dark:hover:shadow-[0_0_40px_-10px_rgba(16,185,129,0.5)] hover:-translate-y-2 lg:col-span-1 xl:col-span-1">
+        <div
+            class="absolute inset-0 bg-linear-to-br from-emerald-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl blur-xl z-0">
+        </div>
+
+        <div
+            class="relative z-10 h-full bg-white/90 dark:bg-[#0F1423]/90 backdrop-blur-2xl rounded-3xl p-6 flex flex-col justify-between overflow-hidden">
+            <div
+                class="absolute -right-10 -top-10 w-40 h-40 bg-emerald-500/10 dark:bg-emerald-500/20 rounded-full blur-3xl group-hover:bg-emerald-500/20 dark:group-hover:bg-emerald-500/30 transition-colors duration-700 pointer-events-none">
+            </div>
+
+            <div class="relative z-20">
+                <div class="flex justify-between items-start mb-5">
+                    <div
+                        class="w-14 h-14 rounded-2xl bg-linear-to-br from-emerald-50 to-emerald-100 dark:from-emerald-500/10 dark:to-emerald-600/10 flex items-center justify-center text-emerald-600 dark:text-emerald-400 group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(16,185,129,0.4)] transition-all duration-500 border border-emerald-200/50 dark:border-emerald-500/20">
+                        <i class="fa-solid fa-user-check text-3xl group-hover:animate-pulse"></i>
+                    </div>
+                    <span
+                        class="flex items-center gap-1 text-sm font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-100/80 dark:bg-emerald-500/10 px-3 py-1.5 rounded-full border border-emerald-200/50 dark:border-emerald-500/20 shadow-sm">
+                        {{activePercentage().toFixed(2)}}%
+                    </span>
+                    
+                </div>
+
+                <h3
+                    class="text-slate-500 dark:text-slate-400 font-semibold text-sm mb-1 uppercase tracking-wider group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                    Active Users
+                </h3>
+                <p class="text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+                    {{usersInformation().activeCount}}
+                </p>
+            </div>
+
+            <div class="mt-6 flex items-center gap-5 relative z-20">
+                <div class="relative w-14 h-14 shrink-0 group-hover:scale-110 transition-transform duration-500">
+                    <div class="relative flex items-center justify-center w-14 h-14 group">
+                        <div class="circle-progress shadow-sm"
+                            [style.background]="'conic-gradient(#10b981 ' + activePercentage() + '%, var(--track-color) 0)'">
+                            <div
+                                class="absolute inset-[12%] bg-white dark:bg-[#0b0f1a] rounded-full flex items-center justify-center shadow-inner border border-slate-200/50 dark:border-white/5">
+                                <span class="text-[10px] font-bold text-slate-700 dark:text-white">
+                                    {{activePercentage().toFixed(2)}}%
+                                </span>
+                            </div>
+                        </div>
+                        <div
+                            class="absolute inset-0 rounded-full group-hover:shadow-[0_0_20px_rgba(16,185,129,0.4)] transition-all duration-500 pointer-events-none">
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="flex-1">
+                    <div
+                        class="h-2.5 w-full bg-slate-200/50 dark:bg-slate-800/50 rounded-full overflow-hidden border border-slate-300/30 dark:border-white/5 backdrop-blur-sm shadow-inner">
+                        <div [style.width.%]="activePercentage()"
+                            class="h-full bg-linear-to-r from-emerald-500 to-teal-400 rounded-full relative group-hover:shadow-[0_0_10px_rgba(45,212,191,0.8)] transition-all duration-500">
+                            <div
+                                class="absolute top-0 keft-0 bottom-0 w-full bg-linear-to-r from-transparent via-white/50 to-transparent animate-[shimmer_2s_infinite]">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Blocked Users -->
+    <div
+        class="group relative rounded-3xl p-px bg-linear-to-b from-slate-200 to-slate-100 dark:from-white/10 dark:to-white/5 hover:from-red-500 hover:to-rose-400 dark:hover:from-red-500 dark:hover:to-rose-400 transition-all duration-500 shadow-sm hover:shadow-[0_10px_40px_-10px_rgba(239,68,68,0.4)] dark:hover:shadow-[0_0_40px_-10px_rgba(239,68,68,0.5)] hover:-translate-y-2 lg:col-span-1 xl:col-span-1">
+        <div
+            class="absolute inset-0 bg-linear-to-br from-red-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl blur-xl z-0">
+        </div>
+
+        <div
+            class="relative z-10 h-full bg-white/90 dark:bg-[#0F1423]/90 backdrop-blur-2xl rounded-3xl p-6 flex flex-col justify-between overflow-hidden">
+            <div
+                class="absolute -right-10 -top-10 w-40 h-40 bg-red-500/10 dark:bg-red-500/20 rounded-full blur-3xl group-hover:bg-red-500/20 dark:group-hover:bg-red-500/30 transition-colors duration-700 pointer-events-none">
+            </div>
+
+            <div class="relative z-20">
+                <div class="flex justify-between items-start mb-5">
+                    <div
+                        class="w-14 h-14 rounded-2xl bg-linear-to-br from-red-50 to-red-100 dark:from-red-500/10 dark:to-red-600/10 flex items-center justify-center text-red-600 dark:text-red-400 group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(239,68,68,0.4)] transition-all duration-500 border border-red-200/50 dark:border-red-500/20">
+                        <i class="fa-solid fa-ban text-3xl group-hover:animate-pulse"></i>
+                    </div>
+                    <span
+                        class="flex items-center gap-1 text-sm font-bold text-red-600 dark:text-red-400 bg-red-100/80 dark:bg-red-500/10 px-3 py-1.5 rounded-full border border-red-200/50 dark:border-red-500/20 shadow-sm">
+                        <i class="ph-bold ph-trend-down"></i>
+                        {{blockedPercentage().toFixed(2)}}%
+                    </span>
+                </div>
+
+                <h3
+                    class="text-slate-500 dark:text-slate-400 font-semibold text-sm mb-1 uppercase tracking-wider group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors">
+                    Blocked Users</h3>
+                <p class="text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+                    {{usersInformation().blockedCount}}
+                </p>
+            </div>
+
+            <div class="mt-6 flex items-center gap-5 relative z-20">
+                <div class="relative w-14 h-14 shrink-0 group-hover:scale-110 transition-transform duration-500">
+                    <div class="relative flex items-center justify-center w-14 h-14 group">
+                        <div class="circle-progress shadow-sm"
+                            [style.background]="'conic-gradient(#ef4444 ' + blockedPercentage() + '%, var(--track-color) 0)'">
+                            <div
+                                class="absolute inset-[12%] bg-white dark:bg-[#0b0f1a] rounded-full flex items-center justify-center shadow-inner border border-slate-200/50 dark:border-white/5">
+                                <span class="text-[10px] font-bold text-slate-700 dark:text-white">
+                                    {{blockedPercentage().toFixed(2)}}%
+                                </span>
+                            </div>
+                        </div>
+
+                        <div
+                            class="absolute inset-0 rounded-full group-hover:shadow-[0_0_20px_rgba(239,68,68,0.4)] transition-all duration-500 pointer-events-none">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex-1">
+                    <div
+                        class="h-2.5 w-full bg-slate-200/50 dark:bg-slate-800/50 rounded-full overflow-hidden border border-slate-300/30 dark:border-white/5 backdrop-blur-sm shadow-inner">
+                        <div [style.width.%]="blockedPercentage()"
+                            class="h-full bg-linear-to-r from-red-500 to-rose-400 rounded-full relative group-hover:shadow-[0_0_10px_rgba(251,113,133,0.8)] transition-all duration-500">
+                            <div
+                                class="absolute top-0 left-0 bottom-0 w-full bg-linear-to-r from-transparent via-white/50 to-transparent animate-[shimmer_2s_infinite]">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>

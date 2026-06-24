@@ -1,23 +1,39 @@
+<app-ambient-background></app-ambient-background>
 
 <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 opacity-0 animate-fade-in-up delay-100">
     <div class="space-y-3">
-        <div class="flex items-center gap-2 text-sm font-bold text-gray-400 mb-2">
-            <span class="hover:text-gray-900 cursor-pointer transition-colors">Dashboard</span>
-            <i class="fa-solid fa-angle-right"></i>
-            <span class="text-green-600">Add New Brand</span>
+        <div class="flex items-center gap-2 text-sm font-bold text-gray-400 dark:text-gray-500 mb-2">
+            <span
+                class="hover:text-gray-900 dark:hover:text-gray-300 cursor-pointer transition-colors duration-200">Dashboard</span>
+            <i class="fa-solid fa-angle-right text-[10px] mt-0.5"></i>
+            <span class="text-green-600 dark:text-green-400">Add New Brand</span>
         </div>
-        <div class="flex items-center gap-4">
-            <h1 class="text-4xl md:text-[2.75rem]  font-extrabold tracking-tight text-gray-900 leading-none">
-                Add New<span class="text-transparent bg-clip-text bg-linear-to-r from-green-600 to-green-400">
-                Brand</span>
-            </h1>
 
+        <div class="flex items-center gap-4">
+            <div
+                class="hidden sm:flex items-center justify-center w-12 h-12 rounded-2xl bg-white dark:bg-[#111c14] border border-gray-200 dark:border-green-900/30 shadow-xs dark:shadow-green-900/10">
+                <i class="fa-solid fa-tag text-xl text-green-600 dark:text-green-400"></i>
+            </div>
+
+            <h1
+                class="text-4xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-linear-to-r from-emerald-800 to-teal-600 dark:from-emerald-300 dark:to-lime-200 mb-2 drop-shadow-sm">
+                Add New Brand
+            </h1>
         </div>
+        <p class="text-gray-500 dark:text-gray-400 text-sm md:text-base font-medium max-w-xl mt-1">
+            Create and configure a new brand profile to associate with your product catalog.
+        </p>
     </div>
 </div>
 
-<div class="w-full mt-6 xl:mt-10 opacity-0 animate-fade-in-up delay-200 ">
-    <div class=" w-fit mx-auto">
-        <app-add-brand></app-add-brand>
+<div class="w-full mt-8 xl:mt-12 opacity-0 animate-fade-in-up delay-200">
+    <div class="w-full md:w-fit mx-auto relative group">
+        <div
+            class="absolute -inset-1 bg-linear-to-r from-green-600/20 to-emerald-400/20 dark:from-green-500/10 dark:to-emerald-400/10 rounded-[2.5rem] blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
+        </div>
+
+        <div class="relative z-10 w-full">
+            <app-add-brand></app-add-brand>
+        </div>
     </div>
 </div>

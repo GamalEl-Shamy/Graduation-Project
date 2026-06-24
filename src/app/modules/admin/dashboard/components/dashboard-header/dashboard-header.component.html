@@ -1,0 +1,168 @@
+<section
+    class="relative w-full overflow-hidden rounded-[28px] md:rounded-[36px] bg-[#020617] text-white border border-emerald-500/10 shadow-[0_24px_60px_-15px_rgba(2,44,34,0.3)] transition-all duration-300">
+
+    <div class="absolute inset-0 bg-linear-to-br from-slate-950 via-emerald-950/80 to-slate-950 -z-30"></div>
+
+    <div
+        class="absolute -top-32 -left-32 w-160 h-160 rounded-full bg-emerald-500/10 blur-[130px] -z-20 pointer-events-none animate-drift-slow">
+    </div>
+    <div
+        class="absolute top-[20%] -right-20 w-140 h-140 rounded-full bg-teal-500/10 blur-[120px] -z-20 pointer-events-none animate-drift-medium">
+    </div>
+    <div
+        class="absolute -bottom-48 left-[20%] w-180 h-120 rounded-full bg-cyan-600/10 blur-[140px] -z-20 pointer-events-none animate-drift-fast">
+    </div>
+
+    <div class="absolute inset-0 opacity-[0.03] -z-10 pointer-events-none"
+        style="background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.15) 1px, transparent 0); background-size: 24px 24px;">
+    </div>
+
+    <div class="absolute inset-0 opacity-[0.02] mix-blend-overlay -z-10 pointer-events-none"
+        style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.75%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E');">
+    </div>
+
+    <div class="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-emerald-400/30 to-transparent">
+    </div>
+    <div class="absolute bottom-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-teal-500/15 to-transparent">
+    </div>
+
+
+    <!-- Content -->
+    <div
+        class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center px-8 py-10 md:px-12 md:py-12 lg:px-14 lg:py-14">
+
+        <!-- Left Part -->
+        <div class="lg:col-span-7 flex flex-col items-start">
+
+            <div class="flex gap-3 justify-center items-center mb-6">
+                <div
+                    class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-400/20 backdrop-blur-md  hover:bg-emerald-500/15 hover:border-emerald-400/30 transition-all duration-300 group cursor-pointer">
+                    <span class="relative flex h-2 w-2">
+                        <span
+                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                        <span
+                            class="relative inline-flex rounded-full h-2 w-2 bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)]"></span>
+                    </span>
+                    <span class="text-emerald-300 text-xs font-semibold tracking-wider uppercase font-mono select-none">
+                        Zaraa Ai</span>
+                </div>
+
+                <div class="inline-flex items-center gap-1.5 text-zinc-400 text-sm font-medium">
+                    <svg class="w-4 h-4 text-zinc-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
+                        </path>
+                    </svg>
+                    <span>{{ today | date:'EEEE, MMMM d, y' }}</span>
+                </div>
+            </div>
+
+            <p
+                class="text-emerald-400/90 text-xs font-bold tracking-widest uppercase font-mono mb-2 flex items-center gap-2 select-none">
+                <i class="fa-solid fa-cloud-sun text-sm"></i>
+                Good Morning
+            </p>
+
+            <!-- Main Heading Welcome -->
+            <h1
+                class="text-4xl md:text-5xl lg:text-[54px] font-extrabold text-white leading-[1.05] tracking-tight mb-4 select-none font-[Poppins!important]">
+                Welcome back,
+                <span class="relative inline-block mt-1">
+                    <span
+                        class="bg-linear-to-r from-emerald-300 via-teal-200 to-cyan-300 bg-clip-text text-transparent drop-shadow-sm font-light font-[Namdhinggo]">
+                        {{ firstName() }}
+                    </span>
+                    <span
+                        class="absolute -bottom-1 left-0 right-0 h-0.75 bg-linear-to-r from-emerald-400/60 via-teal-300/40 to-transparent rounded-full shadow-[0_1px_4px_rgba(52,211,153,0.3)]"></span>
+                </span>
+            </h1>
+
+            <!-- Subtitle Description -->
+            <p class="text-slate-300/85 text-sm md:text-base font-medium max-w-lg leading-relaxed mb-1">
+                Monitor and manage your plant biosystem network. Your IoT telemetry is fully synced and operational.
+            </p>
+
+        </div>
+
+        <!-- Right Part -->
+        <div class="lg:col-span-5 w-full flex justify-center lg:justify-end">
+
+            <div
+                class="relative w-full max-w-md rounded-3xl p-px bg-linear-to-br from-white/15 to-white/5 shadow-2xl hover:shadow-[0_20px_50px_rgba(52,211,153,0.15)] transition-all duration-500 hover:-translate-y-1 group">
+
+                <div
+                    class="absolute -right-12 -top-12 w-32 h-32 bg-emerald-500/10 rounded-full blur-2xl group-hover:bg-emerald-500/20 transition-all duration-500 pointer-events-none">
+                </div>
+
+                <div
+                    class="relative bg-slate-900/65 backdrop-blur-2xl rounded-[23px] p-6 border border-white/5 overflow-hidden flex flex-col gap-6">
+                    <div
+                        class="absolute inset-0 opacity-[0.02] pointer-events-none bg-[linear-gradient(45deg,rgba(255,255,255,0.1)_25%,transparent_25%,transparent_50%,rgba(255,255,255,0.1)_50%,rgba(255,255,255,0.1)_75%,transparent_75%,transparent)] bg-size-[20px_20px] -z-10">
+                    </div>
+
+                    <div class="flex items-center gap-4">
+
+                        <div class="relative shrink-0 select-none">
+                            <div
+                                class="absolute inset-0 -m-0.5 p-0.5 bg-linear-to-tr from-emerald-400 via-teal-300 to-cyan-400 rounded-2xl animate-avatar-spin">
+                            </div>
+
+                            <div
+                                class="relative w-12 h-12 rounded-[14px] bg-slate-950 flex items-center justify-center text-white font-extrabold text-base border border-slate-900 shadow-md">
+                                <span
+                                    class="bg-linear-to-br from-white to-slate-300 bg-clip-text text-transparent font-black">{{
+                                    firstChar() }}</span>
+                            </div>
+
+                            <span
+                                class="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 rounded-full bg-emerald-400 border-2 border-slate-950 shadow-sm shadow-emerald-400/50"></span>
+                        </div>
+
+                        <div class="flex-1 min-w-0">
+                            <h3
+                                class="text-white font-bold text-base truncate tracking-tight group-hover:text-emerald-300 transition-colors duration-300">
+                                {{ firstName() }}
+                            </h3>
+                        </div>
+
+                        <div class="px-2.5 py-1 rounded-lg bg-emerald-500/10 border border-emerald-400/25 shadow-inner">
+                            <span
+                                class="text-emerald-300 text-[10px] font-extrabold tracking-widest uppercase font-mono">
+                                {{ role() }}
+                            </span>
+                        </div>
+
+                    </div>
+
+                    <div class="pt-4 border-t border-white/5 flex flex-col gap-2">
+
+                        <div
+                            class="flex justify-between items-center text-[10px] font-bold uppercase tracking-wider font-mono text-slate-400">
+                            <span class="flex items-center gap-1.5">
+                                <i class="fa-solid fa-arrows-rotate animate-spin" style="animation-duration: 4s;"></i>
+                            </span>
+                            <span class="text-emerald-400 drop-shadow-[0_0_4px_rgba(52,211,153,0.4)]">Online</span>
+                        </div>
+
+                        <div
+                            class="h-1.5 w-full bg-slate-950/80 rounded-full overflow-hidden border border-white/5 shadow-inner">
+                            <div
+                                class="h-full bg-linear-to-r from-emerald-500 to-teal-400 rounded-full w-full relative">
+
+                                <div
+                                    class="absolute inset-0 w-24 bg-linear-to-r from-transparent via-white/35 to-transparent -translate-x-full animate-shimmer-move">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>

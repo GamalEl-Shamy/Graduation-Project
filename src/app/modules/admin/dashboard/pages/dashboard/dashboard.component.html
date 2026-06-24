@@ -1,0 +1,15 @@
+<app-ambient-background></app-ambient-background>
+
+@if (!isProcessing()) {
+
+<app-dashboard-header [firstName]="userFirstName" [firstChar]="char" [role]="userRole"></app-dashboard-header>
+
+<div class="my-7">
+    <app-dashboard-details [users]="usersInfo()" [categories]="categories()" [brands]="brands()" [products]="products()"
+        [ordersInfo]="ordersInfo()"></app-dashboard-details>
+</div>
+
+<app-dashboard-actions></app-dashboard-actions>
+} @else {
+    <app-skeleton-dashboard></app-skeleton-dashboard>
+}

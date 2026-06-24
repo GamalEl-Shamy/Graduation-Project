@@ -1,18 +1,21 @@
 import { Component, inject, signal } from '@angular/core';
 import { RouterLinkActive, RouterLinkWithHref, RouterOutlet } from '@angular/router';
+import { AdminFooterComponent } from "../../modules/admin/shared/admin-footer/admin-footer.component";
 import { AuthService } from '../../modules/auth/services/auth.service';
+import { ThemeService } from '../../shared/services/theme.service';
 
 @Component({
   selector: 'app-admin-layout',
-  imports: [RouterOutlet, RouterLinkActive, RouterLinkWithHref],
+  imports: [RouterOutlet, RouterLinkActive, RouterLinkWithHref, AdminFooterComponent],
   templateUrl: './admin-layout.component.html',
   styleUrl: './admin-layout.component.css',
 })
 export class AdminLayoutComponent {
+  themeService = inject(ThemeService);
   authService = inject(AuthService);
   role = this.authService.getUserData()?.role;
 
-  isSidebarOpen = signal(false);
+  isSidebarOpen = signal(true); //false
   userFirstName: string = '';
   userRole: string = '';
   char: string = '';
@@ -32,6 +35,6 @@ export class AdminLayoutComponent {
   }
 
   closeSidebar() {
-    this.isSidebarOpen.set(false);
+    this.isSidebarOpen.set(true);
   }
 }

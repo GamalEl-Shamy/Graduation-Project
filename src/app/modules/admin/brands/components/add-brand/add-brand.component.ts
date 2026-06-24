@@ -81,6 +81,7 @@ export class AddBrandComponent implements OnInit {
         next: (res) => {
           this.isSubmitting.set(false);
           this.errorMessage.set(null);
+          this.onSuccess.emit();
           this.successMessage.set('Brand created successfully.');
           this.clearInputs();
           setTimeout(() => {

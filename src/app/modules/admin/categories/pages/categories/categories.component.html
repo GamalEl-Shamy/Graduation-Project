@@ -1,1 +1,40 @@
-<app-all-categories></app-all-categories>
+<app-ambient-background></app-ambient-background>
+
+@if (!isLoading()) {
+<app-categories-header [categoriesList]="categoriesList()"
+    (onAddCategoryClick)="toggleAddCategory()"></app-categories-header>
+<app-categories-overview [categories]="categories()!"></app-categories-overview>
+
+@if (categoriesList().length > 0) {
+<app-all-categories [categoriesList]="categoriesList()!" (deleteCategory)="deleteCategory($event)"
+    (editCategory)="openEditModal($event)"></app-all-categories>
+}@else {
+<app-empty title="categories"
+    subtitle="It looks like there are no categories registered yet, or none match your current search. Add a new category to start organizing your catalog."
+    icon="fa-solid fa-triangle-exclamation" goto="/admin/add_new_category"></app-empty>
+}
+
+
+} @else {
+<app-skeleton-admin></app-skeleton-admin>
+}
+
+@if (isAddCategory()) {
+<div (click)="toggleAddCategory()"
+    class="fixed inset-0 z-1000 bg-black/50 backdrop-blur-sm flex items-center justify-center overflow-y-auto p-4">
+    <div (click)="$event.stopPropagation()" class="w-full max-w-5xl opacity-0 animate-fade-in-up delay-100">
+        <app-add-category [categoryData]="selectedCategory()" [isClose]="true" (onClose)="toggleAddCategory()"
+            (onSuccess)="loadCategories()"></app-add-category>
+    </div>
+</div>
+
+}
+
+
+@if (successDeletedMessage()) {
+<app-toast [successMessage]="successDeletedMessage()!"></app-toast>
+}
+
+@if (isDeleted()) {
+<app-loading></app-loading>
+}

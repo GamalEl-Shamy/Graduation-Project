@@ -1,2 +1,40 @@
+<app-ambient-background></app-ambient-background>
 
-<app-all-brands></app-all-brands>
+@if (!isLoading()) {
+<app-brands-header [brandsList]="brandsList()" (onAddBrandClick)="toggleAddBrand()"></app-brands-header>
+
+<app-brands-overview [brands]="brands()!"></app-brands-overview>
+
+@if (brandsList().length > 0) {
+<app-all-brands [brandsList]="brandsList()" (deleteBrand)="deleteBrand($event)"
+    (editBrand)="openEditModal($event)"></app-all-brands>
+
+} @else {
+<app-empty title="brands"
+    subtitle="It looks like there are no brands registered yet, or none match your current search. Add a new brand to start organizing your product partnerships."
+    icon="fa-solid fa-triangle-exclamation" goto="/admin/add_new_brand"></app-empty>
+}
+
+} @else {
+<app-skeleton-admin></app-skeleton-admin>
+}
+
+@if (isAddBrand()) {
+<div (click)="toggleAddBrand()"
+    class="fixed inset-0 z-1000 bg-black/50 backdrop-blur-sm flex items-center justify-center">
+    <div (click)="$event.stopPropagation()" class=" opacity-0 animate-fade-in-up delay-100">
+        <app-add-brand [brandData]="selectedBrand()" [isClose]="true" (onClose)="toggleAddBrand()"
+            (onSuccess)="loadBrands()"></app-add-brand>
+    </div>
+</div>
+
+}
+
+
+@if (successDeletedMessage()) {
+<app-toast [successMessage]="successDeletedMessage()!"></app-toast>
+}
+
+@if (isDeleted()) {
+<app-loading></app-loading>
+}

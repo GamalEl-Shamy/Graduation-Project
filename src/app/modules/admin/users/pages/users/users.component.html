@@ -1,2 +1,41 @@
+<app-ambient-background></app-ambient-background>
 
-<app-all-users></app-all-users>
+@if (!isProcessing()) {
+<app-users-header [usersList]="usersList()"></app-users-header>
+<app-users-overview [usersInformation]="usersInfo()!"></app-users-overview>
+
+@if (usersList().length > 0) {
+<app-all-users 
+    [usersList]="usersList()!" 
+    (roleChange)="changeRole($event.userId, $event.newRole)"
+    (toggleLock)="toggleLockUnlock($event)" 
+    (userSelected)="handleUserSelection($event)"></app-all-users>
+
+} @else {
+<app-empty title="users"
+    subtitle="It looks like there are no users registered yet, or none match your current search. Add a new user to start managing your platform's users."
+    icon="fa-solid fa-triangle-exclamation" [showButton]="false"></app-empty>
+}
+
+@if (selectedUser()) {
+<app-user-details 
+    [userInformation]="selectedUser()!" 
+    (closeModal)="selectedUser.set(null)"
+    (toggleLock)="toggleLockUnlock($event)"></app-user-details>
+}
+
+} @else {
+<app-skeleton-admin></app-skeleton-admin>
+}
+
+@if (successMessage()) {
+<app-toast [successMessage]="successMessage()!"></app-toast>
+}
+
+@if (errorMessage()) {
+<app-toast [errorMessage]="errorMessage()!"></app-toast>
+}
+
+@if (isLoading()) {
+<app-loading></app-loading>
+}

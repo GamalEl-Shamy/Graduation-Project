@@ -1,96 +1,58 @@
-import { Component, inject, signal } from '@angular/core';
-import { LoadingComponent } from "../../../shared/loading/loading.component";
-import { ToastComponent } from "../../../shared/toast/toast.component";
-import { ProductItem, ProductResponse } from '../../models/product.interface';
-import { AddNewProductComponent } from "../../pages/add-new-product/add-new-product.component";
-import { ProductService } from '../../services/product.service';
+import { Component, computed, input, output, signal } from '@angular/core';
+import { ProductItem } from '../../models/product.interface';
 import { environment } from '../../../../../../environments/environment.development';
-import { SkeletonAdminComponent } from "../../../shared/skeleton-admin/skeleton-admin.component";
-import { EmptyProductComponent } from "../empty-product/empty-product.component";
+import { EmptyComponent } from "../../../shared/empty/empty.component";
 
 @Component({
   selector: 'app-all-products',
-  imports: [AddNewProductComponent, ToastComponent, LoadingComponent, SkeletonAdminComponent, EmptyProductComponent],
+  imports: [EmptyComponent],
   templateUrl: './all-products.component.html',
   styleUrl: './all-products.component.css',
 })
 export class AllProductsComponent {
-  isAddProduct = signal(false);
+  productsList = input.required<ProductItem[]>();
 
-  private productsService = inject(ProductService);
-  readonly imgUrl = environment.apiUrl + '/Images/';
+    readonly imgUrl = environment.apiUrl + '/Images/';
 
-  products = signal<ProductResponse | null>(null);
-  productsList = signal<ProductItem[]>([]);
+  deleteProduct = output<number>();
+  editProduct = output<ProductItem>();
 
-  isLoading = signal<boolean>(true);
-  isDeleted = signal<boolean>(false);
-  errorMessage = signal<string | null>(null);
-  successDeletedMessage = signal<string | null>(null);
+  searchTerm = signal<string>('');
+  selectedStatus = signal<string>('All');
+  
+  filteredProducts = computed(() => {
+    const term = this.searchTerm().toLowerCase().trim();
+    const status = this.selectedStatus();
+    const categories = this.productsList();
 
-  selectedProduct = signal<ProductItem | null>(null);
+    return categories.filter((product) => {
+      const productName = (product.name || '').toLowerCase();
+      const id = String(product.productId || '');
 
-  ngOnInit(): void {
-    this.loadProducts();
-  }
+      const matchesSearch = !term || productName.includes(term) || id.includes(term);
 
-  loadProducts(): void {
-    this.isLoading.set(true);
-    this.errorMessage.set(null);
+      const productStatus = product.status || '';
+      const matchesRole = status === 'All' || String(productStatus) === status.toLowerCase();
 
-    this.productsService.getAllProducts().subscribe({
-      next: (response) => {
-        this.products.set(response);
-        this.productsList.set(response.data);
-        this.isLoading.set(false);
-      },
-      error: (error) => {
-        console.error('Error fetching products:', error);
-        this.errorMessage.set('Failed to load products. Please try again later.');
-        this.isLoading.set(false);
-      },
+      return matchesSearch && matchesRole;
     });
-  }
+  });
 
-  deleteProduct(id: number) {
-    const isConfirmed = confirm('Are you sure you want to delete this product?');
-
-    if (isConfirmed) {
-      this.isDeleted.set(true);
-      this.productsService.deleteProduct(id).subscribe({
-        next: (response) => {
-          this.successDeletedMessage.set('Product deleted successfully.');
-          this.isDeleted.set(false);
-          setTimeout(() => {
-            this.successDeletedMessage.set(null);
-          }, 3000);
-          this.loadProducts();
-        },
-        error: (error) => {
-          console.error('Error deleting product:', error);
-          this.isDeleted.set(false);
-          alert('Failed to delete product. Please try again later.');
-        },
-      });
+  updateSearch(event: Event) {
+      const inputElement = event.target as HTMLInputElement;
+      this.searchTerm.set(inputElement.value);
     }
-  }
-
-  openEditModal(product: ProductItem) {
-    this.selectedProduct.set(product);
-    this.isAddProduct.set(true);
-  }
-
-  toggleAddProduct() {
-    this.isAddProduct.set(!this.isAddProduct());
-    this.selectedProduct.set(null); 
-  }
-
-  get activePercentage(): number {
-    const total = this.products()?.totalCount ?? 0;
-    const active = this.products()?.activeCount ?? 0;
-
-    if (total === 0) return 0;
-
-    return (active / total) * 100;
-  }
+  
+    updateStatus(event: Event) {
+      const selectElement = event.target as HTMLSelectElement;
+      this.selectedStatus.set(selectElement.value);
+    }
+  
+    onDeleteProduct(productId: number) {
+      this.deleteProduct.emit(productId);
+    }
+  
+    onEditProduct(product: ProductItem) {
+      this.editProduct.emit(product);
+    }
 }

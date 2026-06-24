@@ -1,147 +1,58 @@
+import { Component, computed, input, output, signal } from '@angular/core';
+import { OrderListItem } from '../../models/order.interface';
 import { DatePipe } from '@angular/common';
-import { Component, inject, signal } from '@angular/core';
-import { LoadingComponent } from '../../../shared/loading/loading.component';
-import { ToastComponent } from '../../../shared/toast/toast.component';
-import { OrderDetail, OrderListItem, OrderResponse } from '../../models/order.interface';
-import { OrdersService } from '../../services/orders.service';
-import { SkeletonAdminComponent } from "../../../shared/skeleton-admin/skeleton-admin.component";
-import { EmptyOrderComponent } from "../empty-order/empty-order.component";
+import { EmptyComponent } from "../../../shared/empty/empty.component";
+
 
 @Component({
   selector: 'app-all-orders',
-  imports: [DatePipe, ToastComponent, LoadingComponent, SkeletonAdminComponent, EmptyOrderComponent],
+  imports: [DatePipe, EmptyComponent],
   templateUrl: './all-orders.component.html',
   styleUrl: './all-orders.component.css',
 })
 export class AllOrdersComponent {
-  private ordersService = inject(OrdersService);
+  OrdersList = input.required<OrderListItem[]>();
 
-  ordersInfo = signal<OrderResponse | null>(null);
-  ordersList = signal<OrderListItem[]>([]);
+  orderStatusChange = output<{orderId: number, newStatus: 'shipped' | 'completed' | 'canceled'}>();
+  selectedOrder = output<number>();
+  
+  searchTerm = signal<string>('');
+  selectedStatus = signal<string>('All');
 
-  isLoading = signal<boolean>(true);
-  isProcessing = signal<boolean>(false);
-  errorMessage = signal<string | null>(null);
-  successMessage = signal<string | null>(null);
+  filteredOrders = computed<OrderListItem[]>(() => {
+    const term = this.searchTerm().toLowerCase().trim();
+    const status = this.selectedStatus();
+    const orders = this.OrdersList();
 
-  selectedOrderDetails = signal<OrderDetail | null>(null);
-  isDetailsModalOpen = signal<boolean>(false);
-  isLoadingDetails = signal<boolean>(false);
+    return orders.filter((order) => {
+      const customerName = (`${order.customer?.firstName || ''} ${order.customer?.lastName || ''}`).toLowerCase();
+      const id = order.id ? order.id.toString() : '';
 
-  ngOnInit(): void {
-    this.loadOrders();
-  }
+      const matchesSearch = !term || customerName.includes(term) || id.includes(term);
 
-  loadOrders(): void {
-    this.isLoading.set(true);
-    this.errorMessage.set(null);
+      const orderStatus = order.orderStatus;
+      const matchesRole = status === 'All' || String(orderStatus) === status.toLowerCase();
 
-    this.ordersService.getAllOrders().subscribe({
-      next: (response) => {
-        this.ordersInfo.set(response);
-        this.ordersList.set(response.data);
-        this.isLoading.set(false);
-      },
-      error: (error) => {
-        console.error('Error fetching orders:', error);
-        this.isLoading.set(false);
-      },
+      return matchesSearch && matchesRole;
     });
+  });
+
+  updateSearch(event: Event) {
+    const inputElement = event.target as HTMLInputElement;
+    this.searchTerm.set(inputElement.value);
   }
 
-  viewOrderDetails(id: number): void {
-    this.isDetailsModalOpen.set(true);
-    this.isLoadingDetails.set(true);
-    this.selectedOrderDetails.set(null);
-
-    this.ordersService.getOrderById(id).subscribe({
-      next: (details) => {
-        this.selectedOrderDetails.set(details);
-        this.isLoadingDetails.set(false);
-      },
-      error: (err) => {
-        console.error('Error fetching order details:', err);
-        this.errorMessage.set('Failed to load order details.');
-        this.isLoadingDetails.set(false);
-        this.isDetailsModalOpen.set(false);
-        setTimeout(() => this.errorMessage.set(null), 3000);
-      },
-    });
+  updateStatus(event: Event) {
+    const selectElement = event.target as HTMLSelectElement;
+    this.selectedStatus.set(selectElement.value);
   }
 
-  closeDetailsModal(): void {
-    this.isDetailsModalOpen.set(false);
-    this.selectedOrderDetails.set(null);
+  onchangeStatus(orderId: number, newStatus: 'shipped' | 'completed' | 'canceled') {
+    this.orderStatusChange.emit({ orderId, newStatus });
   }
 
-  changeOrderStatus(id: number, status: 'shipped' | 'completed' | 'canceled'): void {
-    const actionText =
-      status === 'shipped' ? 'ship' : status === 'completed' ? 'complete' : 'cancel';
-    const isConfirmed = confirm(`Are you sure you want to ${actionText} this order?`);
-
-    if (!isConfirmed) return;
-
-    this.isProcessing.set(true);
-
-    let request;
-    switch (status) {
-      case 'shipped':
-        request = this.ordersService.markAsShipped(id);
-        break;
-      case 'completed':
-        request = this.ordersService.markAsCompleted(id);
-        break;
-      case 'canceled':
-        request = this.ordersService.markAsCanceled(id);
-        break;
-    }
-
-    request.subscribe({
-      next: () => {
-        this.showSuccessMessage(`Order marked as ${status} successfully.`);
-        this.loadOrders();
-      },
-      error: (err) => {
-        console.error(`Error marking order as ${status}:`, err);
-        this.errorMessage.set(`Failed to mark order as ${status}.`);
-        this.isProcessing.set(false);
-        setTimeout(() => this.errorMessage.set(null), 3000);
-      },
-    });
+  onSelectOrder(orderId: number) {
+    this.selectedOrder.emit(orderId);
   }
-
-  private showSuccessMessage(msg: string) {
-    this.successMessage.set(msg);
-    this.isProcessing.set(false);
-    setTimeout(() => {
-      this.successMessage.set(null);
-    }, 3000);
-  }
-
-  get shippedOrdersPercentage(): number {
-    const total = this.ordersInfo()?.totalOrders ?? 0;
-    const active = this.ordersInfo()?.shippedOrders ?? 0;
-
-    if (total === 0) return 0;
-
-    return (active / total) * 100;
-  }
-
-  get pendingOrdersPercentage(): number {
-    const total = this.ordersInfo()?.totalOrders ?? 0;
-    const active = this.ordersInfo()?.pendingOrders ?? 0;
-
-    if (total === 0) return 0;
-
-    return (active / total) * 100;
-  }
-
-  get canceledOrdersPercentage(): number {
-    const total = this.ordersInfo()?.totalOrders ?? 0;
-    const active = this.ordersInfo()?.canceledOrders ?? 0;
-
-    if (total === 0) return 0;
-
-    return (active / total) * 100;
-  }
+  
 }

@@ -1,0 +1,235 @@
+<section
+    class="relative w-full p-6 md:p-8 rounded-3xl bg-transparent border border-slate-200 dark:border-slate-600 shadow-sm transition-colors duration-300">
+
+    <div class="mb-10 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+        <div>
+            <div
+                class="inline-flex items-center gap-2 mb-4 px-3 py-1 rounded-full border border-emerald-500/20 dark:border-white/10 bg-emerald-50 dark:bg-white/5 backdrop-blur-sm transition-colors duration-300">
+                <span
+                    class="w-1.5 h-1.5 rounded-full bg-emerald-500 dark:bg-emerald-400 shadow-[0_0_6px_rgba(16,185,129,0.8)]"></span>
+                <span class="text-xs font-medium tracking-widest text-emerald-600 dark:text-emerald-400 uppercase">Zaraa
+                    Dashboard</span>
+            </div>
+            <h1
+                class="text-4xl sm:text-5xl font-semibold tracking-tight text-slate-900 dark:text-white leading-tight transition-colors duration-300">
+                Quick Actions
+            </h1>
+            <p class="mt-2 text-slate-500 dark:text-gray-400 text-base tracking-tight transition-colors duration-300">
+                Perform common tasks instantly</p>
+        </div>
+
+        <div
+            class="flex-shrink-0 flex items-center gap-2 px-4 py-2 rounded-2xl border border-cyan-500/20 dark:border-white/10 bg-cyan-50 dark:bg-white/5 backdrop-blur-sm self-start sm:self-auto transition-colors duration-300">
+            <svg class="w-4 h-4 text-cyan-600 dark:text-cyan-400" fill="none" stroke="currentColor" stroke-width="1.8"
+                viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+            <span
+                class="text-xs font-medium text-cyan-800 dark:text-gray-300 tracking-wide transition-colors duration-300">5
+                actions available</span>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-5 gap-4">
+
+        <div routerLink="/admin/add_new_product"
+            class="group relative rounded-3xl border border-slate-200 dark:border-white/10 bg-slate-50/50 dark:bg-white/5 backdrop-blur-xl shadow-sm dark:shadow-2xl overflow-hidden
+                    transition-all duration-500 hover:-translate-y-2 hover:scale-[1.02]
+                    hover:border-emerald-400/40 hover:shadow-[0_0_40px_rgba(16,185,129,0.15)] dark:hover:shadow-[0_0_40px_rgba(16,185,129,0.25)] hover:bg-white dark:hover:bg-white/5 cursor-pointer">
+            <div
+                class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-emerald-400/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+            </div>
+            <div
+                class="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-emerald-500/5 dark:bg-emerald-500/10 blur-2xl group-hover:bg-emerald-500/15 dark:group-hover:bg-emerald-500/20 transition-all duration-500">
+            </div>
+
+            <div class="relative p-6 flex flex-col gap-4">
+                <div
+                    class="w-12 h-12 rounded-2xl bg-emerald-100 dark:bg-emerald-500/20 border border-emerald-200 dark:border-white/10 shadow-[0_0_20px_rgba(16,185,129,0.05)] dark:shadow-[0_0_20px_rgba(16,185,129,0.15)]
+                            flex items-center justify-center group-hover:shadow-[0_0_28px_rgba(16,185,129,0.2)] dark:group-hover:shadow-[0_0_28px_rgba(16,185,129,0.3)] transition-all duration-500">
+
+                    <i class="fa-solid fa-cubes w-5 h-5 text-emerald-600 dark:text-emerald-400"></i>
+                </div>
+                <div>
+                    <h3
+                        class="text-slate-800 dark:text-white font-semibold text-base tracking-tight mb-1 group-hover:text-emerald-600 dark:group-hover:text-emerald-100 transition-colors duration-300">
+                        Add Product</h3>
+                    <p class="text-slate-500 dark:text-gray-500 text-xs leading-relaxed transition-colors duration-300">
+                        Create and manage new products in your catalog</p>
+                </div>
+                <div
+                    class="flex items-center gap-1.5 text-emerald-600/60 dark:text-emerald-500/60 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors duration-300">
+                    <span class="text-xs font-medium">Open</span>
+                    <svg class="w-3.5 h-3.5 translate-x-0 group-hover:translate-x-1 transition-transform duration-300"
+                        fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                    </svg>
+                </div>
+            </div>
+            <div
+                class="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-emerald-400/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+            </div>
+        </div>
+
+        <div routerLink="/admin/add_new_brand"
+            class="group relative rounded-3xl border border-slate-200 dark:border-white/10 bg-slate-50/50 dark:bg-white/5 backdrop-blur-xl shadow-sm dark:shadow-2xl overflow-hidden
+                    transition-all duration-500 hover:-translate-y-2 hover:scale-[1.02]
+                    hover:border-blue-400/40 hover:shadow-[0_0_40px_rgba(59,130,246,0.15)] dark:hover:shadow-[0_0_40px_rgba(59,130,246,0.25)] hover:bg-white dark:hover:bg-white/5 cursor-pointer">
+            <div
+                class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-400/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+            </div>
+            <div
+                class="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-blue-500/5 dark:bg-blue-500/10 blur-2xl group-hover:bg-blue-500/15 dark:group-hover:bg-blue-500/20 transition-all duration-500">
+            </div>
+
+            <div class="relative p-6 flex flex-col gap-4">
+                <div
+                    class="w-12 h-12 rounded-2xl bg-blue-100 dark:bg-blue-500/20 border border-blue-200 dark:border-white/10 shadow-[0_0_20px_rgba(59,130,246,0.05)] dark:shadow-[0_0_20px_rgba(59,130,246,0.15)]
+                            flex items-center justify-center group-hover:shadow-[0_0_28px_rgba(59,130,246,0.2)] dark:group-hover:shadow-[0_0_28px_rgba(59,130,246,0.3)] transition-all duration-500">
+
+                    <i class="fa-solid fa-tags w-5 h-5 text-blue-600 dark:text-blue-400"></i>
+                </div>
+                <div>
+                    <h3
+                        class="text-slate-800 dark:text-white font-semibold text-base tracking-tight mb-1 group-hover:text-blue-600 dark:group-hover:text-blue-100 transition-colors duration-300">
+                        Add Brand</h3>
+                    <p class="text-slate-500 dark:text-gray-500 text-xs leading-relaxed transition-colors duration-300">
+                        Organise your content with smart brand labels</p>
+                </div>
+                <div
+                    class="flex items-center gap-1.5 text-blue-600/60 dark:text-blue-500/60 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
+                    <span class="text-xs font-medium">Open</span>
+                    <svg class="w-3.5 h-3.5 translate-x-0 group-hover:translate-x-1 transition-transform duration-300"
+                        fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                    </svg>
+                </div>
+            </div>
+            <div
+                class="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-blue-400/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+            </div>
+        </div>
+
+        <div routerLink="/admin/add_new_category"
+            class="group relative rounded-3xl border border-slate-200 dark:border-white/10 bg-slate-50/50 dark:bg-white/5 backdrop-blur-xl shadow-sm dark:shadow-2xl overflow-hidden
+                    transition-all duration-500 hover:-translate-y-2 hover:scale-[1.02]
+                    hover:border-purple-400/40 hover:shadow-[0_0_40px_rgba(168,85,247,0.15)] dark:hover:shadow-[0_0_40px_rgba(168,85,247,0.25)] hover:bg-white dark:hover:bg-white/5 cursor-pointer">
+            <div
+                class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-purple-400/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+            </div>
+            <div
+                class="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-purple-500/5 dark:bg-purple-500/10 blur-2xl group-hover:bg-purple-500/15 dark:group-hover:bg-purple-500/20 transition-all duration-500">
+            </div>
+
+            <div class="relative p-6 flex flex-col gap-4">
+                <div
+                    class="w-12 h-12 rounded-2xl bg-purple-100 dark:bg-purple-500/20 border border-purple-200 dark:border-white/10 shadow-[0_0_20px_rgba(168,85,247,0.05)] dark:shadow-[0_0_20px_rgba(168,85,247,0.15)]
+                            flex items-center justify-center group-hover:shadow-[0_0_28px_rgba(168,85,247,0.2)] dark:group-hover:shadow-[0_0_28px_rgba(168,85,247,0.3)] transition-all duration-500">
+
+                    <i class="fa-solid fa-layer-group w-5 h-5 text-purple-600 dark:text-purple-400"></i>
+                </div>
+                <div>
+                    <h3
+                        class="text-slate-800 dark:text-white font-semibold text-base tracking-tight mb-1 group-hover:text-purple-600 dark:group-hover:text-purple-100 transition-colors duration-300">
+                        Add Category</h3>
+                    <p class="text-slate-500 dark:text-gray-500 text-xs leading-relaxed transition-colors duration-300">
+                        Organise your content with smart category labels</p>
+                </div>
+                <div
+                    class="flex items-center gap-1.5 text-purple-600/60 dark:text-purple-500/60 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors duration-300">
+                    <span class="text-xs font-medium">Open</span>
+                    <svg class="w-3.5 h-3.5 translate-x-0 group-hover:translate-x-1 transition-transform duration-300"
+                        fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                    </svg>
+                </div>
+            </div>
+            <div
+                class="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-purple-400/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+            </div>
+        </div>
+
+        <div routerLink="/admin/all_orders"
+            class="group relative rounded-3xl border border-slate-200 dark:border-white/10 bg-slate-50/50 dark:bg-white/5 backdrop-blur-xl shadow-sm dark:shadow-2xl overflow-hidden
+                    transition-all duration-500 hover:-translate-y-2 hover:scale-[1.02]
+                    hover:border-amber-400/40 hover:shadow-[0_0_40px_rgba(245,158,11,0.15)] dark:hover:shadow-[0_0_40px_rgba(245,158,11,0.25)] hover:bg-white dark:hover:bg-white/5 cursor-pointer">
+            <div
+                class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-amber-400/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+            </div>
+            <div
+                class="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-amber-500/5 dark:bg-amber-500/10 blur-2xl group-hover:bg-amber-500/15 dark:group-hover:bg-amber-500/20 transition-all duration-500">
+            </div>
+
+            <div class="relative p-6 flex flex-col gap-4">
+                <div
+                    class="w-12 h-12 rounded-2xl bg-amber-100 dark:bg-amber-500/20 border border-amber-200 dark:border-white/10 shadow-[0_0_20px_rgba(245,158,11,0.05)] dark:shadow-[0_0_20px_rgba(245,158,11,0.15)]
+                            flex items-center justify-center group-hover:shadow-[0_0_28px_rgba(245,158,11,0.2)] dark:group-hover:shadow-[0_0_28px_rgba(245,158,11,0.3)] transition-all duration-500">
+                    <svg class="w-5 h-5 text-amber-600 dark:text-amber-400" fill="none" stroke="currentColor"
+                        stroke-width="1.8" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+                    </svg>
+                </div>
+                <div>
+                    <h3
+                        class="text-slate-800 dark:text-white font-semibold text-base tracking-tight mb-1 group-hover:text-amber-600 dark:group-hover:text-amber-100 transition-colors duration-300">
+                        View Orders</h3>
+                    <p class="text-slate-500 dark:text-gray-500 text-xs leading-relaxed transition-colors duration-300">
+                        Track, filter and manage all incoming orders</p>
+                </div>
+                <div
+                    class="flex items-center gap-1.5 text-amber-600/60 dark:text-amber-500/60 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors duration-300">
+                    <span class="text-xs font-medium">Open</span>
+                    <svg class="w-3.5 h-3.5 translate-x-0 group-hover:translate-x-1 transition-transform duration-300"
+                        fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                    </svg>
+                </div>
+            </div>
+            <div
+                class="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-amber-400/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+            </div>
+        </div>
+
+        <div routerLink="/admin/all_users"
+            class="group relative rounded-3xl border border-slate-200 dark:border-white/10 bg-slate-50/50 dark:bg-white/5 backdrop-blur-xl shadow-sm dark:shadow-2xl overflow-hidden
+                    transition-all duration-500 hover:-translate-y-2 hover:scale-[1.02]
+                    hover:border-cyan-400/40 hover:shadow-[0_0_40px_rgba(6,182,212,0.15)] dark:hover:shadow-[0_0_40px_rgba(6,182,212,0.25)] hover:bg-white dark:hover:bg-white/5 cursor-pointer">
+            <div
+                class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-400/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+            </div>
+            <div
+                class="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-cyan-500/5 dark:bg-cyan-500/10 blur-2xl group-hover:bg-cyan-500/15 dark:group-hover:bg-cyan-500/20 transition-all duration-500">
+            </div>
+
+            <div class="relative p-6 flex flex-col gap-4">
+                <div
+                    class="w-12 h-12 rounded-2xl bg-cyan-100 dark:bg-cyan-500/20 border border-cyan-200 dark:border-white/10 shadow-[0_0_20px_rgba(6,182,212,0.05)] dark:shadow-[0_0_20px_rgba(6,182,212,0.15)]
+                            flex items-center justify-center group-hover:shadow-[0_0_28px_rgba(6,182,212,0.2)] dark:group-hover:shadow-[0_0_28px_rgba(6,182,212,0.3)] transition-all duration-500">
+
+                    <i class="fa-solid fa-users w-5 h-5 text-cyan-600 dark:text-cyan-400"></i>
+                </div>
+                <div>
+                    <h3
+                        class="text-slate-800 dark:text-white font-semibold text-base tracking-tight mb-1 group-hover:text-cyan-600 dark:group-hover:text-cyan-100 transition-colors duration-300">
+                        View Users</h3>
+                    <p class="text-slate-500 dark:text-gray-500 text-xs leading-relaxed transition-colors duration-300">
+                        "Oversee active sessions, roles, and smart permissions</p>
+                </div>
+                <div
+                    class="flex items-center gap-1.5 text-cyan-600/60 dark:text-cyan-500/60 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors duration-300">
+                    <span class="text-xs font-medium">Open</span>
+                    <svg class="w-3.5 h-3.5 translate-x-0 group-hover:translate-x-1 transition-transform duration-300"
+                        fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                    </svg>
+                </div>
+            </div>
+            <div
+                class="absolute inset-x-0 bottom-0 h-px bg-linear-to-r from-transparent via-cyan-400/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+            </div>
+        </div>
+
+    </div>
+
+</section>

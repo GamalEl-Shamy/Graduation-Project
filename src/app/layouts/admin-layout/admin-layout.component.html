@@ -1,39 +1,127 @@
-<section class="min-h-screen bg-slate-50 xl:grid xl:grid-cols-[288px_1fr] font-sans">
+<section class="min-h-screen bg-slate-50 dark:bg-slate-900 font-sans xl:flex">
 
-    <aside class="fixed inset-y-0 left-0 z-500 w-72 sm:w-80 xl:w-72 xl:sticky h-screen xl:top-0 bg-white border-r border-slate-100 transform transition-transform duration-300 ease-in-out xl:translate-x-0 shadow-2xl xl:shadow-none flex flex-col shrink-0 font-body"
-        [class]="{ 'translate-x-0': isSidebarOpen(), '-translate-x-full': !isSidebarOpen() }">
+    <header
+        class="fixed inset-x-0 z-100 xl:hidden bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-4 sm:px-6 py-1 flex items-center justify-between transition-colors duration-300 shadow-sm">
 
-        <div class="flex flex-col h-full p-6 gap-y-2">
-            <div class="mb-8 px-2 flex items-center justify-between shrink-0">
-                <div routerLink="/users/dashboard"
-                    class="flex items-center gap-3 w-full h-20 px-5 py-2 cursor-pointer rounded-lg hover:scale-105 hover:bg-slate-100 transition-all duration-300">
-                    <img src="./logos/zaraa.png" alt="Zaraa Logo" class="h-full w-full drop-shadow-sm">
+        <button (click)="toggleSidebar()"
+            class="p-2.5 text-slate-500 hover:text-emerald-600 dark:text-slate-400 dark:hover:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-500/10 rounded-xl transition-all duration-300 cursor-pointer">
+            <i class="fa-solid fa-bars text-lg w-5 flex justify-center"></i>
+        </button>
+
+        <div class="flex items-center gap-4">
+            <button (click)="themeService.toggleTheme()"
+                class="relative flex items-center w-16 h-8 p-1 rounded-full cursor-pointer mx-auto bg-slate-200 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 transition-colors duration-300 shadow-inner group focus:outline-none focus:ring-2 focus:ring-emerald-500/50"
+                aria-label="Toggle Theme">
+                <div class="absolute left-0 right-0 flex justify-between px-2 pointer-events-none">
+                    <i
+                        class="fa-solid fa-sun text-[13px] text-amber-500/70 dark:text-slate-500 transition-colors duration-300"></i>
+                    <i
+                        class="fa-solid fa-moon text-[13px] text-slate-400 dark:text-emerald-400/70 transition-colors duration-300"></i>
                 </div>
-                <button (click)="closeSidebar()"
-                    class="xl:hidden text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded-lg cursor-pointer p-2 -mr-2 transition-all">
+
+                <div class="relative z-10 flex items-center justify-center w-6 h-6 rounded-full bg-white dark:bg-slate-900 shadow-sm border border-slate-200 dark:border-slate-700 transition-transform duration-500 cubic-bezier(0.4, 0, 0.2, 1)"
+                    [class.translate-x-8]="themeService.isDarkMode()">
+                    @if (themeService.isDarkMode()) {
+                    <i class="fa-solid fa-moon text-[11px] text-emerald-400 animate-fade-in"></i>
+                    } @else {
+                    <i class="fa-solid fa-sun text-[11px] text-amber-500 animate-fade-in"></i>
+                    }
+                </div>
+            </button>
+
+            <button routerLink="/users/profile"
+                class="relative p-2.5 text-slate-500 hover:text-emerald-600 dark:text-slate-400 dark:hover:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-500/10 rounded-xl transition-all duration-300 cursor-pointer">
+                <i class="fa-solid fa-user-gear text-lg w-5 flex justify-center"></i>
+            </button>
+        </div>
+    </header>
+
+    <aside
+        class="fixed inset-y-0 z-500 overflow-hidden xl:sticky h-screen xl:top-0 bg-white/95 dark:bg-slate-950/95 border-r border-slate-200/70 dark:border-slate-800/70 transform transition-all duration-500 ease-in-out shadow-[4px_0_24px_rgba(0,0,0,0.02)] dark:shadow-[4px_0_24px_rgba(0,0,0,0.2)] flex flex-col shrink-0 font-body"
+        [class]="{ 
+            'xl:w-75': isSidebarOpen(), 
+            'xl:sticky': isSidebarOpen(), 
+            'xl:w-0': !isSidebarOpen(),
+            'left-0': !isSidebarOpen(),
+            '-left-full': isSidebarOpen()
+            }">
+
+        <div class="flex flex-col h-full p-5 gap-y-2">
+            <!-- Header / Logo -->
+            <div class="mb-6 px-2 flex items-center justify-between shrink-0">
+                <div routerLink="/admin/dashboard"
+                    class="group flex items-center gap-3 w-full h-20 px-5 py-2 cursor-pointer rounded-lg hover:scale-105 hover:bg-slate-100 dark:hover:bg-green-800/35 dark:hover:border dark:hover:border-green-800  transition-all duration-300">
+                    <img src="./logos/zaraa.png" alt="Zaraa Logo"
+                        class="h-full w-auto object-contain transition-all duration-400 dark:filter dark:brightness-0 dark:invert">
+                </div>
+                <button (click)="toggleSidebar()"
+                    class=" text-slate-400 dark:text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl cursor-pointer p-2.5 -mr-2 transition-all duration-300">
                     <i class="fa-solid fa-xmark text-xl w-5 flex justify-center"></i>
                 </button>
             </div>
 
-            <nav class="flex-1 flex flex-col gap-y-1.5 overflow-y-auto px-2 -mx-2 custom-scrollbar">
-                @if (role === "SuperAdmin") {
-                    <details class="group">
-                    <summary
-                        class="flex items-center justify-between px-4 py-3 text-slate-600 cursor-pointer rounded-xl hover:bg-slate-50 hover:text-green-600 transition-colors list-none [&::-webkit-details-marker]:hidden">
-                        <div class="flex items-center gap-3">
-                            <i 
-                        class="fa-solid fa-users w-5 flex justify-center text-lg text-slate-400 group-hover:text-green-500 transition-colors"></i>
-                            <span class="font-semibold">Users</span>
+
+
+            <button (click)="themeService.toggleTheme()"
+                class="relative flex items-center w-16 h-8 p-1 rounded-full cursor-pointer mx-auto bg-slate-200 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 transition-colors duration-300 shadow-inner group focus:outline-none focus:ring-2 focus:ring-emerald-500/50"
+                aria-label="Toggle Theme">
+                <div class="absolute left-0 right-0 flex justify-between px-2 pointer-events-none">
+                    <i
+                        class="fa-solid fa-sun text-[13px] text-amber-500/70 dark:text-slate-500 transition-colors duration-300"></i>
+                    <i
+                        class="fa-solid fa-moon text-[13px] text-slate-400 dark:text-emerald-400/70 transition-colors duration-300"></i>
+                </div>
+
+                <div class="relative z-10 flex items-center justify-center w-6 h-6 rounded-full bg-white dark:bg-slate-900 shadow-sm border border-slate-200 dark:border-slate-700 transition-transform duration-500 cubic-bezier(0.4, 0, 0.2, 1)"
+                    [class.translate-x-8]="themeService.isDarkMode()">
+                    @if (themeService.isDarkMode()) {
+                    <i class="fa-solid fa-moon text-[11px] text-emerald-400 animate-fade-in"></i>
+                    } @else {
+                    <i class="fa-solid fa-sun text-[11px] text-amber-500 animate-fade-in"></i>
+                    }
+                </div>
+            </button>
+
+            <nav class="flex-1 flex flex-col gap-y-2 overflow-y-auto px-2 -mx-2 custom-scrollbar custom-scrollbar">
+
+                <button class="group" (click)="closeSidebar()" routerLink="/admin/dashboard"
+                    routerLinkActive="text-emerald-600 dark:text-emerald-400 bg-emerald-100 dark:bg-emerald-500/15 font-bold border-emerald-200 dark:border-emerald-500/20 shadow-sm rounded-2xl">
+                    <div
+                        class="flex items-center justify-between px-3 py-3 text-slate-600 dark:text-slate-400 cursor-pointer rounded-2xl hover:bg-slate-50 dark:hover:bg-slate-800/50 hover:text-emerald-600 dark:hover:text-emerald-400 transition-all duration-300 list-none [&::-webkit-details-marker]:hidden border border-transparent hover:border-slate-200/50 dark:hover:border-slate-700/50 shadow-sm hover:shadow-md hover:shadow-slate-200/20 dark:hover:shadow-none">
+                        <div class="flex items-center gap-3.5">
+                            <div
+                                class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800/80 flex items-center justify-center group-hover:bg-emerald-100 dark:group-hover:bg-emerald-500/20 transition-colors duration-300">
+                                <i
+                                    class="fa-solid fa-layer-group text-[15px] text-slate-500 dark:text-slate-400 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors"></i>
+                            </div>
+                            <span class="font-semibold tracking-wide text-[15px]">Dashboard</span>
                         </div>
-                        <span class="transition-transform duration-300 group-open:rotate-180">
-                            <i class="fa-solid fa-angle-down text-sm text-gray-500"></i>
+                    </div>
+                </button>
+                @if (role === "SuperAdmin") {
+                <details class="group">
+                    <summary
+                        class="flex items-center justify-between px-3 py-3 text-slate-600 dark:text-slate-400 cursor-pointer rounded-2xl hover:bg-slate-50 dark:hover:bg-slate-800/50 hover:text-emerald-600 dark:hover:text-emerald-400 transition-all duration-300 list-none [&::-webkit-details-marker]:hidden border border-transparent hover:border-slate-200/50 dark:hover:border-slate-700/50 shadow-sm hover:shadow-md hover:shadow-slate-200/20 dark:hover:shadow-none">
+                        <div class="flex items-center gap-3.5">
+                            <div
+                                class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800/80 flex items-center justify-center group-hover:bg-emerald-100 dark:group-hover:bg-emerald-500/20 transition-colors duration-300">
+                                <i
+                                    class="fa-solid fa-users text-[15px] text-slate-500 dark:text-slate-400 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors"></i>
+                            </div>
+                            <span class="font-semibold tracking-wide text-[15px]">Users</span>
+                        </div>
+                        <span
+                            class="transition-transform duration-500 group-open:rotate-180 bg-slate-100 dark:bg-slate-800 w-7 h-7 rounded-full flex items-center justify-center mr-1">
+                            <i class="fa-solid fa-angle-down text-xs text-slate-500 dark:text-slate-400"></i>
                         </span>
                     </summary>
 
-                    <ul class="mt-2 mb-2 space-y-1 px-2 border-l-2 border-slate-100 ml-6">
+                    <ul
+                        class="mt-2 mb-3 space-y-1.5 px-2 relative before:content-[''] before:absolute before:left-[2.35rem] before:top-1 before:bottom-1 before:w-0.5 before:bg-slate-100 dark:before:bg-slate-800 ml-2">
                         <li>
-                            <a ((click)="closeSidebar()" routerLink="/admin/all_users" routerLinkActive="text-green-600 bg-green-50 font-bold"
-                                class="block px-4 py-2 text-sm font-medium text-slate-500 rounded-lg hover:text-green-600 hover:bg-green-50 transition-colors">
+                            <a (click)="closeSidebar()" routerLink="/admin/all_users"
+                                routerLinkActive="text-emerald-600 dark:text-emerald-400 bg-emerald-100 dark:bg-emerald-500/15 font-bold border-emerald-200 dark:border-emerald-500/20 shadow-sm"
+                                class="block px-12 py-2.5 text-sm font-medium text-slate-500 dark:text-slate-400 rounded-xl hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-emerald-50/50 dark:hover:bg-emerald-500/10 transition-all duration-300 border border-transparent">
                                 Show All Users
                             </a>
                         </li>
@@ -43,27 +131,34 @@
 
                 <details class="group">
                     <summary
-                        class="flex items-center justify-between px-4 py-3 text-slate-600 cursor-pointer rounded-xl hover:bg-slate-50 hover:text-green-600 transition-colors list-none [&::-webkit-details-marker]:hidden">
-                        <div class="flex items-center gap-3">
-                            <i
-                        class="fa-solid fa-layer-group w-5 flex justify-center text-lg text-slate-400 group-hover:text-green-500 transition-colors"></i>
-                            <span class="font-semibold">Categories</span>
+                        class="flex items-center justify-between px-3 py-3 text-slate-600 dark:text-slate-400 cursor-pointer rounded-2xl hover:bg-slate-50 dark:hover:bg-slate-800/50 hover:text-emerald-600 dark:hover:text-emerald-400 transition-all duration-300 list-none [&::-webkit-details-marker]:hidden border border-transparent hover:border-slate-200/50 dark:hover:border-slate-700/50 shadow-sm hover:shadow-md hover:shadow-slate-200/20 dark:hover:shadow-none">
+                        <div class="flex items-center gap-3.5">
+                            <div
+                                class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800/80 flex items-center justify-center group-hover:bg-emerald-100 dark:group-hover:bg-emerald-500/20 transition-colors duration-300">
+                                <i
+                                    class="fa-solid fa-layer-group text-[15px] text-slate-500 dark:text-slate-400 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors"></i>
+                            </div>
+                            <span class="font-semibold tracking-wide text-[15px]">Categories</span>
                         </div>
-                        <span class="transition-transform duration-300 group-open:rotate-180">
-                            <i class="fa-solid fa-angle-down text-sm text-gray-500"></i>
+                        <span
+                            class="transition-transform duration-500 group-open:rotate-180 bg-slate-100 dark:bg-slate-800 w-7 h-7 rounded-full flex items-center justify-center mr-1">
+                            <i class="fa-solid fa-angle-down text-xs text-slate-500 dark:text-slate-400"></i>
                         </span>
                     </summary>
 
-                    <ul class="mt-2 mb-2 space-y-1 px-2 border-l-2 border-slate-100 ml-6">
+                    <ul
+                        class="mt-2 mb-3 space-y-1.5 px-2 relative before:content-[''] before:absolute before:left-[2.35rem] before:top-1 before:bottom-1 before:w-0.5 before:bg-slate-100 dark:before:bg-slate-800 ml-2">
                         <li>
-                            <a (click)="closeSidebar()" routerLink="/admin/add_new_category" routerLinkActive="text-green-600 bg-green-50 font-bold"
-                                class="block px-4 py-2 text-sm font-medium text-slate-500 rounded-lg hover:text-green-600 hover:bg-green-50 transition-colors">
+                            <a (click)="closeSidebar()" routerLink="/admin/add_new_category"
+                                routerLinkActive="text-emerald-600 dark:text-emerald-400 bg-emerald-100 dark:bg-emerald-500/15 font-bold border-emerald-200 dark:border-emerald-500/20 shadow-sm"
+                                class="block px-12 py-2.5 text-sm font-medium text-slate-500 dark:text-slate-400 rounded-xl hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-emerald-50/50 dark:hover:bg-emerald-500/10 transition-all duration-300 border border-transparent">
                                 Add Category
                             </a>
                         </li>
                         <li>
-                            <a (click)="closeSidebar()" routerLink="/admin/all_categories" routerLinkActive="text-green-600 bg-green-50 font-bold"
-                                class="block px-4 py-2 text-sm font-medium text-slate-500 rounded-lg hover:text-green-600 hover:bg-green-50 transition-colors">
+                            <a (click)="closeSidebar()" routerLink="/admin/all_categories"
+                                routerLinkActive="text-emerald-600 dark:text-emerald-400 bg-emerald-100 dark:bg-emerald-500/15 font-bold border-emerald-200 dark:border-emerald-500/20 shadow-sm"
+                                class="block px-12 py-2.5 text-sm font-medium text-slate-500 dark:text-slate-400 rounded-xl hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-emerald-50/50 dark:hover:bg-emerald-500/10 transition-all duration-300 border border-transparent">
                                 Show All Categories
                             </a>
                         </li>
@@ -72,27 +167,34 @@
 
                 <details class="group">
                     <summary
-                        class="flex items-center justify-between px-4 py-3 text-slate-600 cursor-pointer rounded-xl hover:bg-slate-50 hover:text-green-600 transition-colors list-none [&::-webkit-details-marker]:hidden">
-                        <div class="flex items-center gap-3">
-                            <i
-                        class="fa-solid fa-tag w-5 flex justify-center text-lg text-slate-400 group-hover:text-green-500 transition-colors"></i>
-                            <span class="font-semibold">Brands</span>
+                        class="flex items-center justify-between px-3 py-3 text-slate-600 dark:text-slate-400 cursor-pointer rounded-2xl hover:bg-slate-50 dark:hover:bg-slate-800/50 hover:text-emerald-600 dark:hover:text-emerald-400 transition-all duration-300 list-none [&::-webkit-details-marker]:hidden border border-transparent hover:border-slate-200/50 dark:hover:border-slate-700/50 shadow-sm hover:shadow-md hover:shadow-slate-200/20 dark:hover:shadow-none">
+                        <div class="flex items-center gap-3.5">
+                            <div
+                                class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800/80 flex items-center justify-center group-hover:bg-emerald-100 dark:group-hover:bg-emerald-500/20 transition-colors duration-300">
+                                <i
+                                    class="fa-solid fa-tag text-[15px] text-slate-500 dark:text-slate-400 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors"></i>
+                            </div>
+                            <span class="font-semibold tracking-wide text-[15px]">Brands</span>
                         </div>
-                        <span class="transition-transform duration-300 group-open:rotate-180">
-                            <i class="fa-solid fa-angle-down text-sm text-gray-500"></i>
+                        <span
+                            class="transition-transform duration-500 group-open:rotate-180 bg-slate-100 dark:bg-slate-800 w-7 h-7 rounded-full flex items-center justify-center mr-1">
+                            <i class="fa-solid fa-angle-down text-xs text-slate-500 dark:text-slate-400"></i>
                         </span>
                     </summary>
 
-                    <ul class="mt-2 mb-2 space-y-1 px-2 border-l-2 border-slate-100 ml-6">
+                    <ul
+                        class="mt-2 mb-3 space-y-1.5 px-2 relative before:content-[''] before:absolute before:left-[2.35rem] before:top-1 before:bottom-1 before:w-0.5 before:bg-slate-100 dark:before:bg-slate-800 ml-2">
                         <li>
-                            <a (click)="closeSidebar()" routerLink="/admin/add_new_brand" routerLinkActive="text-green-600 bg-green-50 font-bold"
-                                class="block px-4 py-2 text-sm font-medium text-slate-500 rounded-lg hover:text-green-600 hover:bg-green-50 transition-colors">
+                            <a (click)="closeSidebar()" routerLink="/admin/add_new_brand"
+                                routerLinkActive="text-emerald-600 dark:text-emerald-400 bg-emerald-100 dark:bg-emerald-500/15 font-bold border-emerald-200 dark:border-emerald-500/20 shadow-sm"
+                                class="block px-12 py-2.5 text-sm font-medium text-slate-500 dark:text-slate-400 rounded-xl hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-emerald-50/50 dark:hover:bg-emerald-500/10 transition-all duration-300 border border-transparent">
                                 Add New Brand
                             </a>
                         </li>
                         <li>
-                            <a (click)="closeSidebar()" routerLink="/admin/all_brands" routerLinkActive="text-green-600 bg-green-50 font-bold"
-                                class="block px-4 py-2 text-sm font-medium text-slate-500 rounded-lg hover:text-green-600 hover:bg-green-50 transition-colors">
+                            <a (click)="closeSidebar()" routerLink="/admin/all_brands"
+                                routerLinkActive="text-emerald-600 dark:text-emerald-400 bg-emerald-100 dark:bg-emerald-500/15 font-bold border-emerald-200 dark:border-emerald-500/20 shadow-sm"
+                                class="block px-12 py-2.5 text-sm font-medium text-slate-500 dark:text-slate-400 rounded-xl hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-emerald-50/50 dark:hover:bg-emerald-500/10 transition-all duration-300 border border-transparent">
                                 Show All Brands
                             </a>
                         </li>
@@ -101,27 +203,34 @@
 
                 <details class="group">
                     <summary
-                        class="flex items-center justify-between px-4 py-3 text-slate-600 cursor-pointer rounded-xl hover:bg-slate-50 hover:text-green-600 transition-colors list-none [&::-webkit-details-marker]:hidden">
-                        <div class="flex items-center gap-3">
-                            <i
-                        class="fa-solid fa-basket-shopping w-5 flex justify-center text-lg text-slate-400 group-hover:text-green-500 transition-colors"></i>
-                            <span class="font-semibold">Products</span>
+                        class="flex items-center justify-between px-3 py-3 text-slate-600 dark:text-slate-400 cursor-pointer rounded-2xl hover:bg-slate-50 dark:hover:bg-slate-800/50 hover:text-emerald-600 dark:hover:text-emerald-400 transition-all duration-300 list-none [&::-webkit-details-marker]:hidden border border-transparent hover:border-slate-200/50 dark:hover:border-slate-700/50 shadow-sm hover:shadow-md hover:shadow-slate-200/20 dark:hover:shadow-none">
+                        <div class="flex items-center gap-3.5">
+                            <div
+                                class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800/80 flex items-center justify-center group-hover:bg-emerald-100 dark:group-hover:bg-emerald-500/20 transition-colors duration-300">
+                                <i
+                                    class="fa-solid fa-basket-shopping text-[15px] text-slate-500 dark:text-slate-400 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors"></i>
+                            </div>
+                            <span class="font-semibold tracking-wide text-[15px]">Products</span>
                         </div>
-                        <span class="transition-transform duration-300 group-open:rotate-180">
-                            <i class="fa-solid fa-angle-down text-sm text-gray-500"></i>
+                        <span
+                            class="transition-transform duration-500 group-open:rotate-180 bg-slate-100 dark:bg-slate-800 w-7 h-7 rounded-full flex items-center justify-center mr-1">
+                            <i class="fa-solid fa-angle-down text-xs text-slate-500 dark:text-slate-400"></i>
                         </span>
                     </summary>
 
-                    <ul class="mt-2 mb-2 space-y-1 px-2 border-l-2 border-slate-100 ml-6">
+                    <ul
+                        class="mt-2 mb-3 space-y-1.5 px-2 relative before:content-[''] before:absolute before:left-[2.35rem] before:top-1 before:bottom-1 before:w-0.5 before:bg-slate-100 dark:before:bg-slate-800 ml-2">
                         <li>
-                            <a (click)="closeSidebar()" routerLink="/admin/add_new_product" routerLinkActive="text-green-600 bg-green-50 font-bold"
-                                class="block px-4 py-2 text-sm font-medium text-slate-500 rounded-lg hover:text-green-600 hover:bg-green-50 transition-colors">
+                            <a (click)="closeSidebar()" routerLink="/admin/add_new_product"
+                                routerLinkActive="text-emerald-600 dark:text-emerald-400 bg-emerald-100 dark:bg-emerald-500/15 font-bold border-emerald-200 dark:border-emerald-500/20 shadow-sm"
+                                class="block px-12 py-2.5 text-sm font-medium text-slate-500 dark:text-slate-400 rounded-xl hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-emerald-50/50 dark:hover:bg-emerald-500/10 transition-all duration-300 border border-transparent">
                                 Add New Product
                             </a>
                         </li>
                         <li>
-                            <a (click)="closeSidebar()" routerLink="/admin/all_products" routerLinkActive="text-green-600 bg-green-50 font-bold"
-                                class="block px-4 py-2 text-sm font-medium text-slate-500 rounded-lg hover:text-green-600 hover:bg-green-50 transition-colors">
+                            <a (click)="closeSidebar()" routerLink="/admin/all_products"
+                                routerLinkActive="text-emerald-600 dark:text-emerald-400 bg-emerald-100 dark:bg-emerald-500/15 font-bold border-emerald-200 dark:border-emerald-500/20 shadow-sm"
+                                class="block px-12 py-2.5 text-sm font-medium text-slate-500 dark:text-slate-400 rounded-xl hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-emerald-50/50 dark:hover:bg-emerald-500/10 transition-all duration-300 border border-transparent">
                                 Show All Products
                             </a>
                         </li>
@@ -130,21 +239,27 @@
 
                 <details class="group">
                     <summary
-                        class="flex items-center justify-between px-4 py-3 text-slate-600 cursor-pointer rounded-xl hover:bg-slate-50 hover:text-green-600 transition-colors list-none [&::-webkit-details-marker]:hidden">
-                        <div class="flex items-center gap-3">
-                            <i
-                        class="fa-solid fa-shopping-cart w-5 flex justify-center text-lg text-slate-400 group-hover:text-green-500 transition-colors"></i>
-                            <span class="font-semibold">Orders</span>
+                        class="flex items-center justify-between px-3 py-3 text-slate-600 dark:text-slate-400 cursor-pointer rounded-2xl hover:bg-slate-50 dark:hover:bg-slate-800/50 hover:text-emerald-600 dark:hover:text-emerald-400 transition-all duration-300 list-none [&::-webkit-details-marker]:hidden border border-transparent hover:border-slate-200/50 dark:hover:border-slate-700/50 shadow-sm hover:shadow-md hover:shadow-slate-200/20 dark:hover:shadow-none">
+                        <div class="flex items-center gap-3.5">
+                            <div
+                                class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800/80 flex items-center justify-center group-hover:bg-emerald-100 dark:group-hover:bg-emerald-500/20 transition-colors duration-300">
+                                <i
+                                    class="fa-solid fa-shopping-cart text-[15px] text-slate-500 dark:text-slate-400 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors"></i>
+                            </div>
+                            <span class="font-semibold tracking-wide text-[15px]">Orders</span>
                         </div>
-                        <span class="transition-transform duration-300 group-open:rotate-180">
-                            <i class="fa-solid fa-angle-down text-sm text-gray-500"></i>
+                        <span
+                            class="transition-transform duration-500 group-open:rotate-180 bg-slate-100 dark:bg-slate-800 w-7 h-7 rounded-full flex items-center justify-center mr-1">
+                            <i class="fa-solid fa-angle-down text-xs text-slate-500 dark:text-slate-400"></i>
                         </span>
                     </summary>
 
-                    <ul class="mt-2 mb-2 space-y-1 px-2 border-l-2 border-slate-100 ml-6">
+                    <ul
+                        class="mt-2 mb-3 space-y-1.5 px-2 relative before:content-[''] before:absolute before:left-[2.35rem] before:top-1 before:bottom-1 before:w-0.5 before:bg-slate-100 dark:before:bg-slate-800 ml-2">
                         <li>
-                            <a (click)="closeSidebar()" routerLink="/admin/all_orders" routerLinkActive="text-green-600 bg-green-50 font-bold"
-                                class="block px-4 py-2 text-sm font-medium text-slate-500 rounded-lg hover:text-green-600 hover:bg-green-50 transition-colors">
+                            <a (click)="closeSidebar()" routerLink="/admin/all_orders"
+                                routerLinkActive="text-emerald-600 dark:text-emerald-400 bg-emerald-100 dark:bg-emerald-500/15 font-bold border-emerald-200 dark:border-emerald-500/20 shadow-sm"
+                                class="block px-12 py-2.5 text-sm font-medium text-slate-500 dark:text-slate-400 rounded-xl hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-emerald-50/50 dark:hover:bg-emerald-500/10 transition-all duration-300 border border-transparent">
                                 Show All Orders
                             </a>
                         </li>
@@ -152,80 +267,79 @@
                 </details>
             </nav>
 
-            <div class="mt-auto mb-10 pt-6 border-t border-slate-100 shrink-0">
+            <!-- Actions & Profile Footer -->
+            <div
+                class="mt-auto pt-6 border-t border-slate-200/70 dark:border-slate-800/70 shrink-0 flex flex-col gap-3 pb-2">
                 <div routerLink="/users/profile" (click)="closeSidebar()"
-                    class="group flex items-center gap-3 p-3 bg-slate-50 rounded-2xl hover:bg-white hover:shadow-md hover:shadow-slate-200/50 transition-all duration-300 cursor-pointer border border-transparent hover:border-slate-200 hover:-translate-y-1">
+                    class="group relative flex items-center gap-3 p-3 mt-1 bg-white dark:bg-slate-900 rounded-2xl hover:bg-slate-50 dark:hover:bg-slate-800 transition-all duration-300 cursor-pointer border border-slate-200/70 dark:border-slate-700/70 shadow-sm hover:shadow-md hover:-translate-y-0.5 overflow-hidden">
+
                     <div
-                        class="w-10 h-10 rounded-xl bg-emerald-100 flex items-center justify-center text-emerald-700 font-bold text-xl shrink-0 leading-none shadow-inner font-['Namdhinggo'!important] capitalize">
-                        <span> {{char}} </span>
+                        class="absolute inset-0 bg-linear-to-r from-emerald-500/0 via-emerald-500/5 to-emerald-500/0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000">
                     </div>
-                    <div class="flex-1 min-w-0">
+
+                    <div
+                        class="relative w-12 h-12 rounded-xl bg-linear-to-br from-emerald-400 to-emerald-600 flex items-center justify-center text-white font-bold text-xl shrink-0 leading-none shadow-inner shadow-white/20 font-['Namdhinggo'!important] capitalize ring-2 ring-emerald-100 dark:ring-emerald-900/50">
+                        <span>{{char}}</span>
+                    </div>
+
+                    <div class="flex-1 min-w-0 relative">
                         <p
-                            class="text-xl capitalize font-bold text-slate-800 truncate font-headline leading-tight group-hover:text-emerald-700 transition-colors font-['Namdhinggo'!important]">
+                            class="text-base capitalize font-bold text-slate-800 dark:text-slate-100 truncate font-headline leading-tight group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors font-['Namdhinggo'!important]">
                             {{ userFirstName }}
                         </p>
-
-                        <p class="text-[10px] capitalize tracking-widest text-emerald-600 font-bold truncate mt-0.5">
+                        <p
+                            class="text-[11px] uppercase tracking-wider text-slate-500 dark:text-slate-400 font-semibold truncate mt-1 flex items-center gap-1.5">
+                            <span
+                                class="w-1.5 h-1.5 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.8)] animate-pulse"></span>
                             {{ userRole }}
                         </p>
                     </div>
-                    <button class="p-2 text-slate-400 group-hover:text-emerald-600 rounded-lg transition-colors">
+
+                    <div
+                        class="w-8 h-8 rounded-lg flex items-center justify-center text-slate-400 dark:text-slate-500 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 group-hover:bg-emerald-50 dark:group-hover:bg-emerald-500/10 transition-all duration-300 relative">
                         <i class="fa-solid fa-gear group-hover:rotate-90 transition-transform duration-500"></i>
-                    </button>
+                    </div>
                 </div>
+
+                <button (click)="authService.logout()"
+                    class="group relative flex items-center justify-center cursor-pointer gap-2.5 w-full py-3.5 bg-rose-50 dark:bg-rose-500/10 rounded-2xl hover:bg-rose-100 dark:hover:bg-rose-500/20 transition-all duration-300 border border-rose-200/50 dark:border-rose-500/20 hover:shadow-sm overflow-hidden">
+                    <div
+                        class="absolute inset-0 bg-linear-to-r from-rose-500/5 to-orange-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    </div>
+                    <i
+                        class="fa-solid fa-arrow-right-from-bracket text-rose-600 dark:text-rose-400 group-hover:-translate-x-1 transition-transform duration-300"></i>
+                    <span class="font-semibold text-sm text-rose-700 dark:text-rose-300">Sign Out</span>
+                </button>
+
             </div>
         </div>
     </aside>
 
-    @if (isSidebarOpen()) {
+    <button (click)="toggleSidebar()"
+        class="fixed top-5 xl:block z-200 p-2.5 bg-white/95 dark:bg-slate-950/95 text-slate-600 dark:text-slate-100 rounded-r-full cursor-pointer hover:bg-slate-50 dark:hover:bg-white/5 hover:text-emerald-600 dark:hover:text-emerald-400 transition-all delay-100 duration-500 ease-in-out"
+        [class]="{ 
+                '-left-full': isSidebarOpen(), 
+                'left-0': !isSidebarOpen(),
+        }">
+        <i class="fa-solid fa-angles-left transform transition-all duration-500 ease-in-out"
+        [class]="{ 
+                'rotate-0': isSidebarOpen(), 
+                'rotate-180': !isSidebarOpen(),
+        }"></i>
+    </button>
+
+    @if (!isSidebarOpen()) {
     <div (click)="closeSidebar()"
-        class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-400 xl:hidden transition-all duration-300"></div>
+        class="fixed inset-0 bg-slate-900/60 dark:bg-black/50 z-400 xl:hidden transition-all duration-300"></div>
     }
 
-    <div class="flex flex-col min-w-0 min-h-screen bg-slate-50">
-        <header
-            class=" w-full h-16 md:h-20 bg-white border-b border-b-slate-200 flex items-center justify-between xl:justify-end px-3 md:px-8 shrink-0 fixed top-0 left-0 right-0 md:relative z-40">
+    <main class="flex-1 flex flex-col transform transition-all duration-500 ease-in-out">
+        <div
+            class="flex-1 mt-15 md:mt-0 p-4 sm:p-6 lg:p-10 lg:pt-6 w-full mx-auto bg-slate-50 dark:bg-slate-800 transform transition-all duration-500 ease-in-out">
+            <router-outlet></router-outlet>
+        </div>
+        <app-admin-footer></app-admin-footer>
+    </main>
 
-            <div class="flex items-center justify-between gap-4 w-full xl:hidden">
-                <div routerLink="/users/dashboard"
-                    class="flex items-center gap-3 w-30 h-15 py-2 cursor-pointer rounded-lg hover:scale-105 hover:bg-slate-100 transition-all duration-300">
-                    <img src="./logos/zaraa.png" alt="Zaraa Logo" class="h-full w-full drop-shadow-sm">
-                </div>
 
-                <button (click)="toggleSidebar()"
-                    class="xl:hidden p-2.5 bg-slate-100 text-slate-600 rounded-xl cursor-pointer">
-                    <i class="fa-solid fa-bars-staggered"></i>
-                </button>
-            </div>
-
-            <div class="hidden md:flex md:items-center md;gap-4 ">
-                <button
-                    class="w-10 h-10 flex items-center justify-center bg-white border border-slate-200 rounded-xl text-slate-500 hover:bg-emerald-50 hover:text-emerald-600 hover:border-emerald-200 transition-all relative cursor-pointer">
-                    <i class="fa-solid fa-bell"></i>
-                    <span
-                        class="absolute top-2.5 right-2.5 w-2 h-2 bg-red-500 rounded-full border-2 border-white"></span>
-                </button>
-
-                <button
-                    class="w-10 h-10 flex items-center justify-center bg-white border border-slate-200 rounded-xl text-slate-500 hover:bg-emerald-50 hover:text-emerald-600 hover:border-emerald-200 transition-all relative cursor-pointer">
-                    <i class="fa-solid fa-cart-arrow-down"></i>
-                    <span
-                        class="absolute top-2.5 right-2.5 w-2 h-2 bg-red-500 rounded-full border-2 border-white"></span>
-                </button>
-
-                <button routerLink="/users/diagnosis"
-                    class="hidden xl:flex items-center gap-3 px-6 py-3 bg-emerald-900 hover:bg-emerald-600 text-white font-semibold rounded-2xl shadow-lg shadow-emerald-200/30 transform hover:scale-105 transition-all duration-200 cursor-pointer">
-                    <i class="fa-solid fa-camera text-lg"></i>
-                    <span>New Scan</span>
-                </button>
-            </div>
-        </header>
-
-        <main class="flex-1 flex flex-col">
-            <div class="flex-1 mt-15 md:mt-0 p-4 sm:p-6 lg:p-10 lg:pt-6 w-full mx-auto">
-                <router-outlet></router-outlet>
-            </div>
-            <!-- <app-footer class="mt-auto shrink-0"></app-footer> -->
-        </main>
-    </div>
 </section>

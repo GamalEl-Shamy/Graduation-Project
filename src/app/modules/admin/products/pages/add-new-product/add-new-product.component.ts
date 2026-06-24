@@ -8,10 +8,11 @@ import { BrandsService } from '../../../brands/services/brands.service';
 import { brandItems } from '../../../brands/models/brand.interface';
 import { CategoryItem } from '../../../categories/models/category.interface';
 import { ToastComponent } from "../../../shared/toast/toast.component";
+import { AmbientBackgroundComponent } from "../../../shared/ambient-background/ambient-background.component";
 
 @Component({
   selector: 'app-add-new-product',
-  imports: [ReactiveFormsModule, ToastComponent],
+  imports: [ReactiveFormsModule, ToastComponent, AmbientBackgroundComponent],
   templateUrl: './add-new-product.component.html',
   styleUrl: './add-new-product.component.css',
 })

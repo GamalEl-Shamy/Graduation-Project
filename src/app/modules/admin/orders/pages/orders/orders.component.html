@@ -1,1 +1,33 @@
-<app-all-orders></app-all-orders>
+<app-ambient-background></app-ambient-background>
+
+@if (!isLoading()) {
+<app-orders-header [ordersList]="ordersList()"></app-orders-header>
+
+<app-orders-overview [orders]="ordersInfo()!"></app-orders-overview>
+
+@if (ordersList().length > 0) {
+<app-all-orders 
+    [OrdersList]="ordersList()"
+    (orderStatusChange)="changeOrderStatus($event.orderId, $event.newStatus)"></app-all-orders>
+
+} @else {
+<app-empty title="orders"
+    subtitle="It looks like there are no orders in the system yet, or none match your current filters. Customer purchases will appear here automatically."
+    icon="fa-solid fa-triangle-exclamation" [showButton]="false"></app-empty>
+}
+
+} @else {
+<app-skeleton-admin></app-skeleton-admin>
+}
+
+
+@if (successMessage()) {
+<app-toast [successMessage]="successMessage()!"></app-toast>
+}
+@if (errorMessage()) {
+<app-toast [errorMessage]="errorMessage()!"></app-toast>
+}
+
+@if (isProcessing()) {
+<app-loading></app-loading>
+}

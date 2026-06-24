@@ -1,1 +1,46 @@
-<app-all-products></app-all-products>
+<app-ambient-background></app-ambient-background>
+
+@if (!isLoading()) {
+<app-products-header [productsList]="productsList()" (onAddProductClick)="toggleAddProduct()"></app-products-header>
+
+<app-products-overview [products]="products()!"></app-products-overview>
+
+@if(productsList().length > 0) {
+
+<app-all-products [productsList]="productsList()" (editProduct)="openEditModal($event)"
+    (deleteProduct)="deleteProduct($event)"></app-all-products>
+
+} @else {
+<app-empty title="products"
+    subtitle="It looks like there are no products available yet, or none match your current search. Add a new product to expand your store catalog."
+    icon="fa-solid fa-triangle-exclamation" goto="/admin/add_new_product"></app-empty>
+}
+
+} @else {
+<app-skeleton-admin></app-skeleton-admin>
+}
+
+
+@if (isAddProduct()) {
+<div (click)="toggleAddProduct()"
+    class="fixed inset-0 z-500 bg-black/50 backdrop-blur-sm flex items-start justify-center overflow-y-auto p-4">
+
+    <div (click)="$event.stopPropagation()" class="w-full max-w-5xl my-10">
+
+        <app-add-new-product [productData]="selectedProduct()" [isClose]="isEditProduct()"
+            (onClose)="toggleAddProduct()" (onSuccess)="loadProducts()">
+        </app-add-new-product>
+
+    </div>
+</div>
+
+}
+
+
+@if (successDeletedMessage()) {
+<app-toast [successMessage]="successDeletedMessage()!"></app-toast>
+}
+
+@if (isDeleted()) {
+<app-loading></app-loading>
+}
