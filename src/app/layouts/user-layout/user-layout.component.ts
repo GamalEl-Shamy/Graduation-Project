@@ -1,21 +1,18 @@
 import { Component, DOCUMENT, HostListener, inject, OnInit, signal } from '@angular/core';
-import { RouterLinkActive, RouterLinkWithHref, RouterOutlet } from '@angular/router';
-import { FooterComponent } from "../../shared/components/footer/footer.component";
+import { RouterOutlet } from '@angular/router';
 import { AuthService } from '../../modules/auth/services/auth.service';
+import { UserHeaderComponent } from "../../modules/user/components/user-header/user-header.component";
+import { UserSidebarComponent } from "../../modules/user/components/user-sidebar/user-sidebar.component";
+import { FooterComponent } from "../../shared/components/footer/footer.component";
 import { ThemeService } from '../../shared/services/theme.service';
-import { AmbientBackgroundComponent } from "../../modules/admin/shared/ambient-background/ambient-background.component";
-import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-user-layout',
-  imports: [RouterOutlet, FooterComponent, RouterLinkWithHref, RouterLinkActive, DatePipe, AmbientBackgroundComponent],
+  imports: [RouterOutlet, FooterComponent, UserSidebarComponent, UserHeaderComponent],
   templateUrl: './user-layout.component.html',
   styleUrl: './user-layout.component.css',
 })
 export class UserLayoutComponent implements OnInit {
-  themeService = inject(ThemeService);
-  authService = inject(AuthService);
-
   today = new Date();
   isSidebarOpen = signal(true);
   userFirstName: string = '';
