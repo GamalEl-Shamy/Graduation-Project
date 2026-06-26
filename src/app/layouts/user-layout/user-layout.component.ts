@@ -1,12 +1,14 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, DOCUMENT, HostListener, inject, OnInit, signal } from '@angular/core';
 import { RouterLinkActive, RouterLinkWithHref, RouterOutlet } from '@angular/router';
 import { FooterComponent } from "../../shared/components/footer/footer.component";
 import { AuthService } from '../../modules/auth/services/auth.service';
 import { ThemeService } from '../../shared/services/theme.service';
+import { AmbientBackgroundComponent } from "../../modules/admin/shared/ambient-background/ambient-background.component";
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-user-layout',
-  imports: [RouterOutlet, FooterComponent, RouterLinkWithHref, RouterLinkActive],
+  imports: [RouterOutlet, FooterComponent, RouterLinkWithHref, RouterLinkActive, DatePipe, AmbientBackgroundComponent],
   templateUrl: './user-layout.component.html',
   styleUrl: './user-layout.component.css',
 })
@@ -14,7 +16,8 @@ export class UserLayoutComponent implements OnInit {
   themeService = inject(ThemeService);
   authService = inject(AuthService);
 
-  isSidebarOpen = signal(true); //false
+  today = new Date();
+  isSidebarOpen = signal(true);
   userFirstName: string = '';
   userRole: string = '';
   char: string = '';
@@ -36,4 +39,31 @@ export class UserLayoutComponent implements OnInit {
   closeSidebar() {
     this.isSidebarOpen.set(true);
   }
+
+
+  //#region Header Visibility Control
+  private document = inject(DOCUMENT);
+
+  isVisible = signal<boolean>(true);
+  private lastScrollPosition = 0;
+
+  @HostListener('window:scroll')
+  onWindowScroll() {
+    const win = this.document.defaultView;
+
+    if (!win) return;
+
+    const currentScrollPosition = win.scrollY || this.document.documentElement.scrollTop || 0;
+
+    if (currentScrollPosition < this.lastScrollPosition || currentScrollPosition === 0) {
+      this.isVisible.set(true);
+    }
+
+    else if (currentScrollPosition > this.lastScrollPosition && currentScrollPosition > 100) {
+      this.isVisible.set(false);
+    }
+
+    this.lastScrollPosition = currentScrollPosition;
+  }
+  //#endregion
 }
