@@ -4,10 +4,11 @@ import { WeatherService } from '../../../services/weather.service';
 import { DatePipe } from '@angular/common';
 import { EnvironmentSkeletonComponent } from "../../../skeletons/environment-skeleton/environment-skeleton.component";
 import { WhetherHeaderComponent } from "../whether-header/whether-header.component";
+import { SlideIn } from "../../../../../shared/directives/slide-in";
 
 @Component({
   selector: 'app-whether-section',
-  imports: [DatePipe, EnvironmentSkeletonComponent, WhetherHeaderComponent],
+  imports: [DatePipe, EnvironmentSkeletonComponent, WhetherHeaderComponent, SlideIn],
   templateUrl: './whether-section.component.html',
   styleUrl: './whether-section.component.css',
 })
