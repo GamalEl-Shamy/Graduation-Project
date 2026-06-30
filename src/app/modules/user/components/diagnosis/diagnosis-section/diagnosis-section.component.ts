@@ -1,4 +1,4 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, computed, ElementRef, inject, signal } from '@angular/core';
 import {
   Plant,
   PredictionResponse,
@@ -6,14 +6,17 @@ import {
 } from '../../../models/plant-detection.interface';
 import { AiDetectionService } from '../../../services/ai-detection.service';
 import { RouterLink } from '@angular/router';
+import { AmbientBackgroundComponent } from "../../../../admin/shared/ambient-background/ambient-background.component";
 
 @Component({
   selector: 'app-diagnosis-section',
-  imports: [RouterLink],
+  imports: [RouterLink, AmbientBackgroundComponent],
   templateUrl: './diagnosis-section.component.html',
   styleUrl: './diagnosis-section.component.css',
 })
 export class DiagnosisSectionComponent {
+  public elementRef = inject(ElementRef);
+
   private aiDetectionService = inject(AiDetectionService);
 
   currentStep = signal(1);

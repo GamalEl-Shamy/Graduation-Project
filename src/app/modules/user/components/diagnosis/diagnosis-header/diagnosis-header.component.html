@@ -1,76 +1,110 @@
-<div class="relative overflow-hidden bg-[#012d1d] p-10 md:p-14 rounded-3xl text-white mb-10 group w-full">
+<section
+  class="relative overflow-hidden bg-[#020e0a] p-8 md:p-14 rounded-4xl text-white mb-10 group w-full shadow-[0_24px_60px_-15px_rgba(0,0,0,0.7)] bg-[url('/images/disease_detection.png')] bg-cover bg-center bg-no-repeat transition-all duration-500">
 
   <div
-    class="absolute inset-0 pointer-events-none bg-[linear-gradient(rgba(193,236,212,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(193,236,212,0.04)_1px,transparent_1px)] bg-size-[40px_40px]">
+    class="absolute inset-0 bg-linear-to-br from-[#020d09] md:from-[#020d09]/90 via-[#010906]/75 to-[#000403]/65 transition-all duration-700 group-hover:via-[#010906]/88">
   </div>
 
-  <div
-    class="absolute -top-16 -right-16 w-80 h-80 rounded-full pointer-events-none bg-[radial-gradient(circle,rgba(193,236,212,0.18)_0%,transparent_70%)]">
+  <div class="absolute -top-40 -left-40 w-96 h-96 rounded-full bg-emerald-500/10 blur-[100px] pointer-events-none">
   </div>
-  <div
-    class="absolute -bottom-16 -left-16 w-64 h-64 rounded-full pointer-events-none bg-[radial-gradient(circle_at_center,rgba(65,102,82,0.35)_0%,transparent_70%)]">
+  <div class="absolute -bottom-40 -right-40 w-96 h-96 rounded-full bg-teal-500/10 blur-[100px] pointer-events-none">
   </div>
 
-  <div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-10 max-w-5xl mx-auto">
 
-    <div class="flex flex-col items-center md:items-start text-center md:text-left flex-1">
+  <div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-12 max-w-6xl mx-auto">
+
+    <!-- LEFT: Text content -->
+    <div class="flex flex-col items-center md:items-start text-center md:text-left flex-1 min-w-0">
 
       <div
-        class="inline-flex items-center gap-2 px-4 py-2 rounded-full border mb-6 bg-[rgba(193,236,212,0.10)] border-[rgba(193,236,212,0.20)]">
+        class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-emerald-500/20 bg-emerald-500/5 mb-6 shadow-[0_0_15px_rgba(16,185,129,0.05)] transition-all duration-300 hover:border-emerald-500/35 hover:bg-emerald-500/10">
         <span class="relative flex h-2 w-2">
-          <span class="animate-ping absolute inline-flex h-full w-full rounded-full opacity-50 bg-[#c1ecd4]"></span>
-          <span class="relative inline-flex h-full w-full rounded-full bg-[#c1ecd4]"></span>
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 bg-emerald-400"></span>
+          <span class="relative inline-flex h-full w-full rounded-full bg-emerald-400"></span>
         </span>
-        <span class="text-[7px] sm:text-[10px] sm:font-bold uppercase tracking-widest text-[#c1ecd4]">A.I. Botanist
+        <span class="text-[9px] font-bold uppercase tracking-widest text-emerald-300 font-mono">A.I. Botanist
           Vision</span>
       </div>
 
-      <h2 class="text-2xl md:text-5xl font-extrabold leading-tight tracking-tight mb-4">
-        Smart <span class="text-[#c1ecd4]">Diagnosis</span> App
+      <h2
+        class="text-3xl lg:text-6xl font-extrabold leading-tight tracking-tight mb-4 font-headline font-[Namdhinggo]!">
+        Smart
+        <span
+          class="bg-linear-to-r from-emerald-400 via-[#c1ecd4] to-teal-400 bg-clip-text text-transparent font-[Namdhinggo]! drop-shadow-[0_0_15px_rgba(16,185,129,0.25)]">
+          Diagnosis
+        </span>
+        App
       </h2>
 
       <p
-        class="text-[9px] md:text-base leading-relaxed max-w-md text-[rgba(255,255,255,0.60)] font-normal font-['Namdhinggo']">
+        class="text-sm lg:text-base leading-relaxed max-w-lg font-light text-slate-300/80 font-['Namdhinggo',sans-serif] mb-8">
         Identify plant diseases instantly with our advanced vision model. Select your species, analyze the canopy, and
         receive a tailored treatment plan.
       </p>
 
-      <!-- Stats row -->
-      <!-- <div class="flex items-center gap-6 mt-8">
-        <div class="flex flex-col gap-0.5">
-          <span class="text-xl font-extrabold text-white">50+</span>
-          <span class="text-[10px] uppercase tracking-widest text-[rgba(255,255,255,0.35)] font-sans">Plant species</span>
-        </div>
-        <div class="w-px self-stretch bg-[rgba(255,255,255,0.10)]"></div>
-        <div class="flex flex-col gap-0.5">
-          <span class="text-xl font-extrabold text-white">98%</span>
-          <span class="text-[10px] uppercase tracking-widest text-[rgba(255,255,255,0.35)] font-sans">Accuracy</span>
-        </div>
-        <div class="w-px self-stretch bg-[rgba(255,255,255,0.10)]"></div>
-        <div class="flex flex-col gap-0.5">
-          <span class="text-xl font-extrabold text-white">&lt;3s</span>
-          <span class="text-[10px] uppercase tracking-widest text-[rgba(255,255,255,0.35)] font-sans">Analysis time</span>
-        </div>
-      </div> -->
+
+      <button (click)="scrollToSecondComponent()"
+        class="relative overflow-hidden inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl bg-linear-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 font-semibold text-sm transition-all duration-300 shadow-[0_8px_20px_-4px_rgba(16,185,129,0.4)] hover:shadow-[0_12px_28px_-4px_rgba(16,185,129,0.5)] hover:-translate-y-0.5 active:translate-y-0 text-white cursor-pointer w-full sm:w-auto">
+        <i class="fa-solid fa-camera text-base"></i>
+        <span>Start Diagnosis</span>
+      </button>
+
     </div>
 
+    <!-- RIGHT: Animated Viewfinder Scanner HUD -->
     <div
-      class="relative w-25 h-25 md:w-44 md:h-44 shrink-0 flex items-center justify-center group-hover:scale-105 transition-transform duration-700">
+      class="relative flex items-center justify-center shrink-0 w-64 h-64 md:w-80 md:h-80 group-hover:scale-[1.02] transition-transform duration-700 select-none animate-float-slow">
+
+      <div class="absolute inset-0 rounded-full border border-dashed border-emerald-500/20 animate-spin-slow"></div>
+
       <div
-        class="absolute inset-0 rounded-[2.5rem] rotate-6 border bg-[rgba(193,236,212,0.06)] border-[rgba(193,236,212,0.15)]">
-      </div>
-      <div
-        class="absolute inset-2 rounded-4xl -rotate-3 border flex items-center justify-center bg-[rgba(255,255,255,0.04)] border-[rgba(193,236,212,0.20)]">
-        <i class="fa-solid fa-leaf text-4xl md:text-7xl text-[#c1ecd4]"></i>
+        class="absolute inset-4 rounded-full border border-double border-emerald-500/10 [border-width:3px] animate-spin-reverse">
       </div>
 
       <div
-        class="absolute bottom-2 -right-12 md:-bottom-2 md:-right-2 flex items-center gap-1.5 px-3 py-1.5 rounded-xl border bg-[#1D9E75] border-[rgba(255,255,255,0.15)]">
-        <span class="w-1.5 h-1.5 rounded-full bg-[#c1ecd4]"></span>
-        <span class="text-[8px] md:text-[10px] font-semibold text-[#c1ecd4] whitespace-nowrap font-sans">AI
-          Active</span>
+        class="absolute inset-8 rounded-4xl border border-white/10 bg-black/40 backdrop-blur-md shadow-inner flex items-center justify-center overflow-hidden">
+
+        <div class="relative w-full h-full flex items-center justify-center">
+
+          <div
+            class="absolute inset-0 opacity-10 bg-[linear-gradient(rgba(16,185,129,0.3)_1px,transparent_1px),linear-gradient(90deg,rgba(16,185,129,0.3)_1px,transparent_1px)] bg-[size:16px_16px]">
+          </div>
+
+          <!-- Large Leaf Icon (Scanning target) -->
+          <i
+            class="fa-solid fa-leaf text-6xl md:text-8xl text-emerald-400/35 filter drop-shadow-[0_0_30px_rgba(52,211,153,0.4)] animate-pulse-soft"></i>
+
+          <!-- Viewfinder Target Bracket Corners -->
+          <div class="absolute top-4 left-4 w-4 h-4 border-t-2 border-l-2 border-emerald-400/80"></div>
+          <div class="absolute top-4 right-4 w-4 h-4 border-t-2 border-r-2 border-emerald-400/80"></div>
+          <div class="absolute bottom-4 left-4 w-4 h-4 border-b-2 border-l-2 border-emerald-400/80"></div>
+          <div class="absolute bottom-4 right-4 w-4 h-4 border-b-2 border-r-2 border-emerald-400/80"></div>
+
+          <!-- Scanning Laser Line -->
+          <div
+            class="absolute left-0 right-0 h-0.5 bg-linear-to-r from-transparent via-emerald-400 to-transparent shadow-[0_0_12px_rgba(52,211,153,0.8)] animate-laser-sweep z-20">
+          </div>
+
+          <div class="absolute bottom-5 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1">
+            <span
+              class="text-[9px] font-mono text-emerald-300 font-bold uppercase tracking-widest bg-emerald-950/75 px-2.5 py-0.5 rounded border border-emerald-500/30 backdrop-blur-sm animate-pulse-fast">
+              Scanning...
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Floating Badge -->
+      <div
+        class="absolute bottom-4 -right-1 md:-right-2 flex items-center gap-2 px-3 py-1.5 rounded-xl border border-emerald-500/30 bg-[#042618]/95 shadow-[0_8px_20px_rgba(0,0,0,0.5)] backdrop-blur-md hover:scale-105 transition-transform duration-300">
+        <span class="relative flex h-2 w-2">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 bg-emerald-400"></span>
+          <span class="relative inline-flex h-full w-full rounded-full bg-[#c1ecd4]"></span>
+        </span>
+        <span class="text-[9px] font-bold text-[#c1ecd4] whitespace-nowrap uppercase tracking-wider font-mono">
+          Model Active
+        </span>
       </div>
     </div>
-
   </div>
-</div>
+</section>

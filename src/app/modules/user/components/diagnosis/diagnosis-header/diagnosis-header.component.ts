@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-diagnosis-header',
@@ -7,5 +7,14 @@ import { Component } from '@angular/core';
   styleUrl: './diagnosis-header.component.css',
 })
 export class DiagnosisHeaderComponent {
+  @Input() targetElement!: HTMLElement; 
 
+  scrollToSecondComponent() {
+    if (this.targetElement) {
+      this.targetElement.scrollIntoView({ 
+        behavior: 'smooth', 
+        block: 'start'     
+      });
+    }
+  }
 }

@@ -5,10 +5,11 @@ import { UserHeaderComponent } from "../../modules/user/components/user-header/u
 import { UserSidebarComponent } from "../../modules/user/components/user-sidebar/user-sidebar.component";
 import { FooterComponent } from "../../shared/components/footer/footer.component";
 import { ThemeService } from '../../shared/services/theme.service';
+import { AmbientBackgroundComponent } from "../../modules/admin/shared/ambient-background/ambient-background.component";
 
 @Component({
   selector: 'app-user-layout',
-  imports: [RouterOutlet, FooterComponent, UserSidebarComponent, UserHeaderComponent],
+  imports: [RouterOutlet, FooterComponent, UserSidebarComponent, UserHeaderComponent, AmbientBackgroundComponent],
   templateUrl: './user-layout.component.html',
   styleUrl: './user-layout.component.css',
 })
