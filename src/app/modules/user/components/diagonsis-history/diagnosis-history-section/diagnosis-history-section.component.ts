@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component, computed, signal } from '@angular/core';
+import { Component, computed, ElementRef, inject, signal } from '@angular/core';
 import { DiagnosisHistoryEmptyComponent } from "../diagnosis-history-empty/diagnosis-history-empty.component";
 import { RouterLink } from "@angular/router";
 import { DiagnoisHistorySkeletonsComponent } from "../../../skeletons/diagnois-history-skeletons/diagnois-history-skeletons.component";
+import { SlideIn } from "../../../../../shared/directives/slide-in";
 
 interface DiagnosisRecord {
   id: string;
@@ -17,11 +18,13 @@ interface DiagnosisRecord {
 
 @Component({
   selector: 'app-diagnosis-history-section',
-  imports: [CommonModule, DiagnosisHistoryEmptyComponent, RouterLink, DiagnoisHistorySkeletonsComponent],
+  imports: [CommonModule, DiagnosisHistoryEmptyComponent, RouterLink, DiagnoisHistorySkeletonsComponent, SlideIn],
   templateUrl: './diagnosis-history-section.component.html',
   styleUrl: './diagnosis-history-section.component.css',
 })
 export class DiagnosisHistorySectionComponent {
+  public elementRef = inject(ElementRef); 
+
 searchQuery = signal('');
   filterStatus = signal('All');
 

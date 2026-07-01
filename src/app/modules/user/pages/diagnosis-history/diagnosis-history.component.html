@@ -1,3 +1,3 @@
 
-<app-diagnosis-history-header></app-diagnosis-history-header>
-<app-diagnosis-history-section></app-diagnosis-history-section>
+<app-diagnosis-history-header [targetElement]="diagnosisHistorySection.elementRef.nativeElement"></app-diagnosis-history-header>
+<app-diagnosis-history-section #diagnosisHistorySection class="scroll-mt-8 md:scroll-mt-10"></app-diagnosis-history-section>
