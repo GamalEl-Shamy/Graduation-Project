@@ -1,4 +1,4 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, computed, ElementRef, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { environment } from '../../../../../../environments/environment.development';
 import { ApplicationUser, Carts } from '../../../models/cart.interface';
@@ -8,6 +8,7 @@ import { OrderSummaryComponent } from '../../order-summary/order-summary.compone
 import { ToastComponent } from '../../shared/toast/toast.component';
 import { CartUserInformationComponent } from '../cart-user-information/cart-user-information.component';
 import { EmptyCartComponent } from '../empty-cart/empty-cart.component';
+import { SlideIn } from "../../../../../shared/directives/slide-in";
 
 @Component({
   selector: 'app-cart-section',
@@ -18,11 +19,14 @@ import { EmptyCartComponent } from '../empty-cart/empty-cart.component';
     ToastComponent,
     OrderSummaryComponent,
     EmptyCartComponent,
-  ],
+    SlideIn
+],
   templateUrl: './cart-section.component.html',
   styleUrl: './cart-section.component.css',
 })
 export class CartSectionComponent {
+  public elementRef = inject(ElementRef);
+
   private cartService = inject(CartService);
 
   cartData = signal<Carts | null>(null);

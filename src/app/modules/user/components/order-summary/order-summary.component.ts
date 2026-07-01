@@ -4,10 +4,11 @@ import { CartService } from '../../services/cart.service';
 import { environment } from '../../../../../environments/environment.development';
 import { RouterLink } from "@angular/router";
 import { OrderSummarySkeletonComponent } from "../../skeletons/order-summary-skeleton/order-summary-skeleton.component";
+import { SlideIn } from "../../../../shared/directives/slide-in";
 
 @Component({
   selector: 'app-order-summary',
-  imports: [RouterLink, OrderSummarySkeletonComponent],
+  imports: [RouterLink, OrderSummarySkeletonComponent, SlideIn],
   templateUrl: './order-summary.component.html',
   styleUrl: './order-summary.component.css',
 })

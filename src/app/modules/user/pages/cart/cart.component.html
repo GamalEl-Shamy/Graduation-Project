@@ -1,4 +1,4 @@
 
-<app-cart-header></app-cart-header>
+<app-cart-header [targetElement]="secondComp.elementRef.nativeElement"></app-cart-header>
 
-<app-cart-section></app-cart-section>
+<app-cart-section #secondComp class="scroll-mt-8 md:scroll-mt-10"></app-cart-section>
