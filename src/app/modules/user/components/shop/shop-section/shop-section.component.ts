@@ -12,10 +12,11 @@ import { ProductsService } from '../../../services/products.service';
 import { ShopSkeletonsComponent } from '../../../skeletons/shop-skeletons/shop-skeletons.component';
 import { ShopHeaderComponent } from '../shop-header/shop-header.component';
 import { ToastComponent } from '../../shared/toast/toast.component';
+import { SlideIn } from "../../../../../shared/directives/slide-in";
 
 @Component({
   selector: 'app-shop-section',
-  imports: [ShopHeaderComponent, ShopSkeletonsComponent, RouterLink, ToastComponent],
+  imports: [ShopHeaderComponent, ShopSkeletonsComponent, RouterLink, ToastComponent, SlideIn],
   templateUrl: './shop-section.component.html',
   styleUrl: './shop-section.component.css',
 })

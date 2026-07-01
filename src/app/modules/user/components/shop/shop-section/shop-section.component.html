@@ -1,22 +1,28 @@
-<div class="min-h-screen bg-slate-50 text-slate-800 font-sans">
+@if (isLoading()) {
+<app-shop-skeletons></app-shop-skeletons>
+} @else {
+<section class="min-h-screen bg-slate-50 dark:bg-slate-800 text-slate-800 font-sans">
     <div>
-        <app-shop-header></app-shop-header>
+        <app-shop-header [targetElement]="secondComp"></app-shop-header>
 
-        <div class="sticky top-1 md:top-4 z-40 mb-12">
+
+        <div #secondComp appSlideIn direction="down"
+            class="sticky top-1 md:top-2 z-300 mb-12 overflow-hidden rounded-4xl shadow-[0_8px_30px_rgba(0,0,0,0.3)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.4)]">
             <div
-                class="bg-white backdrop-blur-2xl rounded-2xl p-2 pb-3 md:p-3 shadow-[0_8px_30px_rgba(0,0,0,0.2)] border border-slate-100 flex flex-col gap-1.5 md:gap-0 items-center">
+                class="bg-white dark:bg-slate-800 backdrop-blur-2xl  overflow-hidden p-2 pb-3 md:p-3  dark:shadow-[0_8px_30px_rgba(0,0,0,0.4)] border border-slate-100 dark:border-slate-700/80 flex flex-col gap-1.5 md:gap-0 items-center">
 
-                <div class="relative w-full lg:flex-1 group ">
+                <div class="relative w-full lg:flex-1 group">
                     <div
-                        class="absolute left-6 top-1/2 -translate-y-1/2 w-10 h-10 bg-[#f8faf9] rounded-md lg:rounded-2xl flex items-center justify-center text-slate-400 group-focus-within:text-[#012d1d] group-focus-within:bg-[#c1ecd4]/30 transition-all">
+                        class="absolute left-6 top-1/2 -translate-y-1/2 w-10 h-10 bg-[#f8faf9] dark:bg-slate-900 rounded-md lg:rounded-2xl flex items-center justify-center text-slate-400 dark:text-slate-500 group-focus-within:text-[#012d1d] dark:group-focus-within:text-emerald-400 group-focus-within:bg-[#c1ecd4]/30 dark:group-focus-within:bg-emerald-950/40 transition-all">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </div>
                     <div class="flex items-center justify-center gap-2">
-                        <input type="text" placeholder="Search premium products..."
-                            class="w-full pl-20 pr-6 py-3 md:py-5  bg-slate-50  border-none rounded-xl focus:outline-none focus:ring-0 font-bold text-slate-700 placeholder-slate-400 text-lg"
+                        <input (keydown.enter)="searchByProductName(searchInput.value)" type="text"
+                            placeholder="Search premium products..."
+                            class="w-full pl-20 pr-6 py-3 md:py-5 bg-slate-50 dark:bg-slate-900/60 border-none rounded-xl focus:outline-none focus:ring-0 font-bold text-slate-700 dark:text-slate-200 placeholder-slate-400 dark:placeholder-slate-500 text-lg"
                             #searchInput />
                         <button (click)="searchByProductName(searchInput.value)"
-                            class="bg-emerald-800 hover:bg-emerald-950 text-white hover:scale-105 cursor-pointer mr-6 px-3 md:px-5 py-2 md:py-3 rounded-xl font-bold transition-all duration-300 transform active:scale-95 shadow-md shadow-emerald-200">
+                            class="bg-emerald-800 hover:bg-emerald-950 dark:bg-emerald-700 dark:hover:bg-emerald-600 text-white hover:scale-105 cursor-pointer mr-6 px-3 md:px-5 py-2 md:py-3 rounded-xl font-bold transition-all duration-300 transform active:scale-95 shadow-md shadow-emerald-200 dark:shadow-emerald-950/40">
                             Search
                         </button>
                     </div>
@@ -24,18 +30,18 @@
 
                 <div class="w-full flex justify-between lg:gap-20 mt-2 px-6 lg:px-6">
                     <div
-                        class="relative flex-1 lg:w-full group bg-slate-50 rounded-md lg:rounded-2xl border border-slate-100 hover:border-[#c1ecd4] transition-colors">
+                        class="relative flex-1 lg:w-full group bg-slate-50 dark:bg-slate-900/60 rounded-md lg:rounded-2xl border border-slate-100 dark:border-slate-700/80 hover:border-[#c1ecd4] dark:hover:border-emerald-500/50 transition-colors">
                         <i
-                            class="fa-solid fa-layer-group absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-[#012d1d] transition-colors z-10 pointer-events-none"></i>
+                            class="fa-solid fa-layer-group absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500 group-focus-within:text-[#012d1d] dark:group-focus-within:text-emerald-400 transition-colors z-10 pointer-events-none"></i>
 
                         <div class="relative w-full">
                             <select (change)="onCategoryChange($event)"
-                                class="w-full pl-12 pr-10 py-1 md:py-2.5 bg-transparent border-none rounded-2xl font-bold text-slate-600 focus:ring-0 appearance-none cursor-pointer hover:bg-slate-50 transition-all outline-none">
+                                class="w-full pl-12 pr-10 py-1 md:py-2.5 bg-transparent border-none rounded-2xl font-bold text-slate-600 dark:text-slate-300 focus:ring-0 appearance-none cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-all outline-none">
 
-                                <option value="">All Categories</option>
+                                <option value="" class="dark:bg-slate-800 dark:text-slate-200">All Categories</option>
 
                                 @for (cat of categoriesList(); track cat.id) {
-                                <option [value]="cat.id">
+                                <option [value]="cat.id" class="dark:bg-slate-800 dark:text-slate-200">
                                     {{ cat.name }}
                                 </option>
                                 }
@@ -43,76 +49,74 @@
                         </div>
 
                         <div
-                            class="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400 group-hover:text-[#012d1d] transition-colors">
+                            class="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400 dark:text-slate-500 group-hover:text-[#012d1d] dark:group-hover:text-emerald-400 transition-colors">
                             <i class="fa-solid fa-chevron-down text-sm"></i>
                         </div>
                     </div>
 
                     <div
-                        class="relative flex-1 lg:w-auto group bg-slate-50 rounded-md lg:rounded-2xl border border-slate-100 hover:border-[#c1ecd4] transition-colors">
+                        class="relative flex-1 lg:w-auto group bg-slate-50 dark:bg-slate-900/60 rounded-md lg:rounded-2xl border border-slate-100 dark:border-slate-700/80 hover:border-[#c1ecd4] dark:hover:border-emerald-500/50 transition-colors">
                         <i
-                            class="fa-solid fa-sack-dollar absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-[#012d1d] transition-colors z-10 pointer-events-none"></i>
+                            class="fa-solid fa-sack-dollar absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500 group-focus-within:text-[#012d1d] dark:group-focus-within:text-emerald-400 transition-colors z-10 pointer-events-none"></i>
 
                         <div class="relative w-full">
                             <select (change)="searchByMinPrice($any($event.target).value)"
-                                class="w-full pl-12 pr-10 py-1 md:py-2.5 bg-transparent border-none rounded-2xl font-bold text-slate-600 focus:ring-0 appearance-none cursor-pointer hover:bg-slate-50 transition-all outline-none">
-                                <option value="">Min Price</option>
-                                <option value="0">$0</option>
-                                <option value="25">$25</option>
-                                <option value="50">$50</option>
-                                <option value="100">$100</option>
-                                <option value="500">$500</option>
+                                class="w-full pl-12 pr-10 py-1 md:py-2.5 bg-transparent border-none rounded-2xl font-bold text-slate-600 dark:text-slate-300 focus:ring-0 appearance-none cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-all outline-none">
+                                <option value="" class="dark:bg-slate-800 dark:text-slate-200">Min Price</option>
+                                <option value="0" class="dark:bg-slate-800 dark:text-slate-200">$0</option>
+                                <option value="25" class="dark:bg-slate-800 dark:text-slate-200">$25</option>
+                                <option value="50" class="dark:bg-slate-800 dark:text-slate-200">$50</option>
+                                <option value="100" class="dark:bg-slate-800 dark:text-slate-200">$100</option>
+                                <option value="500" class="dark:bg-slate-800 dark:text-slate-200">$500</option>
                             </select>
                         </div>
 
                         <div
-                            class="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400 group-hover:text-[#012d1d] transition-colors">
+                            class="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400 dark:text-slate-500 group-hover:text-[#012d1d] dark:group-hover:text-emerald-400 transition-colors">
                             <i class="fa-solid fa-chevron-down text-sm"></i>
                         </div>
                     </div>
 
                     <div
-                        class="relative flex-1 lg:w-auto group bg-slate-50 rounded-md lg:rounded-2xl border border-slate-100 hover:border-[#c1ecd4] transition-colors">
+                        class="hidden lg:block relative flex-1 lg:w-auto group bg-slate-50 dark:bg-slate-900/60 rounded-md lg:rounded-2xl border border-slate-100 dark:border-slate-700/80 hover:border-[#c1ecd4] dark:hover:border-emerald-500/50 transition-colors">
                         <i
-                            class="fa-solid fa-sack-dollar absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-[#012d1d] transition-colors z-10 pointer-events-none"></i>
+                            class="fa-solid fa-sack-dollar absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500 group-focus-within:text-[#012d1d] dark:group-focus-within:text-emerald-400 transition-colors z-10 pointer-events-none"></i>
 
                         <div class="relative w-full">
                             <select (change)="searchByMaxPrice($any($event.target).value)"
-                                class="w-full pl-12 pr-10 py-1 md:py-2.5 bg-transparent border-none rounded-2xl font-bold text-slate-600 focus:ring-0 appearance-none cursor-pointer hover:bg-slate-50 transition-all outline-none">
-                                <option value="">Max Price</option>
-                                <option value="50">$50</option>
-                                <option value="100">$100</option>
-                                <option value="500">$500</option>
-                                <option value="1000">$1000</option>
-                                <option value="5000">$5000</option>
+                                class="w-full pl-12 pr-10 py-1 md:py-2.5 bg-transparent border-none rounded-2xl font-bold text-slate-600 dark:text-slate-300 focus:ring-0 appearance-none cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-all outline-none">
+                                <option value="" class="dark:bg-slate-800 dark:text-slate-200">Max Price</option>
+                                <option value="50" class="dark:bg-slate-800 dark:text-slate-200">$50</option>
+                                <option value="100" class="dark:bg-slate-800 dark:text-slate-200">$100</option>
+                                <option value="500" class="dark:bg-slate-800 dark:text-slate-200">$500</option>
+                                <option value="1000" class="dark:bg-slate-800 dark:text-slate-200">$1000</option>
+                                <option value="5000" class="dark:bg-slate-800 dark:text-slate-200">$5000</option>
                             </select>
                         </div>
 
                         <div
-                            class="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400 group-hover:text-[#012d1d] transition-colors">
+                            class="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400 dark:text-slate-500 group-hover:text-[#012d1d] dark:group-hover:text-emerald-400 transition-colors">
                             <i class="fa-solid fa-chevron-down text-sm"></i>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        @if (isLoading()) {
-        <app-shop-skeletons></app-shop-skeletons>
-        } @else if (products().length > 0) {
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+        @if (products().length > 0){
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 overflow-hidden">
             @for (product of products(); track product.productId) {
-            <div
-                class="group pl-2 sm:pl-0 bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-[0_8px_30px_rgba(0,0,0,0.04)] hover:shadow-2xl hover:shadow-[#012d1d]/10 hover:-translate-y-2 transition-all duration-500 flex sm:flex-col cursor-pointer">
+            <div appSlideIn direction="left"
+                class="group pl-2 sm:pl-0 bg-white dark:bg-slate-800 rounded-3xl overflow-hidden border border-slate-100  shadow-[0_8px_30px_rgba(0,0,0,0.04)] dark:ring-1 dark:ring-white/5 dark:shadow-[0_0_25px_rgba(255,255,255,0.05)] dark:border dark:border-white/10 hover:shadow-2xl hover:shadow-[#012d1d]/10 dark:hover:shadow-emerald-950/30 hover:-translate-y-2 transition-all duration-500 flex sm:flex-col cursor-pointer">
 
                 <div [routerLink]="['product-details/', product.name, product.productId]"
-                    class="relative aspect-4/5 w-28 h-28 my-auto sm:w-full sm:h-full overflow-hidden bg-[#f8faf9] p-1 sm:p-6">
+                    class="relative aspect-4/5 w-28 h-28 my-auto sm:w-full sm:h-full overflow-hidden bg-[#f8faf9] dark:bg-slate-900/60 p-1 sm:p-6">
 
                     <div
                         class="absolute inset-0 bg-linear-to-b from-transparent to-black/5 mix-blend-overlay pointer-events-none">
                     </div>
 
                     <img [src]=" imgUrl + product.mainImg" [alt]="product.name"
-                        class="w-full h-full object-contain filter drop-shadow-xl transition-transform duration-1000 group-hover:scale-110 mix-blend-darken" />
+                        class="w-full h-full object-contain filter drop-shadow-xl transition-transform duration-1000 group-hover:scale-110 mix-blend-darken dark:mix-blend-normal" />
 
                     <div class="absolute hidden top-5 inset-x-5 sm:flex justify-between items-start z-10">
                         @if (product.category) {
@@ -131,12 +135,14 @@
                     <div
                         class="absolute hidden sm:block bottom-5 left-5 right-5 translate-y-16 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 z-10">
                         <div
-                            class="bg-white/95 backdrop-blur-md p-3.5 rounded-2xl shadow-xl flex items-center justify-around border border-slate-100/50">
+                            class="bg-white/95 dark:bg-slate-800/95 backdrop-blur-md p-3.5 rounded-2xl shadow-xl flex items-center justify-around border border-slate-100/50 dark:border-slate-700/50">
                             <div class="flex items-center gap-1.5">
                                 <i class="fa-solid fa-star text-amber-400 text-sm"></i>
-                                <span class="text-sm font-black text-slate-800">{{product.rate}}</span>
+                                <span
+                                    class="text-sm font-black text-slate-800 dark:text-slate-100">{{product.rate}}</span>
                             </div>
-                            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
+                            <span
+                                class="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest">
                                 Reviews
                             </span>
                         </div>
@@ -144,54 +150,72 @@
                 </div>
 
                 <div [routerLink]="['product-details/', product.name, product.productId]"
-                    class="p-8 pt-2 lg:pt-8 flex-1 flex flex-col bg-white cursor-pointer">
+                    class="p-8 pt-2 lg:pt-8 flex-1 flex flex-col bg-white dark:bg-slate-800 cursor-pointer">
                     <h3
-                        class="text-2xl font-bold font-['Namdhinggo'] text-slate-900 tracking-tight group-hover:text-[#012d1d] transition-colors line-clamp-2">
+                        class="text-2xl font-bold font-['Namdhinggo'] text-slate-900 dark:text-slate-100 tracking-tight group-hover:text-[#012d1d] dark:group-hover:text-emerald-400 transition-colors line-clamp-2">
                         {{product.name}}
                     </h3>
                     <div class="flex items-center gap-1.5 lg:hidden">
                         <i class="fa-solid fa-star text-amber-400 text-sm"></i>
-                        <span class="text-sm text-slate-600">{{product.rate}}</span>
+                        <span class="text-sm text-slate-600 dark:text-slate-400">{{product.rate}}</span>
                     </div>
 
                     @if (product.discount === 0) {
                     <div
-                        class="mt-auto flex flex-col items-start justify-around pt-1 lg:pt-6 border-t border-slate-100/60 w-full">
-                        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">
+                        class="mt-auto flex flex-col items-start justify-around pt-1 lg:pt-6 border-t border-slate-100/60 dark:border-slate-700/50 w-full">
+                        <span
+                            class="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-1">
                             Price
                         </span>
-                        <p class="text-2xl ml-2.5 font-black font-['Namdhinggo'] text-[#012d1d] tracking-tighter">
-                            ${{product.price.toFixed(2)}}
-                        </p>
+                        <div class="flex items-baseline gap-1.5 ml-2">
+                            <span
+                                class="text-3xl font-black font-['Namdhinggo'] text-[#012d1d] dark:text-emerald-400 tracking-tighter">
+                                {{product.price.toFixed(2)}}
+                            </span>
+                            <span class="text-sm font-bold text-slate-500 dark:text-slate-400">
+                                EGP
+                            </span>
+                        </div>
                     </div>
                     } @else {
-                    <div class="mt-auto  pt-6 border-t border-slate-100/60 w-full">
-                        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">
+                    <div class="mt-auto  pt-6 border-t border-slate-100/60 dark:border-slate-700/50 w-full">
+                        <span
+                            class="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-1">
                             Price
                         </span>
-                        <div class="flex items-center justify-around">
-                            <p class="text-2xl font-['Namdhinggo'] text-gray-400 line-through tracking-tighter">
-                                {{ getOriginalPrice(product.price, product.discount).toFixed(2) }}
-                            </p>
-                            <p class="text-2xl font-black font-['Namdhinggo'] text-[#012d1d] tracking-tighter">
-                                ${{product.price.toFixed(2)}}
-                            </p>
+                        <div class="flex items-baseline justify-between w-full px-2">
+                            <div class="flex items-baseline gap-1 opacity-80">
+                                <span
+                                    class="text-lg md:text-xl font-['Namdhinggo'] text-slate-400 dark:text-slate-500 line-through tracking-tighter">
+                                    {{ getOriginalPrice(product.price, product.discount).toFixed(2) }}
+                                </span>
+                            </div>
+
+                            <div class="flex items-baseline gap-1.5">
+                                <span
+                                    class="text-3xl font-black font-['Namdhinggo'] text-[#012d1d] dark:text-emerald-400 tracking-tighter">
+                                    {{product.price.toFixed(2)}}
+                                </span>
+                                <span class="text-sm font-bold text-slate-500 dark:text-slate-400">
+                                    EGP
+                                </span>
+                            </div>
                         </div>
                     </div>
                     }
 
                     @if ( addProductId() !== product.productId ){
                     <button (click)="addToCart(product); $event.stopPropagation()" [disabled]="product.quantity <= 0"
-                        class="bg-emerald-700 hover:bg-emerald-900 cursor-pointer text-white mt-1 px-6 py-3.5 rounded-xl font-headline font-bold flex justify-center items-center gap-2 shadow-lg shadow-[#012d1d22] active:scale-95 transition-all disabled:bg-slate-100 disabled:text-slate-400 disabled:shadow-none">
+                        class="bg-emerald-700 hover:bg-emerald-900 dark:bg-emerald-600 dark:hover:bg-emerald-700 cursor-pointer text-white mt-1 px-6 py-3.5 rounded-xl font-headline font-bold flex justify-center items-center gap-2 shadow-lg shadow-[#012d1d22] dark:shadow-none active:scale-95 transition-all disabled:bg-slate-100 dark:disabled:bg-slate-700/40 disabled:text-slate-400 dark:disabled:text-slate-500 disabled:shadow-none">
                         <i
                             class="fa-solid fa-cart-plus text-xl relative z-10 group-hover/btn:-translate-y-1 group-hover/btn:opacity-0 transition-all duration-300"></i>
                         <span>Add to cart</span>
                     </button>
                     } @else {
                     <button type="submit" disabled
-                        class="w-full h-14 rounded-xl bg-gray-300 text-gray-600 cursor-not-allowed opacity-80 flex items-center justify-center gap-3">
-                        <svg class="animate-spin h-6 w-6 text-gray-600" xmlns="http://www.w3.org/2000/svg" fill="none"
-                            viewBox="0 0 24 24">
+                        class="w-full h-14 rounded-xl bg-gray-300 dark:bg-slate-700 text-gray-600 dark:text-gray-400 cursor-not-allowed opacity-80 flex items-center justify-center gap-3">
+                        <svg class="animate-spin h-6 w-6 text-gray-600 dark:text-gray-400"
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                             <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
                             <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z" />
                         </svg>
@@ -202,32 +226,6 @@
             </div>
             }
         </div>
-
-        @if (pagination() && pagination()!.totalNumberOfPage > 1) {
-        <div class="flex items-center justify-center space-x-2 mt-16 mb-10">
-
-            <button (click)="goToPage(currentFilters().page - 1)" [disabled]="currentFilters().page === 1"
-                class="p-3 rounded-2xl cursor-pointer border border-slate-200 hover:bg-slate-900 hover:text-white disabled:opacity-20 disabled:hover:bg-transparent disabled:hover:text-inherit transition-all duration-300">
-                <i class="fa-solid fa-angle-left"></i>
-            </button>
-
-            @for (page of pagesArray(); track page) {
-            <button class="cursor-pointer" (click)="goToPage(page)"
-                [class]="page === currentFilters().page 
-          ? 'w-12 h-12 rounded-2xl bg-emerald-900 text-white font-bold shadow-xl shadow-slate-200 scale-110' 
-          : 'w-12 h-12 rounded-2xl border border-slate-200 text-red-900 hover:bg-emerald-50 font-bold transition-all duration-300'">
-                {{ page }}
-            </button>
-            }
-
-            <button (click)="goToPage(currentFilters().page + 1)"
-                [disabled]="currentFilters().page === pagination()?.totalNumberOfPage"
-                class="p-3 rounded-2xl cursor-pointer border border-slate-200 hover:bg-slate-900 hover:text-white disabled:opacity-20 disabled:hover:bg-transparent disabled:hover:text-inherit transition-all duration-300">
-                <i class="fa-solid fa-angle-right"></i>
-            </button>
-
-        </div>
-        }
         }
         <!--  -->
         <!-- PUT this in No-Search-Results component -->
@@ -243,36 +241,39 @@
                 </div>
 
                 <div
-                    class="absolute inset-2 border-2 border-dashed border-[#012d1d]/20 rounded-full animate-[spin_10s_linear_infinite] pointer-events-none">
+                    class="absolute inset-2 border-2 border-dashed border-[#012d1d]/20 dark:border-emerald-500/20 rounded-full animate-[spin_10s_linear_infinite] pointer-events-none">
                 </div>
 
                 <div
-                    class="absolute inset-4 bg-white/90 backdrop-blur-xl border border-white rounded-full shadow-[0_8px_32px_rgba(1,45,29,0.08)] flex items-center justify-center group-hover:scale-105 transition-transform duration-500 z-10">
+                    class="absolute inset-4 bg-white/90 dark:bg-slate-800/90 backdrop-blur-xl border border-white dark:border-slate-700/50 rounded-full shadow-[0_8px_32px_rgba(1,45,29,0.08)] dark:shadow-black/20 flex items-center justify-center group-hover:scale-105 transition-transform duration-500 z-10">
                     <i
-                        class="fa-solid fa-triangle-exclamation text-5xl text-[#012d1d]/30 group-hover:scale-110 transition-transform duration-500"></i>
+                        class="fa-solid fa-triangle-exclamation text-5xl text-[#012d1d]/30 dark:text-[#c1ecd4]/40 group-hover:scale-110 transition-transform duration-500"></i>
                 </div>
             </div>
 
 
             <div
-                class="space-y-4 relative z-10 w-full bg-white/70 backdrop-blur-3xl rounded-[3rem] p-8 md:p-12 border border-slate-100/50 shadow-xl shadow-slate-200/40">
+                class="space-y-4 relative z-10 w-full bg-white/70 dark:bg-slate-800/80 backdrop-blur-3xl rounded-[3rem] p-8 md:p-12 border border-slate-100/50 dark:border-slate-700/50 shadow-xl shadow-slate-200/40 dark:shadow-black/20">
                 <div
-                    class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#c1ecd4]/40 border border-[#c1ecd4]/50 text-[#012d1d] text-[10px] font-black uppercase tracking-widest shadow-sm mx-auto mb-2">
-                    <span class="w-1.5 h-1.5 rounded-full bg-[#012d1d] animate-ping"></span> No Results
+                    class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#c1ecd4]/40 dark:bg-emerald-500/20 border border-[#c1ecd4]/50 dark:border-emerald-500/30 text-[#012d1d] dark:text-emerald-300 text-[10px] font-black uppercase tracking-widest shadow-sm mx-auto mb-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-[#012d1d] dark:bg-emerald-400 animate-ping"></span> No
+                    Results
                 </div>
 
                 <h3
-                    class="text-3xl md:text-4xl font-extrabold text-[#012d1d] tracking-tight leading-tight font-['Manrope']">
+                    class="text-3xl md:text-4xl font-extrabold text-[#012d1d] dark:text-emerald-400 tracking-tight leading-tight font-['Manrope']">
                     We couldn't find what you're looking for
                 </h3>
 
-                <p class="text-slate-500 font-medium text-base md:text-lg max-w-sm mx-auto leading-relaxed mt-2">
+                <p
+                    class="text-slate-500 dark:text-slate-400 font-medium text-base md:text-lg max-w-sm mx-auto leading-relaxed mt-2">
                     Try adjusting your keywords, checking for typos, or browsing through our curated categories.
                 </p>
 
                 <div class="pt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
                     <button (click)="searchByProductName('')" (click)="filterByCategory(null)"
-                        class="w-full sm:w-auto px-8 py-3.5 bg-slate-50 text-[#012d1d] font-bold cursor-pointer rounded-2xl border border-slate-200 hover:bg-slate-100 hover:border-slate-300 transition-colors flex items-center justify-center gap-3">
+                        (click)="searchByMaxPrice('')" (click)="searchByMinPrice('')"
+                        class="w-full sm:w-auto px-8 py-3.5 bg-slate-50 dark:bg-slate-700 text-[#012d1d] dark:text-slate-200 font-bold cursor-pointer rounded-2xl border border-slate-200 dark:border-slate-600 hover:bg-slate-100 dark:hover:bg-slate-600 hover:border-slate-300 dark:hover:border-slate-500 transition-colors flex items-center justify-center gap-3">
                         <i class="fa-solid fa-rotate-left"></i>
                         Clear Filters
                     </button>
@@ -280,8 +281,36 @@
             </div>
         </div>
         }
+        @if (pagination() && pagination()!.totalNumberOfPage > 1) {
+        <div class="flex items-center justify-center space-x-2 mt-16 mb-10">
+
+            <button (click)="goToPage(currentFilters().page - 1)" [disabled]="currentFilters().page === 1"
+                class="p-3 rounded-2xl cursor-pointer border border-slate-200 dark:border-slate-700 hover:bg-slate-900 dark:hover:bg-slate-100 dark:hover:text-slate-950 hover:text-white dark:text-slate-300 disabled:opacity-20 disabled:hover:bg-transparent disabled:hover:text-inherit transition-all duration-300">
+                <i class="fa-solid fa-angle-left"></i>
+            </button>
+
+            @for (page of pagesArray(); track page) {
+            <button class="cursor-pointer" (click)="goToPage(page)"
+                [class]="page === currentFilters().page 
+          ? 'w-12 h-12 rounded-2xl bg-emerald-900 dark:bg-emerald-600 text-white font-bold shadow-xl dark:shadow-none shadow-slate-200 scale-110' 
+          : 'w-12 h-12 rounded-2xl border border-slate-200 dark:border-slate-700 text-red-900 dark:text-red-400 hover:bg-emerald-50 dark:hover:bg-emerald-950/30 font-bold transition-all duration-300'">
+                {{ page }}
+            </button>
+            }
+
+            <button (click)="goToPage(currentFilters().page + 1)"
+                [disabled]="currentFilters().page === pagination()?.totalNumberOfPage"
+                class="p-3 rounded-2xl cursor-pointer border border-slate-200 dark:border-slate-700 hover:bg-slate-900 dark:hover:bg-slate-100 dark:hover:text-slate-950 hover:text-white dark:text-slate-300 disabled:opacity-20 disabled:hover:bg-transparent disabled:hover:text-inherit transition-all duration-300">
+                <i class="fa-solid fa-angle-right"></i>
+            </button>
+
+        </div>
+        }
     </div>
-</div>
+</section>
+}
+
+
 
 @if (addProductSuccessMessage() || addProductErrorMessage()) {
 <app-toast [successMessage]="addProductSuccessMessage()" [errorMessage]="addProductErrorMessage()"
