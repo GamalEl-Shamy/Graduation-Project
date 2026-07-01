@@ -6,10 +6,11 @@ import { ProductsService } from '../../../services/products.service';
 import { ProductDetailsSkeletonComponent } from '../../../skeletons/product-details-skeleton/product-details-skeleton.component';
 import { ToastComponent } from '../../shared/toast/toast.component';
 import { environment } from '../../../../../../environments/environment.development';
+import { SlideIn } from "../../../../../shared/directives/slide-in";
 
 @Component({
   selector: 'app-product-details-section',
-  imports: [ToastComponent, ProductDetailsSkeletonComponent, RouterLink],
+  imports: [ToastComponent, ProductDetailsSkeletonComponent, RouterLink, SlideIn],
   templateUrl: './product-details-section.component.html',
   styleUrl: './product-details-section.component.css',
 })
