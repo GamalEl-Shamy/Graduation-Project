@@ -4,6 +4,7 @@ import { OverviewComponent } from '../../components/overview/overview.component'
 import { WelcomeMessageComponent } from '../../components/welcome-message/welcome-message.component';
 import { WelcomeComponent } from '../../components/welcome/welcome.component';
 import { WhetherSectionComponent } from "../../components/wheather/whether-section/whether-section.component";
+import { DiagnosisHeroComponent } from "../../components/dashboard/diagnosis-hero/diagnosis-hero.component";
 
 @Component({
   selector: 'app-user-dashboard',
@@ -12,7 +13,8 @@ import { WhetherSectionComponent } from "../../components/wheather/whether-secti
     OverviewComponent,
     GardenInsightsComponent,
     WelcomeMessageComponent,
-    WhetherSectionComponent
+    WhetherSectionComponent,
+    DiagnosisHeroComponent
 ],
   templateUrl: './user-dashboard.component.html',
   styleUrl: './user-dashboard.component.css',

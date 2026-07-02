@@ -1,119 +1,71 @@
-<div class="flex flex-row items-center justify-between gap-4 mb-2">
-    <div>
-        <h2 class="text-xl lg:text-3xl font-black tracking-tight text-[#012d1d] font-['Namdhinggo'!important]">System Overview</h2>
-        <p class="text-slate-500 font-medium">Here is your garden's status.</p>
-    </div>
-    <div class="flex items-center gap-3 bg-white px-4 py-2 rounded-2xl border border-slate-200 shadow-sm">
-        <span class="w-2 h-2 bg-emerald-500 rounded-full animate-ping"></span>
-        <span class="text-sm font-bold text-slate-600">AI Engine: <span
-                class="text-emerald-600 font-black tracking-widest uppercase text-[10px] ml-1">Optimized</span></span>
-    </div>
-</div>
-
-<div class="grid lg:grid-cols-3 gap-8 items-start animate-in fade-in slide-in-from-bottom-4 duration-700">
-
-
-    <div
-        class="lg:col-span-2 bg-white rounded-[2.5rem] border border-slate-100 p-8 lg:p-10 shadow-sm hover:shadow-xl hover:shadow-slate-200/50 transition-all duration-500">
-        <div class="flex items-center justify-between mb-10">
-            <div>
-                <h3 class="text-2xl font-black text-slate-800 tracking-tight font-['Namdhinggo'!important]">Recent Scans</h3>
-                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mt-1">Your latest AI diagnoses</p>
-            </div>
-            <button routerLink="/users/diagnosis-history"
-                class="px-5 py-2.5 bg-emerald-50 text-emerald-700 text-xs font-black rounded-xl hover:bg-emerald-600 hover:text-white transition-all duration-300 shadow-sm hover:cursor-pointer">
-                VIEW HISTORY LOG
-            </button>
+<section class=" relative overflow-hidden">
+    <div class="">
+        <!-- Header -->
+        <div appSlideIn class="mb-10">
+            <h2 class="text-xs font-bold text-emerald-500 uppercase tracking-widest font-heading mb-3">Core Modules</h2>
+            <h3
+                class="text-3xl md:text-4xl font-extrabold tracking-tight text-[#012d1d] dark:text-white font-['Namdhinggo'!important]">
+                Packed with features for individual growers & enterprise farms
+            </h3>
         </div>
 
-        <div class="space-y-5">
-            <div
-                class="flex hover:cursor-pointer items-center gap-6 p-5 rounded-[2rem] bg-slate-50/50 border border-transparent hover:bg-white hover:border-emerald-100 hover:shadow-lg hover:shadow-emerald-500/5 transition-all duration-300 group">
-                <div class="relative shrink-0">
-                    <img src="./images/corn-crop.png"
-                        class="w-20 h-20 rounded-3xl object-cover shadow-md group-hover:scale-105 transition-transform duration-500" />
-                    <div class="absolute -top-2 -right-2 w-6 h-6 bg-amber-500 border-4 border-white rounded-full"></div>
+        <!-- Features Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Card 1: Diagnosis -->
+            <div appSlideIn
+                class="group relative rounded-3xl p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-emerald-500/5">
+                <div
+                    class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center mb-6 group-hover:bg-emerald-500 group-hover:text-white transition-all duration-300">
+                    <i class="fa-solid fa-camera text-xl"></i>
                 </div>
-
-                <div class="flex-1 min-w-0 hover:curpo">
-                    <h4 class="font-black text-slate-800 text-lg md:text-xl group-hover:text-emerald-700 transition-colors font-['Namdhinggo'!important]">Corn
-                        <span class="text-slate-400 font-medium text-sm">(....)</span>
-                    </h4>
-                    <div class="flex items-center gap-3 mt-1">
-                        <span class="text-[10px] font-black text-slate-400 uppercase tracking-tighter">Corn Crop</span>
-                        <span class="w-1 h-1 bg-slate-300 rounded-full"></span>
-                        <span class="text-[10px] font-black text-emerald-600">45m ago</span>
-                    </div>
-                </div>
-
-                <div class="hidden sm:flex flex-col items-end shrink-0">
-                    <span
-                        class="px-3 py-1 bg-amber-100 text-amber-700 rounded-lg text-[10px] font-black uppercase tracking-widest">Infected</span>
-                    <div class="flex items-center gap-1.5 mt-2">
-                        <div class="w-16 h-1.5 bg-slate-100 rounded-full overflow-hidden">
-                            <div class="w-[97%] h-full bg-amber-500"></div>
-                        </div>
-                        <p class="text-[10px] text-slate-400 font-bold">97%</p>
-                    </div>
-                </div>
-
-                <button
-                    class="w-12 h-12 bg-white text-slate-400 shadow-sm rounded-2xl flex items-center justify-center group-hover:bg-emerald-600 group-hover:text-white group-hover:rotate-45 transition-all duration-500 hover:cursor-pointer">
-                    <i class="fa-solid fa-arrow-up-right-from-square text-sm"></i>
-                </button>
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">AI Detection</h3>
+                <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
+                    Instant leaf anomaly classification. High-performance models detect fungal, bacterial, and viral
+                    infections in seconds.
+                </p>
             </div>
 
-            <div
-                class="flex items-center gap-6 p-5 rounded-[2rem] bg-slate-50/50 border border-transparent hover:bg-white hover:border-emerald-100 hover:shadow-lg hover:shadow-emerald-500/5 transition-all duration-300 group hover:cursor-pointer">
-                <div class="relative shrink-0">
-                    <img src="https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?w=200"
-                        class="w-20 h-20 rounded-[1.5rem] object-cover shadow-md group-hover:scale-105 transition-transform duration-500" />
-                    <div class="absolute -top-2 -right-2 w-6 h-6 bg-emerald-500 border-4 border-white rounded-full">
-                    </div>
+            <!-- Card 2: Treatments -->
+            <div appSlideIn direction="right"
+                class="group relative rounded-3xl p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-emerald-500/5">
+                <div
+                    class="w-12 h-12 rounded-xl bg-teal-500/10 text-teal-500 flex items-center justify-center mb-6 group-hover:bg-teal-500 group-hover:text-white transition-all duration-300">
+                    <i class="fa-solid fa-briefcase-medical text-xl"></i>
                 </div>
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Treatment Advice</h3>
+                <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
+                    Step-by-step disease management options emphasizing organic solutions, active ingredient
+                    recommendations, and application timing.
+                </p>
+            </div>
 
-                <div class="flex-1 min-w-0">
-                    <h4 class="font-black text-slate-800 text-lg md:text-xl group-hover:text-emerald-700 transition-colors font-['Namdhinggo'!important]">Healthy
-                        Foliage</h4>
-                    <div class="flex items-center gap-3 mt-1">
-                        <span class="text-[10px] font-black text-slate-400 uppercase tracking-tighter">Banana
-                            Plant</span>
-                        <span class="w-1 h-1 bg-slate-300 rounded-full"></span>
-                        <span class="text-[10px] font-black text-emerald-600">2h ago</span>
-                    </div>
+            <!-- Card 3: Marketplace -->
+            <div appSlideIn 
+                class="group relative rounded-3xl p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-emerald-500/5">
+                <div
+                    class="w-12 h-12 rounded-xl bg-sky-500/10 text-sky-500 flex items-center justify-center mb-6 group-hover:bg-sky-500 group-hover:text-white transition-all duration-300">
+                    <i class="fa-solid fa-cart-shopping text-xl"></i>
                 </div>
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Platform Store</h3>
+                <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
+                    Purchase certified fertilizers, organic pest controls, diagnostic field lenses, and premium seeds
+                    directly from verified providers.
+                </p>
+            </div>
 
-                <div class="hidden sm:flex flex-col items-end shrink-0">
-                    <span
-                        class="px-3 py-1 bg-emerald-100 text-emerald-700 rounded-lg text-[10px] font-black uppercase tracking-widest">Healthy</span>
-                    <div class="flex items-center gap-1.5 mt-2">
-                        <div class="w-16 h-1.5 bg-slate-100 rounded-full overflow-hidden">
-                            <div class="w-[99%] h-full bg-emerald-500"></div>
-                        </div>
-                        <p class="text-[10px] text-slate-400 font-bold">99%</p>
-                    </div>
+            <!-- Card 4: Weather -->
+            <div appSlideIn direction="right"
+                class="group relative rounded-3xl p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-emerald-500/5">
+                <div
+                    class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-500 flex items-center justify-center mb-6 group-hover:bg-amber-500 group-hover:text-white transition-all duration-300">
+                    <i class="fa-solid fa-cloud-sun text-xl"></i>
                 </div>
-
-                <button
-                    class="w-12 h-12 bg-white text-slate-400 shadow-sm rounded-2xl flex items-center justify-center group-hover:bg-emerald-600 group-hover:text-white group-hover:rotate-45 transition-all duration-500 hover:cursor-pointer">
-                    <i class="fa-solid fa-arrow-up-right-from-square text-sm"></i>
-                </button>
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Agri Weather</h3>
+                <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
+                    Track hyper-local atmospheric forecasts, soil moisture sensors, evapotranspiration rates, and
+                    optimal watering timings.
+                </p>
             </div>
         </div>
     </div>
-
-    <div
-        class="relative overflow-hidden bg-linear-to-br from-emerald-50 to-white border border-emerald-100 rounded-[2.5rem] p-10 group">
-        <div class="relative z-10">
-            <h3 class="text-xl font-black text-emerald-900 mb-2">Need Supplies?</h3>
-            <p class="text-emerald-700/60 text-xs font-bold leading-relaxed mb-8">Shop through our products</p>
-
-            <button routerLink="/users/shop"
-                class="w-full py-4 bg-white border-2 border-emerald-200 text-emerald-700 font-black text-sm rounded-2xl hover:bg-emerald-600 hover:border-emerald-600 hover:text-white transition-all duration-300 shadow-sm active:scale-95 hover:cursor-pointer">
-                EXPLORE SHOP
-            </button>
-        </div>
-        <i
-            class="fa-solid fa-bag-shopping absolute -bottom-4 -right-4 text-8xl text-emerald-500/5 rotate-12 group-hover:rotate-0 transition-transform duration-700"></i>
-    </div>
-</div>
+</section>

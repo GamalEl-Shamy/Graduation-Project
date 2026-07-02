@@ -1,0 +1,93 @@
+<section class="relative overflow-hidden px-3 py-7 md:px-6 md:py-20 bg-slate-50 dark:bg-slate-800 rounded-3xl">
+    
+    <div
+        class="absolute -top-40 -left-40 w-96 h-96 rounded-full bg-emerald-500/10 dark:bg-emerald-500/5 blur-[120px] pointer-events-none -z-10 animate-drift-slow">
+    </div>
+    <div
+        class="absolute top-[30%] -right-40 w-96 h-96 rounded-full bg-teal-500/10 dark:bg-teal-500/5 blur-[120px] pointer-events-none -z-10 animate-drift-medium">
+    </div>
+
+    <div>
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            <div class="lg:col-span-6 text-center lg:text-left flex flex-col items-center lg:items-start">
+
+                <h1 appSlideIn direction="left"
+                    class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.1] mb-6 font-heading font-[Namdhinggo]!">
+                    Protect Your Crop Yields With <span
+                        class="bg-linear-to-r from-emerald-500 to-teal-400 bg-clip-text text-transparent">AI
+                        Pathology</span>
+                </h1>
+                <p appSlideIn direction="left"
+                    class="text-sm text-slate-600 dark:text-slate-350 max-w-lg mb-8 leading-relaxed">
+                    Instantly diagnose crop diseases and access specialized organic treatment protocols.
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+                    <button appSlideIn direction="left" routerLink="/users/diagnosis"
+                        class="inline-flex items-center justify-center gap-2 cursor-pointer px-8 py-4 bg-emerald-500 hover:bg-emerald-400 text-white text-sm md:text-md rounded-2xl font-bold tracking-wide transition-all duration-300 hover:scale-105 shadow-xl shadow-emerald-500/20 group">
+                        <i class="fa-solid fa-camera group-hover:rotate-12 transition-transform"></i>
+                        Start Diagnostic Scan
+                    </button>
+                    <button appSlideIn direction="left" routerLink="/users/shop"
+                        class="inline-flex items-center justify-center gap-2 px-8 cursor-pointer py-4 text-sm md:text-md bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 rounded-2xl font-bold tracking-wide transition-all duration-300 hover:scale-105 shadow-sm">
+                        Explore Marketplace
+                    </button>
+                </div>
+            </div>
+
+            <div appSlideIn direction="right" class="lg:col-span-6 relative flex justify-end w-full">
+                
+                <div
+                    class="w-full max-w-md rounded-3xl p-px bg-linear-to-br from-white/20 to-white/5 shadow-md md:shadow-2xl relative n group">
+                    <div class="absolute inset-0 bg-linear-to-br from-emerald-500/5 to-teal-500/5 -z-10"></div>
+                    <div
+                        class="relative bg-white/70 dark:bg-slate-900/75 backdrop-blur-xl border border-white/40 dark:border-white/5 rounded-[23px] p-6">
+
+                        <div
+                            class="flex items-center justify-end border-b border-slate-200/50 dark:border-slate-800/50 pb-4 mb-4">
+
+                            <span
+                                class="px-2 py-0.5 rounded text-[10px] bg-emerald-500/10 border border-emerald-500/20 text-emerald-500 font-bold uppercase">Online</span>
+                        </div>
+
+                        <div
+                            class="relative w-full h-48 rounded-2xl overflow-hidden mb-4 border border-slate-200 dark:border-slate-800">
+
+                            <div class="absolute inset-0 bg-slate-950/20 animate-scan-glow"></div>
+                            <div class="absolute inset-x-0 laser-line animate-scanner-pulse"></div>
+
+                            <div class="absolute top-4 left-4 w-4 h-4 border-t-2 border-l-2 border-emerald-400"></div>
+                            <div class="absolute top-4 right-4 w-4 h-4 border-t-2 border-r-2 border-emerald-400"></div>
+                            <div class="absolute bottom-4 left-4 w-4 h-4 border-b-2 border-l-2 border-emerald-400">
+                            </div>
+                            <div class="absolute bottom-4 right-4 w-4 h-4 border-b-2 border-r-2 border-emerald-400">
+                            </div>
+
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <div
+                                    class="w-12 h-12 rounded-full border border-emerald-400/40 flex items-center justify-center">
+                                    <div class="w-2 h-2 rounded-full bg-emerald-400"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="absolute z-100 -top-8 -left-10 w-48 p-4 rounded-2xl bg-white/70 dark:bg-slate-900/70 border border-white/50 dark:border-white/5 shadow-xl backdrop-blur-md hidden sm:block animate-floating"
+                            style="animation-delay: 1s;">
+                            <div class="flex items-center gap-3 mb-2">
+                                <div
+                                    class="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-500">
+                                    <i class="fa-solid fa-virus-slash"></i>
+                                </div>
+                                <span class="text-xs font-bold text-slate-900 dark:text-white">Pathogen Alerts</span>
+                            </div>
+                            <div class="h-2 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+                                <div class="h-full bg-emerald-500 w-full"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

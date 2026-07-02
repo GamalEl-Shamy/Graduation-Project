@@ -1,0 +1,33 @@
+
+@keyframes drift-slow {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(60px, -30px) scale(1.1); }
+}
+@keyframes drift-medium {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-40px, 40px) scale(0.9); }
+}
+@keyframes scanner-pulse {
+  0%, 100% { top: 0%; opacity: 0.8; }
+  50% { top: 100%; opacity: 0.8; }
+}
+@keyframes scan-glow {
+  0%, 100% { opacity: 0.15; }
+  50% { opacity: 0.35; }
+}
+@keyframes floating {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(1deg); }
+}
+
+.animate-drift-slow { animation: drift-slow 22s ease-in-out infinite; }
+.animate-drift-medium { animation: drift-medium 18s ease-in-out infinite; }
+.animate-scanner-pulse { animation: scanner-pulse 3s ease-in-out infinite; }
+.animate-scan-glow { animation: scan-glow 2s ease-in-out infinite; }
+.animate-floating { animation: floating 6s ease-in-out infinite; }
+
+.laser-line {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #10b981, #14b8a6, #10b981, transparent);
+  box-shadow: 0 0 15px #10b981, 0 0 30px #14b8a6;
+}

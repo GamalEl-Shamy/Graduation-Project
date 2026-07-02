@@ -1,79 +1,33 @@
-<section class="relative">
-    <header class="flex flex-col lg:flex-row lg:justify-between lg:items-end mb-10 md:mb-12 gap-6">
-        <div class="max-w-2xl px-2">
-            <h2
-                class="text-3xl md:text-3xl lg:text-5xl font-extrabold text-slate-800 tracking-tight leading-tight drop-shadow-sm font-['Manrope'!important]">
-                Welcome back, <span class="font-['Pacifico'] font-light text-emerald-600"> {{userFirstName}} </span></h2>
-            <p class="mt-2 md:mt-4 text-slate-500 font-body text-base md:text-lg font-medium font-['Namdhinggo']">
-                Scan your plant and detect its health instantly
+<section appSlideIn direction="up"
+    class="relative w-full rounded-3xl p-8 bg-slate-900 dark:bg-slate-900 text-white border border-slate-800 overflow-hidden shadow-lg shadow-slate-900/10">
+    <div class="absolute inset-0 bg-linear-to-r from-emerald-950/40 via-teal-950/20 to-transparent -z-10"></div>
+    <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+        <div class="lg:col-span-8 space-y-3">
+            <div
+                class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-400/20 text-emerald-400">
+                <span class="flex h-2 w-2 relative">
+                    <span
+                        class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
+                </span>
+                <span class="text-[10px] font-bold uppercase tracking-wider font-mono">All Systems Operational</span>
+            </div>
+            <h1 class="text-4xl font-black font-heading leading-tight font-[Namdhinggo]!">
+                Welcome Back,
+                <span class="font-['Pacifico'] text-5xl font-light text-emerald-500 dark:text-emerald-400"> {{userFirstName}}
+                </span>
+            </h1>
+            <p class="text-sm text-slate-300 max-w-xl">
+                Monitor, detect, and protect your plants with Zaraa's AI-powered diagnosis. Get instant insights and
+                smart treatments for healthier growth.
             </p>
         </div>
-    </header>
-
-    <section class="grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-8 mb-12">
-        <div
-            class="md:col-span-12 lg:col-span-8 bg-white/60 backdrop-blur-xl rounded-[2.5rem] p-6 lg:p-10 shadow-xl shadow-slate-200/40 hover:shadow-2xl hover:shadow-emerald-200/30 flex flex-col md:flex-row gap-6 md:gap-10 items-center overflow-hidden relative border border-white/80 transition-all duration-300">
-            <div class="absolute inset-0 bg-linear-to-br from-white/40 via-transparent to-emerald-50/40"></div>
-
-            <div class="flex-1 z-10 w-full relative">
-                <span
-                    class="inline-flex items-center gap-1.5 px-4 py-1.5 bg-emerald-50 text-emerald-700 rounded-full text-[10px] font-bold uppercase tracking-widest mb-4 shadow-sm border border-emerald-100">
-                    <i class="fa-solid fa-circle-check text-[14px]"></i>
-                    New Feature
-                </span>
-                <h3
-                    class="text-3xl md:text-4xl font-headline font-black text-slate-800 mb-4 tracking-tight drop-shadow-sm font-['Manrope'!important]">
-                    Instant Disease AI <br class="hidden lg:block" />Detection</h3>
-                <p
-                    class="text-slate-600 text-sm md:text-[15px] mb-8 max-w-sm font-medium font-['Namdhinggo'] leading-relaxed">
-                    Try it now.</p>
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <button routerLink="/users/diagnosis"
-                        class="px-6 py-4 bg-slate-900 cursor-pointer hover:bg-emerald-700 text-white rounded-[1.25rem] font-headline font-bold shadow-lg shadow-emerald-900/20 hover:shadow-xl transition-all text-sm text-center flex-1 sm:flex-none hover:-translate-y-0.5">Upload
-                        Plant Image</button>
-                    <button routerLink="/users/diagnosis-history"
-                        class="px-6 py-4 cursor-pointer bg-white text-slate-700 rounded-[1.25rem] font-headline font-bold hover:bg-slate-50 transition-all text-sm text-center border border-slate-200 shadow-sm hover:shadow-md flex-1 sm:flex-none hover:-translate-y-0.5">View
-                        History</button>
-                </div>
-            </div>
-
-            <div
-                class="w-full md:w-[45%] lg:w-[40%] aspect-4/3 md:aspect-square rounded-4xl overflow-hidden shadow-2xl rotate-2 md:translate-x-6 md:translate-y-4 relative group border-[6px] border-white">
-                <div class="absolute inset-0 bg-linear-to-t from-black/50 to-transparent md:hidden z-10"></div>
-                <img alt="Featured Plant Detail"
-                    class="w-full h-full object-cover relative z-0 group-hover:scale-110 transition-transform duration-700 group-hover:rotate-1"
-                    data-alt="extreme close-up of a healthy monstera leaf with intricate vein patterns and water droplets in soft studio lighting"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuByIND7ISZMOZ2BMv3Xyz9mTJOxm9ynk3sPI-HV1Zy1GkIJKTXv9hZ4r0J5yHQ74XZwMl-sJJRtA5IElu8i_AXTMZKXRxUIo6Zl4-xY69nLFn-BWa4VF1V1m9daa53PKeP81--N0KxFPgcxzY6wt3mcM1lbxxfuOdHx-RcXYsYyuH2kRU_KlNG9P9R7RxR5huiDwqTSDvs4lBXbP9d6VhhTdaqPFQz8It4l8ewEqB4lGMEXEu1I5xdxteDKX04Iu-xoUyoqelgiJtYP" />
-            </div>
+        <div class="lg:col-span-4 flex justify-end">
+            <a routerLink="/users/diagnosis"
+                class="inline-flex items-center gap-2 px-6 py-3.5 bg-emerald-500 hover:bg-emerald-400 text-white rounded-2xl font-bold tracking-wide transition-all shadow-lg shadow-emerald-500/20">
+                <i class="fa-solid fa-camera"></i>
+                Scan New Crop
+            </a>
         </div>
-
-        <div
-            class="md:col-span-12 lg:col-span-4 bg-linear-to-br from-slate-900 via-emerald-950 to-emerald-900 text-white rounded-[2.5rem] p-6 md:p-8 lg:p-10 relative overflow-hidden flex flex-col justify-between shadow-xl shadow-emerald-900/20 group hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 border border-slate-800">
-            <div
-                class="absolute top-0 right-0 w-48 h-48 bg-emerald-500/20 rounded-full mix-blend-screen filter blur-3xl opacity-50 transform translate-x-10 -translate-y-10 group-hover:bg-teal-400/30 transition-colors duration-700">
-            </div>
-
-            <div class="z-10 relative">
-                <div
-                    class="w-14 h-14 bg-white/10 backdrop-blur-md rounded-2xl flex items-center justify-center mb-6 shadow-inner border border-white/10 group-hover:bg-white/15 transition-all">
-                    <i class="fa-solid fa-shop text-emerald-300 text-[28px]"></i>
-                </div>
-                <h3 class="text-2xl md:text-3xl font-headline font-black mb-3 text-white tracking-tight">Marketplace
-                </h3>
-                <p class="text-emerald-100/80 text-[15px] leading-relaxed font-medium font-['Namdhinggo']">Curated
-                    nutrients and rare seeds
-                    for your specific collection.</p>
-            </div>
-            <button routerLink="/users/shop"
-                class="z-10 mt-10 w-full py-4 cursor-pointer bg-white/10 backdrop-blur-md border border-white/20 rounded-[1.25rem] font-headline font-bold hover:bg-white hover:border-white hover:text-emerald-900 transition-all flex items-center justify-center gap-2 group/btn shadow-md text-emerald-50">
-                Browse Products
-                <i class="fa-solid fa-cart-arrow-down"></i>
-            </button>
-
-            <div
-                class="absolute bottom-5 right-2 opacity-5 pointer-events-none group-hover:opacity-10 group-hover:-rotate-12 transition-all duration-1000">
-                <i class="fa-solid fa-leaf text-[160px] md:text-[170px]"></i>
-            </div>
-        </div>
-    </section>
+    </div>
 </section>

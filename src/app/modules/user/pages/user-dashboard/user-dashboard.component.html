@@ -2,20 +2,24 @@
     <app-welcome-message (onDismiss)="closeWelcomeMessage()"></app-welcome-message>
 }
 
-<section >
+<section class="">
     <div class="mt-0">
         <app-welcome></app-welcome>
     </div>
 
-    <div class="mt-8">
+    <div class="my-8 md:my-16">
+        <app-diagnosis-hero></app-diagnosis-hero>
+    </div>
+    
+    <div class="mt-8 md:my-16">
         <app-whether-section [isDashboard]="true"></app-whether-section>
     </div>
 
-    <div class="my-8">
+    <div class="my-8 md:my-16">
         <app-overview></app-overview>
     </div>
 
-    <div class="my-8">
+    <div class="my-8 md:my-16">
         <app-garden-insights></app-garden-insights>
     </div>
 </section>
