@@ -1,14 +1,14 @@
-<div
+<div appSlideIn direction="down"
     class="bg-white/50 dark:bg-slate-800/50 backdrop-blur-xl rounded-[3rem] p-12 md:p-24 text-center border-2 border-dashed border-slate-200/80 dark:border-slate-700/80 shadow-lg shadow-slate-200/20 dark:shadow-slate-900/30 transition-all hover:bg-white/60 dark:hover:bg-slate-800/70">
     <div
         class="w-24 h-24 mx-auto bg-linear-to-br from-emerald-50 to-teal-50 dark:from-emerald-950/30 dark:to-teal-950/30 rounded-3xl shadow-xl shadow-emerald-500/10 dark:shadow-emerald-500/5 border border-emerald-100 dark:border-emerald-900/30 flex items-center justify-center mb-8 rotate-3 hover:-rotate-3 transition-transform duration-500">
         <i class="fa-solid fa-seedling text-4xl text-emerald-500"></i>
     </div>
-    <h3 class="text-3xl font-black text-slate-800 dark:text-slate-100 mb-3 tracking-tight">No History Found</h3>
-    <p class="text-slate-500 dark:text-slate-400 font-medium max-w-md mx-auto">Start scanning your plants to build a
+    <h3 appSlideIn direction="left" class="text-3xl font-black text-slate-800 dark:text-slate-100 mb-3 tracking-tight">No History Found</h3>
+    <p appSlideIn direction="left" class="text-slate-500 dark:text-slate-400 font-medium max-w-md mx-auto">Start scanning your plants to build a
         comprehensive health and diagnosis history.</p>
-    <div routerLink="/users/diagnosis"
-        class="mt-8 px-8 py-4 bg-slate-900 dark:bg-emerald-600 text-white rounded-2xl font-bold tracking-wide shadow-xl shadow-slate-900/20 dark:shadow-emerald-900/30 hover:bg-emerald-600 dark:hover:bg-emerald-500 hover:shadow-emerald-600/30 dark:hover:shadow-emerald-500/30 hover:-translate-y-1 transition-all duration-300 group inline-flex items-center gap-3 mx-auto cursor-pointer">
+    <div appSlideIn direction="left" routerLink="/users/diagnosis"
+        class="mt-8 px-8 py-4 bg-emerald-600 text-white rounded-2xl font-bold tracking-wide shadow-xl shadow-slate-900/20 dark:shadow-emerald-900/30 hover:bg-emerald-600 dark:hover:bg-emerald-500 hover:shadow-emerald-600/30 dark:hover:shadow-emerald-500/30 hover:-translate-y-1 transition-all duration-300 group inline-flex items-center gap-3 mx-auto cursor-pointer">
         <i class="fa-solid fa-camera group-hover:rotate-12 transition-transform"></i>
         Start Your First Scan
     </div>

@@ -1,7 +1,7 @@
 @if (historyRecords()) {
 <div appSlideIn direction="down"
     class="sticky top-1 z-400 bg-white/60 backdrop-blur-xl rounded-2xl lg:rounded-4xl p-3 shadow-xl shadow-slate-200/50 border border-white/80 flex flex-col lg:flex-row gap-2 lg:gap-3 mb-7 transition-all duration-300 hover:shadow-2xl hover:shadow-slate-200/60 hover:bg-white/80 dark:bg-slate-800/60 dark:border-slate-700/80 dark:shadow-slate-950/50 dark:hover:shadow-slate-950/80  dark:hover:bg-slate-800/80">
-    <div class="relative flex-1 group">
+    <div appSlideIn direction="left" class="relative flex-1 group">
         <i
             class="fa-solid fa-magnifying-glass absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-emerald-500 transition-colors duration-300 dark:text-slate-500"></i>
         <input type="text" [value]="searchQuery()" (input)="searchQuery.set($any($event.target).value)"
@@ -9,7 +9,7 @@
             class="w-full pl-12 pr-6 py-4 bg-white/50 hover:bg-white focus:bg-white border-0 rounded-xl focus:ring-4 focus:ring-emerald-500/10 font-medium text-slate-700 placeholder:text-slate-400 transition-all duration-300 outline-none dark:bg-slate-900/50 dark:hover:bg-slate-900 dark:focus:bg-slate-900 dark:text-slate-200 dark:placeholder:text-slate-500 dark:focus:ring-emerald-500/20" />
     </div>
 
-    <div class="flex items-center gap-2 overflow-x-auto pb-2 lg:pb-0 scrollbar-hide">
+    <div appSlideIn direction="right" class="flex items-center gap-2 overflow-x-auto pb-2 lg:pb-0 scrollbar-hide">
         @for (status of ['All', 'Healthy', 'Infected', 'Recovering']; track status) {
         <button (click)="filterStatus.set(status)"
             [class]="filterStatus() === status ? 'bg-emerald-500 text-white shadow-lg shadow-emerald-500/30 border-emerald-400 dark:border-emerald-500' : 'bg-white/50 text-slate-600 hover:bg-white shadow-sm border-white/60 hover:shadow-md dark:bg-slate-900/50 dark:text-slate-400 dark:hover:text-slate-200 dark:border-slate-700/50 dark:hover:bg-slate-900/80'"
