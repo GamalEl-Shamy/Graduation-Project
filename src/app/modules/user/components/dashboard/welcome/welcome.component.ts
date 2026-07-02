@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterLink } from "@angular/router";
-import { SlideIn } from "../../../../shared/directives/slide-in";
+import { SlideIn } from "../../../../../shared/directives/slide-in";
 
 @Component({
   selector: 'app-welcome',
