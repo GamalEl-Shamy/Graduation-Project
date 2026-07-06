@@ -1,0 +1,98 @@
+<section class="py-24">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-14 items-center">
+
+    <!-- Robot SVG illustration -->
+    <div class="order-2 lg:order-1 relative reveal">
+      <div class="absolute inset-8 rounded-[2.5rem] bg-gradient-to-br from-teal-500 to-emerald-500 blur-3xl opacity-25"></div>
+      <div class="relative glass-strong rounded-[2.5rem] p-10 shadow-glow">
+        <svg viewBox="0 0 400 320" class="w-full">
+          <defs>
+            <linearGradient id="field" x1="0" x2="0" y1="0" y2="1">
+              <stop offset="0" stop-color="#a7f3d0"/>
+              <stop offset="1" stop-color="#065f46"/>
+            </linearGradient>
+          </defs>
+          <rect width="400" height="320" rx="24" fill="url(#field)" opacity=".35"/>
+          <path d="M0 260 Q200 220 400 260 L400 320 L0 320Z" fill="#065f46"/>
+          <!-- rows -->
+          <g stroke="#022c22" stroke-width="2" opacity=".5">
+            <path d="M20 250 Q200 210 380 250"/>
+            <path d="M0 280 Q200 240 400 280"/>
+          </g>
+          <!-- robot body -->
+          <g transform="translate(140 130)">
+            <rect x="0" y="30" width="130" height="80" rx="18" fill="#f1f5f9" stroke="#94a3b8"/>
+            <rect x="24" y="0" width="82" height="42" rx="14" fill="#f8fafc" stroke="#94a3b8"/>
+            <circle cx="48" cy="22" r="7" fill="#10b981"/>
+            <circle cx="82" cy="22" r="7" fill="#0ea5e9"/>
+            <circle cx="20" cy="120" r="18" fill="#0f172a"/>
+            <circle cx="20" cy="120" r="8" fill="#334155"/>
+            <circle cx="110" cy="120" r="18" fill="#0f172a"/>
+            <circle cx="110" cy="120" r="8" fill="#334155"/>
+            <!-- camera arm -->
+            <line x1="120" y1="60" x2="180" y2="20" stroke="#94a3b8" stroke-width="5" stroke-linecap="round"/>
+            <circle cx="184" cy="18" r="10" fill="#0ea5e9"/>
+            <path d="M184 18 L240 90 L150 90 Z" fill="#0ea5e9" opacity=".18"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Text content -->
+    <div class="order-1 lg:order-2 reveal">
+      <span class="inline-flex items-center gap-2 rounded-full glass px-4 py-1.5 text-xs font-semibold">SMART ROBOT</span>
+      <h2 class="mt-4 font-display text-4xl sm:text-5xl font-bold text-slate-900 dark:text-slate-100">
+        Autonomous field scans, automatically synced
+      </h2>
+      <p class="mt-4 text-slate-600 dark:text-slate-300">
+        The Zaraa robot patrols your field, captures high-resolution images and uploads them directly to your
+        dashboard — where AI runs the diagnosis in seconds.
+      </p>
+      <ul class="mt-8 space-y-3">
+        @for (feat of features(); track feat) {
+          <li class="flex items-start gap-3">
+            <span class="mt-1 h-6 w-6 rounded-full bg-emerald-500/15 text-emerald-600 grid place-items-center flex-shrink-0">
+              <i class="fa-solid fa-check text-xs"></i>
+            </span>
+            <span class="text-slate-700 dark:text-slate-300">{{ feat }}</span>
+          </li>
+        }
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+
+
+
+
+
+<section class="py-24">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+    <div class="max-w-2xl mx-auto text-center reveal">
+      <span class="inline-flex items-center gap-2 rounded-full glass px-4 py-1.5 text-xs font-semibold">HOW IT WORKS</span>
+      <h2 class="mt-4 font-display text-4xl sm:text-5xl font-bold text-slate-900 dark:text-slate-100">
+        From a single photo to a full treatment plan
+      </h2>
+    </div>
+
+    <ol class="mt-14 relative grid gap-6 lg:grid-cols-5">
+      <!-- Connector line -->
+      <div
+        aria-hidden="true"
+        class="hidden lg:block absolute top-8 left-[10%] right-[10%] h-0.5 bg-gradient-to-r from-emerald-500 via-teal-500 to-sky-500 opacity-40"
+      ></div>
+
+      @for (step of steps(); track step.label; let idx = $index) {
+        <li class="reveal relative glass rounded-3xl p-6 text-center gradient-border">
+          <div class="mx-auto h-14 w-14 rounded-2xl bg-white dark:bg-slate-900 shadow-glow grid place-items-center">
+            <i class="fa-solid {{ step.icon }} text-emerald-600 text-xl"></i>
+          </div>
+          <p class="mt-3 text-xs font-mono text-slate-500">Step 0{{ idx + 1 }}</p>
+          <h3 class="mt-1 font-display font-semibold text-slate-900 dark:text-slate-100">{{ step.label }}</h3>
+        </li>
+      }
+    </ol>
+  </div>
+</section>

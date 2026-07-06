@@ -1,4 +1,52 @@
+<div class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 antialiased overflow-x-hidden">
+    <div aria-hidden="true" class="pointer-events-none fixed inset-0 overflow-hidden">
+        <div class="absolute -top-32 -left-24 h-105 w-105 rounded-full bg-brand-400/30 blur-3xl animate-blob">
+        </div>
+        <div class="absolute top-1/3 -right-32 h-130 w-130 rounded-full bg-sky-400/25 blur-3xl animate-blob"
+            style="animation-delay:-4s"></div>
+        <div class="absolute bottom-0 left-1/3 h-105 w-105 rounded-full bg-teal-400/25 blur-3xl animate-blob"
+            style="animation-delay:-8s"></div>
+    </div>
 
+    <app-visitor-navbar 
+    (scrollTHero)="scrollToSection('hero')"
+    (scrollToFeatures)="scrollToSection('features')"
+    (scrollToWorks)="scrollToSection('works')"
+    (isOpenDiagnosis)="scrollToSection('diagnosis')"
+    (isOpenRobot)="scrollToSection('robot')"
+    (isOpenMarketplace)="scrollToSection('marketplace')"
+    (isOpenWeather)="scrollToSection('weather')"
+    (isOpenDashboard)="scrollToSection('dashboard')"
+    (isOpenTestimonials)="scrollToSection('faq')">
+</app-visitor-navbar>
+
+<main class="flex flex-col">
+    <app-hero id="hero" class="block"></app-hero>
+    
+    <app-features id="features" class="block"></app-features>
+    
+    <app-how-it-works id="works" class="block"></app-how-it-works>
+    
+    <app-ai-diagnosis id="diagnosis" class="block"></app-ai-diagnosis>
+    
+    <app-robot-section id="robot" class="block"></app-robot-section>
+    
+    <app-marketplace-preview id="marketplace" class="block"></app-marketplace-preview>
+    
+    <app-weather-preview id="weather" class="block"></app-weather-preview>
+    
+    <app-dashboard-preview id="dashboard" class="block"></app-dashboard-preview>
+    
+    <app-testimonials-faq id="faq" class="block"></app-testimonials-faq>
+    
+    <app-free-to-start class="block"></app-free-to-start>
+</main>
+
+
+</div>
+
+
+<!-- 
 <app-top-section></app-top-section>
 
 <div>
@@ -23,4 +71,4 @@
 
 <div>
     <app-ready></app-ready>
-</div>
+</div> -->

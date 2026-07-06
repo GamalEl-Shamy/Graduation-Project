@@ -1,0 +1,441 @@
+<section class="py-10">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+
+    <!-- Section Header -->
+    <div class="max-w-3xl mx-auto text-center mb-16">
+      <span appSlideIn direction="up" 
+        class="inline-flex items-center gap-2 rounded-full glass px-4 py-1.5 text-[10px] lg:text-xs font-semibold text-brand-600 dark:text-brand-400 uppercase tracking-widest border border-brand-500/20 shadow-sm">
+        <span class="h-2 w-2 rounded-full bg-brand-500 animate-pulse"></span>
+        Platform Features
+      </span>
+      <h2 appSlideIn direction="left" 
+        class="mt-4 text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-slate-900 dark:text-white font-[Namdhinggo]!">
+        Everything a modern farm needs, <br class="hidden sm:inline" /><span
+          class="gradient-text bg-linear-to-r from-brand-500 via-teal-500 to-sky-500 bg-clip-text text-transparent">in
+          one unified platform</span>
+      </h2>
+      <p appSlideIn direction="up" class="mt-4  text-xs sm:text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
+        A modern AI-powered agriculture platform that integrates plant identification, disease diagnosis, smart weather
+        insights, robotic crop monitoring, and an agricultural marketplace into one seamless experience. </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8">
+
+      <!-- 1. AI Diagnosis -->
+      <div appSlideIn direction="left" 
+        class="group relative rounded-4xl p-6 lg:p-8 glass gradient-border md:col-span-2 hover:-translate-y-1 hover:shadow-glow transition-all duration-500 overflow-hidden flex flex-col justify-between gap-6">
+        <div class="flex flex-col md:flex-row gap-6 justify-between items-stretch flex-1">
+          <div class="flex flex-col justify-between flex-1">
+            <div>
+              <div
+                class="h-12 w-12 rounded-2xl bg-linear-to-br from-brand-500 to-emerald-400 text-white grid place-items-center shadow-glow">
+                <i class="fa-solid fa-microscope text-lg"></i>
+              </div>
+              <h3 appSlideIn direction="left"  class="mt-5 font-display font-bold text-xl text-slate-900 dark:text-white">AI Diagnosis</h3>
+              <p appSlideIn direction="left" class="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                Upload a plant leaf image and let our intelligent AI handle the rest. The system first identifies the
+                plant species, then analyzes the leaf for diseases and provides an accurate diagnosis with personalized
+                treatment recommendations. </p>
+            </div>
+            <div class="mt-6 flex flex-wrap gap-2 text-xs font-mono">
+              <span
+                class="px-2.5 py-1 rounded-md bg-brand-500/10 text-brand-600 dark:text-brand-400 border border-brand-500/20">High
+                Accuracy</span>
+            </div>
+          </div>
+
+          <!-- Leaf scanner -->
+          <div appSlideIn direction="down" 
+            class="relative w-full md:w-56 h-48 md:h-auto min-h-45 rounded-2xl bg-slate-950/60 dark:bg-black/40 border border-slate-200/10 overflow-hidden flex items-center justify-center p-4 self-center md:self-stretch">
+            <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(16,185,129,0.15),transparent_70%)]">
+            </div>
+            <!-- Leaf SVG -->
+            <svg viewBox="0 0 100 120"
+              class="w-24 h-28 text-emerald-500 drop-shadow-[0_0_15px_rgba(16,185,129,0.3)] animate-card-float">
+              <path d="M50 10 C35 30 15 45 15 70 C15 95 35 110 50 110 C65 110 85 95 85 70 C85 45 65 30 50 10 Z"
+                fill="currentColor" fill-opacity="0.15" stroke="currentColor" stroke-width="2"
+                stroke-linejoin="round" />
+              
+              <path d="M50 10 L50 110" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+              <path d="M50 40 Q35 55 22 60" stroke="currentColor" stroke-width="1" stroke-linecap="round" />
+              <path d="M50 40 Q65 55 78 60" stroke="currentColor" stroke-width="1" stroke-linecap="round" />
+              <path d="M50 65 Q30 80 18 90" stroke="currentColor" stroke-width="1" stroke-linecap="round" />
+              <path d="M50 65 Q70 80 82 90" stroke="currentColor" stroke-width="1" stroke-linecap="round" />
+            </svg>
+            <!-- Laser scanning bar -->
+            <div
+              class="absolute h-0.5 left-0 right-0 bg-linear-to-r from-transparent via-brand-500 to-transparent shadow-[0_0_12px_3px_#10b981] animate-scan-line">
+            </div>
+            <!-- Active hot spot -->
+            <div class="absolute top-[45%] left-[62%] -translate-x-1/2 -translate-y-1/2">
+              <span class="absolute inline-flex h-6 w-6 rounded-full bg-brand-400 opacity-75 animate-ping"></span>
+              <span
+                class="relative inline-flex rounded-full h-3 w-3 bg-brand-500 border-2 border-white shadow-md"></span>
+            </div>
+            
+            <div
+              class="absolute bottom-2 left-2 right-2 glass-strong dark:bg-slate-900/90 px-2.5 py-1.5 rounded-xl border border-white/10  shadow-lg text-center">
+              <span class="text-[10px] font-mono font-bold tracking-tight text-slate-700 dark:text-slate-300 ">Tomato:
+                Early Blight</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Plant Identification -->
+      <div appSlideIn direction="left" 
+        class="group relative rounded-4xl p-6 glass gradient-border hover:-translate-y-1 hover:shadow-glow-sky transition-all duration-500 overflow-hidden flex flex-col justify-between gap-6">
+        <div>
+          <div
+            class="h-12 w-12 rounded-2xl bg-linear-to-br from-sky-500 to-teal-400 text-white grid place-items-center shadow-glow">
+            <i class="fa-solid fa-magnifying-glass-chart text-lg"></i>
+          </div>
+          <h3 appSlideIn direction="left" class="mt-5 font-display font-bold text-xl text-slate-900 dark:text-white">Plant ID</h3>
+          <p appSlideIn direction="left" class="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+            Identify plant species instantly with our AI-powered classification model before performing advanced disease
+            diagnosis. </p>
+        </div>
+
+        <!-- Viewfinder mockup -->
+        <div appSlideIn direction="down"
+          class="w-full h-32 rounded-2xl bg-slate-950/60 dark:bg-black/40 border border-slate-200/10 relative overflow-hidden flex items-center justify-center p-3">
+          <!-- Brackets -->
+          <div class="absolute top-2 left-2 w-4 h-4 border-t-2 border-l-2 border-sky-400"></div>
+          <div class="absolute top-2 right-2 w-4 h-4 border-t-2 border-r-2 border-sky-400"></div>
+          <div class="absolute bottom-2 left-2 w-4 h-4 border-b-2 border-l-2 border-sky-400"></div>
+          <div class="absolute bottom-2 right-2 w-4 h-4 border-b-2 border-r-2 border-sky-400"></div>
+
+          <div class="flex flex-col items-center gap-1">
+            <i class="fa-solid fa-expand text-2xl text-sky-400/40 animate-pulse"></i>
+            <span class="text-[10px] font-mono tracking-wider uppercase text-sky-400">Scanning Variety</span>
+            <span class="text-[11px] font-semibold text-slate-800 dark:text-slate-200 font-mono">Apple (Apple) ·
+              95%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Marketplace -->
+      <div appSlideIn direction="left"
+        class="group relative rounded-4xl p-6 glass gradient-border hover:-translate-y-1 hover:shadow-glow transition-all duration-500 overflow-hidden flex flex-col justify-between gap-6">
+        <div>
+          <div
+            class="h-12 w-12 rounded-2xl bg-linear-to-br from-emerald-500 to-sky-500 text-white grid place-items-center shadow-glow">
+            <i class="fa-solid fa-store text-lg"></i>
+          </div>
+          <h3 appSlideIn direction="left" class="mt-5 font-display font-bold text-xl text-slate-900 dark:text-white">Marketplace</h3>
+          <p appSlideIn direction="left" class="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+            Browse and order premium agricultural products, fertilizers, pesticides, and plant treatments—all from one
+            trusted marketplace. </p>
+        </div>
+
+        <!-- Marketplace visual -->
+        <div 
+          class="w-full rounded-2xl bg-slate-500/5 border border-slate-200/10 p-3 flex items-center justify-between relative group/item hover:bg-slate-500/10 transition-colors duration-300">
+          <div appSlideIn direction="right" class="flex items-center gap-3">
+            <div
+              class="h-10 w-10 rounded-xl bg-linear-to-br from-amber-400 to-orange-500 text-white grid place-items-center shadow-md">
+              <i class="fa-solid fa-seedling"></i>
+            </div>
+            <div>
+              <p class="text-[11px] font-bold text-slate-800 dark:text-slate-200">Premium Seeds</p>
+              <p class="text-[10px] font-mono text-brand-600 dark:text-brand-400">12.90 EGP</p>
+            </div>
+          </div>
+          <button appSlideIn direction="left"
+            class="h-8 w-8 rounded-lg bg-brand-500 text-white grid place-items-center shadow-sm hover:scale-105 hover:bg-brand-600 transition-all duration-200">
+            <i class="fa-solid fa-plus text-xs"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- 4. Robot Integration -->
+      <div appSlideIn direction="left"
+        class="group relative rounded-4xl p-6 lg:p-8 glass gradient-border md:col-span-2 hover:-translate-y-1 hover:shadow-glow transition-all duration-500 overflow-hidden flex flex-col justify-between gap-6">
+        <div class="flex flex-col md:flex-row gap-6 justify-between items-stretch flex-1">
+          <div class="flex flex-col justify-between flex-1">
+            <div>
+              <div
+                class="h-12 w-12 rounded-2xl bg-linear-to-br from-indigo-500 to-sky-500 text-white grid place-items-center shadow-glow">
+                <i class="fa-solid fa-robot text-lg"></i>
+              </div>
+              <h3 appSlideIn direction="left" class="mt-5 font-display font-bold text-xl text-slate-900 dark:text-white">Robot Integration</h3>
+              <p appSlideIn direction="left"class="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                Capture plant images automatically with the smart agricultural robot and stream them directly to Zaraa
+                for AI-powered plant identification, disease detection </p>
+            </div>
+            <div appSlideIn direction="left" class="mt-6 flex flex-wrap gap-2 text-xs font-mono">
+              <span
+                class="px-2.5 py-1 rounded-md bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20">Online</span>
+            </div>
+          </div>
+
+          <!-- Interactive Telemetry Screen -->
+          <div appSlideIn direction="down"
+            class="relative w-full md:w-60 h-48 md:h-auto min-h-45 rounded-2xl bg-slate-950/80 dark:bg-black/60 border border-slate-800 p-4 font-mono text-xs text-slate-400 flex flex-col justify-between self-center md:self-stretch shadow-inner">
+            <div class="flex justify-between items-center border-b border-slate-800/80 pb-2">
+              <span class="text-[10px] tracking-wide text-indigo-400">TELEMETRY_LOG</span>
+              <div class="flex items-center gap-1.5">
+                <span class="h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span class="text-[9px] uppercase tracking-wider text-emerald-500">LIVE</span>
+              </div>
+            </div>
+
+            <div appSlideIn direction="down" class="flex-1 flex items-center justify-center relative py-4">
+              <div class="absolute h-16 w-16 rounded-full border border-indigo-500/30 flex items-center justify-center">
+                <div class="absolute h-16 w-16 rounded-full border border-indigo-500/60 animate-radar"></div>
+                <div
+                  class="absolute h-10 w-10 rounded-full border border-indigo-500/40 flex items-center justify-center">
+                  <div class="absolute h-6 w-6 rounded-full bg-indigo-500/20 flex items-center justify-center">
+                    <i class="fa-solid fa-crosshairs text-[10px] text-indigo-400 animate-pulse"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. Dashboard Analytics -->
+      <div appSlideIn direction="left"
+        class="group relative rounded-4xl p-6 glass gradient-border hover:-translate-y-1 hover:shadow-glow transition-all duration-500 overflow-hidden flex flex-col justify-between gap-6">
+        <div>
+          <div
+            class="h-12 w-12 rounded-2xl bg-linear-to-br from-brand-500 to-sky-500 text-white grid place-items-center shadow-glow">
+            <i class="fa-solid fa-gauge-high text-lg"></i>
+          </div>
+          <h3 appSlideIn direction="left" class="mt-5 font-display font-bold text-xl text-slate-900 dark:text-white">Dashboard</h3>
+          <p appSlideIn direction="left" class="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+            Monitor AI diagnoses, weather forecasts, diagnosis history, and marketplace activity through a centralized
+            dashboard with real-time agricultural insights. </p>
+        </div>
+
+        <!-- SVG Area Chart Preview -->
+        <div appSlideIn direction="up"
+          class="w-full rounded-2xl bg-slate-950/60 dark:bg-black/40 border border-slate-200/10 p-3 relative overflow-hidden flex flex-col justify-between h-32">
+          <div class="flex justify-between items-center mb-1">
+            <span class="text-[10px] font-mono text-slate-400">Scans over time</span>
+            <span class="text-[10px] font-mono text-brand-500 font-bold flex items-center gap-0.5">
+              <i class="fa-solid fa-caret-up"></i> +14.2%
+            </span>
+          </div>
+          <svg viewBox="0 0 120 40" class="w-full h-16 text-brand-500">
+            <defs>
+              <linearGradient id="chart-grad-gemini" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0" stop-color="#10b981" stop-opacity="0.3" />
+                <stop offset="1" stop-color="#10b981" stop-opacity="0" />
+              </linearGradient>
+            </defs>
+            <path d="M0 35 Q15 25 30 20 T60 25 T90 10 T120 5 L120 40 L0 40 Z" fill="url(#chart-grad-gemini)" />
+            <path d="M0 35 Q15 25 30 20 T60 25 T90 10 T120 5" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" />
+            <circle cx="120" cy="5" r="2.5" fill="currentColor" />
+            <circle cx="120" cy="5" r="5" fill="currentColor" fill-opacity="0.4" class="animate-ping" />
+          </svg>
+        </div>
+      </div>
+
+      <!-- 6. Diagnosis History -->
+      <div appSlideIn direction="left"
+        class="group relative rounded-4xl p-6 glass gradient-border hover:-translate-y-1 hover:shadow-glow transition-all duration-500 overflow-hidden flex flex-col justify-between gap-6">
+        <div>
+          <div
+            class="h-12 w-12 rounded-2xl bg-linear-to-br from-emerald-400 to-sky-500 text-white grid place-items-center shadow-glow">
+            <i class="fa-solid fa-clock-rotate-left text-lg"></i>
+          </div>
+          <h3 appSlideIn direction="left" class="mt-5 font-display font-bold text-xl text-slate-900 dark:text-white">Scan History</h3>
+          <p appSlideIn direction="left" class="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+            Access your complete history of AI-powered plant diagnoses, including detected diseases, confidence scores,
+            and treatment recommendations. </p>
+        </div>
+
+        <!-- Live Vertical Timeline -->
+        <div 
+          class="w-full rounded-2xl bg-slate-500/5 border border-slate-200/10 p-3.5 space-y-3 relative overflow-hidden">
+          <div class="absolute left-5 top-4 bottom-4 w-0.5 bg-slate-200/20 dark:bg-white/10"></div>
+
+          <div appSlideIn direction="right" class="flex items-center gap-3.5 relative">
+            <span
+              class="h-3.5 w-3.5 rounded-full bg-amber-500 border-2 border-white dark:border-slate-900 z-10 shadow-sm flex items-center justify-center">
+              <span class="h-1 w-1 rounded-full bg-white animate-ping"></span>
+            </span>
+            <div class="text-[11px] font-mono leading-none">
+              <p class="font-bold text-slate-800 dark:text-slate-200">Tomato: Early Blight</p>
+              <p class="text-[9px] text-slate-500 mt-0.5">15 mins ago</p>
+            </div>
+          </div>
+
+          <div appSlideIn direction="right" class="flex items-center gap-3.5 relative">
+            <span
+              class="h-3.5 w-3.5 rounded-full bg-brand-500 border-2 border-white dark:border-slate-900 z-10 shadow-sm flex items-center justify-center"></span>
+            <div class="text-[11px] font-mono leading-none">
+              <p class="font-bold text-slate-800 dark:text-slate-200">Wheat: Healthy</p>
+              <p class="text-[9px] text-slate-500 mt-0.5">2 hours ago</p>
+            </div>
+          </div>
+
+          <div appSlideIn direction="right" class="flex items-center gap-3.5 relative">
+            <span
+              class="h-3.5 w-3.5 rounded-full bg-brand-500 border-2 border-white dark:border-slate-900 z-10 shadow-sm flex items-center justify-center"></span>
+            <div class="text-[11px] font-mono leading-none">
+              <p class="font-bold text-slate-800 dark:text-slate-200">Grape: Healthy</p>
+              <p class="text-[9px] text-slate-500 mt-0.5">Yesterday</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7. Weather -->
+      <div appSlideIn direction="left"
+        class="group relative rounded-4xl p-6 lg:p-8 glass gradient-border md:col-span-2 hover:-translate-y-1 hover:shadow-glow transition-all duration-500 overflow-hidden flex flex-col justify-between gap-6">
+        <div class="flex flex-col md:flex-row gap-6 justify-between items-stretch flex-1">
+          <div class="flex flex-col justify-between flex-1">
+            <div>
+              <div
+                class="h-12 w-12 rounded-2xl bg-linear-to-br from-amber-400 to-orange-500 text-white grid place-items-center shadow-glow">
+                <i class="fa-solid fa-cloud-sun-rain text-lg"></i>
+              </div>
+              <h3 appSlideIn direction="left" class="mt-5 font-display font-bold text-xl text-slate-900 dark:text-white">Hyperlocal Weather</h3>
+              <p appSlideIn direction="left" class="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                Stay informed with real-time weather updates, including temperature, humidity, wind speed, and rainfall
+                forecasts to support smarter farming decisions. </p>
+            </div>
+
+            <div appSlideIn direction="down" class="mt-6 grid grid-cols-3 gap-3 text-xs font-mono">
+              <div class="p-2 rounded-lg bg-sky-500/10 border border-sky-500/20 text-center">
+                <span class="block text-[10px] text-slate-500 uppercase">Humidity</span>
+                <span class="font-bold text-sky-600 dark:text-sky-400 text-sm">62%</span>
+              </div>
+              <div class="p-2 rounded-lg bg-indigo-500/10 border border-indigo-500/20 text-center">
+                <span class="block text-[10px] text-slate-500 uppercase">Wind</span>
+                <span class="font-bold text-indigo-600 dark:text-indigo-400 text-sm">12 km/h</span>
+              </div>
+              <div class="p-2 rounded-lg bg-orange-500/10 border border-orange-500/20 text-center">
+                <span class="block text-[10px] text-slate-500 uppercase">UV Index</span>
+                <span class="font-bold text-orange-600 dark:text-orange-400 text-sm">Low (2)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Glass Weather Widget -->
+          <div appSlideIn direction="down"
+            class="relative w-full md:w-56 h-48 md:h-auto min-h-45 rounded-2xl bg-linear-to-b from-sky-400/20 to-indigo-500/25 dark:from-sky-950/40 dark:to-slate-950/60 border border-sky-300/30 dark:border-sky-500/10 p-4 flex flex-col justify-between self-center md:self-stretch shadow-md">
+            <div appSlideIn direction="up" class="flex justify-between items-start">
+              <div>
+                <p class="text-xs font-mono font-bold text-slate-700 dark:text-slate-350">Cairo, EG</p>
+                <h4 class="text-4xl font-display font-bold mt-1 text-slate-900 dark:text-white">24°</h4>
+                <p class="text-[10px] font-mono text-slate-600 dark:text-slate-400 mt-0.5">Partly Cloudy</p>
+              </div>
+              <i 
+                class="fa-solid fa-cloud-sun text-4xl text-amber-400 drop-shadow-[0_0_12px_rgba(251,191,36,0.5)] animate-card-float"></i>
+            </div>
+
+            <!-- Mini 3-day forecast line -->
+            <div appSlideIn direction="up"
+              class="border-t border-slate-300/30 dark:border-white/10 pt-3 flex justify-between gap-1 text-[10px] font-mono text-slate-755 dark:text-slate-400">
+              <div class="text-center flex-1">
+                <span class="block text-slate-500">Mon</span>
+                <i class="fa-solid fa-sun text-amber-500 my-1 block"></i>
+                <span class="font-bold text-slate-950 dark:text-slate-200">26°</span>
+              </div>
+              <div class="text-center flex-1">
+                <span class="block text-slate-500">Tue</span>
+                <i class="fa-solid fa-cloud-sun text-slate-500 my-1 block"></i>
+                <span class="font-bold text-slate-950 dark:text-slate-200">25°</span>
+              </div>
+              <div class="text-center flex-1">
+                <span class="block text-slate-500">Wed</span>
+                <i class="fa-solid fa-cloud-showers-heavy text-sky-500 my-1 block"></i>
+                <span class="font-bold text-slate-950 dark:text-slate-200">21°</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8. Profile & Teams -->
+      <div appSlideIn direction="left"
+        class="group relative rounded-4xl p-6 lg:p-8 glass gradient-border md:col-span-2 hover:-translate-y-1 hover:shadow-glow transition-all duration-500 overflow-hidden flex flex-col justify-between gap-6">
+        <div class="flex flex-col md:flex-row gap-6 justify-between items-stretch flex-1">
+          <div class="flex flex-col justify-between flex-1">
+            <div>
+              <div
+                class="h-12 w-12 rounded-2xl bg-linear-to-br from-indigo-500 to-emerald-400 text-white grid place-items-center shadow-glow">
+                <i class="fa-solid fa-user-shield text-lg"></i>
+              </div>
+              <h3 appSlideIn direction="left" class="mt-5 font-display font-bold text-xl text-slate-900 dark:text-white">Profile & Roles</h3>
+              <p appSlideIn direction="left" class="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                Manage your personal information, view your assigned role, update account settings, and securely access
+                features based on your permissions. </p>
+            </div>
+            <div appSlideIn direction="left" class="mt-6 flex flex-wrap gap-2 text-xs font-mono">
+              <span
+                class="px-2.5 py-1 rounded-md bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20">Collaborators:
+                3 Active</span>
+            </div>
+          </div>
+
+          <!-- Interactive Team Panel Mockup -->
+          <div
+            class="w-full md:w-60 h-48 md:h-auto min-h-45 rounded-2xl bg-slate-500/5 border border-slate-200/10 p-3.5 flex flex-col gap-3 justify-center self-center md:self-stretch">
+
+            <!-- Member 1 -->
+            <div
+              class="flex items-center justify-between gap-2 p-1.5 rounded-xl bg-slate-950/20 dark:bg-black/20 border border-white/5">
+              <div appSlideIn direction="right" class="flex items-center gap-2">
+                <span
+                  class="h-8 w-8 rounded-full bg-linear-to-br from-brand-500 to-sky-500 grid place-items-center text-[11px] font-bold text-white shadow-sm">GH</span>
+                <div>
+                  <p class="text-[11px] font-bold text-slate-800 dark:text-slate-200 leading-none">Gamal H.</p>
+                  <p class="text-[9px] text-slate-500 mt-1 font-mono">Super Admin</p>
+                </div>
+              </div>
+              <!-- Custom CSS styled toggle -->
+              <label class="relative inline-flex items-center cursor-pointer">
+                <input type="checkbox" checked disabled class="sr-only peer">
+                <span
+                  class="w-7 h-4 bg-brand-500 rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:bg-white after:border-slate-300 after:border after:rounded-full after:h-3 after:w-3 after:transition-all"></span>
+              </label>
+            </div>
+
+            <!-- Member 2 -->
+            <div appSlideIn direction="right"
+              class="flex items-center justify-between gap-2 p-1.5 rounded-xl bg-slate-950/20 dark:bg-black/20 border border-white/5">
+              <div class="flex items-center gap-2">
+                <span
+                  class="h-8 w-8 rounded-full bg-linear-to-br from-indigo-500 to-teal-400 grid place-items-center text-[11px] font-bold text-white shadow-sm">HA</span>
+                <div>
+                  <p class="text-[11px] font-bold text-slate-800 dark:text-slate-200 leading-none">Hosny A.</p>
+                  <p class="text-[9px] text-slate-500 mt-1 font-mono">Admin</p>
+                </div>
+              </div>
+              <label class="relative inline-flex items-center cursor-pointer">
+                <input type="checkbox" checked disabled class="sr-only peer">
+                <span
+                  class="w-7 h-4 bg-brand-500 rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:bg-white after:border-slate-300 after:border after:rounded-full after:h-3 after:w-3 after:transition-all"></span>
+              </label>
+            </div>
+
+            <!-- Member 3 -->
+            <div appSlideIn direction="right"
+              class="flex items-center justify-between gap-2 p-1.5 rounded-xl bg-slate-950/20 dark:bg-black/20 border border-white/5">
+              <div class="flex items-center gap-2">
+                <span
+                  class="h-8 w-8 rounded-full bg-linear-to-br from-emerald-500 to-sky-500 grid place-items-center text-[11px] font-bold text-white shadow-sm">TR</span>
+                <div>
+                  <p class="text-[11px] font-bold text-slate-800 dark:text-slate-200 leading-none">Tasnim R.</p>
+                  <p class="text-[9px] text-slate-500 mt-1 font-mono">Grower</p>
+                </div>
+              </div>
+              <label class="relative inline-flex items-center cursor-pointer">
+                <input type="checkbox" disabled class="sr-only peer">
+                <span
+                  class="w-7 h-4 bg-slate-300 dark:bg-slate-700 rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:bg-white after:border-slate-300 after:border after:rounded-full after:h-3 after:w-3 after:transition-all"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

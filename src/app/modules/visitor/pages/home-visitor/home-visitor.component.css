@@ -1,0 +1,55 @@
+
+  html,body{font-family:'Inter',sans-serif;}
+  .font-display{font-family:'Space Grotesk',Inter,sans-serif;letter-spacing:-0.02em;}
+  .gradient-text{
+    background: linear-gradient(120deg,#10b981 0%,#14b8a6 40%,#0ea5e9 80%);
+    background-size: 200% 200%;
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    animation: gradient 6s ease infinite;
+  }
+  .glass{
+    background: rgba(255,255,255,0.6);
+    backdrop-filter: blur(20px) saturate(160%);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
+    border: 1px solid rgba(255,255,255,0.5);
+  }
+  .dark .glass{
+    background: rgba(15,23,42,0.55);
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .glass-strong{
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border: 1px solid rgba(255,255,255,0.6);
+  }
+  .dark .glass-strong{
+    background: rgba(2,6,23,0.7);
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .gradient-border{position:relative;}
+  .gradient-border::before{
+    content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;
+    background: linear-gradient(135deg,rgba(16,185,129,.6),rgba(14,165,233,.6),transparent 70%);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor; mask-composite: exclude;
+    pointer-events:none;opacity:.9;
+  }
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s ease;}
+  .reveal.in{opacity:1;transform:none;}
+  .grid-bg{
+    background-image:
+      linear-gradient(rgba(16,185,129,.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(16,185,129,.08) 1px, transparent 1px);
+    background-size: 44px 44px;
+    mask-image: radial-gradient(ellipse at center, black 40%, transparent 75%);
+  }
+  .btn-shine{
+    background-image: linear-gradient(110deg,#10b981,#14b8a6 45%,#38bdf8 90%);
+    background-size:200% 100%;
+  }
+  .btn-shine:hover{background-position:100% 0;}
+  details[open] .faq-icon{transform: rotate(45deg);}
+  .faq-icon{transition: transform .3s ease;}
+  ::selection{background:#10b98155;color:#022c22;}
+  .dark ::selection{background:#10b98177;color:#ecfdf5;}

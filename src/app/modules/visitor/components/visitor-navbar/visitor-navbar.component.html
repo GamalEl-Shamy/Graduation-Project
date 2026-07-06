@@ -1,0 +1,121 @@
+<header class="fixed inset-x-0 top-0 z-500 transition-all duration-300">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-4">
+        <nav  class="glass rounded-2xl px-4 sm:px-6 py-3 flex items-center justify-between shadow-soft">
+            <a appSlideIn direction="right" class="flex items-center gap-2.5 group ">
+                <div 
+                    class="group flex items-center gap-3 w-full h-10  cursor-pointer rounded-lg hover:scale-105 hover:bg-slate-100 dark:hover:bg-green-800/35 dark:hover:border dark:hover:border-green-800  transition-all duration-300">
+                    <img src="./logos/zaraa.png" alt="Zaraa Logo" (click)="scrollTHero.emit()"
+                        class="h-full w-auto object-contain cursor-pointer transition-all duration-400 dark:filter dark:brightness-0 dark:invert">
+                </div>
+            </a>
+
+            <ul appSlideIn direction="down"  class="hidden lg:flex items-center gap-1 text-sm font-medium">
+                <li><a (click)="scrollTHero.emit()" class="px-3 py-2 cursor-pointer rounded-lg hover:bg-brand-500/10 transition">Home</a></li>
+                <li><a (click)="scrollToFeatures.emit()" class="px-3 py-2 cursor-pointer rounded-lg hover:bg-brand-500/10 transition">Features</a></li>
+                <li><a (click)="scrollToWorks.emit()" class="px-3 py-2 cursor-pointer rounded-lg hover:bg-brand-500/10 transition">Works</a></li>
+                <li><a (click)="isOpenDiagnosis.emit()" class="px-3 py-2 cursor-pointer rounded-lg hover:bg-brand-500/10 transition">AI Technology</a></li>
+                <li><a (click)="isOpenRobot.emit()" class="px-3 py-2 cursor-pointer rounded-lg hover:bg-brand-500/10 transition">Robotics</a></li>
+                <li><a (click)="isOpenMarketplace.emit()" class="px-3 py-2 cursor-pointer rounded-lg hover:bg-brand-500/10 transition">Marketplace</a></li>
+            </ul>
+
+            <div appSlideIn direction="left" class="flex items-center gap-2">
+                <button (click)="themeService.toggleTheme()" class="group relative flex items-center justify-center w-11 h-11 rounded-xl cursor-pointer
+                                    border border-black/10 dark:border-white/10 bg-white dark:bg-white/5 transition-all duration-200 hover:bg-neutral-50 dark:hover:bg-white/10
+                                    hover:border-black/20 dark:hover:border-white/20 hover:scale-105 active:scale-95">
+                    @if (themeService.isDarkMode()) {
+                    <i
+                        class="fa-solid fa-sun text-[1rem] text-white hover:text-emerald-500 transition-transform duration-300 group-hover:rotate-90"></i>
+                    } @else {
+                    <i
+                        class="fa-solid fa-moon text-[1rem] text-neutral-500 transition-all duration-300 group-hover:text-neutral-700 group-hover:rotate-360"></i>
+                    }
+                </button>
+                <a routerLink="/auth/login"
+                    class="hidden sm:inline-flex px-4 py-2 rounded-xl text-sm font-semibold hover:bg-brand-500/10 transition">Login</a>
+                <a routerLink="/auth/register"
+                    class="inline-flex items-center gap-2 btn-shine text-white text-sm font-semibold px-4 py-2.5 rounded-xl shadow-glow transition-all duration-500">
+                    Register
+                </a>
+                <button (click)="toggleSidebar()"
+                    class="lg:hidden h-10 w-10 cursor-pointer grid place-items-center rounded-xl border border-slate-200/70 dark:border-white/10">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+
+
+
+        <div class="lg:hidden absolute left-4 right-4 mt-2 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl p-3 shadow-2xl border border-slate-200/50 dark:border-white/10 z-500 transition-all duration-300 ease-out origin-top"
+            [class.opacity-0]="isOpenNav()" [class.invisible]="isOpenNav()" [class.scale-95]="isOpenNav()"
+            [class.-translate-y-4]="isOpenNav()" [class.opacity-100]="!isOpenNav()" [class.visible]="!isOpenNav()"
+            [class.scale-100]="!isOpenNav()" [class.translate-y-0]="!isOpenNav()">
+
+            <ul class="flex flex-col gap-1 text-sm font-semibold text-slate-700 dark:text-slate-200">
+                <li>
+                    <a (click)="scrollTHero.emit()" (click)="closeSidebar()"
+                        class="block px-4 py-2.5 rounded-xl transition-all duration-200 hover:bg-brand-500/10 hover:text-brand-600 dark:hover:text-brand-400 hover:translate-x-1">
+                        Home
+                    </a>
+                </li>
+                <li>
+                    <a (click)="scrollToFeatures.emit()" (click)="closeSidebar()"
+                        class="block px-4 py-2.5 rounded-xl transition-all duration-200 hover:bg-brand-500/10 hover:text-brand-600 dark:hover:text-brand-400 hover:translate-x-1">
+                        Features
+                    </a>
+                </li>
+                <li>
+                    <a (click)="scrollToWorks.emit()" (click)="closeSidebar()"
+                        class="block px-4 py-2.5 rounded-xl transition-all duration-200 hover:bg-brand-500/10 hover:text-brand-600 dark:hover:text-brand-400 hover:translate-x-1">
+                        Works
+                    </a>
+                </li>
+                <li>
+                    <a (click)="isOpenDiagnosis.emit()" (click)="closeSidebar()"
+                        class="block px-4 py-2.5 rounded-xl transition-all duration-200 hover:bg-brand-500/10 hover:text-brand-600 dark:hover:text-brand-400 hover:translate-x-1">
+                        AI Technology
+                    </a>
+                </li>
+                <li>
+                    <a (click)="isOpenRobot.emit()" (click)="closeSidebar()"
+                        class="block px-4 py-2.5 rounded-xl transition-all duration-200 hover:bg-brand-500/10 hover:text-brand-600 dark:hover:text-brand-400 hover:translate-x-1">
+                        Robotics
+                    </a>
+                </li>
+                <li>
+                    <a (click)="isOpenMarketplace.emit()" (click)="closeSidebar()"
+                        class="block px-4 py-2.5 rounded-xl transition-all duration-200 hover:bg-brand-500/10 hover:text-brand-600 dark:hover:text-brand-400 hover:translate-x-1">
+                        Marketplace
+                    </a>
+                </li>
+                <li>
+                    <a (click)="isOpenWeather.emit()" (click)="closeSidebar()"
+                        class="block px-4 py-2.5 rounded-xl transition-all duration-200 hover:bg-brand-500/10 hover:text-brand-600 dark:hover:text-brand-400 hover:translate-x-1">
+                        Weather
+                    </a>
+                </li>
+                <li>
+                    <a (click)="isOpenDashboard.emit()" (click)="closeSidebar()"
+                        class="block px-4 py-2.5 rounded-xl transition-all duration-200 hover:bg-brand-500/10 hover:text-brand-600 dark:hover:text-brand-400 hover:translate-x-1">
+                        Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a (click)="isOpenTestimonials.emit()" (click)="closeSidebar()"
+                        class="block px-4 py-2.5 rounded-xl transition-all duration-200 hover:bg-brand-500/10 hover:text-brand-600 dark:hover:text-brand-400 hover:translate-x-1">
+                        FAQ
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="/auth/login" (click)="closeSidebar()"
+                        class="block px-4 py-2.5 rounded-xl transition-all duration-200 hover:bg-brand-500/10 hover:text-brand-600 dark:hover:text-brand-400 hover:translate-x-1 mt-2 border border-slate-100 dark:border-slate-800 text-center btn-shine text-white">
+                        Login
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+<div (click)="closeSidebar()" class="fixed inset-0 bg-black/60 z-40 lg:hidden transition-opacity"
+    [class.hidden]="isOpenNav()" [class.block]="!isOpenNav()">
+</div>
