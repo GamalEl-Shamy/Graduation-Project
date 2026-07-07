@@ -1,8 +1,9 @@
 import { Component, Input } from '@angular/core';
+import { SlideIn } from "../../../../../shared/directives/slide-in";
 
 @Component({
   selector: 'app-diagnosis-header',
-  imports: [],
+  imports: [SlideIn],
   templateUrl: './diagnosis-header.component.html',
   styleUrl: './diagnosis-header.component.css',
 })

@@ -1,12 +1,14 @@
-<div class="animate-fade-in-up ease-out">
-    <app-diagnosis-header [targetElement]="secondComp.elementRef.nativeElement"></app-diagnosis-header>
-</div>
+<app-diagnosis-header [targetElement]="secondComp.elementRef.nativeElement"></app-diagnosis-header>
 
-<div #secondCompWrapper 
+<app-classify-diagnosis #secondComp class="scroll-mt-8 md:scroll-mt-10"></app-classify-diagnosis>
+
+
+
+<!-- <div #secondCompWrapper 
        class="transition-all duration-1000 ease-out transform"
        [class.opacity-0]="!isSecondCompVisible()"
        [class.translate-y-16]="!isSecondCompVisible()"
        [class.opacity-100]="isSecondCompVisible()"
        [class.translate-y-0]="isSecondCompVisible()">
 <app-diagnosis-section #secondComp class="scroll-mt-8 md:scroll-mt-10"></app-diagnosis-section>
-</div>
+</div> -->

@@ -1,10 +1,10 @@
 import { Component, ElementRef, signal, viewChild } from '@angular/core';
-import { DiagnosisSectionComponent } from "../../components/diagnosis/diagnosis-section/diagnosis-section.component";
+import { ClassifyDiagnosisComponent } from "../../components/diagnosis/classify-diagnosis/classify-diagnosis.component";
 import { DiagnosisHeaderComponent } from "../../components/diagnosis/diagnosis-header/diagnosis-header.component";
 
 @Component({
   selector: 'app-diagnosis',
-  imports: [DiagnosisSectionComponent, DiagnosisHeaderComponent],
+  imports: [DiagnosisHeaderComponent, ClassifyDiagnosisComponent],
   templateUrl: './diagnosis.component.html',
   styleUrl: './diagnosis.component.css',
 })

@@ -1,0 +1,265 @@
+<section appSlideIn direction="down"
+    class="w-full  backdrop-blur-3xl rounded-[2.5rem] shadow-[0_8px_40px_-12px_rgba(0,0,0,0.1)] dark:shadow-[0_24px_60px_-15px_rgba(0,0,0,0.7)] border border-slate-100 dark:border-slate-800/60 border-t-3 border-t-[#012d1d] dark:border-t-emerald-500 border-b-3 border-b-[#012d1d] dark:border-b-emerald-500 overflow-hidde">
+
+    <div class="max-w-4xl mx-auto p-4 sm:p-6 lg:p-8 font-body">
+
+        <div class="text-center mb-10">
+            <span appSlideIn direction="right"
+                class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-semibold tracking-wider uppercase mb-3 border border-emerald-500/10">
+                <i class="fa-solid fa-wand-magic-sparkles text-[10px] animate-pulse"></i> AI Diagnosis Engine
+            </span>
+            <h1 appSlideIn direction="left"
+                class="text-3xl md:text-5xl font-black text-slate-800 dark:text-white mb-3 tracking-tight font-[Namdhinggo]!">
+                AI Plant Diagnosis
+            </h1>
+            <p appSlideIn direction="right" class="Upload a clear image max-w-lg mx-auto text-sm md:text-base dark:text-slate-200/70">
+                Upload a clear image of your crop's leaf to identify species and diagnose health anomalies instantly.
+            </p>
+        </div>
+
+        <!-- Progress Stepper: Visual representation of flow stages -->
+        <div appSlideIn direction="down"
+            class=" backdrop-blur-xl backdrop-saturate-150 border border-white/40 shadow-xl dark:bg-slate-900/40 dark:border-white/5 dark:shadow-2xl rounded-2xl p-4 mb-10 max-w-2xl mx-auto ">
+            <div class="flex items-center justify-around gap-2">
+                <!-- Step 1 -->
+                <div class="flex flex-col items-center sm:flex-row gap-2 sm:gap-3">
+                    <span
+                        class="h-8 w-8 rounded-full grid place-items-center text-xs font-bold transition-all duration-300 shadow-sm"
+                        [class]="imagePreview() ? 'bg-emerald-500 text-white shadow-emerald-500/20 scale-105' : 'bg-emerald-500 text-white shadow-emerald-500/20'">
+                        @if (imagePreview()) {<i class="fa-solid fa-check text-[10px]"></i>} @else {1}
+                    </span>
+                    <span class="text-xs font-bold tracking-wide uppercase transition-colors"
+                        [class]="imagePreview() ? 'text-slate-400 dark:text-slate-200/70' : 'text-emerald-600 dark:text-emerald-400'">Upload</span>
+                </div>
+
+                <!-- Connector 1 -->
+                <div class="h-1 flex-1 max-w-20 rounded-full transition-all duration-500"
+                    [class]="imagePreview() ? 'bg-emerald-400 dark:bg-emerald-500' : 'bg-slate-200 dark:bg-slate-600/50'">
+                </div>
+
+                <!-- Step 2 -->
+                <div class="flex flex-col items-center sm:flex-row gap-2 sm:gap-3">
+                    <span
+                        class="h-8 w-8 rounded-full grid place-items-center text-xs font-bold transition-all duration-300 shadow-sm"
+                        [class]="result() ? 'bg-emerald-500 text-white shadow-emerald-500/20' : (imagePreview() ? 'bg-emerald-500 text-white shadow-emerald-500/20 scale-105 glow-emerald' : 'bg-slate-100 dark:bg-slate-800 text-slate-400 dark:text-slate-200/70')">
+                        @if (result()) {<i class="fa-solid fa-check text-[10px]"></i>} @else {2}
+                    </span>
+                    <span class="text-xs font-bold tracking-wide uppercase transition-colors"
+                        [class]="imagePreview() && !result() ? 'text-emerald-600 dark:text-emerald-400' : 'text-slate-400 dark:text-slate-200/70'">Analyze</span>
+                </div>
+
+                <!-- Connector 2 -->
+                <div class="h-1 flex-1 max-w-20 rounded-full transition-all duration-500"
+                    [class]="result() ? 'bg-emerald-400 dark:bg-emerald-500' : 'bg-slate-200 dark:bg-slate-600/50'">
+                </div>
+
+                <!-- Step 3 -->
+                <div class="flex flex-col items-center sm:flex-row gap-2 sm:gap-3">
+                    <span
+                        class="h-8 w-8 rounded-full grid place-items-center text-xs font-bold transition-all duration-300 shadow-sm"
+                        [class]="result() ? 'bg-emerald-500 text-white shadow-emerald-500/20 scale-105' : 'bg-slate-100 dark:bg-slate-800 text-slate-400 dark:text-slate-200/70'">3</span>
+                    <span class="text-xs font-bold tracking-wide uppercase transition-colors"
+                        [class]="result() ? 'text-emerald-600 dark:text-emerald-400' : 'text-slate-400 dark:text-slate-200/70'">Results</span>
+                </div>
+            </div>
+        </div>
+
+        @if (!imagePreview()) {
+        <div appSlideIn direction="down" class="relative border-2 border-dashed border-slate-400 dark:border-slate-600 rounded-3xl p-12 text-center hover:bg-slate-50 dark:hover:bg-slate-800/50 hover:border-emerald-400 dark:hover:border-emerald-500 transition-all duration-300 group cursor-pointer"
+            (drop)="onDrop($event)" (dragover)="onDragOver($event)" (click)="fileInput.click()">
+
+            <input type="file" #fileInput class="hidden" accept="image/jpeg, image/png, image/jpg"
+                (change)="onFileSelected($event)">
+
+            <div
+                class="h-20 w-20 mx-auto bg-emerald-100 dark:bg-emerald-500/20 text-emerald-600 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 relative">
+                <span
+                    class="absolute inset-0 rounded-full ring-2 ring-emerald-400 opacity-0 group-hover:opacity-100 group-hover:scale-125 transition-all duration-500"></span>
+                <i class="fa-solid fa-cloud-arrow-up text-3xl"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-slate-700 dark:text-slate-200 mb-2">Click to upload or drag and drop
+            </h3>
+            <p class="text-sm text-slate-500">SVG, PNG, JPG or GIF (max. 5MB)</p>
+
+            <div class="mt-5 flex items-center justify-center gap-2">
+                <span
+                    class="text-[10px] font-mono uppercase tracking-wide rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 px-2.5 py-1">PNG</span>
+                <span
+                    class="text-[10px] font-mono uppercase tracking-wide rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 px-2.5 py-1">JPG</span>
+                <span
+                    class="text-[10px] font-mono uppercase tracking-wide rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 px-2.5 py-1">GIF</span>
+            </div>
+        </div>
+        }
+
+        @if (imagePreview() && !result()) {
+        <div class="glass-strong rounded-3xl p-6 shadow-sm border border-slate-200 dark:border-slate-700">
+            <div appSlideIn direction="up"
+                class="relative rounded-2xl overflow-hidden bg-slate-950 aspect-video md:aspect-21/9 mb-6 border border-slate-200/10 shadow-2xl">
+                <img [src]="imagePreview()" alt="Selected Plant"
+                    class="w-full h-full object-contain transition-all duration-500" [class.opacity-30]="isLoading()"
+                    [class.blur-[2px]]="isLoading()">
+
+                <!-- Remove image button -->
+                <button (click)="removeImage()"
+                    class="absolute top-4 right-4 h-10 w-10 cursor-pointer bg-slate-900/60 hover:bg-rose-500 text-white backdrop-blur-md rounded-full flex items-center justify-center border border-white/10 hover:border-transparent transition-all duration-300 hover:scale-110 disabled:opacity-40 disabled:pointer-events-none shadow-md z-20"
+                    [disabled]="isLoading()" aria-label="Remove image">
+                    <i class="fa-solid fa-xmark text-sm"></i>
+                </button>
+
+                <!-- Scanning overlay & laser beam -->
+                @if (isLoading()) {
+                <div
+                    class="absolute inset-0 flex flex-col items-center justify-center gap-4 bg-emerald-950/20 backdrop-blur-[1px] transition-all duration-300">
+                    <!-- Laser Sweep Line -->
+                    <div class="laser-scanner z-10"></div>
+
+                    <!-- Rotating loader widget -->
+                    <div class="relative flex items-center justify-center">
+                        <div
+                            class="h-16 w-16 rounded-full border-2 border-emerald-500/20 border-t-emerald-400 animate-spin">
+                        </div>
+                        <i class="fa-solid fa-leaf text-emerald-400 text-lg absolute animate-pulse"></i>
+                    </div>
+                    <p
+                        class="text-white text-xs font-mono font-semibold tracking-widest uppercase bg-slate-950/80 px-4 py-2 rounded-full border border-emerald-500/30 shadow-md">
+                        Analyzing Crop Health...
+                    </p>
+                </div>
+                }
+            </div>
+
+            <!-- Error message alert -->
+            @if (errorMessage()) {
+            <div appSlideIn direction="left"
+                class="mb-8 p-4 rounded-2xl bg-rose-50 dark:bg-rose-400/20 border border-rose-200 dark:border-rose-500 flex items-start gap-4 animate-fade-in shadow-inner">
+                <div
+                    class="h-10 w-10 rounded-xl cursor-pointer bg-rose-500/10 dark:bg-rose-500/20 text-rose-500 flex items-center justify-center shrink-0 border border-rose-500/20">
+                    <i class="fa-solid fa-circle-exclamation text-lg"></i>
+                </div>
+                <div class="flex-1">
+                    <h4 class="text-sm font-bold text-rose-800 dark:text-rose-500">Diagnosis System Exception</h4>
+                    <p class="text-xs text-rose-600 dark:text-rose-300 mt-1 font-medium leading-relaxed">{{
+                        errorMessage() }}
+                    </p>
+                </div>
+            </div>
+
+            <div appSlideIn direction="right" class="mb-3 flex justify-center gap-4">
+                <button (click)="removeImage()"
+                    class="w-full text-center cursor-pointer py-3 rounded-xl font-semibold text-slate-600 dark:text-slate-300 bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 transition-all duration-300 hover:-translate-y-0.5 gap-2">
+                    <i class="fa-solid fa-arrow-rotate-left text-xs"></i> Scan Another Plant
+                </button>
+            </div>
+            }
+
+            <!-- Scan Action button -->
+            <button appSlideIn direction="down" (click)="analyzeImage()" [disabled]="isLoading()"
+                class="w-full flex items-center justify-center gap-2.5 cursor-pointer py-4 rounded-2xl font-bold text-white transition-all duration-300 shadow-lg btn-shine-effect disabled:opacity-50 disabled:cursor-not-allowed text-base tracking-wide"
+                [class]="isLoading() ? 'bg-slate-600 border border-slate-500/30' : 'bg-linear-to-r from-emerald-500 via-teal-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 shadow-emerald-500/20 hover:shadow-emerald-500/35 hover:-translate-y-0.5 active:translate-y-0'">
+                @if (!isLoading()) {
+                <i class="fa-solid fa-wand-magic-sparkles text-sm"></i>
+                }
+                @if (isLoading()) {
+                <i class="fa-solid fa-circle-notch fa-spin text-sm"></i>
+                }
+                {{ isLoading() ? 'AI processing model...' : 'Scan & Analyze Plant' }}
+            </button>
+        </div>
+        }
+
+        @if (result()) {
+        <div>
+
+            <div appSlideIn direction="up" class="bg-white/40 backdrop-blur-xl backdrop-saturate-150 border-2 shadow-xl dark:bg-slate-900/40 dark:shadow-2xl rounded-3xl p-6 md:p-8 flex flex-col md:flex-row gap-8 items-center mb-6 relative overflow-hidden"
+                [class]="result()?.diseaseName?.toLowerCase() === 'healthy' ? 'border-emerald-200 dark:border-emerald-900' : 'border-rose-200 dark:border-rose-900'">
+
+                <div class="absolute -top-24 -right-24 w-48 h-48 blur-[50px] rounded-full pointer-events-none"
+                    [class]="result()?.diseaseName?.toLowerCase() === 'healthy' ? 'bg-emerald-500/20' : 'bg-rose-500/20'">
+                </div>
+
+                <div class="w-40 h-40 shrink-0 rounded-2xl overflow-hidden border-4 shadow-lg relative"
+                    [class]="result()?.diseaseName?.toLowerCase() === 'healthy' ? 'border-emerald-200 dark:border-emerald-900' : 'border-rose-200 dark:border-rose-900'">
+                    <img [src]="imagePreview()" alt="Analyzed Plant" class="w-full h-full object-cover">
+                </div>
+
+                <div class="flex-1 text-center md:text-left">
+                    <div class="flex flex-wrap items-center justify-center md:justify-start gap-3 mb-3">
+                        <span
+                            class="px-3 py-1 text-sm font-bold uppercase tracking-wider rounded-full border shadow-sm flex items-center gap-1.5"
+                            [class]="result()?.diseaseName?.toLowerCase() === 'healthy' ? 'bg-emerald-50 text-emerald-700 border-emerald-200 dark:bg-emerald-500/10 dark:text-emerald-400 dark:border-emerald-500/20' : 'bg-rose-50 text-rose-700 border-rose-200 dark:bg-rose-500/10 dark:text-rose-400 dark:border-rose-500/20'">
+                            <span
+                                class="text-slate-500 dark:text-slate-300 text-sm leading-relaxed font-semibold capitalize">Disease
+                                Name</span>
+                            <i class="fa-solid" [class.fa-check]="result()?.diseaseName?.toLowerCase() === 'healthy'"
+                                [class.fa-triangle-exclamation]="result()?.diseaseName?.toLowerCase() !== 'healthy'"></i>
+                            {{ result()?.diseaseName }}
+                        </span>
+                        <span
+                            class="px-3 py-1 text-sm font-semibold rounded-full bg-sky-50 text-sky-700 border border-sky-200 dark:bg-sky-500/10 dark:text-sky-400 dark:border-sky-500/20">
+                            <span class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">Confidence</span>
+                            <i class="fa-solid fa-bullseye ml-2 mr-1"></i> {{ result()?.confidenceRate }}
+                        </span>
+                    </div>
+
+                    <h2 class="text-3xl font-black text-slate-800 dark:text-white mb-2">{{ result()?.plantName }}</h2>
+                    <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">{{ result()?.description }}
+                    </p>
+                    <!-- Confidence gauge bar -->
+                    <div class="mt-3 flex items-center justify-center md:justify-start gap-3">
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400 font-mono">Confidence
+                            Gauge:</span>
+                        <div
+                            class="h-2 w-32 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden shadow-inner shrink-0">
+                            <div class="h-full bg-linear-to-r from-emerald-500 to-sky-500 rounded-full transition-all duration-1000"
+                                [style.width]="result()?.confidenceRate ? (result()?.confidenceRate!.includes('%') ? result()?.confidenceRate : result()?.confidenceRate + '%') : '100%'">
+                            </div>
+                        </div>
+                        <span class="text-xs font-black font-mono text-sky-600 dark:text-sky-400">{{
+                            result()?.confidenceRate
+                            }}</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+
+                <div appSlideIn direction="left"
+                    class="bg-white dark:bg-slate-900 rounded-3xl p-6 md:p-8 border-2 border-transparent hover:border-amber-400 dark:hover:border-amber-500 shadow-sm hover:shadow-md transition-all">
+                    <div
+                        class="w-12 h-12 bg-amber-50 dark:bg-amber-500/10 text-amber-500 rounded-xl flex items-center justify-center text-xl mb-5">
+                        <i class="fa-solid fa-microscope"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-800 dark:text-white mb-3">Symptoms</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">{{ result()?.symptoms }}</p>
+                </div>
+
+                <div appSlideIn direction="right"
+                    class="bg-white dark:bg-slate-900 rounded-3xl p-6 md:p-8 border-2 border-transparent hover:border-emerald-400 dark:hover:border-emerald-500 shadow-sm hover:shadow-md transition-all">
+                    <div
+                        class="w-12 h-12 bg-emerald-50 dark:bg-emerald-500/10 text-emerald-500 rounded-xl flex items-center justify-center text-xl mb-5">
+                        <i class="fa-solid fa-kit-medical"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-800 dark:text-white mb-3">Recommended Treatment</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">{{ result()?.treatment }}</p>
+                </div>
+
+            </div>
+
+            <div class="mt-8 flex justify-between gap-4">
+                <button appSlideIn direction="right" (click)="removeImage()"
+                    class="px-6 py-3 rounded-xl font-semibold cursor-pointer text-[10px] lg:text-sm text-slate-600  backdrop-blur-xl dark:text-slate-300 bg-slate-200  dark:bg-slate-900/40 hover:bg-slate-300 dark:hover:bg-slate-700 transition-all flex items-center gap-2">
+                    <i class="fa-solid fa-arrow-rotate-left "></i> Scan Another Plant
+                </button>
+                <button appSlideIn direction="left" routerLink="/users/shop"
+                    class="bg-green-600 dark:bg-emerald-600 hover:bg-green-700 dark:hover:bg-emerald-500 text-white px-6 py-2.5 rounded-xl cursor-pointer font-bold text-[10px] lg:text-sm transition-all shadow-sm flex items-center gap-2">
+                    <i class="fa-solid fa-cart-shopping"></i> Shop now
+                </button>
+            </div>
+
+        </div>
+        }
+    </div>
+
+</section>
