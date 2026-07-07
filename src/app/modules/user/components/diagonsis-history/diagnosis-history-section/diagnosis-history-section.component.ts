@@ -1,81 +1,120 @@
 import { CommonModule } from '@angular/common';
-import { Component, computed, ElementRef, inject, signal } from '@angular/core';
+import { Component, computed, ElementRef, inject, OnInit, signal } from '@angular/core';
 import { DiagnosisHistoryEmptyComponent } from "../diagnosis-history-empty/diagnosis-history-empty.component";
 import { RouterLink } from "@angular/router";
 import { DiagnoisHistorySkeletonsComponent } from "../../../skeletons/diagnois-history-skeletons/diagnois-history-skeletons.component";
 import { SlideIn } from "../../../../../shared/directives/slide-in";
+import { DiseaseScanService } from '../../../services/disease-scan.service';
+import { DiseaseScanResult } from '../../../models/disease-scan-result.interface';
+import { environment } from '../../../../../../environments/environment.development';
+import { PrintDiagnosisBtnComponent } from "../print-diagnosis-btn/print-diagnosis-btn.component";
 
-interface DiagnosisRecord {
-  id: string;
+export interface HistoryRecordUI {
+  id: number;
   plantName: string;
   disease: string;
-  status: 'Healthy' | 'Infected' | 'Recovering';
   date: Date;
-  confidence: number;
   image: string;
+  confidence: number;
+  status: 'Healthy' | 'Infected' | 'Recovering';
 }
 
 
 @Component({
   selector: 'app-diagnosis-history-section',
-  imports: [CommonModule, DiagnosisHistoryEmptyComponent, RouterLink, DiagnoisHistorySkeletonsComponent, SlideIn],
+  imports: [CommonModule, DiagnosisHistoryEmptyComponent, RouterLink, DiagnoisHistorySkeletonsComponent, SlideIn, PrintDiagnosisBtnComponent],
   templateUrl: './diagnosis-history-section.component.html',
   styleUrl: './diagnosis-history-section.component.css',
 })
-export class DiagnosisHistorySectionComponent {
-  public elementRef = inject(ElementRef); 
+export class DiagnosisHistorySectionComponent implements OnInit {
+  public elementRef = inject(ElementRef);
 
-searchQuery = signal('');
-  filterStatus = signal('All');
+  private scanService = inject(DiseaseScanService);
 
-  historyRecords = signal<DiagnosisRecord[]>([
-    {
-      id: 'DX-9021',
-      plantName: 'Tomato',
-      disease: 'Late Blight',
-      status: 'Infected',
-      date: new Date('2026-02-05T10:30:00'),
-      confidence: 98,
-      image: 'https://images.unsplash.com/photo-1607305387299-a3d9611cd469?w=300'
-    },
-    {
-      id: 'DX-8842',
-      plantName: 'Apple',
-      disease: 'None (Healthy)',
-      status: 'Healthy',
-      date: new Date('2026-02-01T14:20:00'),
-      confidence: 99,
-      image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Red_Apple.jpg/960px-Red_Apple.jpg'
-    },
-    {
-      id: 'DX-7721',
-      plantName: 'Corn',
-      disease: 'Common Rust',
-      status: 'Recovering',
-      date: new Date('2026-01-25T09:15:00'),
-      confidence: 92,
-      image: 'https://cdn.britannica.com/36/167236-050-BF90337E/Ears-corn.jpg'
-    }
-  ]);
+  private readonly BASE_IMAGE_URL = environment.apiUrl + '/ScanImage/';
+
+  rawHistory = signal<DiseaseScanResult[] | null>(null);
+
+  searchQuery = signal<string>('');
+  filterStatus = signal<string>('All');
 
   filteredHistory = computed(() => {
-    const query = this.searchQuery().toLowerCase();
-    const status = this.filterStatus();
+    const data = this.rawHistory();
+    if (!data) return [];
 
-    return this.historyRecords().filter(record => {
-      const matchesSearch = record.plantName.toLowerCase().includes(query) || 
-                           record.disease.toLowerCase().includes(query);
-      const matchesStatus = status === 'All' || record.status === status;
-      return matchesSearch && matchesStatus;
-    });
+    let result = [...data];
+
+    const query = this.searchQuery().toLowerCase().trim();
+    if (query) {
+      result = result.filter(item =>
+        item.plantName.toLowerCase().includes(query) ||
+        this.parseDisease(item.diseaseName).toLowerCase().includes(query)
+      );
+    }
+
+    if (this.filterStatus() !== 'All') {
+      result = result.filter(item => this.determineStatus(item.diseaseName) === this.filterStatus());
+    }
+
+    return result;
   });
 
-  getStatusClass(status: string) {
-    switch (status) {
-      case 'Healthy': return 'bg-emerald-100 text-emerald-700';
-      case 'Infected': return 'bg-red-100 text-red-700';
-      case 'Recovering': return 'bg-amber-100 text-amber-700';
-      default: return 'bg-slate-100 text-slate-700';
+  ngOnInit() {
+    this.fetchData();
+  }
+
+  fetchData() {
+    this.scanService.getScanHistory().subscribe({
+      next: (res) => {
+        console.log('API Data Received:', res);
+        this.rawHistory.set(res.sort((a, b) => b.id - a.id));
+      },
+      error: (err) => {
+        console.error('API Error:', err);
+        this.rawHistory.set([]);
+      }
+    });
+  }
+
+  deleteRecord(id: number) {
+    if (confirm('Are you sure you want to delete this record?')) {
+      this.scanService.deleteScan(id).subscribe({
+        next: () => {
+          this.rawHistory.update(prev => prev ? prev.filter(item => item.id !== id) : null);
+        },
+        error: (err) => alert('Error deleting record')
+      });
     }
+  }
+
+  parseDisease(jsonStr: string): string {
+    try {
+      const obj = JSON.parse(jsonStr);
+      return obj.prediction || 'Unknown Disease';
+    } catch {
+      return jsonStr || 'No disease detected';
+    }
+  }
+
+  determineStatus(jsonStr: string): string {
+    const disease = this.parseDisease(jsonStr).toLowerCase();
+    if (disease.includes('healthy')) return 'Healthy';
+    return 'Infected';
+  }
+
+  getConfidence(rate: string): number {
+    const val = parseFloat(rate);
+    return isNaN(val) ? 0 : val;
+  }
+
+  getFullImageUrl(url: string): string {
+    return this.BASE_IMAGE_URL + url;
+  }
+
+  getStatusClass(jsonStr: string): string {
+    const status = this.determineStatus(jsonStr);
+    return status === 'Healthy'
+      ? 'text-emerald-700 bg-emerald-100 dark:bg-emerald-900/30 border-emerald-200'
+      : 'text-rose-700 bg-rose-100 dark:bg-rose-900/30 border-rose-200';
   }
 }

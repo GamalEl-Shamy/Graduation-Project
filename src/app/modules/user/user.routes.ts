@@ -51,6 +51,11 @@ export const USER_ROUTES: Routes = [
                 title: 'Diagnosis History'
             },
             {
+                path: 'diagnosis-details/:id',
+                loadComponent: () => import('./components/diagonsis-history/diagnosis-details/diagnosis-details.component').then((c) => c.DiagnosisDetailsComponent),
+                title: 'Diagnosis Details'
+            },
+            {
                 path: 'my-garden',
                 loadComponent: () => import('./pages/my-garden/my-garden.component').then((c) => c.MyGardenComponent),
                 title: 'My Garden'
