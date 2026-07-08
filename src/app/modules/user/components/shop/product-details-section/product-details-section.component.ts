@@ -1,16 +1,21 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { ProductDetails } from '../../../models/product-details.interface';
+import { ProductDetailsResponse } from '../../../models/product-details.interface';
 import { CartService } from '../../../services/cart.service';
 import { ProductsService } from '../../../services/products.service';
 import { ProductDetailsSkeletonComponent } from '../../../skeletons/product-details-skeleton/product-details-skeleton.component';
 import { ToastComponent } from '../../shared/toast/toast.component';
 import { environment } from '../../../../../../environments/environment.development';
 import { SlideIn } from "../../../../../shared/directives/slide-in";
+import { DatePipe, DecimalPipe } from '@angular/common';
+import { ReviewsComponent } from "../reviews/reviews.component";
+import { EmptyReviewsComponent } from "../empty-reviews/empty-reviews.component";
+import { AddRatingComponent } from "../add-rating/add-rating.component";
+import { AddRatingResponse } from '../../../models/add-rating-response.interface';
 
 @Component({
   selector: 'app-product-details-section',
-  imports: [ToastComponent, ProductDetailsSkeletonComponent, RouterLink, SlideIn],
+  imports: [ToastComponent, ProductDetailsSkeletonComponent, RouterLink, SlideIn, DatePipe, DecimalPipe, ReviewsComponent, EmptyReviewsComponent, AddRatingComponent],
   templateUrl: './product-details-section.component.html',
   styleUrl: './product-details-section.component.css',
 })
@@ -21,7 +26,6 @@ export class ProductDetailsSectionComponent implements OnInit {
   private readonly activatedRoute = inject(ActivatedRoute);
   private CartService = inject(CartService);
 
-  private route = inject(ActivatedRoute);
   private productService = inject(ProductsService);
 
   addProductLoading = signal<boolean>(false);
@@ -29,7 +33,7 @@ export class ProductDetailsSectionComponent implements OnInit {
   addProductErrorMessage = signal<string>('');
   addProductId = signal<number>(0);
 
-  product = signal<ProductDetails | null>(null);
+  product = signal<ProductDetailsResponse | null>(null);
   isLoading = signal(true);
   imgBaseUrl = environment.apiUrl + '/Images/';
 
@@ -59,7 +63,7 @@ export class ProductDetailsSectionComponent implements OnInit {
     });
   }
 
-  addToCart(product: ProductDetails, count: number = this.productCount()) {
+  addToCart(product: ProductDetailsResponse, count: number = this.productCount()) {
     this.addProductLoading.set(true);
     this.addProductId.set(product.product.productId);
     if (product.product.quantity >= count) {

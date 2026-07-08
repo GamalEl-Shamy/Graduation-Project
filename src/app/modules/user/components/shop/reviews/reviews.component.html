@@ -1,0 +1,29 @@
+<div appSlideIn direction="left"
+    class="relative bg-white/50 dark:bg-slate-800/40 backdrop-blur-xl p-8 rounded-[2.5rem] border border-white/60 dark:border-slate-700/50 shadow-xl shadow-slate-200/20 dark:shadow-black/20 hover:-translate-y-2 transition-all duration-500 group">
+
+    <i
+        class="fa-solid fa-quote-right absolute top-6 right-8 text-4xl text-emerald-500/10 dark:text-emerald-500/5 group-hover:text-emerald-500/20 transition-colors"></i>
+
+    <div class="flex items-center gap-4 mb-6 relative z-10">
+        <div
+            class="w-14 h-14 rounded-2xl bg-linear-to-br from-emerald-400 to-teal-600 flex items-center justify-center text-white font-black text-xl shadow-lg shadow-emerald-500/30">
+            {{ reviewInfo().userName.charAt(0) }}
+        </div>
+        <div>
+            <h4 class="font-extrabold text-lg text-slate-900 dark:text-white font-[Manrope]!">{{ reviewInfo().userName
+                }}</h4>
+            <p class="text-sm font-medium text-slate-500 dark:text-slate-400">{{ reviewInfo().createdAt |
+                date:'longDate' }}
+            </p>
+        </div>
+    </div>
+
+    <div
+        class="flex items-center gap-1.5 bg-slate-50 dark:bg-slate-900/50 w-fit px-3 py-1.5 rounded-xl border border-slate-100 dark:border-slate-700/50">
+        @for (star of [1,2,3,4,5]; track star) {
+        <i class="fa-solid fa-star text-sm" [class.text-amber-400]="reviewInfo().ratingValue >= star"
+            [class.text-slate-300]="reviewInfo().ratingValue < star"
+            [class.dark:text-slate-700]="reviewInfo().ratingValue < star"></i>
+        }
+    </div>
+</div>

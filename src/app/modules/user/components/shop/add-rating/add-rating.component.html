@@ -1,0 +1,32 @@
+<div
+    class="bg-white/60 dark:bg-slate-800/40 backdrop-blur-md p-6 rounded-4xl border border-white/60 dark:border-slate-700/50 shadow-sm w-fit">
+    <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-3">Rate this product</h3>
+
+    <div class="flex items-center gap-2 mb-2">
+        @for (star of stars; track star) {
+        <button type="button" (mouseenter)="hoveredRating.set(star)" (mouseleave)="hoveredRating.set(0)"
+            (click)="submitRating(star)" [disabled]="isSubmitting()"
+            class="text-3xl cursor-pointer transition-all duration-200 hover:scale-110 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed"
+            [class.text-amber-400]="star <= (hoveredRating() || currentRating())"
+            [class.text-slate-300]="star > (hoveredRating() || currentRating())"
+            [class.dark:text-slate-600]="star > (hoveredRating() || currentRating())">
+            <i class="fa-solid fa-star"></i>
+        </button>
+        }
+
+        @if (isSubmitting()) {
+        <i class="fa-solid fa-circle-notch fa-spin text-emerald-500 ml-3"></i>
+        }
+    </div>
+
+    @if (successMessage()) {
+    <p class="text-sm font-bold text-emerald-600 dark:text-emerald-400 mt-2 flex items-center gap-1.5">
+        <i class="fa-solid fa-circle-check"></i> {{ successMessage() }}
+    </p>
+    }
+    @if (errorMessage()) {
+    <p class="text-sm font-bold text-rose-600 dark:text-rose-400 mt-2 flex items-center gap-1.5">
+        <i class="fa-solid fa-circle-exclamation"></i> {{ errorMessage() }}
+    </p>
+    }
+</div>
