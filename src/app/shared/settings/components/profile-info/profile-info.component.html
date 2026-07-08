@@ -1,0 +1,236 @@
+<div class="relative min-h-screen">
+    <div
+        class="pointer-events-none absolute top-0 -right-40 w-104 h-104 bg-emerald-200/25 dark:bg-emerald-900/15 rounded-full blur-3xl -z-10">
+    </div>
+    <div
+        class="pointer-events-none absolute bottom-0 -left-40 w-104 h-104 bg-teal-200/15 dark:bg-teal-900/10 rounded-full blur-3xl -z-10">
+    </div>
+
+    <div appSlideIn direction="up"
+        class="hidden max-w-3xl mx-auto bg-white/80 dark:bg-slate-800/60 backdrop-blur-xl border border-white dark:border-slate-700 border-b-4 border-b-emerald-500 dark:border-b-emerald-500 rounded-2xl px-6 py-5 mb-5 md:flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 shadow-lg shadow-slate-200/50 dark:shadow-black/30">
+        <div class="flex items-center gap-4">
+            <div
+                class="w-11 h-11 rounded-xl bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center shrink-0">
+                <i class="fa-regular fa-user text-emerald-600 dark:text-emerald-400"></i>
+            </div>
+            <div>
+                <h1 class="text-4xl font-[Namdhinggo]! text-slate-900 dark:text-white leading-tight font-bold">
+                    Personal Information
+                </h1>
+                <p class="text-sm text-slate-400 dark:text-slate-500 mt-0.5">View your personal information</p>
+                <span
+                    class="inline-flex items-center gap-1.5 mt-1.5 text-xs font-medium text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/30 px-2.5 py-0.5 rounded-full border border-emerald-100 dark:border-emerald-800/50">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                    Profile complete
+                </span>
+            </div>
+        </div>
+
+        <div class="flex items-center gap-2 sm:shrink-0">
+            <button (click)="onEditClicked()"
+                class="group inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold cursor-pointer text-white bg-linear-to-r from-emerald-600 to-emerald-500 hover:from-emerald-700 hover:to-emerald-600 shadow-lg shadow-emerald-600/25 dark:shadow-emerald-950/30 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-xl hover:shadow-emerald-500/40 active:translate-y-0 active:scale-95">
+                <i class="fa-regular fa-pen-to-square transition-transform duration-300 group-hover:rotate-12"></i>
+                Edit Profile
+            </button>
+        </div>
+    </div>
+
+    <div appSlideIn direction="down"
+        class="max-w-3xl mx-auto bg-white/70 dark:bg-slate-800/50 backdrop-blur-xl rounded-4xl border-b-4 border-b-emerald-500 shadow-xl shadow-slate-200/50 dark:shadow-black/40 border border-white dark:border-slate-700 overflow-hidden">
+
+        <div class="relative h-32 bg-linear-to-r from-emerald-600 to-teal-500 dark:from-emerald-700 dark:to-teal-800">
+            <div
+                class="absolute inset-0 pointer-events-none bg-[linear-gradient(rgba(255,255,255,0.12)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.12)_1px,transparent_1px)] bg-size-[40px_40px]">
+            </div>
+        </div>
+
+        <div class="px-6 sm:px-8 pb-6 relative">
+            <div class="sm:flex sm:items-end sm:justify-between">
+                <div appSlideIn direction="left" class="sm:flex sm:items-end sm:space-x-5">
+                    <div class="relative -mt-12 sm:-mt-16">
+                        <div
+                            class="w-24 h-24 sm:w-32 sm:h-32 rounded-full bg-white dark:bg-slate-800 p-1.5 shadow-lg shadow-slate-300/50 dark:shadow-black/40">
+                            <div
+                                class="w-full h-full rounded-full bg-linear-to-br from-emerald-100 to-teal-50 dark:from-emerald-900/50 dark:to-teal-900/30 flex items-center justify-center text-emerald-700 dark:text-emerald-400 text-3xl sm:text-4xl font-bold select-none uppercase shadow-inner">
+                                @if(profile().firstName) {
+                                {{ profile().firstName.charAt(0) }}
+                                } @else {
+                                <i class="fa-solid fa-user"></i>
+                                }
+                            </div>
+                        </div>
+                        <span
+                            class="absolute bottom-3 right-3 sm:bottom-4 sm:right-4 w-4 h-4 bg-emerald-500 border-2 border-white dark:border-slate-800 rounded-full"
+                            title="Online"></span>
+                    </div>
+
+                    <div class="mt-4 sm:mt-0 sm:pb-2">
+                        <h2
+                            class="text-2xl lg:text-3xl font-[Namdhinggo]! font-bold capitalize text-slate-900 dark:text-white leading-tight">
+                            {{ profile().firstName }} {{ profile().lastName }}
+                        </h2>
+                        <div class="flex items-center gap-2 mt-1">
+                            <p class="text-sm font-medium text-slate-400 dark:text-slate-500">
+                                <span class="text-slate-600 dark:text-slate-300 mr-0.5">@</span>{{ profile().userName }}
+                            </p>
+                            <i class="fa-solid fa-circle text-slate-300 dark:text-slate-600 text-[5px]"></i>
+                            <p class="text-sm text-slate-400 dark:text-slate-500">Customer</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div appSlideIn direction="right" class="mt-5 sm:mt-0 sm:pb-2 flex flex-col sm:flex-row gap-3">
+                    <button (click)="onEditClicked()"
+                        class="group inline-flex justify-center items-center gap-2 px-4 py-2.5 cursor-pointer bg-linear-to-r from-emerald-600 to-emerald-500 hover:from-emerald-700 hover:to-emerald-600 border border-transparent rounded-xl text-sm font-bold text-white shadow-lg shadow-emerald-600/25 dark:shadow-emerald-950/30 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-xl hover:shadow-emerald-500/40 active:translate-y-0 active:scale-95">
+                        <i
+                            class="fa-regular fa-pen-to-square transition-transform duration-300 group-hover:rotate-12"></i>
+                        Edit Profile
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <hr class="border-t border-slate-100 dark:border-slate-700/60">
+
+        <!-- INFO LIST -->
+        <div class="px-6 sm:px-8 py-8">
+            <h2 class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-5">Personal
+                Information</h2>
+
+            <dl class="space-y-2">
+
+                <div
+                    class="group flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 p-3 rounded-2xl transition-all duration-300 ease-out hover:bg-emerald-50/60 dark:hover:bg-emerald-900/10">
+                    <dt appSlideIn direction="left"
+                        class="flex items-center gap-2.5 text-sm text-slate-400 dark:text-slate-500 font-semibold w-full sm:w-40 shrink-0">
+                        <span
+                            class="w-8 h-8 rounded-lg bg-slate-100 dark:bg-slate-700/60 flex items-center justify-center text-slate-500 dark:text-slate-400 group-hover:bg-emerald-100 dark:group-hover:bg-emerald-900/40 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                            <i class="fa-solid fa-user text-xs"></i>
+                        </span>
+                        Full Name
+                    </dt>
+                    @if (profile().firstName || profile().lastName) {
+                    <dd appSlideIn direction="right"
+                        class="text-slate-900 dark:text-white font-semibold text-sm sm:text-base lg:text-lg pl-10.5 sm:pl-0">
+                        {{ profile().firstName }} {{ profile().lastName }}</dd>
+                    } @else {
+                    <dd appSlideIn direction="right"
+                        class="text-rose-500 dark:text-rose-400 font-medium text-sm italic pl-10.5 sm:pl-0">
+                        Name not provided
+                    </dd>
+                    }
+                </div>
+
+                <div
+                    class="group flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 p-3 rounded-2xl transition-all duration-300 ease-out hover:bg-emerald-50/60 dark:hover:bg-emerald-900/10">
+                    <dt appSlideIn direction="left"
+                        class="flex items-center gap-2.5 text-sm text-slate-400 dark:text-slate-500 font-semibold w-full sm:w-40 shrink-0">
+                        <span
+                            class="w-8 h-8 rounded-lg bg-slate-100 dark:bg-slate-700/60 flex items-center justify-center text-slate-500 dark:text-slate-400 group-hover:bg-emerald-100 dark:group-hover:bg-emerald-900/40 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                            <i class="fa-solid fa-at text-xs"></i>
+                        </span>
+                        Username
+                    </dt>
+                    @if (profile().userName) {
+                    <dd appSlideIn direction="right" class="pl-10.5 sm:pl-0">
+                        <span
+                            class="inline-flex items-center gap-1 bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 px-2.5 py-1 rounded-lg text-sm lg:text-lg font-semibold border border-emerald-100 dark:border-emerald-800/40">
+                            {{ profile().userName }}
+                        </span>
+                    </dd>
+                    } @else {
+                    <dd appSlideIn direction="right"
+                        class="text-rose-500 dark:text-rose-400 font-medium text-sm italic pl-10.5 sm:pl-0">Username not
+                        provided</dd>
+                    }
+                </div>
+
+                <div
+                    class="group flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 p-3 rounded-2xl transition-all duration-300 ease-out hover:bg-emerald-50/60 dark:hover:bg-emerald-900/10">
+                    <dt appSlideIn direction="left"
+                        class="flex items-center gap-2.5 text-sm text-slate-400 dark:text-slate-500 font-semibold w-full sm:w-40 shrink-0">
+                        <span
+                            class="w-8 h-8 rounded-lg bg-slate-100 dark:bg-slate-700/60 flex items-center justify-center text-slate-500 dark:text-slate-400 group-hover:bg-emerald-100 dark:group-hover:bg-emerald-900/40 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                            <i class="fa-solid fa-envelope text-xs"></i>
+                        </span>
+                        Email Address
+                    </dt>
+                    @if (profile().email) {
+                    <dd appSlideIn direction="right"
+                        class="text-slate-900 dark:text-white font-semibold text-sm sm:text-base lg:text-lg pl-10.5 sm:pl-0 truncate">
+                        {{ profile().email }}</dd>
+                    } @else {
+                    <dd appSlideIn direction="right"
+                        class="text-rose-500 dark:text-rose-400 font-medium text-sm italic pl-10.5 sm:pl-0">Email not
+                        provided</dd>
+                    }
+                </div>
+
+                <div
+                    class="group flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 p-3 rounded-2xl transition-all duration-300 ease-out hover:bg-emerald-50/60 dark:hover:bg-emerald-900/10">
+                    <dt appSlideIn direction="left"
+                        class="flex items-center gap-2.5 text-sm text-slate-400 dark:text-slate-500 font-semibold w-full sm:w-40 shrink-0">
+                        <span
+                            class="w-8 h-8 rounded-lg bg-slate-100 dark:bg-slate-700/60 flex items-center justify-center text-slate-500 dark:text-slate-400 group-hover:bg-emerald-100 dark:group-hover:bg-emerald-900/40 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                            <i class="fa-solid fa-phone text-xs"></i>
+                        </span>
+                        Phone Number
+                    </dt>
+                    @if (profile().phoneNumber) {
+                    <dd appSlideIn direction="right"
+                        class="text-slate-900 dark:text-white font-semibold text-sm sm:text-base lg:text-lg pl-10.5 sm:pl-0">
+                        {{
+                        profile().phoneNumber }}</dd>
+                    } @else {
+                    <dd appSlideIn direction="right"
+                        class="text-rose-500 dark:text-rose-400 font-medium text-sm italic pl-10.5 sm:pl-0">Phone number
+                        not provided</dd>
+                    }
+                </div>
+
+                <div
+                    class="group flex flex-col sm:flex-row sm:items-start gap-2 sm:gap-4 p-3 rounded-2xl transition-all duration-300 ease-out hover:bg-emerald-50/60 dark:hover:bg-emerald-900/10">
+                    <dt appSlideIn direction="left"
+                        class="flex items-center gap-2.5 text-sm text-slate-400 dark:text-slate-500 font-semibold w-full sm:w-40 shrink-0 sm:pt-1.5">
+                        <span
+                            class="w-8 h-8 rounded-lg bg-slate-100 dark:bg-slate-700/60 flex items-center justify-center text-slate-500 dark:text-slate-400 group-hover:bg-emerald-100 dark:group-hover:bg-emerald-900/40 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                            <i class="fa-solid fa-location-dot text-xs"></i>
+                        </span>
+                        Address
+                    </dt>
+                    @if (profile().address) {
+                    <dd appSlideIn direction="right"
+                        class="text-slate-900 dark:text-white font-semibold text-sm sm:text-base lg:text-lg leading-relaxed pl-10.5 sm:pl-0">
+                        {{ profile().address }}
+                    </dd>
+                    } @else {
+                    <dd appSlideIn direction="right"
+                        class="text-rose-500 dark:text-rose-400 font-medium text-sm italic pl-10.5 sm:pl-0">Address not
+                        provided</dd>
+                    }
+                </div>
+
+            </dl>
+        </div>
+
+        <div class="border-t border-slate-100 dark:border-slate-700/60 mx-6 sm:mx-8"></div>
+
+        <!-- FOOTER ACTIONS -->
+        <div class="px-6 sm:px-8 py-6 flex flex-col sm:flex-row sm:justify-end gap-3">
+            <!-- <button appSlideIn direction="left" (click)="onEditClicked()"
+                class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-2.5 cursor-pointer rounded-xl text-sm font-bold text-white bg-gradient-to-r from-sky-600 to-sky-500 hover:from-sky-700 hover:to-sky-600 shadow-lg shadow-sky-500/25 dark:shadow-sky-950/30 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-xl hover:shadow-sky-500/40 active:translate-y-0 active:scale-95">
+                <i class="fa-solid fa-unlock"></i>
+                Change Password
+            </button> -->
+            <button appSlideIn direction="right" (click)="onEditClicked()"
+                class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-2.5 cursor-pointer rounded-xl text-sm font-bold text-white bg-linear-to-r from-emerald-600 to-emerald-500 hover:from-emerald-700 hover:to-emerald-600 shadow-lg shadow-emerald-600/25 dark:shadow-emerald-950/30 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-xl hover:shadow-emerald-500/40 active:translate-y-0 active:scale-95">
+                <i class="fa-regular fa-pen-to-square"></i>
+                Edit Profile
+            </button>
+        </div>
+    </div>
+
+    <p appSlideIn direction="down" class="text-center text-xs text-slate-400 dark:text-slate-500 mt-6 pb-10">All
+        information is private and visible
+        only to you.</p>
+</div>

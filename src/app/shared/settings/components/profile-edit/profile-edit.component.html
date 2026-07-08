@@ -1,0 +1,111 @@
+<div appSlideIn direction="down" class="relative">
+
+    <div
+        class="pointer-events-none absolute -top-24 -right-24 w-72 h-72 bg-emerald-300/20 dark:bg-emerald-900/20 rounded-full blur-3xl -z-10">
+    </div>
+    <div
+        class="pointer-events-none absolute -bottom-24 -left-24 w-72 h-72 bg-teal-200/15 dark:bg-teal-900/10 rounded-full blur-3xl -z-10">
+    </div>
+
+    <div
+        class="bg-white/70 dark:bg-slate-800/50 backdrop-blur-xl rounded-[2.5rem] p-6 sm:p-10 border border-white dark:border-slate-700 shadow-2xl shadow-slate-200/50 dark:shadow-black/40 overflow-hidden">
+
+        <div appSlideIn direction="left" class="flex items-center gap-4 mb-10">
+            <div
+                class="w-14 h-14 rounded-2xl bg-linear-to-br from-emerald-500 to-emerald-600 flex items-center justify-center text-white shadow-lg shadow-emerald-500/30 shrink-0">
+                <i class="fa-regular fa-pen-to-square text-xl"></i>
+            </div>
+            <div>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">Edit Profile</h2>
+                <p class="text-slate-500 dark:text-slate-400 mt-1 text-sm">Update your information below.</p>
+            </div>
+        </div>
+
+        <form [formGroup]="profileForm" (ngSubmit)="onSave()" class="space-y-8">
+
+            <div>
+                <h3 appSlideIn direction="left"
+                    class="flex items-center gap-2.5 text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-5">
+                    <i class="fa-solid fa-id-card text-emerald-500 dark:text-emerald-400"></i>
+                    Personal Information
+                </h3>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div appSlideIn direction="left">
+                        <label
+                            class="flex items-center gap-2 text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">
+                            <i class="fa-solid fa-user text-slate-400 dark:text-slate-500 text-xs"></i> First Name
+                        </label>
+                        <input type="text" formControlName="firstName"
+                            class="w-full h-12 px-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-white/60 dark:bg-slate-900/40 text-slate-900 dark:text-white transition-all duration-200 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-400 dark:focus:border-emerald-500 focus:outline-none hover:border-slate-300 dark:hover:border-slate-600" />
+                    </div>
+                    <div appSlideIn direction="right">
+                        <label
+                            class="flex items-center gap-2 text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">
+                            <i class="fa-solid fa-user text-slate-400 dark:text-slate-500 text-xs"></i> Last Name
+                        </label>
+                        <input type="text" formControlName="lastName"
+                            class="w-full h-12 px-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-white/60 dark:bg-slate-900/40 text-slate-900 dark:text-white transition-all duration-200 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-400 dark:focus:border-emerald-500 focus:outline-none hover:border-slate-300 dark:hover:border-slate-600" />
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mt-5">
+                    <div appSlideIn direction="left">
+                        <label
+                            class="flex items-center gap-2 text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">
+                            <i class="fa-solid fa-at text-slate-400 dark:text-slate-500 text-xs"></i> Username
+                        </label>
+                        <input type="text" formControlName="userName"
+                            class="w-full h-12 px-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-white/60 dark:bg-slate-900/40 text-slate-900 dark:text-white transition-all duration-200 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-400 dark:focus:border-emerald-500 focus:outline-none hover:border-slate-300 dark:hover:border-slate-600" />
+                    </div>
+                    <div appSlideIn direction="right">
+                        <label
+                            class="flex items-center gap-2 text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">
+                            <i class="fa-solid fa-envelope text-slate-400 dark:text-slate-500 text-xs"></i> Email
+                        </label>
+                        <input type="email" formControlName="email"
+                            class="w-full h-12 px-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-white/60 dark:bg-slate-900/40 text-slate-900 dark:text-white transition-all duration-200 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-400 dark:focus:border-emerald-500 focus:outline-none hover:border-slate-300 dark:hover:border-slate-600" />
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mt-5">
+                    <div appSlideIn direction="left">
+                        <label
+                            class="flex items-center gap-2 text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">
+                            <i class="fa-solid fa-phone text-slate-400 dark:text-slate-500 text-xs"></i> Phone
+                        </label>
+                        <input type="text" formControlName="phoneNumber"
+                            class="w-full h-12 px-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-white/60 dark:bg-slate-900/40 text-slate-900 dark:text-white transition-all duration-200 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-400 dark:focus:border-emerald-500 focus:outline-none hover:border-slate-300 dark:hover:border-slate-600" />
+                    </div>
+                    <div appSlideIn direction="right">
+                        <label
+                            class="flex items-center gap-2 text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">
+                            <i class="fa-solid fa-location-dot text-slate-400 dark:text-slate-500 text-xs"></i> Address
+                        </label>
+                        <input type="text" formControlName="address"
+                            class="w-full h-12 px-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-white/60 dark:bg-slate-900/40 text-slate-900 dark:text-white transition-all duration-200 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-400 dark:focus:border-emerald-500 focus:outline-none hover:border-slate-300 dark:hover:border-slate-600" />
+                    </div>
+                </div>
+            </div>
+
+            <hr class="border-slate-100 dark:border-slate-700/60">
+
+            <div class="flex flex-col-reverse sm:flex-row sm:justify-end gap-3 pt-2">
+                <button appSlideIn direction="left" type="button" (click)="onCancel()"
+                    class="h-12 px-6 cursor-pointer bg-slate-100 dark:bg-slate-700/60 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 rounded-xl font-bold border border-slate-200 dark:border-slate-600 transition-all duration-300 ease-out hover:-translate-y-0.5 active:translate-y-0 active:scale-95">
+                    Cancel
+                </button>
+                <button appSlideIn direction="right" type="submit" [disabled]="profileForm.invalid || isSaving()"
+                    class="group h-12 px-8 bg-linear-to-r from-emerald-600 to-emerald-500 hover:from-emerald-700 hover:to-emerald-600 text-white rounded-xl font-bold shadow-lg shadow-emerald-600/25 dark:shadow-emerald-950/30 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-xl hover:shadow-emerald-500/40 active:translate-y-0 active:scale-95 disabled:opacity-50 disabled:hover:translate-y-0 disabled:hover:shadow-lg cursor-pointer disabled:cursor-not-allowed">
+                    @if (isSaving()) {
+                    <i class="fa-solid fa-circle-notch fa-spin mr-2"></i> Saving...
+                    } @else {
+                    <i
+                        class="fa-regular fa-floppy-disk mr-2 transition-transform duration-300 group-hover:scale-110"></i>
+                    Save Changes
+                    }
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

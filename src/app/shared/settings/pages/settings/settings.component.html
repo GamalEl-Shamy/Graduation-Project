@@ -1,0 +1,30 @@
+<section class="max-w-4xl mx-auto ">
+
+    @if (isLoading()) {
+    <app-settings-skeleton></app-settings-skeleton>
+    } @else if (userProfile()) {
+
+
+    @if (successMessage()) {
+    <div
+        class="mt-6 p-4 bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 rounded-xl text-sm font-bold">
+        {{ successMessage() }}
+    </div>
+    }
+    @if (errorMessage()) {
+    <div
+        class="mt-6 p-4 bg-rose-500/10 border border-rose-500/20 text-rose-600 dark:text-rose-400 rounded-xl text-sm font-bold">
+        {{ errorMessage() }}
+    </div>
+    }
+
+    @if (!isEditingMode()) {
+    <app-profile-info [profile]="userProfile()!" (editRequest)="isEditingMode.set(true)">
+    </app-profile-info>
+    } @else {
+    <app-profile-edit [profile]="userProfile()!" [isSaving]="isSubmitting()" (cancelRequest)="isEditingMode.set(false)"
+        (saveRequest)="handleSave($event)">
+    </app-profile-edit>
+    }
+    }
+</section>

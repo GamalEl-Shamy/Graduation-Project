@@ -17,6 +17,12 @@ export const ADMIN_ROUTES: Routes = [
             ...BRANDS_ROUTES,
             ...ORDERS_ROUTES,
             ...PRODUCTS_ROUTES,
+
+            {
+                path: 'settings',
+                loadComponent: () => import('../../shared/settings/pages/settings/settings.component').then((c) => c.SettingsComponent),
+                title: 'Settings'
+            },
         ]
-    }
+    },
 ]

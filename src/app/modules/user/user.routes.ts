@@ -3,7 +3,7 @@ import { UserLayoutComponent } from "../../layouts/user-layout/user-layout.compo
 
 export const USER_ROUTES: Routes = [
     {
-        path:'', component:UserLayoutComponent,
+        path: '', component: UserLayoutComponent,
         children: [
             {
                 path: '',
@@ -74,6 +74,11 @@ export const USER_ROUTES: Routes = [
                 path: 'profile/change-password',
                 loadComponent: () => import('./pages/change-password/change-password.component').then((c) => c.ChangePasswordComponent),
                 title: 'Change Password'
+            },
+            {
+                path: 'settings',
+                loadComponent: () => import('../../shared/settings/pages/settings/settings.component').then((c) => c.SettingsComponent),
+                title: 'Settings'
             },
         ]
     }
