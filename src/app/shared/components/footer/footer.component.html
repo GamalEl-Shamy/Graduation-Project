@@ -1,72 +1,147 @@
-<footer class="bg-white border-t border-slate-100 pt-20 pb-10 mt-20">
-    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+<footer
+    class="relative bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800  mt-20 overflow-hidden transition-colors duration-300"
+    [class]="{
+    'pt-20': !isVisitor(),
+    'pb-10': !isVisitor(),
+    'pt-5': isVisitor(),
+    'pb-5': isVisitor(),
+}">
 
-        <div class="grid lg:grid-cols-12 gap-12 pb-16 border-b border-slate-50 ">
+    <!-- glow -->
+    <div
+        class="pointer-events-none absolute top-0 -right-40 w-104 h-104 bg-emerald-100/40 dark:bg-emerald-900/10 rounded-full blur-3xl z-0">
+    </div>
+    <div
+        class="pointer-events-none absolute bottom-0 -left-40 w-104 h-104 bg-teal-100/30 dark:bg-teal-900/10 rounded-full blur-3xl z-0">
+    </div>
 
-            <div class="lg:col-span-4 space-y-6">
-                <div class="flex items-center gap-3">
-                    <div
-                        class="w-10 h-10 bg-emerald-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-emerald-200">
-                        <i class="fa-solid fa-leaf"></i>
-                    </div>
-                    <span class="text-2xl font-black text-slate-900 tracking-tighter"><span
-                            class="text-emerald-600">Z</span> a r a a</span>
-                </div>
-                <p class="text-slate-500 text-sm leading-relaxed max-w-xs font-medium">
-                    Empowering farmers with AI-driven insights to protect crops and ensure a healthier harvest for the
-                    future.
-                </p>
-                <div class="flex gap-4">
-                    @for (social of ['facebook', 'twitter', 'instagram', 'github']; track social) {
-                    <a href="#"
-                        class="w-10 h-10 rounded-xl bg-slate-50 text-slate-400 flex items-center justify-center hover:bg-emerald-600 hover:text-white transition-all duration-300">
-                        <i class="fa-brands fa-{{social}}"></i>
-                    </a>
-                    }
-                </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        @if(!isVisitor()) {
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-12">
+
+            <!-- BRAND -->
+            <div routerLink="/users/dashboard"
+                class="group flex items-center gap-3 w-50 h-50 md:w-full md:h-full px-5 py-2 cursor-pointer rounded-lg hover:scale-105 hover:bg-slate-100 dark:hover:bg-green-800/35 dark:hover:border dark:hover:border-green-800  transition-all duration-300">
+                <img src="./logos/Big Zaraa.png" alt="Zaraa Logo"
+                    class="h-full w-auto object-contain transition-all duration-400 dark:filter dark:brightness-0 dark:invert">
             </div>
 
-            <div class="lg:col-span-4">
-                <div class="lg:w-30 ">
-                    <h4 class="text-xs font-black text-slate-900 uppercase tracking-widest mb-6">Explore</h4>
+            <!-- QUICK LINKS -->
+
+            <div class="col-span-2">
+                <h4 class=" text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider mb-6">Quick Links
+                </h4>
+                <div class="flex flex-col md:flex-row lg:gap-60">
                     <ul class="space-y-4">
-                        @for (link of quickLinks; track link.name) {
                         <li>
-                            <a [routerLink]="link.path"
-                                class="text-slate-500 text-sm font-bold hover:text-emerald-600 transition-colors">{{link.name}}</a>
+                            <a routerLink="/users/dashboard"
+                                class="group inline-flex items-center gap-2 text-slate-500 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 text-sm font-medium transition-colors duration-200">
+                                <span
+                                    class="w-0 group-hover:w-2.5 h-0.5 bg-emerald-500 transition-all duration-300"></span>
+                                Dashboard
+                            </a>
                         </li>
-                        }
+                        <li>
+                            <a routerLink="/users/diagnosis"
+                                class="group inline-flex items-center gap-2 text-slate-500 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 text-sm font-medium transition-colors duration-200">
+                                <span
+                                    class="w-0 group-hover:w-2.5 h-0.5 bg-emerald-500 transition-all duration-300"></span>
+                                New Diagnosis
+                            </a>
+                        </li>
+                        <li>
+                            <a routerLink="/users/weather"
+                                class="group inline-flex items-center gap-2 text-slate-500 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 text-sm font-medium transition-colors duration-200">
+                                <span
+                                    class="w-0 group-hover:w-2.5 h-0.5 bg-emerald-500 transition-all duration-300"></span>
+                                Weather
+                            </a>
+                        </li>
+                        <li>
+                            <a routerLink="/users/my-garden"
+                                class="group inline-flex items-center gap-2 text-slate-500 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 text-sm font-medium transition-colors duration-200">
+                                <span
+                                    class="w-0 group-hover:w-2.5 h-0.5 bg-emerald-500 transition-all duration-300"></span>
+                                Garden
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="space-y-4">
+                        <li>
+                            <a routerLink="/users/shop"
+                                class="group inline-flex items-center gap-2 text-slate-500 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 text-sm font-medium transition-colors duration-200">
+                                <span
+                                    class="w-0 group-hover:w-2.5 h-0.5 bg-emerald-500 transition-all duration-300"></span>
+                                Shop Now
+                            </a>
+                        </li>
+                        <li>
+                            <a routerLink="/users/cart"
+                                class="group inline-flex items-center gap-2 text-slate-500 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 text-sm font-medium transition-colors duration-200">
+                                <span
+                                    class="w-0 group-hover:w-2.5 h-0.5 bg-emerald-500 transition-all duration-300"></span>
+                                My Cart
+                            </a>
+                        </li>
+                        <li>
+                            <a routerLink="/users/diagnosis-history"
+                                class="group inline-flex items-center gap-2 text-slate-500 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 text-sm font-medium transition-colors duration-200">
+                                <span
+                                    class="w-0 group-hover:w-2.5 h-0.5 bg-emerald-500 transition-all duration-300"></span>
+                                Diagnosis History
+                            </a>
+                        </li>
+                        <li>
+                            <a routerLink="/users/settings"
+                                class="group inline-flex items-center gap-2 text-slate-500 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 text-sm font-medium transition-colors duration-200">
+                                <span
+                                    class="w-0 group-hover:w-2.5 h-0.5 bg-emerald-500 transition-all duration-300"></span>
+                                My Profile
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
 
-            <div class="lg:col-span-4 bg-slate-50 rounded-[2.5rem] p-8 ml-auto">
-                <h4 class="text-lg font-black text-slate-900 mb-2">Subscribe</h4>
-                <p class="text-slate-500 text-xs font-medium mb-6">subscribe now.</p>
-                <div class="relative">
-                    <input type="email" placeholder="Enter your email"
-                        class="w-full pl-5 pr-14 py-4 bg-white border-none rounded-2xl focus:ring-2 focus:ring-emerald-500/20 font-medium text-slate-700 shadow-sm" />
-                    <button
-                        class="absolute right-2 top-2 w-10 h-10 bg-slate-900 text-white rounded-xl flex items-center justify-center hover:bg-emerald-600 transition-all">
-                        <i class="fa-solid fa-paper-plane text-xs"></i>
+
+            <!-- CONTACT FORM -->
+            <div>
+                <h4 class="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider mb-6">Contact Us
+                </h4>
+                <p class="text-slate-500 dark:text-slate-400 text-sm mb-4">Have a question? Send us a message directly.
+                </p>
+
+                <form (ngSubmit)="sendMessage()" class="space-y-3">
+                    <input type="email" name="email" [(ngModel)]="contactEmail" placeholder="Your email address..."
+                        class="w-full h-12 px-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/60 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 transition-all duration-200 focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-400 dark:focus:border-emerald-500 focus:outline-none hover:border-slate-300 dark:hover:border-slate-600"
+                        required />
+
+                    <textarea name="message" [(ngModel)]="contactMessage" rows="3" placeholder="How can we help you?"
+                        class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/60 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 transition-all duration-200 focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-400 dark:focus:border-emerald-500 focus:outline-none hover:border-slate-300 dark:hover:border-slate-600 resize-none"
+                        required></textarea>
+
+                    <button type="submit" [disabled]="isSending() || !contactEmail() || !contactMessage()"
+                        class="group w-full h-12 bg-linear-to-r from-emerald-600 to-emerald-500 hover:from-emerald-700 hover:to-emerald-600 text-white rounded-xl font-bold shadow-lg shadow-emerald-600/25 dark:shadow-emerald-950/30 flex items-center justify-center gap-2 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-xl hover:shadow-emerald-500/40 active:translate-y-0 active:scale-95 disabled:hover:translate-y-0 disabled:hover:shadow-lg disabled:cursor-not-allowed">
+
+                        @if(isSending()) {
+                        <i class="fa-solid fa-circle-notch fa-spin"></i> Sending...
+                        } @else {
+                        <i
+                            class="fa-solid fa-paper-plane transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"></i>
+                        Send Message
+                        }
                     </button>
-                </div>
+                </form>
             </div>
+
         </div>
 
-        <div class="flex flex-col md:flex-row justify-between items-center gap-6">
-            <p class="text-slate-400 text-xs font-bold uppercase tracking-widest">
-                © {{currentYear}} Zaraa AI. All rights reserved.
+        <hr class="border-slate-200 dark:border-slate-800 my-8">
+        }
+        <div class="w-full">
+            <p class="mx-auto w-fit text-sm lg:text-lg text-slate-500 dark:text-slate-400 font-medium ">
+                &copy; {{ currentYear }} Zaraa. All rights reserved.
             </p>
-            <div class="flex items-center gap-2">
-                <div class="flex h-2 w-2 relative">
-                    <span
-                        class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                    <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-                </div>
-                <span class="text-[10px] font-black text-slate-400 uppercase tracking-tighter">System Status: All
-                    Systems Operational</span>
-            </div>
         </div>
 
     </div>
