@@ -1,27 +1,32 @@
 <div
-    class="fixed top-5 right-2 md:right-5 z-100 min-w-75 bg-white rounded-lg shadow-2xl border border-slate-100 overflow-hidden animate-slide-in">
+    class="fixed top-5 right-2 md:right-5 z-2000 min-w-75 max-w-sm bg-white/90 dark:bg-slate-800/90 backdrop-blur-xl rounded-2xl shadow-2xl shadow-slate-800/60 dark:shadow-black border border-white dark:border-slate-700 overflow-hidden transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_20px_50px_-12px_rgba(0,0,0,0.25)] dark:hover:shadow-[0_20px_50px_-12px_rgba(0,0,0,0.7)] animate-slide-in">
 
-    <div class="px-5 py-7 flex items-center justify-between gap-4">
-        <div class="flex items-center gap-3">
-            @if (successMessage()) {
-            <i class="fa-solid fa-circle-check text-green-500 text-xl"></i>
-            <p class="text-slate-700 font-medium">{{ successMessage() }}</p>
-
-            } @else {
-            <i class="fa-solid fa-circle-xmark text-red-500 text-xl"></i>
-            <p class="text-slate-700 font-medium">{{errorMessage()}}</p>
-
-            }
-
+    <div class="px-5 py-4 flex items-center gap-3">
+        @if (successMessage()) {
+        <div
+            class="w-9 h-9 shrink-0 rounded-xl bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center shadow-sm shadow-emerald-500/20">
+            <i class="fa-solid fa-circle-check text-emerald-600 dark:text-emerald-400 text-lg"></i>
         </div>
+        <p class="text-slate-800 dark:text-slate-100 font-semibold text-sm leading-snug flex-1">{{ successMessage() }}
+        </p>
+        } @else {
+        <div
+            class="w-9 h-9 shrink-0 rounded-xl bg-rose-100 dark:bg-rose-900/30 flex items-center justify-center shadow-sm shadow-rose-500/20">
+            <i class="fa-solid fa-circle-xmark text-rose-600 dark:text-rose-400 text-lg"></i>
+        </div>
+        <p class="text-slate-800 dark:text-slate-100 font-semibold text-sm leading-snug flex-1">{{ errorMessage() }}</p>
+        }
 
-        <button (click)="close()" class="text-slate-400 hover:text-slate-600 transition-colors cursor-pointer">
-            <i class="fa-solid fa-xmark"></i>
+        <button (click)="close()"
+            class="shrink-0 w-7 h-7 rounded-lg flex items-center justify-center text-slate-400 dark:text-slate-500 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700/60 transition-colors cursor-pointer">
+            <i class="fa-solid fa-xmark text-sm"></i>
         </button>
     </div>
 
-    <div class="h-1 w-full bg-slate-100">
-        <div [class.bg-green-500]="successMessage()" [class.bg-red-500]="errorMessage()" class="h-full animate-shrink">
+    <div class="h-1 w-full bg-slate-100 dark:bg-slate-700/60">
+        <div [class.bg-gradient-to-r]="true" [class.from-emerald-500]="successMessage()"
+            [class.to-emerald-400]="successMessage()" [class.from-rose-500]="errorMessage()"
+            [class.to-rose-400]="errorMessage()" class="h-full animate-shrink">
         </div>
     </div>
 </div>
