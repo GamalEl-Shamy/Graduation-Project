@@ -4,14 +4,13 @@ import {
   FormGroup,
   ReactiveFormsModule,
   Validators,
-  ɵInternalFormsSharedModule,
 } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
-  imports: [ɵInternalFormsSharedModule, ReactiveFormsModule, RouterLink],
+  imports: [ReactiveFormsModule, RouterLink],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })
@@ -58,11 +57,12 @@ export class LoginComponent {
           this.authService.refreshToken(res.accessToken, res.refreshToken).subscribe({
             next: (res) => {
               if (res) {
-                const role = this.authService.getUserData()?.role;
-
+                
                 this.isLoading = false;
                 this.authService.saveAccessToken(res.accessToken);
                 this.authService.saveUserData();
+                
+                const role = this.authService.getUserData()?.role;
 
                 if (typeof window != 'undefined') {
                   localStorage.setItem('welcomeState', 'true');
@@ -72,8 +72,6 @@ export class LoginComponent {
                   this.router.navigate(['/admin']);
                 } else if (role === 'Customer') {
                   this.router.navigate(['/users']);
-                } else {
-                  this.router.navigate(['/']);
                 }
 
                 this.cdr.detectChanges();
