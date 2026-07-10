@@ -12,7 +12,7 @@ export class AuthService {
   constructor(
     private http: HttpClient,
     private router: Router,
-  ) {}
+  ) { }
 
   saveAccessToken(accessToken: string): void {
     if (typeof window != 'undefined') {
@@ -115,14 +115,14 @@ export class AuthService {
   }
 
   forgetPassword(data: any): Observable<any> {
-    return this.http.post(environment.apiUrl + '/api/Identity/Account/ForgetPassword', data);
+    return this.http.post(environment.apiUrl + '/api/Identity/Account/ForgetPassword', data, { responseType: 'text' });
   }
 
   resetPassword(data: any): Observable<any> {
-    return this.http.post(environment.apiUrl + '/api/Identity/Account/ResetPassword', data);
+    return this.http.post(environment.apiUrl + '/api/Identity/Account/ResetPassword', data, { responseType: 'text' });
   }
 
   changePassword(data: any): Observable<any> {
-    return this.http.post(environment.apiUrl + '/api/Identity/Account/ChangePassword', data);
+    return this.http.post(environment.apiUrl + '/api/Identity/Account/ChangePassword', data, { responseType: 'text' });
   }
 }

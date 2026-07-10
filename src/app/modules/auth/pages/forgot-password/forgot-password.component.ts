@@ -1,84 +1,45 @@
-import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, inject, signal } from '@angular/core';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router, RouterLink } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
+import { SlideIn } from "../../../../shared/directives/slide-in";
 
 @Component({
   selector: 'app-forgot-password',
-  imports: [],
+  imports: [ReactiveFormsModule, CommonModule, RouterLink, SlideIn],
   templateUrl: './forgot-password.component.html',
   styleUrl: './forgot-password.component.css',
 })
 export class ForgotPasswordComponent {
-// step: 'email' | 'otp' | 'success' = 'email';
-//   isLoading = false;
-//   emailForm: FormGroup;
-//   otpForm: FormGroup;
-//   maskedEmail = '';
-//   resendTimer = 60;
-//   private timerInterval: any;
+  private fb = inject(FormBuilder);
+  private authService = inject(AuthService);
+  private router = inject(Router);
 
-//   constructor(private fb: FormBuilder) {
-//     this.emailForm = this.fb.group({
-//       email: ['', [Validators.required, Validators.email]]
-//     });
+  isLoading = signal<boolean>(false);
+  errorMessage = signal<string | null>(null);
 
-//     this.otpForm = this.fb.group({
-//       otp: ['', [Validators.required, Validators.pattern(/^\d{6}$/)]]
-//     });
-//   }
+  forgotForm = this.fb.nonNullable.group({
+    emailORUserName: ['', Validators.required]
+  });
 
-//   get email() { return this.emailForm.get('email'); }
-//   get otp() { return this.otpForm.get('otp'); }
+  onSubmit() {
+    if (this.forgotForm.invalid) return;
 
-//   onSubmitEmail(): void {
-//     if (this.emailForm.invalid) return;
-    
-//     this.isLoading = true;
-//     const email = this.emailForm.value.email;
-    
-//     // Simulate API call
-//     setTimeout(() => {
-//       this.maskedEmail = this.maskEmail(email);
-//       this.step = 'otp';
-//       this.isLoading = false;
-//       this.startResendTimer();
-//     }, 1500);
-//   }
+    this.isLoading.set(true);
+    this.errorMessage.set(null);
 
-//   onSubmitOtp(): void {
-//     if (this.otpForm.invalid) return;
-    
-//     this.isLoading = true;
-    
-//     // Simulate OTP verification
-//     setTimeout(() => {
-//       this.isLoading = false;
-//       this.step = 'success';
-//       clearInterval(this.timerInterval);
-//     }, 1500);
-//   }
+    const data = this.forgotForm.getRawValue();
 
-//   resendOtp(): void {
-//     if (this.resendTimer > 0) return;
-    
-//     this.isLoading = true;
-    
-//     setTimeout(() => {
-//       this.isLoading = false;
-//       this.startResendTimer();
-//     }, 1000);
-//   }
-
-//   private startResendTimer(): void {
-//     this.resendTimer = 60;
-//     clearInterval(this.timerInterval);
-//     this.timerInterval = setInterval(() => {
-//       this.resendTimer--;
-//       if (this.resendTimer <= 0) clearInterval(this.timerInterval);
-//     }, 1000);
-//   }
-
-//   private maskEmail(email: string): string {
-//     const [user, domain] = email.split('@');
-//     const maskedUser = user.charAt(0) + '***' + user.charAt(user.length - 1);
-//     return `${maskedUser}@${domain}`;
-//   }
+    this.authService.forgetPassword(data).subscribe({
+      next: () => {
+        this.isLoading.set(false);
+        this.router.navigate(['/auth/reset-password'], { state: { userName: data.emailORUserName } });
+      },
+      error: (err) => {
+        this.isLoading.set(false);
+        this.errorMessage.set(err.error || 'User not found. Please try again.');
+      }
+    });
+  }
 }

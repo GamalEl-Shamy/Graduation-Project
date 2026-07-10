@@ -30,6 +30,22 @@ export const AUTH_ROUTES: Routes = [
           ),
         title: 'Forgot Password',
       },
+      {
+        path: 'reset-password',
+        loadComponent: () =>
+          import('./pages/reset-password/reset-password.component').then(
+            (c) => c.ResetPasswordComponent,
+          ),
+        title: 'Reset Password',
+      },
+      {
+        path: 'change-password',
+        loadComponent: () =>
+          import('./pages/change-password/change-password.component').then(
+            (c) => c.ChangePasswordComponent,
+          ),
+        title: 'Change Password',
+      },
     ],
   },
 ];
