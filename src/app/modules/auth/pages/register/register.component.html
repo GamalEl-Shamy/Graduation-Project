@@ -1,14 +1,15 @@
 <div
-    class="bg-bg  min-h-screen flex items-center justify-center relative overflow-hidden transition-colors duration-400 font-sans  p-4 sm:p-8">
+    class="bg-bg dark:bg-slate-800 min-h-screen flex items-center justify-center relative overflow-hidden transition-colors duration-400 font-sans  p-4 sm:p-8">
 
     <div class="lg:hidden absolute inset-0 z-[-1] overflow-hidden blur-[100px] pointer-events-none">
         <div
-            class="absolute rounded-full opacity-60 w-112.5 h-112.5 bg-linear-to-br from-primary to-emerald-700/80 -top-[10%] -left-[5%] animate-float-1">
+            class="absolute rounded-full opacity-60 w-112.5 h-112.5 bg-linear-to-br from-primary to-emerald-700/80 dark:to-emerald-900/80 -top-[10%] -left-[5%] animate-float-1">
         </div>
         <div
-            class="absolute rounded-full opacity-60 w-100 h-100 bg-linear-to-tl from-emerald-400/20 to-[rgb(5,205,153,0.4)] -bottom-[10%] -right-[5%] animate-float-2">
+            class="absolute rounded-full opacity-60 w-100 h-100 bg-linear-to-tl from-emerald-400/20 dark:from-emerald-900/20 to-[rgb(5,205,153,0.4)] dark:to-[rgb(5,205,153,0.2)] -bottom-[10%] -right-[5%] animate-float-2">
         </div>
-        <div class="absolute rounded-full opacity-40 w-75 h-75 bg-emerald-700/80 top-[40%] left-[45%] animate-float-3">
+        <div
+            class="absolute rounded-full opacity-40 w-75 h-75 bg-emerald-700/80 dark:bg-emerald-900/80 top-[40%] left-[45%] animate-float-3">
         </div>
     </div>
 
@@ -18,7 +19,7 @@
 
     <div class="w-full max-w-137.5 z-10 anim-fade-in">
         <div
-            class="glassmorphism relative bg-white/80 backdrop-blur-xl border border-white/40 rounded-4xl p-5 sm:p-10 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)]">
+            class="glassmorphism relative bg-white/80 dark:bg-slate-800/90 backdrop-blur-xl border border-white/40 dark:border-slate-700/50 rounded-4xl p-5 sm:p-10 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] dark:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)]">
 
             <div
                 class="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-1 bg-linear-to-r from-transparent via-emerald-400 to-transparent opacity-50 rounded-t-full">
@@ -26,16 +27,17 @@
 
             <div class="text-center mb-2 sm:mb-8">
                 <h2
-                    class="text-4xl tracking-[0.11em] font-['Namdhinggo'!important] sm:text-3xl font-extrabold sm:mb-2 text-transparent bg-clip-text bg-linear-to-r from-emerald-700 to-emerald-400 drop-shadow-sm">
+                    class="text-2xl lg:text-4xl tracking-[0.11em] font-['Namdhinggo'!important] sm:text-3xl font-extrabold sm:mb-2 text-transparent bg-clip-text bg-linear-to-r from-emerald-700 to-emerald-400 dark:from-emerald-400 dark:to-emerald-200 drop-shadow-sm">
                     Create an Account
                 </h2>
-                <p class="text-gray-400 text-[10px] sm:text-sm font-['Namdhinggo'] font-medium">Join us today! Please enter your details.
+                <p class="text-gray-400 dark:text-slate-300 text-[10px] sm:text-sm font-['Namdhinggo'] font-medium">Join
+                    us today! Please enter your details.
                 </p>
             </div>
 
             @if (errorMessage) {
             <div
-                class="mb-6 flex items-center gap-3 bg-red-50/90 py-3 px-4 rounded-xl border-l-4 border-red-500 text-red-600 shake shadow-sm transition-all">
+                class="mb-6 flex items-center gap-3 bg-red-50/90 dark:bg-red-900/40 py-3 px-4 rounded-xl border-l-4 border-red-500 text-red-600 dark:text-red-400 shake shadow-sm transition-all">
                 <i class="fa-solid fa-circle-exclamation text-lg"></i>
                 <span class="text-sm font-semibold">{{errorMessage}}</span>
             </div>
@@ -52,24 +54,29 @@
                                 'text-[#05cd99]': f['firstName'].valid
                                 }"></i>
                         <input formControlName="firstName" type="text" id="firstName" name="firstName" placeholder=" "
-                            class="peer w-full py-3.5 pl-11 pr-4 rounded-xl text-[#2b3674] text-sm outline-none transition-all shadow-sm"
+                            class="peer w-full py-3.5 pl-11 pr-4 rounded-xl text-[#2b3674] dark:text-white dark:bg-slate-800 text-sm outline-none transition-all shadow-sm"
                             [class]="{
                                 'border': !(f['firstName'].touched),
                                 'border-slate-100': !(f['firstName'].touched),
+                                'dark:border-slate-600': !(f['firstName'].touched),
                                 'focus:border-2': !(f['firstName'].touched),
                                 'focus:border-[#05cd99]': !(f['firstName'].touched),
                                 'border-2': (f['firstName'].invalid && f['firstName'].touched) || f['firstName'].valid ,
                                 'border-red-400': f['firstName'].invalid && f['firstName'].touched,
+                                'dark:border-red-500': f['firstName'].invalid && f['firstName'].touched,
                                 'bg-red-50': f['firstName'].invalid && f['firstName'].touched,
+                                'dark:bg-red-900/30': f['firstName'].invalid && f['firstName'].touched,
                                 'focus:ring-red-100': f['firstName'].invalid && f['firstName'].touched,
+                                'dark:focus:ring-red-900/50': f['firstName'].invalid && f['firstName'].touched,
                                 'border-[#05cd99]': f['firstName'].valid,
-                                'bg-emerald-50': f['firstName'].valid
+                                'bg-emerald-50': f['firstName'].valid,
+                                'dark:bg-emerald-900/30': f['firstName'].valid
                                 }">
                         <label for="firstName"
-                            class="absolute left-11 top-4.25  text-[#a3aed1] text-[14px] transition-all duration-300 pointer-events-none 
-                            peer-focus:-top-2.5 peer-focus:left-3.5 peer-focus:text-[11px] peer-focus:bg-white peer-focus:py-0.5 peer-focus:px-2 
+                            class="absolute left-11 top-4.25  text-[#a3aed1] dark:text-slate-400 text-[14px] transition-all duration-300 pointer-events-none 
+                            peer-focus:-top-2.5 peer-focus:left-3.5 peer-focus:text-[11px] peer-focus:bg-white dark:peer-focus:bg-slate-800 peer-focus:py-0.5 peer-focus:px-2 
                             peer-focus:rounded-md peer-focus:text-[#05cd99] peer-focus:font-semibold peer-focus:shadow-sm peer-focus:tracking-[0.5px] peer-focus:shadow-label 
-                            peer-[:not(:placeholder-shown)]:-top-2.5 peer-[:not(:placeholder-shown)]:left-3.5 peer-[:not(:placeholder-shown)]:text-[11px] peer-[:not(:placeholder-shown)]:bg-white 
+                            peer-[:not(:placeholder-shown)]:-top-2.5 peer-[:not(:placeholder-shown)]:left-3.5 peer-[:not(:placeholder-shown)]:text-[11px] peer-[:not(:placeholder-shown)]:bg-white dark:peer-[:not(:placeholder-shown)]:bg-slate-800 
                             peer-[:not(:placeholder-shown)]:py-0.5 peer-[:not(:placeholder-shown)]:px-2 peer-[:not(:placeholder-shown)]:rounded-md peer-[:not(:placeholder-shown)]:text-[#05cd99] peer-[:not(:placeholder-shown)]:font-semibold peer-[:not(:placeholder-shown)]:tracking-[0.5px] ">
                             First Name
                         </label>
@@ -88,24 +95,29 @@
                                 'text-[#05cd99]': f['lastName'].valid
                                 }"></i>
                         <input formControlName="lastName" type="text" id="lastName" name="lastName" placeholder=" "
-                            class="peer w-full py-3.5 pl-11 pr-4 rounded-xl text-[#2b3674] text-sm outline-none transition-all shadow-sm"
+                            class="peer w-full py-3.5 pl-11 pr-4 rounded-xl text-[#2b3674] dark:text-white dark:bg-slate-800 text-sm outline-none transition-all shadow-sm"
                             [class]="{
                                 'border': !(f['lastName'].touched),
                                 'border-slate-100': !(f['lastName'].touched),
+                                'dark:border-slate-600': !(f['lastName'].touched),
                                 'focus:border-2': !(f['lastName'].touched),
                                 'focus:border-[#05cd99]': !(f['lastName'].touched),
                                 'border-2': (f['lastName'].invalid && f['lastName'].touched) || f['lastName'].valid ,
                                 'border-red-400': f['lastName'].invalid && f['lastName'].touched,
+                                'dark:border-red-500': f['lastName'].invalid && f['lastName'].touched,
                                 'bg-red-50': f['lastName'].invalid && f['lastName'].touched,
+                                'dark:bg-red-900/30': f['lastName'].invalid && f['lastName'].touched,
                                 'focus:ring-red-100': f['lastName'].invalid && f['lastName'].touched,
+                                'dark:focus:ring-red-900/50': f['lastName'].invalid && f['lastName'].touched,
                                 'border-[#05cd99]': f['lastName'].valid,
-                                'bg-emerald-50': f['lastName'].valid
+                                'bg-emerald-50': f['lastName'].valid,
+                                'dark:bg-emerald-900/30': f['lastName'].valid
                                 }">
                         <label for="firstName"
-                            class="absolute left-11 top-4.25  text-[#a3aed1] text-[14px] transition-all duration-300 pointer-events-none 
-                            peer-focus:-top-2.5 peer-focus:left-3.5 peer-focus:text-[11px] peer-focus:bg-white peer-focus:py-0.5 peer-focus:px-2 
+                            class="absolute left-11 top-4.25  text-[#a3aed1] dark:text-slate-400 text-[14px] transition-all duration-300 pointer-events-none 
+                            peer-focus:-top-2.5 peer-focus:left-3.5 peer-focus:text-[11px] peer-focus:bg-white dark:peer-focus:bg-slate-800 peer-focus:py-0.5 peer-focus:px-2 
                             peer-focus:rounded-md peer-focus:text-[#05cd99] peer-focus:font-semibold peer-focus:shadow-sm peer-focus:tracking-[0.5px] peer-focus:shadow-label 
-                            peer-[:not(:placeholder-shown)]:-top-2.5 peer-[:not(:placeholder-shown)]:left-3.5 peer-[:not(:placeholder-shown)]:text-[11px] peer-[:not(:placeholder-shown)]:bg-white 
+                            peer-[:not(:placeholder-shown)]:-top-2.5 peer-[:not(:placeholder-shown)]:left-3.5 peer-[:not(:placeholder-shown)]:text-[11px] peer-[:not(:placeholder-shown)]:bg-white dark:peer-[:not(:placeholder-shown)]:bg-slate-800 
                             peer-[:not(:placeholder-shown)]:py-0.5 peer-[:not(:placeholder-shown)]:px-2 peer-[:not(:placeholder-shown)]:rounded-md peer-[:not(:placeholder-shown)]:text-[#05cd99] peer-[:not(:placeholder-shown)]:font-semibold peer-[:not(:placeholder-shown)]:tracking-[0.5px] ">
                             Last Name
                         </label>
@@ -125,24 +137,29 @@
                                 'text-[#05cd99]': f['userName'].valid
                                 }"></i>
                     <input formControlName="userName" type="text" id="userName" name="userName" placeholder=""
-                        class="peer w-full py-3.5 pl-11 pr-24 rounded-xl text-[#2b3674] text-sm outline-none transition-all shadow-sm"
+                        class="peer w-full py-3.5 pl-11 pr-24 rounded-xl text-[#2b3674] dark:text-white dark:bg-slate-800 text-sm outline-none transition-all shadow-sm"
                         [class]="{
                                 'border': !(f['userName'].touched),
                                 'border-slate-100': !(f['userName'].touched),
+                                'dark:border-slate-600': !(f['userName'].touched),
                                 'focus:border-2': !(f['userName'].touched),
                                 'focus:border-[#05cd99]': !(f['userName'].touched),
                                 'border-2': (f['userName'].invalid && f['userName'].touched) || f['userName'].valid ,
                                 'border-red-400': (f['userName'].invalid && f['userName'].touched) || errorMessage,
+                                'dark:border-red-500': (f['userName'].invalid && f['userName'].touched) || errorMessage,
                                 'bg-red-50': (f['userName'].invalid && f['userName'].touched) || errorMessage,
+                                'dark:bg-red-900/30': (f['userName'].invalid && f['userName'].touched) || errorMessage,
                                 'focus:ring-red-100': f['userName'].invalid && f['userName'].touched,
+                                'dark:focus:ring-red-900/50': f['userName'].invalid && f['userName'].touched,
                                 'border-[#05cd99]': f['userName'].valid,
-                                'bg-emerald-50': f['userName'].valid
+                                'bg-emerald-50': f['userName'].valid,
+                                'dark:bg-emerald-900/30': f['userName'].valid
                                 }">
                     <label for="userName"
-                        class="absolute left-11 top-4.25  text-[#a3aed1] text-[14px] transition-all duration-300 pointer-events-none 
-                            peer-focus:-top-2.5 peer-focus:left-3.5 peer-focus:text-[11px] peer-focus:bg-white peer-focus:py-0.5 peer-focus:px-2 
+                        class="absolute left-11 top-4.25  text-[#a3aed1] dark:text-slate-400 text-[14px] transition-all duration-300 pointer-events-none 
+                            peer-focus:-top-2.5 peer-focus:left-3.5 peer-focus:text-[11px] peer-focus:bg-white dark:peer-focus:bg-slate-800 peer-focus:py-0.5 peer-focus:px-2 
                             peer-focus:rounded-md peer-focus:text-[#05cd99] peer-focus:font-semibold peer-focus:shadow-sm peer-focus:tracking-[0.5px] peer-focus:shadow-label 
-                            peer-[:not(:placeholder-shown)]:-top-2.5 peer-[:not(:placeholder-shown)]:left-3.5 peer-[:not(:placeholder-shown)]:text-[11px] peer-[:not(:placeholder-shown)]:bg-white 
+                            peer-[:not(:placeholder-shown)]:-top-2.5 peer-[:not(:placeholder-shown)]:left-3.5 peer-[:not(:placeholder-shown)]:text-[11px] peer-[:not(:placeholder-shown)]:bg-white dark:peer-[:not(:placeholder-shown)]:bg-slate-800 
                             peer-[:not(:placeholder-shown)]:py-0.5 peer-[:not(:placeholder-shown)]:px-2 peer-[:not(:placeholder-shown)]:rounded-md peer-[:not(:placeholder-shown)]:text-[#05cd99] peer-[:not(:placeholder-shown)]:font-semibold peer-[:not(:placeholder-shown)]:tracking-[0.5px] ">
                         Username</label>
                     @if (f['userName'].touched && f['userName'].errors?.['required']) {
@@ -170,24 +187,29 @@
                                 'text-[#05cd99]': f['email'].valid
                                 }"></i>
                     <input formControlName="email" type="text" id="email" name="email" placeholder=" "
-                        class="peer w-full py-3.5 pl-11 pr-24 rounded-xl text-[#2b3674] text-sm outline-none transition-all shadow-sm"
+                        class="peer w-full py-3.5 pl-11 pr-24 rounded-xl text-[#2b3674] dark:text-white dark:bg-slate-800 text-sm outline-none transition-all shadow-sm"
                         [class]="{
                                 'border': !(f['email'].touched),
                                 'border-slate-100': !(f['email'].touched),
+                                'dark:border-slate-600': !(f['email'].touched),
                                 'focus:border-2': !(f['email'].touched),
                                 'focus:border-[#05cd99]': !(f['email'].touched),
                                 'border-2': (f['email'].invalid && f['email'].touched) || f['email'].valid ,
                                 'border-red-400': f['email'].invalid && f['email'].touched,
+                                'dark:border-red-500': f['email'].invalid && f['email'].touched,
                                 'bg-red-50': f['email'].invalid && f['email'].touched,
+                                'dark:bg-red-900/30': f['email'].invalid && f['email'].touched,
                                 'focus:ring-red-100': f['email'].invalid && f['email'].touched,
+                                'dark:focus:ring-red-900/50': f['email'].invalid && f['email'].touched,
                                 'border-[#05cd99]': f['email'].valid,
-                                'bg-emerald-50': f['email'].valid
+                                'bg-emerald-50': f['email'].valid,
+                                'dark:bg-emerald-900/30': f['email'].valid
                                 }">
                     <label for="email"
-                        class="absolute left-11 top-4.25  text-[#a3aed1] text-[14px] transition-all duration-300 pointer-events-none 
-                            peer-focus:-top-2.5 peer-focus:left-3.5 peer-focus:text-[11px] peer-focus:bg-white peer-focus:py-0.5 peer-focus:px-2 
+                        class="absolute left-11 top-4.25  text-[#a3aed1] dark:text-slate-400 text-[14px] transition-all duration-300 pointer-events-none 
+                            peer-focus:-top-2.5 peer-focus:left-3.5 peer-focus:text-[11px] peer-focus:bg-white dark:peer-focus:bg-slate-800 peer-focus:py-0.5 peer-focus:px-2 
                             peer-focus:rounded-md peer-focus:text-[#05cd99] peer-focus:font-semibold peer-focus:shadow-sm peer-focus:tracking-[0.5px] peer-focus:shadow-label 
-                            peer-[:not(:placeholder-shown)]:-top-2.5 peer-[:not(:placeholder-shown)]:left-3.5 peer-[:not(:placeholder-shown)]:text-[11px] peer-[:not(:placeholder-shown)]:bg-white 
+                            peer-[:not(:placeholder-shown)]:-top-2.5 peer-[:not(:placeholder-shown)]:left-3.5 peer-[:not(:placeholder-shown)]:text-[11px] peer-[:not(:placeholder-shown)]:bg-white dark:peer-[:not(:placeholder-shown)]:bg-slate-800 
                             peer-[:not(:placeholder-shown)]:py-0.5 peer-[:not(:placeholder-shown)]:px-2 peer-[:not(:placeholder-shown)]:rounded-md peer-[:not(:placeholder-shown)]:text-[#05cd99] peer-[:not(:placeholder-shown)]:font-semibold peer-[:not(:placeholder-shown)]:tracking-[0.5px] ">
                         Email Address</label>
                     @if (f['email'].touched && f['email'].errors?.['required']) {
@@ -206,28 +228,33 @@
                                 }"></i>
                     <input formControlName="password" [type]="showPassword ? 'text' : 'password'" id="password"
                         name="password" placeholder=" "
-                        class="peer w-full py-3.5 pl-11 pr-24 rounded-xl  text-[#2b3674] text-sm outline-none transition-all shadow-sm"
+                        class="peer w-full py-3.5 pl-11 pr-24 rounded-xl  text-[#2b3674] dark:text-white dark:bg-slate-800 text-sm outline-none transition-all shadow-sm"
                         [class]="{
                                 'border': !(f['password'].touched),
                                 'border-slate-100': !(f['password'].touched),
+                                'dark:border-slate-600': !(f['password'].touched),
                                 'focus:border-2': !(f['password'].touched),
                                 'focus:border-[#05cd99]': !(f['password'].touched),
                                 'border-2': (f['password'].invalid && f['password'].touched) || f['password'].valid ,
                                 'border-red-400': f['password'].invalid && f['password'].touched,
+                                'dark:border-red-500': f['password'].invalid && f['password'].touched,
                                 'bg-red-50': f['password'].invalid && f['password'].touched,
+                                'dark:bg-red-900/30': f['password'].invalid && f['password'].touched,
                                 'focus:ring-red-100': f['password'].invalid && f['password'].touched,
+                                'dark:focus:ring-red-900/50': f['password'].invalid && f['password'].touched,
                                 'border-[#05cd99]': f['password'].valid,
-                                'bg-emerald-50': f['password'].valid
+                                'bg-emerald-50': f['password'].valid,
+                                'dark:bg-emerald-900/30': f['password'].valid
                                 }">
                     <label for="password"
-                        class="absolute left-11 top-4.25  text-[#a3aed1] text-[14px] transition-all duration-300 pointer-events-none 
-                            peer-focus:-top-2.5 peer-focus:left-3.5 peer-focus:text-[11px] peer-focus:bg-white peer-focus:py-0.5 peer-focus:px-2 
+                        class="absolute left-11 top-4.25  text-[#a3aed1] dark:text-slate-400 text-[14px] transition-all duration-300 pointer-events-none 
+                            peer-focus:-top-2.5 peer-focus:left-3.5 peer-focus:text-[11px] peer-focus:bg-white dark:peer-focus:bg-slate-800 peer-focus:py-0.5 peer-focus:px-2 
                             peer-focus:rounded-md peer-focus:text-[#05cd99] peer-focus:font-semibold peer-focus:shadow-sm peer-focus:tracking-[0.5px] peer-focus:shadow-label 
-                            peer-[:not(:placeholder-shown)]:-top-2.5 peer-[:not(:placeholder-shown)]:left-3.5 peer-[:not(:placeholder-shown)]:text-[11px] peer-[:not(:placeholder-shown)]:bg-white 
+                            peer-[:not(:placeholder-shown)]:-top-2.5 peer-[:not(:placeholder-shown)]:left-3.5 peer-[:not(:placeholder-shown)]:text-[11px] peer-[:not(:placeholder-shown)]:bg-white dark:peer-[:not(:placeholder-shown)]:bg-slate-800 
                             peer-[:not(:placeholder-shown)]:py-0.5 peer-[:not(:placeholder-shown)]:px-2 peer-[:not(:placeholder-shown)]:rounded-md peer-[:not(:placeholder-shown)]:text-[#05cd99] peer-[:not(:placeholder-shown)]:font-semibold peer-[:not(:placeholder-shown)]:tracking-[0.5px] ">
                         Password </label>
                     <i (mousedown)="$event.preventDefault()" (click)="togglePassword(); $event.stopPropagation()"
-                        class=" absolute right-4 top-4.5 text-[18px] text-[#a3aed1] cursor-pointer transition-colors duration-200 hover:text-[#05cd99]"
+                        class=" absolute right-4 top-4.5 text-[18px] text-[#a3aed1] dark:text-slate-400 cursor-pointer transition-colors duration-200 hover:text-[#05cd99]"
                         [class]="{
                         'fa-regular': !showPassword,
                         'fa-eye': !showPassword,
@@ -247,7 +274,7 @@
                 </div>
 
                 <div class="password-strength -mt-1 sm:-mt-2.5 flex flex-col gap-0.5 px-1">
-                    <div class="h-1.25 w-full bg-[#a3aed1]/30 rounded-sm overflow-hidden">
+                    <div class="h-1.25 w-full bg-[#a3aed1]/30 dark:bg-slate-700 rounded-sm overflow-hidden">
                         @if (hasUpperCase() && hasLowerCase() && hasNumber() && hasSymbol() &&
                         !(f['password'].errors?.['minlength'])) {
                         <div class=" h-full rounded-sm animate-strong-expand bg-[#05cd99]"></div>
@@ -277,7 +304,7 @@
                     <span class=" text-[12px] text-red-500 font-medium ">Weak</span>
                     }
                     @else {
-                    <span class="strength-text text-[12px] text-[#a3aed1] font-medium ">
+                    <span class="strength-text text-[12px] text-[#a3aed1] dark:text-slate-400 font-medium ">
                         Password Strength
                     </span>
                     }
@@ -291,28 +318,33 @@
                                 }"></i>
                     <input formControlName="confirmPassword" [type]="showConfirmPassword ? 'text' : 'password'"
                         id="confirmPassword" name="confirmPassword" placeholder=" "
-                        class="peer w-full py-3.5 pl-11 pr-24 rounded-xl text-[#2b3674] text-sm outline-none transition-all shadow-sm"
+                        class="peer w-full py-3.5 pl-11 pr-24 rounded-xl text-[#2b3674] dark:text-white dark:bg-slate-800 text-sm outline-none transition-all shadow-sm"
                         [class]="{
                                 'border': !(f['confirmPassword'].touched),
                                 'border-slate-100': !(f['confirmPassword'].touched),
+                                'dark:border-slate-600': !(f['confirmPassword'].touched),
                                 'focus:border-2': !(f['confirmPassword'].touched),
                                 'focus:border-[#05cd99]': !(f['confirmPassword'].touched),
                                 'border-2': (f['confirmPassword'].invalid && f['confirmPassword'].touched) || f['confirmPassword'].valid ,
                                 'border-red-400': f['confirmPassword'].invalid && f['confirmPassword'].touched,
+                                'dark:border-red-500': f['confirmPassword'].invalid && f['confirmPassword'].touched,
                                 'bg-red-50': f['confirmPassword'].invalid && f['confirmPassword'].touched,
+                                'dark:bg-red-900/30': f['confirmPassword'].invalid && f['confirmPassword'].touched,
                                 'focus:ring-red-100': f['confirmPassword'].invalid && f['confirmPassword'].touched,
+                                'dark:focus:ring-red-900/50': f['confirmPassword'].invalid && f['confirmPassword'].touched,
                                 'border-[#05cd99]': f['confirmPassword'].valid,
-                                'bg-emerald-50': f['confirmPassword'].valid
+                                'bg-emerald-50': f['confirmPassword'].valid,
+                                'dark:bg-emerald-900/30': f['confirmPassword'].valid
                                 }">
                     <label for="confirmPassword"
-                        class="absolute left-11 top-4.25  text-[#a3aed1] text-[14px] transition-all duration-300 pointer-events-none 
-                            peer-focus:-top-2.5 peer-focus:left-3.5 peer-focus:text-[11px] peer-focus:bg-white peer-focus:py-0.5 peer-focus:px-2 
+                        class="absolute left-11 top-4.25  text-[#a3aed1] dark:text-slate-400 text-[14px] transition-all duration-300 pointer-events-none 
+                            peer-focus:-top-2.5 peer-focus:left-3.5 peer-focus:text-[11px] peer-focus:bg-white dark:peer-focus:bg-slate-800 peer-focus:py-0.5 peer-focus:px-2 
                             peer-focus:rounded-md peer-focus:text-[#05cd99] peer-focus:font-semibold peer-focus:shadow-sm peer-focus:tracking-[0.5px] peer-focus:shadow-label 
-                            peer-[:not(:placeholder-shown)]:-top-2.5 peer-[:not(:placeholder-shown)]:left-3.5 peer-[:not(:placeholder-shown)]:text-[11px] peer-[:not(:placeholder-shown)]:bg-white 
+                            peer-[:not(:placeholder-shown)]:-top-2.5 peer-[:not(:placeholder-shown)]:left-3.5 peer-[:not(:placeholder-shown)]:text-[11px] peer-[:not(:placeholder-shown)]:bg-white dark:peer-[:not(:placeholder-shown)]:bg-slate-800 
                             peer-[:not(:placeholder-shown)]:py-0.5 peer-[:not(:placeholder-shown)]:px-2 peer-[:not(:placeholder-shown)]:rounded-md peer-[:not(:placeholder-shown)]:text-[#05cd99] peer-[:not(:placeholder-shown)]:font-semibold peer-[:not(:placeholder-shown)]:tracking-[0.5px] ">
                         Confirm Password </label>
                     <i (mousedown)="$event.preventDefault()" (click)="toggleConfirmPassword(); $event.stopPropagation()"
-                        class="absolute right-4 top-4.5 text-[18px] text-[#a3aed1] cursor-pointer transition-colors duration-200 hover:text-[#05cd99]"
+                        class="absolute right-4 top-4.5 text-[18px] text-[#a3aed1] dark:text-slate-400 cursor-pointer transition-colors duration-200 hover:text-[#05cd99]"
                         [class]="{
                         'fa-regular': !showConfirmPassword,
                         'fa-eye': !showConfirmPassword,
@@ -331,11 +363,12 @@
 
                     @if (!isLoading) {
                     <button type="submit"
-                        class="group relative w-full h-14 rounded-xl overflow-hidden bg-linear-to-r from-emerald-700 to-emerald-400 text-white cursor-pointer shadow-[0_8px_20px_-6px_rgba(16,185,129,0.4)] transition-all duration-300 hover:shadow-[0_12px_25px_-6px_rgba(5,150,105,0.6)] hover:-translate-y-1 active:translate-y-0">
+                        class="group relative w-full  h-11 lg:h-14 rounded-xl overflow-hidden bg-linear-to-r from-emerald-700 to-emerald-400 text-white cursor-pointer shadow-[0_8px_20px_-6px_rgba(16,185,129,0.4)] transition-all duration-300 hover:shadow-[0_12px_25px_-6px_rgba(5,150,105,0.6)] hover:-translate-y-1 active:translate-y-0">
                         <div
                             class="absolute inset-0 w-full h-full bg-white/20 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left">
                         </div>
-                        <span class="relative z-10 font-['Bebas_Neue'] tracking-[0.15em] text-md lg:text-xl font-medium">
+                        <span
+                            class="relative z-10 font-['Bebas_Neue'] tracking-[0.15em] text-sm lg:text-xl font-medium">
                             CREATE ACCOUNT
                         </span>
                     </button>
@@ -354,10 +387,10 @@
                     </button>
                     }
 
-                    <div class="text-center text-sm text-gray-400 mt-2">
+                    <div class="text-center text-sm text-gray-400 dark:text-slate-300 mt-2">
                         Already have an account?
                         <a routerLink="/auth/login"
-                            class="text-emerald-700 font-bold hover:text-emerald-500 transition-colors duration-200 ml-1">
+                            class="text-emerald-700 dark:text-emerald-400 font-bold hover:text-emerald-500 dark:hover:text-emerald-300 transition-colors duration-200 ml-1">
                             Log in here
                         </a>
                     </div>
