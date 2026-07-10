@@ -9,10 +9,11 @@ import {
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { RegisterSuccessComponent } from "../../components/register-success/register-success.component";
+import { SlideIn } from "../../../../shared/directives/slide-in";
 
 @Component({
   selector: 'app-register',
-  imports: [ReactiveFormsModule, RouterLink, RegisterSuccessComponent],
+  imports: [ReactiveFormsModule, RouterLink, RegisterSuccessComponent, SlideIn],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css',
 })

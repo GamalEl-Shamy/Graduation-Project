@@ -13,7 +13,7 @@
         </div>
     </div>
 
-    <div class="hidden lg:block lg:max-w-sm xl:max-w-md xl:mr-40 2xl:mr-56 anim-fade-in">
+    <div appSlideIn direction="left" class="hidden lg:block lg:max-w-sm xl:max-w-md xl:mr-40 2xl:mr-56 anim-fade-in">
         <img class=" opacity-80" src="./logos/Big Zaraa.png" alt="Serene greenhouse interior">
     </div>
 
@@ -26,11 +26,11 @@
             </div>
 
             <div class="text-center mb-2 sm:mb-8">
-                <h2
+                <h2 appSlideIn direction="left"
                     class="text-3xl lg:text-4xl tracking-[0.11em] font-['Namdhinggo'!important] font-extrabold sm:mb-2 text-transparent bg-clip-text bg-linear-to-r from-emerald-700 to-emerald-400 drop-shadow-sm dark:from-emerald-400 dark:to-emerald-200">
                     Join Now
                 </h2>
-                <p class="text-gray-400 text-sm font-['Namdhinggo'] font-medium dark:text-gray-300">Join us today!
+                <p appSlideIn direction="right" class="text-gray-400 text-sm font-['Namdhinggo'] font-medium dark:text-gray-300">Join us today!
                     Please enter your details.</p>
             </div>
 
@@ -44,7 +44,7 @@
 
             <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" novalidate class="flex flex-col gap-2.5 sm:gap-5">
 
-                <div class="input-group group relative w-full mt-1">
+                <div appSlideIn direction="left" class="input-group group relative w-full mt-1">
                     <i class="fa-solid fa-at absolute left-4 top-4.5 text-[18px] pointer-events-none  " [class]="{
                                 'text-[#a3aed1]':!(f['emailORUserName'].dirty),
                                 'dark:text-slate-400':!(f['emailORUserName'].dirty),
@@ -87,7 +87,7 @@
                     }
                 </div>
 
-                <div class="input-group group relative w-full mt-1">
+                <div appSlideIn direction="right" class="input-group group relative w-full mt-1">
                     <i class="fa-solid fa-lock absolute left-4 top-4.5 text-[18px] pointer-events-none  " [class]="{
                                 'text-[#a3aed1]':!(f['password'].dirty),
                                 'dark:text-slate-400':!(f['password'].dirty),
@@ -139,7 +139,7 @@
                 </div>
 
                 <div class="flex flex-col mt-0 sm:mt-2 gap-2 sm:gap-4">
-                    <div class="flex justify-end px-1">
+                    <div appSlideIn direction="left" class="flex justify-end px-1">
                         <a routerLink="/auth/forgot-password"
                             class="text-emerald-700 dark:text-emerald-400 text-[13px] font-semibold hover:text-emerald-500 dark:hover:text-emerald-300 transition-colors duration-200 relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-[#05cd99] dark:after:bg-emerald-400 after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left">
                             Forgot Password?
@@ -147,7 +147,7 @@
                     </div>
 
                     @if (!isLoading) {
-                    <button type="submit"
+                    <button appSlideIn direction="right" type="submit"
                         class="group relative w-full h-11 lg:h-14 rounded-xl overflow-hidden bg-linear-to-r from-emerald-700 to-emerald-400 dark:from-emerald-600 dark:to-emerald-400 text-white shadow-[0_8px_20px_-6px_rgba(16,185,129,0.4)] dark:shadow-[0_8px_20px_-6px_rgba(16,185,129,0.2)] cursor-pointer transition-all duration-300 hover:shadow-[0_12px_25px_-6px_rgba(5,150,105,0.6)] dark:hover:shadow-[0_12px_25px_-6px_rgba(5,150,105,0.4)] hover:-translate-y-1 active:translate-y-0">
                         <div
                             class="absolute inset-0 w-full h-full bg-white/20 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left">
@@ -170,7 +170,7 @@
                     </button>
                     }
 
-                    <div class="text-center text-sm text-gray-400 dark:text-gray-400 mt-2">
+                    <div appSlideIn direction="left" class="text-center text-sm text-gray-400 dark:text-gray-400 mt-2">
                         Create a new account?
                         <a routerLink="/auth/register"
                             class="text-emerald-700 dark:text-emerald-400 font-bold hover:text-emerald-500 dark:hover:text-emerald-300 transition-colors duration-200 ml-1 cursor-pointer">Register

@@ -7,10 +7,11 @@ import {
 } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { SlideIn } from "../../../../shared/directives/slide-in";
 
 @Component({
   selector: 'app-login',
-  imports: [ReactiveFormsModule, RouterLink],
+  imports: [ReactiveFormsModule, RouterLink, SlideIn],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })

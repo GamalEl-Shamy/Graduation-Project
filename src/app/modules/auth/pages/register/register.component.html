@@ -1,5 +1,5 @@
 <div
-    class="bg-bg dark:bg-slate-800 min-h-screen flex items-center justify-center relative overflow-hidden transition-colors duration-400 font-sans  p-4 sm:p-8">
+    class=" dark:bg-slate-800 min-h-screen flex items-center justify-center relative overflow-hidden transition-colors duration-400 font-sans  p-4 sm:p-8">
 
     <div class="lg:hidden absolute inset-0 z-[-1] overflow-hidden blur-[100px] pointer-events-none">
         <div
@@ -13,11 +13,11 @@
         </div>
     </div>
 
-    <div class="hidden lg:block lg:max-w-sm xl:max-w-md xl:mr-40 2xl:mr-56 anim-fade-in">
+    <div appSlideIn direction="left" class="hidden lg:block lg:max-w-sm xl:max-w-md xl:mr-40 2xl:mr-56 anim-fade-in">
         <img class=" opacity-80" src="./logos/Big Zaraa.png" alt="Serene greenhouse interior">
     </div>
 
-    <div class="w-full max-w-137.5 z-10 anim-fade-in">
+    <div class="w-full max-w-137.5 z-10">
         <div
             class="glassmorphism relative bg-white/80 dark:bg-slate-800/90 backdrop-blur-xl border border-white/40 dark:border-slate-700/50 rounded-4xl p-5 sm:p-10 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] dark:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)]">
 
@@ -26,11 +26,11 @@
             </div>
 
             <div class="text-center mb-2 sm:mb-8">
-                <h2
+                <h2 appSlideIn direction="left"
                     class="text-2xl lg:text-4xl tracking-[0.11em] font-['Namdhinggo'!important] sm:text-3xl font-extrabold sm:mb-2 text-transparent bg-clip-text bg-linear-to-r from-emerald-700 to-emerald-400 dark:from-emerald-400 dark:to-emerald-200 drop-shadow-sm">
                     Create an Account
                 </h2>
-                <p class="text-gray-400 dark:text-slate-300 text-[10px] sm:text-sm font-['Namdhinggo'] font-medium">Join
+                <p appSlideIn direction="right" class="text-gray-400 dark:text-slate-300 text-[10px] sm:text-sm font-['Namdhinggo'] font-medium">Join
                     us today! Please enter your details.
                 </p>
             </div>
@@ -47,7 +47,7 @@
 
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                    <div class="input-group group relative w-full">
+                    <div appSlideIn direction="left" class="input-group group relative w-full">
                         <i class="fa-regular fa-user absolute left-4 top-4.5 text-[18px] pointer-events-none  " [class]="{
                                 'text-[#a3aed1]':!(f['firstName'].dirty),
                                 'text-red-400': f['firstName'].invalid && f['firstName'].touched,
@@ -88,7 +88,7 @@
                         }
                     </div>
 
-                    <div class="input-group group relative w-full">
+                    <div appSlideIn direction="right" class="input-group group relative w-full">
                         <i class="fa-regular fa-user absolute left-4 top-4.5 text-[18px] pointer-events-none  " [class]="{
                                 'text-[#a3aed1]':!(f['lastName'].dirty),
                                 'text-red-400': f['lastName'].invalid && f['lastName'].touched,
@@ -130,7 +130,7 @@
                     </div>
                 </div>
 
-                <div class="input-group group relative w-full mt-1">
+                <div appSlideIn direction="left" class="input-group group relative w-full mt-1">
                     <i class="fa-solid fa-at absolute left-4 top-4.5 text-[18px] pointer-events-none  " [class]="{
                                 'text-[#a3aed1]':!(f['userName'].dirty),
                                 'text-red-400': (f['userName'].invalid && f['userName'].touched) || errorMessage,
@@ -180,7 +180,7 @@
                     </button>
                 </div>
 
-                <div class="input-group group relative w-full mt-1">
+                <div appSlideIn direction="right" class="input-group group relative w-full mt-1">
                     <i class="fa-regular fa-envelope absolute left-4 top-4.5 text-[18px] pointer-events-none  " [class]="{
                                 'text-[#a3aed1]':!(f['email'].dirty),
                                 'text-red-400': f['email'].invalid && f['email'].touched,
@@ -220,7 +220,7 @@
                     }
                 </div>
 
-                <div class="input-group group relative w-full mt-1">
+                <div appSlideIn direction="left" class="input-group group relative w-full mt-1">
                     <i class="fa-solid fa-lock absolute left-4 top-4.5 text-[18px] pointer-events-none  " [class]="{
                                 'text-[#a3aed1]':!(f['password'].dirty),
                                 'text-red-400': f['password'].invalid && f['password'].touched,
@@ -310,7 +310,7 @@
                     }
                 </div>
 
-                <div class="input-group group relative w-full mt-1">
+                <div appSlideIn direction="right" class="input-group group relative w-full mt-1">
                     <i class="fa-solid fa-lock absolute left-4 top-4.5 text-[18px] pointer-events-none  " [class]="{
                                 'text-[#a3aed1]':!(f['confirmPassword'].dirty),
                                 'text-red-400': f['confirmPassword'].invalid && f['confirmPassword'].touched,
@@ -362,14 +362,14 @@
                 <div class="flex flex-col mt-0 sm:mt-2 gap-2 sm:gap-4">
 
                     @if (!isLoading) {
-                    <button type="submit"
+                    <button appSlideIn direction="left" type="submit"
                         class="group relative w-full  h-11 lg:h-14 rounded-xl overflow-hidden bg-linear-to-r from-emerald-700 to-emerald-400 text-white cursor-pointer shadow-[0_8px_20px_-6px_rgba(16,185,129,0.4)] transition-all duration-300 hover:shadow-[0_12px_25px_-6px_rgba(5,150,105,0.6)] hover:-translate-y-1 active:translate-y-0">
                         <div
                             class="absolute inset-0 w-full h-full bg-white/20 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left">
                         </div>
                         <span
                             class="relative z-10 font-['Bebas_Neue'] tracking-[0.15em] text-sm lg:text-xl font-medium">
-                            CREATE ACCOUNT
+                            Create Account
                         </span>
                     </button>
                     }
@@ -387,7 +387,7 @@
                     </button>
                     }
 
-                    <div class="text-center text-sm text-gray-400 dark:text-slate-300 mt-2">
+                    <div appSlideIn direction="right" class="text-center text-sm text-gray-400 dark:text-slate-300 mt-2">
                         Already have an account?
                         <a routerLink="/auth/login"
                             class="text-emerald-700 dark:text-emerald-400 font-bold hover:text-emerald-500 dark:hover:text-emerald-300 transition-colors duration-200 ml-1">
