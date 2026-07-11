@@ -2,10 +2,11 @@ import { Component, input, output } from '@angular/core';
 import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
 import { CategoryItem } from '../../models/category.interface';
+import { SlideIn } from "../../../../../shared/directives/slide-in";
 
 @Component({
   selector: 'app-categories-header',
-  imports: [],
+  imports: [SlideIn],
   templateUrl: './categories-header.component.html',
   styleUrl: './categories-header.component.css',
 })

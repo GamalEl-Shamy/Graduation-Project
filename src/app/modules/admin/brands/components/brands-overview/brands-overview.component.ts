@@ -1,9 +1,10 @@
 import { Component, computed, input } from '@angular/core';
 import { Brand } from '../../models/brand.interface';
+import { SlideIn } from "../../../../../shared/directives/slide-in";
 
 @Component({
   selector: 'app-brands-overview',
-  imports: [],
+  imports: [SlideIn],
   templateUrl: './brands-overview.component.html',
   styleUrl: './brands-overview.component.css',
 })

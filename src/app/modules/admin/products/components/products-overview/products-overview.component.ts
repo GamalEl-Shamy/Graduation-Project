@@ -1,9 +1,10 @@
 import { Component, computed, input } from '@angular/core';
 import { ProductResponse } from '../../models/product.interface';
+import { SlideIn } from "../../../../../shared/directives/slide-in";
 
 @Component({
   selector: 'app-products-overview',
-  imports: [],
+  imports: [SlideIn],
   templateUrl: './products-overview.component.html',
   styleUrl: './products-overview.component.css',
 })

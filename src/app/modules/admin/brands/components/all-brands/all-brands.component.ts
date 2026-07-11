@@ -1,10 +1,11 @@
 import { Component, computed, input, output, signal } from '@angular/core';
 import { EmptyComponent } from "../../../shared/empty/empty.component";
 import { brandItems } from '../../models/brand.interface';
+import { SlideIn } from "../../../../../shared/directives/slide-in";
 
 @Component({
   selector: 'app-all-brands',
-  imports: [EmptyComponent],
+  imports: [EmptyComponent, SlideIn],
   templateUrl: './all-brands.component.html',
   styleUrl: './all-brands.component.css',
 })

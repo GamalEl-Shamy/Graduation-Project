@@ -1,10 +1,11 @@
 import { TitleCasePipe } from '@angular/common';
 import { Component, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { SlideIn } from "../../../../shared/directives/slide-in";
 
 @Component({
   selector: 'app-empty',
-  imports: [TitleCasePipe, RouterLink],
+  imports: [TitleCasePipe, RouterLink, SlideIn],
   templateUrl: './empty.component.html',
   styleUrl: './empty.component.css',
 })

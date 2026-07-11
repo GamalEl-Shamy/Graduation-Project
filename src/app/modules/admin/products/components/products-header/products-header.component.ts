@@ -3,10 +3,11 @@ import { ProductItem } from '../../models/product.interface';
 import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
 import { environment } from '../../../../../../environments/environment.development';
+import { SlideIn } from "../../../../../shared/directives/slide-in";
 
 @Component({
   selector: 'app-products-header',
-  imports: [],
+  imports: [SlideIn],
   templateUrl: './products-header.component.html',
   styleUrl: './products-header.component.css',
 })

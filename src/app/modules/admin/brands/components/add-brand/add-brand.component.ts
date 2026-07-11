@@ -4,10 +4,11 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { BrandsService } from '../../services/brands.service';
 import { brandItems } from '../../models/brand.interface';
 import { ToastComponent } from '../../../shared/toast/toast.component';
+import { SlideIn } from "../../../../../shared/directives/slide-in";
 
 @Component({
   selector: 'app-add-brand',
-  imports: [ReactiveFormsModule, ToastComponent],
+  imports: [ReactiveFormsModule, ToastComponent, SlideIn],
   templateUrl: './add-brand.component.html',
   styleUrl: './add-brand.component.css',
 })

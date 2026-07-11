@@ -1,10 +1,11 @@
 import { Component, computed, input, output, signal } from '@angular/core';
 import { EmptyComponent } from "../../../shared/empty/empty.component";
 import { CategoryItem } from '../../models/category.interface';
+import { SlideIn } from "../../../../../shared/directives/slide-in";
 
 @Component({
   selector: 'app-all-categories',
-  imports: [EmptyComponent],
+  imports: [EmptyComponent, SlideIn],
   templateUrl: './all-categories.component.html',
   styleUrl: './all-categories.component.css',
 })

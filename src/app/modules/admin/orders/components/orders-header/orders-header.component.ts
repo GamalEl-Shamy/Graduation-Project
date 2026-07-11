@@ -2,10 +2,11 @@ import { Component, input, output } from '@angular/core';
 import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
 import { OrderListItem } from '../../models/order.interface';
+import { SlideIn } from "../../../../../shared/directives/slide-in";
 
 @Component({
   selector: 'app-orders-header',
-  imports: [],
+  imports: [SlideIn],
   templateUrl: './orders-header.component.html',
   styleUrl: './orders-header.component.css',
 })

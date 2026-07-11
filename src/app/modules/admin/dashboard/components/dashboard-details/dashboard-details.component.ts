@@ -4,10 +4,11 @@ import { CategoryResponse } from '../../../categories/models/category.interface'
 import { Brand } from '../../../brands/models/brand.interface';
 import { ProductResponse } from '../../../products/models/product.interface';
 import { OrderResponse } from '../../../orders/models/order.interface';
+import { SlideIn } from "../../../../../shared/directives/slide-in";
 
 @Component({
   selector: 'app-dashboard-details',
-  imports: [],
+  imports: [SlideIn],
   templateUrl: './dashboard-details.component.html',
   styleUrl: './dashboard-details.component.css',
 })

@@ -2,11 +2,12 @@ import { Component, computed, input, output, signal } from '@angular/core';
 import { OrderListItem } from '../../models/order.interface';
 import { DatePipe } from '@angular/common';
 import { EmptyComponent } from "../../../shared/empty/empty.component";
+import { SlideIn } from "../../../../../shared/directives/slide-in";
 
 
 @Component({
   selector: 'app-all-orders',
-  imports: [DatePipe, EmptyComponent],
+  imports: [DatePipe, EmptyComponent, SlideIn],
   templateUrl: './all-orders.component.html',
   styleUrl: './all-orders.component.css',
 })

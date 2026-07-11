@@ -2,10 +2,11 @@ import { Component, computed, input, output, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { UserItem } from '../../models/user.interface';
 import { EmptyComponent } from "../../../shared/empty/empty.component";
+import { SlideIn } from "../../../../../shared/directives/slide-in";
 
 @Component({
   selector: 'app-all-users',
-  imports: [FormsModule, EmptyComponent],
+  imports: [FormsModule, EmptyComponent, SlideIn],
   templateUrl: './all-users.component.html',
   styleUrl: './all-users.component.css',
 })

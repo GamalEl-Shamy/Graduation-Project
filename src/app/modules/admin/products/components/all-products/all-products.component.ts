@@ -2,10 +2,11 @@ import { Component, computed, input, output, signal } from '@angular/core';
 import { ProductItem } from '../../models/product.interface';
 import { environment } from '../../../../../../environments/environment.development';
 import { EmptyComponent } from "../../../shared/empty/empty.component";
+import { SlideIn } from "../../../../../shared/directives/slide-in";
 
 @Component({
   selector: 'app-all-products',
-  imports: [EmptyComponent],
+  imports: [EmptyComponent, SlideIn],
   templateUrl: './all-products.component.html',
   styleUrl: './all-products.component.css',
 })

@@ -1,6 +1,7 @@
 <section
     class="relative bg-white dark:bg-slate-900 transition-colors duration-300 w-full md:w-xl lg:w-2xl xl:w-4xl rounded-2xl border border-gray-100 dark:border-slate-800 border-t-2 border-b-2 border-b-green-600 border-t-green-600 shadow-lg p-6">
-    <h3 class="font-syne font-bold text-gray-800 dark:text-gray-100 mb-4 flex items-center gap-2">
+    <h3 appSlideIn direction="left"
+        class="font-syne font-bold text-gray-800 dark:text-gray-100 mb-4 flex items-center gap-2">
         <div
             class="w-6 h-6 bg-green-100 dark:bg-green-500/20 rounded-lg flex items-center justify-center transition-colors">
             <i class="fa-solid fa-layer-group text-green-600 dark:text-green-400 text-xs"></i>
@@ -39,7 +40,7 @@
         </div>
         }
         <form [formGroup]="categoryForm" (ngSubmit)="onSubmit()" class="space-y-4">
-            <div class="input-group group relative w-full">
+            <div appSlideIn direction="right" class="input-group group relative w-full">
                 <label class="block text-md font-semibold text-gray-700 dark:text-gray-300 mb-1.5">Category Name <span
                         class="text-red-500 dark:text-red-400">*</span></label>
                 <input formControlName="name" type="text" placeholder="e.g. Tools"
@@ -71,7 +72,7 @@
                     characters</span>
                 }
             </div>
-            <div>
+            <div appSlideIn direction="left">
                 <label class="block text-md font-semibold text-gray-700 dark:text-gray-300 mb-1.5">Description</label>
                 <textarea formControlName="description" rows="4" placeholder="Describe the category..." [class]="
             categoryForm.get('description')?.invalid && categoryForm.get('description')?.touched
@@ -79,7 +80,7 @@
               : 'border-gray-300 dark:border-gray-600'
           " class="w-full border rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-green-500/30 focus:border-green-500 dark:focus:border-green-400 transition-all placeholder-gray-400 dark:placeholder-gray-500 resize-none bg-white dark:bg-slate-800 text-gray-900 dark:text-gray-100 shadow-sm"></textarea>
             </div>
-            <div>
+            <div appSlideIn direction="right">
                 <label class="block text-md font-semibold text-gray-700 dark:text-gray-300 mb-1.5">Status <span
                         class="text-red-500 dark:text-red-400">*</span></label>
                 <div class="relative">
@@ -96,7 +97,7 @@
             </div>
             <div class="mt-6">
                 @if (!isSubmitting()) {
-                <button
+                <button appSlideIn direction="left"
                     class="w-full py-3 cursor-pointer text-md md:tracking-[0.12em] bg-linear-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 hover:shadow-lg hover:shadow-emerald-500/30 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2 focus:ring-offset-slate-900 text-white font-bold md:text-lg rounded-xl transition-all shadow-sm flex items-center justify-center gap-2">
                     @if (categoryData()) {
                     Update Category
@@ -112,10 +113,11 @@
                         <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
                         <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z" />
                     </svg>
-                    <span class="font-['Bebas_Neue'] tracking-[0.25em]  text-md md:text-lg font-medium mt-1">PROCESSING...</span>
+                    <span
+                        class="font-['Bebas_Neue'] tracking-[0.25em]  text-md md:text-lg font-medium mt-1">PROCESSING...</span>
                 </button>
                 }
-                <button type="button" (click)="cancel()"
+                <button appSlideIn direction="right" type="button" (click)="cancel()"
                     class="w-full py-3 mt-3 cursor-pointer text-md md:tracking-[0.12em] bg-gray-200 dark:bg-slate-700 hover:bg-gray-300 dark:hover:bg-slate-600 text-gray-600 dark:text-gray-200 font-semibold lg:text-lg rounded-xl transition-all shadow-sm">
                     Cancel
                 </button>

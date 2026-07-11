@@ -1,7 +1,7 @@
 <app-ambient-background></app-ambient-background>
 
 <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 opacity-0 animate-fade-in-up delay-100">
-    <div class="space-y-3">
+    <div appSlideIn direction="left" class="space-y-3">
         <div class="flex items-center gap-2 text-sm font-bold text-gray-400 dark:text-gray-500 mb-2">
             <span
                 class="hover:text-gray-900 dark:hover:text-gray-300 cursor-pointer transition-colors duration-200">Dashboard</span>
@@ -29,7 +29,7 @@
 <form [formGroup]="productForm" (ngSubmit)="onSubmit()" class="space-y-4">
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 opacity-0 animate-fade-in-up delay-200 mt-6">
         <div class="lg:col-span-2 space-y-5">
-            <div
+            <div appSlideIn direction="right"
                 class="bg-white dark:bg-slate-900 rounded-2xl border border-gray-100 dark:border-slate-800 shadow-sm p-6 transition-all duration-300">
                 <h3 class="font-syne font-bold text-gray-800 dark:text-white mb-4 flex items-center gap-2">
                     <div
@@ -53,7 +53,7 @@
                 </div>
                 }
                 <div class="space-y-4">
-                    <div>
+                    <div appSlideIn direction="left">
                         <label class="block text-md font-semibold text-gray-700 dark:text-slate-300 mb-1.5">Product Name
                             <span class="text-red-500 dark:text-red-400">*</span></label>
                         <input formControlName="name" type="text" placeholder="e.g. Product"
@@ -85,7 +85,7 @@
                             characters</span>
                         }
                     </div>
-                    <div>
+                    <div appSlideIn direction="right">
                         <label
                             class="block text-md font-semibold text-gray-700 dark:text-slate-300 mb-1.5">Description</label>
                         <textarea formControlName="description" rows="4" placeholder="Describe the product..."
@@ -93,7 +93,7 @@
                             class="w-full border rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-green-500/30 focus:border-green-500 transition-all placeholder-gray-300 dark:placeholder-slate-500 resize-none bg-white dark:bg-slate-800/50 text-gray-800 dark:text-slate-200"></textarea>
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div>
+                        <div appSlideIn direction="left">
                             <label class="block text-md font-semibold text-gray-700 dark:text-slate-300 mb-1.5">Price
                                 (EGP) <span class="text-red-500 dark:text-red-400">*</span></label>
                             <div class="relative">
@@ -131,7 +131,7 @@
                                 }
                             </div>
                         </div>
-                        <div>
+                        <div appSlideIn direction="right">
                             <label class="block text-md font-semibold text-gray-700 dark:text-slate-300 mb-1.5">Stock
                                 Quantity <span class="text-red-500 dark:text-red-400">*</span></label>
                             <input formControlName="quantity" type="number" placeholder="e.g. 50" min="0"
@@ -166,7 +166,7 @@
                         </div>
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div>
+                        <div appSlideIn direction="left">
                             <label class="block text-md font-semibold text-gray-700 dark:text-slate-300 mb-1.5">Status
                                 <span class="text-red-500 dark:text-red-400">*</span></label>
                             <div class="relative">
@@ -181,7 +181,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div>
+                        <div appSlideIn direction="right">
                             <label class="block text-md font-semibold text-gray-700 dark:text-slate-300 mb-1.5">Discount
                                 %</label>
 
@@ -231,7 +231,7 @@
                     <span class="font-['Manrope'] text-xl">Classification</span>
                 </h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
+                    <div appSlideIn direction="left">
                         <label class="block text-md font-semibold text-gray-700 dark:text-slate-300 mb-1.5">Category
                             <span class="text-red-500 dark:text-red-400">*</span></label>
                         <div class="relative">
@@ -279,7 +279,7 @@
                             required</span>
                         }
                     </div>
-                    <div>
+                    <div appSlideIn direction="right">
                         <label class="block text-md font-semibold text-gray-700 dark:text-slate-300 mb-1.5">Brand <span
                                 class="text-red-500 dark:text-red-400">*</span></label>
                         <div class="relative">
@@ -334,7 +334,7 @@
         </div>
 
         <div class="space-y-5">
-            <div
+            <div appSlideIn direction="left"
                 class="bg-white dark:bg-slate-900 rounded-2xl border border-gray-100 dark:border-slate-800 shadow-sm p-6 transition-all duration-300">
                 <h3 class="font-syne font-bold text-gray-800 dark:text-white mb-4 flex items-center gap-2">
                     <div
@@ -394,7 +394,7 @@
             <div
                 class="bg-white dark:bg-slate-900 rounded-2xl border border-gray-100 dark:border-slate-800 shadow-sm p-6 transition-all duration-300">
                 @if (!isSubmitting()) {
-                <button
+                <button appSlideIn direction="right"
                     class="w-full py-3 cursor-pointer  text-md md:tracking-[0.12em] bg-linear-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 hover:shadow-lg hover:shadow-emerald-500/30 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2 focus:ring-offset-slate-900 text-white font-bold md:text-lg rounded-xl transition-all shadow-sm flex items-center justify-center gap-2">
                     @if (productData()) {
                     Update Product
@@ -404,7 +404,7 @@
                 </button>
                 }
                 @else {
-                <button type="submit" disabled
+                <button appSlideIn direction="left" type="submit" disabled
                     class="w-full py-3 rounded-xl bg-gray-300 dark:bg-slate-700 text-gray-600 dark:text-slate-400 cursor-not-allowed opacity-80 flex items-center justify-center gap-3 transition-colors">
                     <svg class="animate-spin h-6 w-6 text-gray-600 dark:text-slate-400"
                         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -414,7 +414,7 @@
                     <span class="font-['Bebas_Neue']  text-md md:tracking-[0.25em] md:text-lg font-medium mt-1">PROCESSING...</span>
                 </button>
                 }
-                <button type="button" (click)="cancel()"
+                <button  type="button" (click)="cancel()"
                     class="w-full py-3 mt-3 cursor-pointer text-md bg-gray-200 dark:bg-slate-800 hover:bg-gray-300 dark:hover:bg-slate-700 text-gray-600 dark:text-slate-300 font-semibold md:text-lg rounded-xl transition-all">
                     Cancel
                 </button>

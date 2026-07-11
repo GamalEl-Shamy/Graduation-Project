@@ -1,9 +1,10 @@
 import { Component, computed, input } from '@angular/core';
 import { CategoryResponse } from '../../models/category.interface';
+import { SlideIn } from "../../../../../shared/directives/slide-in";
 
 @Component({
   selector: 'app-categories-overview',
-  imports: [],
+  imports: [SlideIn],
   templateUrl: './categories-overview.component.html',
   styleUrl: './categories-overview.component.css',
 })

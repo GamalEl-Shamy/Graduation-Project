@@ -4,10 +4,11 @@ import { CategoryItem } from '../../models/category.interface';
 import { CategoryRequest } from '../../models/create-category.interface';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ToastComponent } from "../../../shared/toast/toast.component";
+import { SlideIn } from "../../../../../shared/directives/slide-in";
 
 @Component({
   selector: 'app-add-category',
-  imports: [ReactiveFormsModule, ToastComponent],
+  imports: [ReactiveFormsModule, ToastComponent, SlideIn],
   templateUrl: './add-category.component.html',
   styleUrl: './add-category.component.css',
 })

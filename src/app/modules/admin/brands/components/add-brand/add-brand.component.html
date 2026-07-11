@@ -6,7 +6,7 @@
             <i class="fa-solid fa-tag text-green-600 dark:text-green-400 text-xs"></i>
         </div>
         <div>
-            <h2
+            <h2 appSlideIn direction="left"
                 class="text-2xl sm:text-3xl font-bold bg-linear-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">
                 @if (brandData()) {
                 Refine Brand
@@ -14,7 +14,7 @@
                 Create Brand
                 }
             </h2>
-            <p class="text-sm text-slate-400 mt-1">Manage your product brands with ease</p>
+            <p appSlideIn direction="right" class="text-sm text-slate-400 mt-1">Manage your product brands with ease</p>
         </div>
         @if (isClose()) {
         <div (click)="cancel()"
@@ -39,7 +39,7 @@
         </div>
         }
         <form [formGroup]="brandForm" (ngSubmit)="onSubmit()" class="space-y-4">
-            <div class="input-group group relative w-full">
+            <div appSlideIn direction="left" class="input-group group relative w-full">
                 <label class="block text-md font-semibold text-gray-700 dark:text-slate-300 mb-1.5">Brand Name <span
                         class="text-red-500 dark:text-red-400">*</span></label>
                 <input formControlName="name" type="text" placeholder="e.g. Tools"
@@ -71,7 +71,7 @@
                     characters</span>
                 }
             </div>
-            <div>
+            <div appSlideIn direction="right">
                 <label class="block text-md font-semibold text-gray-700 dark:text-slate-300 mb-1.5">Description</label>
                 <textarea formControlName="description" rows="4" placeholder="Describe the brand..." [class]="
             brandForm.get('description')?.invalid && brandForm.get('description')?.touched
@@ -79,11 +79,11 @@
               : 'border-gray-300 dark:border-slate-700'
           " class="w-full border rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-green-500/30 focus:border-green-500 transition-all placeholder-gray-300 dark:placeholder-slate-500 resize-none bg-white dark:bg-slate-800/50 text-gray-800 dark:text-slate-200"></textarea>
             </div>
-                <div>
-                    <label class="block text-md font-semibold text-gray-700 dark:text-slate-300 mb-1.5">Status <span
-                            class="text-red-500 dark:text-red-400">*</span></label>
-                    <div class="relative">
-                        <select #statusSelect (change)="statusSelect.blur()" formControlName="status"
+            <div appSlideIn direction="left">
+                <label class="block text-md font-semibold text-gray-700 dark:text-slate-300 mb-1.5">Status <span
+                        class="text-red-500 dark:text-red-400">*</span></label>
+                <div class="relative">
+                    <select #statusSelect (change)="statusSelect.blur()" formControlName="status"
                         class="peer w-full border border-gray-300 dark:border-gray-600 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-green-500/30 focus:border-green-500 dark:focus:border-green-400 transition-all text-gray-600 dark:text-gray-200 bg-white dark:bg-slate-800 cursor-pointer shadow-sm">
                         <option [ngValue]="true">Active</option>
                         <option [ngValue]="false">Inactive</option>
@@ -92,9 +92,9 @@
                         class="absolute top-1/2 right-4 -translate-y-1/2 text-gray-600 dark:text-gray-200 pointer-events-none transition-all duration-300 peer-focus:rotate-180 ">
                         <i class="fa-solid fa-angle-down"></i>
                     </div>
-                    </div>
                 </div>
-            <div class="mt-6 flex flex-col gap-3">
+            </div>
+            <div appSlideIn direction="right" class="mt-6 flex flex-col gap-3">
                 @if (!isSubmitting()) {
                 <button
                     class="w-full py-3 cursor-pointer  text-md md:tracking-[0.12em] bg-linear-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 hover:shadow-lg hover:shadow-emerald-500/30 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2 focus:ring-offset-slate-900 text-white font-bold md:text-lg rounded-xl transition-all shadow-sm flex items-center justify-center gap-2">
@@ -112,10 +112,11 @@
                         <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
                         <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z" />
                     </svg>
-                    <span class="font-['Bebas_Neue'] tracking-[0.25em]  text-md md:text-lg font-medium mt-1">PROCESSING...</span>
+                    <span
+                        class="font-['Bebas_Neue'] tracking-[0.25em]  text-md md:text-lg font-medium mt-1">PROCESSING...</span>
                 </button>
                 }
-                <button type="button" (click)="cancel()"
+                <button appSlideIn direction="left" type="button" (click)="cancel()"
                     class="w-full py-3 cursor-pointer text-md md:tracking-[0.12em] bg-gray-200 dark:bg-slate-800 hover:bg-gray-300 dark:hover:bg-slate-700 text-gray-600 dark:text-slate-300 font-semibold md:text-lg rounded-xl transition-all">
                     Cancel
                 </button>

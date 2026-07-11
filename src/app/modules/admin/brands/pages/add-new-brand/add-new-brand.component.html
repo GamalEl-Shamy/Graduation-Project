@@ -2,14 +2,14 @@
 
 <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 opacity-0 animate-fade-in-up delay-100">
     <div class="space-y-3">
-        <div class="flex items-center gap-2 text-sm font-bold text-gray-400 dark:text-gray-500 mb-2">
+        <div appSlideIn direction="left" class="flex items-center gap-2 text-sm font-bold text-gray-400 dark:text-gray-500 mb-2">
             <span
                 class="hover:text-gray-900 dark:hover:text-gray-300 cursor-pointer transition-colors duration-200">Dashboard</span>
             <i class="fa-solid fa-angle-right text-[10px] mt-0.5"></i>
             <span class="text-green-600 dark:text-green-400">Add New Brand</span>
         </div>
 
-        <div class="flex items-center gap-4">
+        <div appSlideIn direction="right" class="flex items-center gap-4">
             <div
                 class="hidden sm:flex items-center justify-center w-12 h-12 rounded-2xl bg-white dark:bg-[#111c14] border border-gray-200 dark:border-green-900/30 shadow-xs dark:shadow-green-900/10">
                 <i class="fa-solid fa-tag text-xl text-green-600 dark:text-green-400"></i>
@@ -20,7 +20,7 @@
                 Add New Brand
             </h1>
         </div>
-        <p class="text-gray-500 dark:text-gray-400 text-sm md:text-base font-medium max-w-xl mt-1">
+        <p appSlideIn direction="left" class="text-gray-500 dark:text-gray-400 text-sm md:text-base font-medium max-w-xl mt-1">
             Create and configure a new brand profile to associate with your product catalog.
         </p>
     </div>

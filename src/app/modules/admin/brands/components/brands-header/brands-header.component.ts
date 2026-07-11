@@ -2,10 +2,11 @@ import { Component, input, output } from '@angular/core';
 import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
 import { brandItems } from '../../models/brand.interface';
+import { SlideIn } from "../../../../../shared/directives/slide-in";
 
 @Component({
   selector: 'app-brands-header',
-  imports: [],
+  imports: [SlideIn],
   templateUrl: './brands-header.component.html',
   styleUrl: './brands-header.component.css',
 })

@@ -1,9 +1,10 @@
 import { Component, computed, input } from '@angular/core';
 import { UserResponse } from '../../models/user.interface';
+import { SlideIn } from "../../../../../shared/directives/slide-in";
 
 @Component({
   selector: 'app-users-overview',
-  imports: [],
+  imports: [SlideIn],
   templateUrl: './users-overview.component.html',
   styleUrl: './users-overview.component.css',
 })

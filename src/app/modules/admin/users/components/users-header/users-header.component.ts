@@ -2,10 +2,11 @@ import { Component, input } from '@angular/core';
 import { UserItem } from '../../models/user.interface';
 import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
+import { SlideIn } from "../../../../../shared/directives/slide-in";
 
 @Component({
   selector: 'app-users-header',
-  imports: [],
+  imports: [SlideIn],
   templateUrl: './users-header.component.html',
   styleUrl: './users-header.component.css',
 })

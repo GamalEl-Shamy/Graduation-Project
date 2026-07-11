@@ -1,6 +1,6 @@
 <header class="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-6 animate-float"
     style="animation: none;">
-    <div class="transform translate-y-0 opacity-100 transition-all duration-1000 ease-out">
+    <div appSlideIn direction="left" class="transform translate-y-0 opacity-100 transition-all duration-1000 ease-out">
         <nav aria-label="Breadcrumb"
             class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-50/80 dark:bg-emerald-950/40 border border-emerald-200/50 dark:border-emerald-800/30 shadow-sm backdrop-blur-md mb-4 group cursor-pointer hover:border-emerald-300 dark:hover:border-emerald-700 transition-colors">
             <i class="fa-solid fa-seedling text-emerald-600 dark:text-emerald-400 group-hover:scale-110 transition-transform"
@@ -17,7 +17,7 @@
             Manage orders, track shipments, and handle customer inquiries.
         </p>
     </div>
-    <button (click)="exportToPDF()" aria-label="Export List"
+    <button appSlideIn direction="right" (click)="exportToPDF()" aria-label="Export List"
         class="group relative bg-white dark:bg-slate-900/50 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700/80 px-6 py-3.5 rounded-2xl cursor-pointer font-semibold shadow-sm hover:shadow-md hover:shadow-emerald-500/10 hover:border-emerald-400 dark:hover:border-emerald-600 hover:text-emerald-700 dark:hover:text-emerald-400 transition-all duration-300 hover:-translate-y-1 backdrop-blur-sm">
 
         <span class="relative z-20 flex items-center gap-2">
