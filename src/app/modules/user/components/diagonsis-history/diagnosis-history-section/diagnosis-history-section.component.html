@@ -28,7 +28,7 @@
     </div>
 </section>
 
-<section appSlideIn direction="down"
+<section
     class="bg-white/80 dark:bg-slate-800 backdrop-blur-xl rounded-3xl overflow-hidden border border-white/50 dark:border-slate-700 shadow-lg">
     <div class="py-4 bg-emerald-600 text-center text-white font-bold text-2xl">
         Diagnosis History
@@ -60,11 +60,11 @@
             </div>
 
             <div class="flex flex-col items-center md:items-end gap-3 w-full md:w-auto">
-                <div class="text-right w-full">
+                <!-- <div class="text-right w-full">
                     <span class="text-[10px] text-slate-400 dark:text-slate-500 block uppercase">Confidence</span>
                     <span class="font-bold text-emerald-600 dark:text-emerald-400">{{ getConfidence(item.confidenceRate)
                         }}%</span>
-                </div>
+                </div> -->
 
                 <div class="flex gap-4">
                     <button (click)="deleteRecord(item.id)"

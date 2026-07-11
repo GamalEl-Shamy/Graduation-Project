@@ -92,11 +92,8 @@ export class PrintDiagnosisBtnComponent {
     const logoBase64 = await this.getBase64FromUrl('./logos/zaraa.png');
     const leafImagesBase64 = await Promise.all(
       diagnoses.map(item => {
-
         if (!item.imageUrl) return Promise.resolve(null);
-
         const fullImageUrl = `${environment.apiUrl}/ScanImage/${item.imageUrl}`;
-
         return this.getBase64FromUrl(fullImageUrl);
       })
     );
@@ -189,18 +186,14 @@ export class PrintDiagnosisBtnComponent {
     doc.setTextColor(...C.slate900);
     doc.text('Diagnosis Records & Analytics', 50, tableTitleY + 11);
 
-    const head = [['#', 'Crop / Plant Name', 'AI Detected Disease', 'Confidence', 'Scan Date', 'Image']];
+    // تمت إزالة Confidence من هنا
+    const head = [['#', 'Crop / Plant Name', 'AI Detected Disease', 'Scan Date', 'Image']];
 
     const data = diagnoses.map((item, idx) => {
-
-      let confidenceStr = String(item.confidenceRate).replace(/%/g, '');
-      let finalConfidence = isNaN(Number(confidenceStr)) ? confidenceStr : `${Number(confidenceStr).toFixed(2)}%`;
-
       return [
         idx + 1,
         item.plantName,
         (!item.diseaseName || item.diseaseName.toLowerCase() === 'none') ? 'Healthy (No Disease)' : item.diseaseName,
-        finalConfidence,
         this.formatDate(item.scanDate),
         ''
       ];
@@ -212,13 +205,13 @@ export class PrintDiagnosisBtnComponent {
       startY: tableTitleY + 25,
       theme: 'plain',
       margin: { left: 40, right: 40, bottom: 50 },
+      // تم تعديل التنسيقات وتوزيع المساحة المتبقية من عمود Confidence على باقي الأعمدة
       columnStyles: {
         0: { halign: 'center', cellWidth: 30 },
-        1: { fontStyle: 'bold', cellWidth: 100 },
-        2: { cellWidth: 140 },
-        3: { halign: 'center', cellWidth: 70 },
-        4: { halign: 'center', cellWidth: 115 },
-        5: { halign: 'center', cellWidth: 60 }
+        1: { fontStyle: 'bold', cellWidth: 120 },
+        2: { cellWidth: 170 },
+        3: { halign: 'center', cellWidth: 135 },
+        4: { halign: 'center', cellWidth: 60 }
       },
 
       headStyles: {
@@ -245,13 +238,6 @@ export class PrintDiagnosisBtnComponent {
         fillColor: C.slate50
       },
 
-      didParseCell: (data) => {
-        if (data.section === 'body' && data.column.index === 3) {
-          data.cell.styles.fontStyle = 'bold';
-          data.cell.styles.textColor = C.emerald600;
-        }
-      },
-
       didDrawCell: (data) => {
         if (data.section === 'body' && data.column.index === 0) {
           const cx = data.cell.x + data.cell.width / 2;
@@ -264,7 +250,8 @@ export class PrintDiagnosisBtnComponent {
           doc.text(String(data.row.index + 1), cx, cy + 2.5, { align: 'center' });
         }
 
-        if (data.section === 'body' && data.column.index === 5) {
+        // تم تعديل الـ index ليصبح 4 بدلاً من 5 بعد إزالة عمود الـ Confidence
+        if (data.section === 'body' && data.column.index === 4) {
           const imgBase64 = leafImagesBase64[data.row.index];
           if (imgBase64) {
             const imgSize = 22;
@@ -308,5 +295,5 @@ export class PrintDiagnosisBtnComponent {
     });
 
     doc.save(`Zaraa_Diagnosis_Report_${new Date().toISOString().slice(0, 10)}.pdf`);
-  }
+}
 }

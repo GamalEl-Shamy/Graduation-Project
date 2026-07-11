@@ -1,21 +1,76 @@
-<div (click)="close()" class="fixed inset-0 z-5000 flex items-center justify-center min-h-screen bg-black/80 ">
-    <div class="z5-card relative anim-pulse">
-        <i class="fa-solid fa-x absolute right-4 top-4 text-white cursor-pointer" (click)="close()"></i>
+<div (click)="close()"
+     class="fixed inset-0 z-5000 flex items-center justify-center min-h-screen bg-black/80 backdrop-blur-sm">
+
+    <div class="relative w-95 max-w-[90vw] rounded-[20px] px-8 pt-12 pb-8
+                bg-linear-to-br from-white to-slate-50
+                dark:from-[#0F1D2E] dark:to-[#0A1420]
+                border border-emerald-600/15 dark:border-emerald-400/15
+                shadow-xl shadow-slate-900/10 dark:shadow-black/50"
+         (click)="$event.stopPropagation()">
+
+        <span class="absolute -top-px -left-px w-4.5 h-4.5 rounded-tl-lg border-t-2 border-l-2 border-emerald-600/50 dark:border-emerald-400/50"></span>
+        <span class="absolute -top-px -right-px w-4.5 h-4.5 rounded-tr-lg border-t-2 border-r-2 border-emerald-600/50 dark:border-emerald-400/50"></span>
+        <span class="absolute -bottom-px -left-px w-4.5 h-4.5 rounded-bl-lg border-b-2 border-l-2 border-emerald-600/50 dark:border-emerald-400/50"></span>
+        <span class="absolute -bottom-px -right-px w-4.5 h-4.5 rounded-br-lg border-b-2 border-r-2 border-emerald-600/50 dark:border-emerald-400/50"></span>
+
+        <i class="fa-solid fa-x absolute right-4.5 top-4.5 text-sm cursor-pointer
+                   text-slate-400 hover:text-slate-900
+                   dark:text-slate-500 dark:hover:text-white transition-colors"
+           (click)="close()"></i>
+
         <div class="relative z-10 flex flex-col items-center w-full animate-fadeIn">
 
-            <div class="avatar animate-avatarPop font-['Namdhinggo'!important]">{{ char }}</div>
-
-            <p class="welcome-label">Welcome back</p>
-            <h2 class="name font-bold text-2xl uppercase font-['Namdhinggo'!important]">{{ userFirstName }} </h2>
-            <h2 class="text-white text-md">{{ userEmail }} </h2>
-            <p class="role">{{ userRole }}</p>
-
-            <hr class="divider" />
-
-            <div class="flex gap-10 justify-center mb-6 w-full">
-                    <span class="text-[15px] text-[#50ffad]">Start Free Diagnosis</span>
+            <div class="relative w-23 h-23 rounded-full flex items-center justify-center mb-4.5
+                        animate-[spin_6s_linear_infinite]
+                        bg-[conic-gradient(from_0deg,#0e9f6e,#3b6fe0,#0e9f6e)]
+                        dark:bg-[conic-gradient(from_0deg,#50FFAD,#5B8CFF,#50FFAD)]">
+                <div class="absolute inset-0.75 rounded-full bg-white dark:bg-[#0A1420]"></div>
+                <div class="relative z-10 w-19 h-19 rounded-full flex items-center justify-center
+                            text-[28px] font-bold uppercase font-['Namdhinggo'!important]
+                            text-emerald-600 bg-emerald-50
+                            dark:text-[#50FFAD] dark:bg-emerald-400/10">
+                    {{ char }}
+                </div>
             </div>
-            <button class="cta" (click)="close()">Go to dashboard</button>
+
+            <p class="text-[13px] uppercase tracking-wider mb-1 text-slate-500 dark:text-slate-400">
+                Welcome back
+            </p>
+            <h2 class="text-2xl font-bold uppercase tracking-wide mb-0.5 font-['Namdhinggo'!important]
+                       text-slate-900 dark:text-white">
+                {{ userFirstName }}
+            </h2>
+            <p class="text-sm mb-3 text-slate-500 dark:text-slate-400">
+                {{ userEmail }}
+            </p>
+            <span class="text-xs font-medium px-3 py-1 rounded-full border
+                         text-blue-600 bg-blue-50 border-blue-200
+                         dark:text-[#5B8CFF] dark:bg-blue-400/10 dark:border-blue-400/25">
+                {{ userRole }}
+            </span>
+
+            <hr class="w-full my-6 border-t border-slate-200 dark:border-white/10" />
+
+            <div class="flex items-center gap-2 mb-6">
+                <span class="relative flex h-1.75 w-1.75">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75
+                                 bg-emerald-500 dark:bg-[#50FFAD]"></span>
+                    <span class="relative inline-flex rounded-full h-1.75 w-1.75
+                                 bg-emerald-500 dark:bg-[#50FFAD]"></span>
+                </span>
+                <span class="text-sm font-medium text-emerald-600 dark:text-[#50FFAD]">
+                    Start free diagnosis
+                </span>
+            </div>
+
+            <button (click)="close()"
+                    class="w-full flex items-center justify-center gap-2 py-3 rounded-xl
+                           font-bold text-sm transition-all hover:brightness-110 active:scale-[0.98]
+                           bg-emerald-500 text-white
+                           dark:bg-[#50FFAD] dark:text-[#052015]">
+                Go to dashboard
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
         </div>
     </div>
 </div>
