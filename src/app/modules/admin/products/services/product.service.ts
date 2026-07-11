@@ -10,7 +10,7 @@ import { ProductRequest } from '../models/create-product.interface';
 })
 export class ProductService {
   private http = inject(HttpClient);
-  private apiUrl = environment.apiUrl + '/apiAdmin/Products';
+  private apiUrl = environment.apiUrl + '/api/Admin/Products';
 
   getAllProducts(): Observable<ProductResponse> {
     return this.http.get<ProductResponse>(`${this.apiUrl}/Index`);

@@ -11,9 +11,14 @@ export interface ProductItem {
   status: boolean;
   mainImg: string;
   price: number;
+  priceAfterDiscount: number;
   quantity: number;
   discount: number;
+  categoryName: string;
+  brandName: string;
   categoryId: number;
   brandId: number;
+  rate: number;
+  reviewsCount: number;
 }
 

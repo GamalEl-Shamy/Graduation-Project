@@ -2,6 +2,7 @@ import { Component, input, output } from '@angular/core';
 import { ProductItem } from '../../models/product.interface';
 import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
+import { environment } from '../../../../../../environments/environment.development';
 
 @Component({
   selector: 'app-products-header',
@@ -18,7 +19,7 @@ export class ProductsHeaderComponent {
     const doc = new jsPDF('p', 'pt', 'a4');
     const W = doc.internal.pageSize.width;
     const H = doc.internal.pageSize.height;
-    const products = this.productsList(); 
+    const products = this.productsList();
 
     const C = {
       emerald600: [5, 150, 105] as [number, number, number],
@@ -45,7 +46,7 @@ export class ProductsHeaderComponent {
     };
 
     // ==========================================
-    // 0. UPLOAD LOGO
+    // 0. PRELOAD IMAGES (Logo + Product Images)
     // ==========================================
     let logoBase64: string | null = null;
     try {
@@ -60,6 +61,29 @@ export class ProductsHeaderComponent {
     } catch (e) {
       console.warn('Logo could not be loaded', e);
     }
+
+    // جلب صور المنتجات وتحويلها لتكون جاهزة للرسم
+    const productImages: Record<number, string> = {};
+    await Promise.all(products.map(async (p) => {
+      if (p.mainImg) {
+        try {
+          const cleanPath = p.mainImg.replace(/^\//, ''); 
+          const imageUrl = `${environment.apiUrl}/Images/${cleanPath}`; 
+          const res = await fetch(imageUrl);
+          
+          if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+
+          const blob = await res.blob();
+          productImages[p.productId] = await new Promise<string>((resolve) => {
+            const reader = new FileReader();
+            reader.onloadend = () => resolve(reader.result as string);
+            reader.readAsDataURL(blob);
+          });
+        } catch (e) {
+          console.warn(`Could not load image for product ${p.productId}:`, e);
+        }
+      }
+    }));
 
     // ==========================================
     // 1. LIGHT HERO HEADER
@@ -82,7 +106,7 @@ export class ProductsHeaderComponent {
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(22);
     doc.setTextColor(...C.slate900);
-    doc.text('Products Report', 40, 45); 
+    doc.text('Products Report', 40, 45);
 
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(9.5);
@@ -166,16 +190,27 @@ export class ProductsHeaderComponent {
     // ==========================================
     // 4. TABLE
     // ==========================================
-    const head = [['#', 'Product Details', 'Pricing', 'Stock Level', 'Status']];
+    const head = [['#', 'Img', 'Product Info', 'Category / Brand', 'Pricing', 'Stock Level', 'Status']];
     const data = products.map((product, idx) => {
-      let pricingInfo = `$${product.price.toFixed(2)}`;
+
+      let pricingInfo = `$${product.priceAfterDiscount.toFixed(2)}`;
       if (product.discount > 0) {
-        pricingInfo += `\n(-${product.discount}% OFF)`;
+        pricingInfo += `\n(Orig: $${product.price.toFixed(2)})\n-${product.discount}% OFF`;
       }
+
+      let info = `${product.name}`;
+      info += `\n#${product.productId}`;
+      info += `\nRating: ${product.rate} / 5 (${product.reviewsCount} reviews)`;
+      // if (product.description) {
+      //   const shortDesc = product.description.length > 45 ? product.description.substring(0, 45) + '...' : product.description;
+      //   info += `\nDesc: ${shortDesc}`;
+      // }
 
       return [
         idx + 1,
-        `${product.name}\n#PRD-${product.productId}`, 
+        '',
+        info,
+        `${product.categoryName} / ${product.brandName}`,
         pricingInfo,
         `${product.quantity} Units`,
         product.status ? 'Active' : 'Inactive'
@@ -197,29 +232,36 @@ export class ProductsHeaderComponent {
       },
 
       bodyStyles: {
-        textColor: C.slate700, fontSize: 8.5,
+        textColor: C.slate700, fontSize: 8, 
         cellPadding: { top: 10, bottom: 10, left: 10, right: 10 },
         valign: 'middle', lineColor: C.slate100, lineWidth: 0.5,
+        minCellHeight: 45
       },
 
       alternateRowStyles: { fillColor: C.slate50 },
 
       columnStyles: {
-        0: { halign: 'center', cellWidth: 30 }, // ID
-        1: { cellWidth: 'auto', fontStyle: 'bold' }, // Product Name & ID
-        2: { halign: 'right', cellWidth: 90 }, // Pricing
-        3: { halign: 'center', cellWidth: 80 }, // Stock
-        4: { halign: 'center', cellWidth: 75 }, // Status
+        0: { halign: 'center', cellWidth: 25 }, 
+        1: { halign: 'center', cellWidth: 45 }, 
+        2: { cellWidth: 'auto', fontStyle: 'bold' },
+        3: { halign: 'right', cellWidth: 80 },
+        4: { halign: 'center', cellWidth: 65 }, 
+        5: { halign: 'center', cellWidth: 70 }, 
       },
 
       didParseCell: (data) => {
-        // ── Pricing Style ──
+        // ── Product Info Style ──
         if (data.section === 'body' && data.column.index === 2) {
-          data.cell.styles.textColor = C.slate700;
+          data.cell.styles.textColor = C.emerald600;
+        }
+
+        // ── Pricing Style ──
+        if (data.section === 'body' && data.column.index === 4) {
+          data.cell.styles.textColor = C.slate900;
         }
 
         // ── Stock Level Style ──
-        if (data.section === 'body' && data.column.index === 3) {
+        if (data.section === 'body' && data.column.index === 5) {
           const stockText = String(data.cell.raw);
           if (stockText.startsWith('0')) {
             data.cell.styles.textColor = C.red500;
@@ -231,7 +273,7 @@ export class ProductsHeaderComponent {
         }
 
         // ── Status Fallback Color ──
-        if (data.section === 'body' && data.column.index === 4) {
+        if (data.section === 'body' && data.column.index === 6) {
           const status = String(data.cell.raw);
           if (status === 'Active') {
             data.cell.styles.textColor = C.emerald600;
@@ -255,8 +297,32 @@ export class ProductsHeaderComponent {
           doc.text(String(data.row.index + 1), cx, cy + 2.8, { align: 'center' });
         }
 
+        // ── Draw Product Image ──
+        if (data.section === 'body' && data.column.index === 1) {
+          const prod = products[data.row.index];
+          const base64 = productImages[prod.productId];
+          const imgDim = 32; 
+          const imgX = data.cell.x + (data.cell.width - imgDim) / 2;
+          const imgY = data.cell.y + (data.cell.height - imgDim) / 2;
+
+          if (base64) {
+            try {
+              doc.addImage(base64, imgX, imgY, imgDim, imgDim);
+            } catch (e) {
+              console.warn('Error drawing image in PDF for product', prod.productId);
+            }
+          } else {
+            doc.setFillColor(...C.slate100);
+            doc.roundedRect(imgX, imgY, imgDim, imgDim, 4, 4, 'F');
+            doc.setFontSize(7);
+            doc.setTextColor(...C.slate400);
+            const cy = data.cell.y + data.cell.height / 2;
+            doc.text('No Img', data.cell.x + data.cell.width / 2, cy + 2, { align: 'center' });
+          }
+        }
+
         // ── Status pill ──
-        if (data.section === 'body' && data.column.index === 4) {
+        if (data.section === 'body' && data.column.index === 6) {
           const status = String(data.cell.raw);
           const cx = data.cell.x + data.cell.width / 2;
           const cy = data.cell.y + data.cell.height / 2;

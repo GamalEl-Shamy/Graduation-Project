@@ -56,7 +56,7 @@
               Quantity
             </th>
             <th class="px-6 py-5 text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">
-              Price
+              Price - After Discount
             </th>
             <th class="px-6 py-5 text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">
               Discount
@@ -133,7 +133,7 @@
             </td>
             <td class="px-6 py-5">
               <p class="text-sm font-medium text-slate-700 dark:text-slate-300">
-                {{ product?.price }}
+                {{ product?.price }} / <span class="text-amber-600">{{ product?.priceAfterDiscount }}</span>
               </p>
             </td>
             <td class="px-6 py-5">
@@ -142,9 +142,10 @@
               </p>
             </td>
             <td class="px-6 py-5">
-              <p class="text-sm font-medium text-red-700 dark:text-red-300">
+              <p class="text-sm font-medium text-reslated-700 dark:text-red-300">
                 <!-- {{product?.}}</p> -->
-                rate
+                {{ product?.rate }} 
+                ( {{product?.reviewsCount}} reviews)
               </p>
             </td>
             <td class="px-6 py-5">
