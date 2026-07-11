@@ -75,7 +75,6 @@ export class LoginComponent {
                 }
                 this.isLoading = false;
 
-
                 this.cdr.detectChanges();
               }
               this.cdr.detectChanges();
