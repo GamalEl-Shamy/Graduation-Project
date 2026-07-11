@@ -59,7 +59,6 @@ export class LoginComponent {
             next: (res) => {
               if (res) {
                 
-                this.isLoading = false;
                 this.authService.saveAccessToken(res.accessToken);
                 this.authService.saveUserData();
                 
@@ -74,6 +73,8 @@ export class LoginComponent {
                 } else if (role === 'Customer') {
                   this.router.navigate(['/users']);
                 }
+                this.isLoading = false;
+
 
                 this.cdr.detectChanges();
               }
