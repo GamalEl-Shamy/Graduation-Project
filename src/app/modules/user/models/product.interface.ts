@@ -38,7 +38,9 @@ export interface Product {
   categoryId: number
   category: Category
   brandId: number
+  reviewsCount: number
   brand: any
+  categoryName: string
 }
 
 export interface Category {
