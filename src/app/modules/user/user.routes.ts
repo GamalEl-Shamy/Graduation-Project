@@ -56,9 +56,9 @@ export const USER_ROUTES: Routes = [
                 title: 'Diagnosis Details'
             },
             {
-                path: 'my-garden',
-                loadComponent: () => import('./pages/my-garden/my-garden.component').then((c) => c.MyGardenComponent),
-                title: 'My Garden'
+                path: 'robot-dashboard',
+                loadComponent: () => import('./pages/robot-dashboard/robot-dashboard.component').then((c) => c.RobotDashboardComponent),
+                title: 'Robot Dashboard'
             },
             {
                 path: 'profile',

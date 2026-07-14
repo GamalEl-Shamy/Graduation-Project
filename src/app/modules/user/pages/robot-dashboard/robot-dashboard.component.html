@@ -1,0 +1,102 @@
+<div class="p-6">
+  <div class="bg-white/60 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-700 backdrop-blur-md rounded-2xl p-6 mb-8 flex items-center justify-between shadow-sm">
+    <div class="flex items-center gap-4">
+      <div class="relative flex h-4 w-4">
+        @if (isRobotRunning()) {
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-4 w-4 bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.8)]"></span>
+        } @else {
+          <span class="relative inline-flex rounded-full h-4 w-4 bg-red-500"></span>
+        }
+      </div>
+      <div>
+        <h2 class="text-xl font-bold text-slate-900 dark:text-white">Zaraa Robot Status</h2>
+        <p class="text-sm text-slate-500 dark:text-slate-400">
+          {{ isRobotRunning() ? 'Scanning in progress (Live Updates)' : 'Robot is idle' }}
+        </p>
+      </div>
+    </div>
+
+    <div class="flex gap-4">
+      <button 
+        (click)="startRobot()" 
+        [disabled]="isRobotRunning()"
+        class="px-6 py-2.5 rounded-xl font-bold transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed bg-emerald-500 hover:bg-emerald-600 text-white shadow-lg shadow-emerald-500/30">
+        <i class="fa-solid fa-play mr-2"></i> Start Scan
+      </button>
+
+      <button 
+        (click)="stopRobot()" 
+        [disabled]="!isRobotRunning()"
+        class="px-6 py-2.5 rounded-xl font-bold transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed bg-red-500 hover:bg-red-600 text-white shadow-lg shadow-red-500/30">
+        <i class="fa-solid fa-stop mr-2"></i> Stop Robot
+      </button>
+    </div>
+  </div>
+
+  @if (isRobotRunning() || latestScan() || scanMessage()) {
+    <h3 class="text-lg font-bold text-slate-800 dark:text-slate-200 mb-4">Latest Scan Results</h3>
+
+    @if (scanMessage()) {
+      <div appSlideIn direction="up" class="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-700/50 p-6 rounded-2xl flex items-center gap-4 text-amber-700 dark:text-amber-400">
+        <i class="fa-solid fa-triangle-exclamation text-2xl"></i>
+        <p class="font-semibold text-lg">{{ scanMessage() }}</p>
+      </div>
+    }
+
+    @if (latestScan(); as scan) {
+      <div appSlideIn direction="up" class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        
+        <div class="col-span-1 bg-white/60 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-700 rounded-2xl overflow-hidden p-2">
+          <img [src]="imgBaseUrl + scan.imageUrl" alt="Plant Scan" class="w-full h-auto rounded-xl object-cover">
+        </div>
+
+        <div class="col-span-2 bg-white/60 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-700 rounded-2xl p-6">
+          <div class="flex justify-between items-start mb-6">
+            <div>
+              <p class="text-sm font-bold text-emerald-500 uppercase tracking-wider mb-1">Plant Identified</p>
+              <h4 class="text-3xl font-bold text-slate-900 dark:text-white">{{ scan.plantName }}</h4>
+            </div>
+            
+            <div class="text-right">
+              <p class="text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">Confidence</p>
+              <span class="inline-block px-3 py-1 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 font-bold rounded-lg border border-emerald-200 dark:border-emerald-700/50">
+                {{ scan.confidenceRate }}
+              </span>
+            </div>
+          </div>
+
+          <div class="space-y-4">
+            <div>
+              <p class="text-sm font-bold text-slate-500 dark:text-slate-400">Status / Disease</p>
+              <p class="text-lg font-semibold text-slate-800 dark:text-slate-200"
+                 [class.text-emerald-500]="scan.diseaseName === 'Healthy'"
+                 [class.text-red-500]="scan.diseaseName !== 'Healthy'">
+                {{ scan.diseaseName }}
+              </p>
+            </div>
+            
+            <div>
+              <p class="text-sm font-bold text-slate-500 dark:text-slate-400">Symptoms</p>
+              <p class="text-slate-700 dark:text-slate-300">{{ scan.symptoms }}</p>
+            </div>
+
+            <div class="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-xl border border-slate-100 dark:border-slate-700">
+              <p class="text-sm font-bold text-slate-500 dark:text-slate-400 mb-1"><i class="fa-solid fa-notes-medical mr-2"></i>Treatment</p>
+              <p class="text-slate-700 dark:text-slate-300">{{ scan.treatment }}</p>
+            </div>
+          </div>
+          
+          <div class="mt-6 text-right">
+            <p class="text-xs text-slate-400"><i class="fa-regular fa-clock mr-1"></i>Scanned at: {{ scan.scanDate | date:'medium' }}</p>
+          </div>
+        </div>
+      </div>
+    }
+  } @else {
+    <div class="text-center py-20 text-slate-400">
+      <i class="fa-solid fa-robot text-6xl mb-4 opacity-50"></i>
+      <p class="text-lg">Click "Start Scan" to begin live monitoring.</p>
+    </div>
+  }
+</div>
